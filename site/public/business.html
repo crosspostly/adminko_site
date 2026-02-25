@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ИТ-аутсорсинг для бизнеса в Кемерово | Админко</title>
+    <meta name="description" content="Абонентское обслуживание компьютеров, оргтехники, серверов 1С. Видеонаблюдение для бизнеса. Замена штатного ИТ-отдела.">
+    <link rel="icon" href="/favicon.jpg" type="image/jpeg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#E50914',
+                        'primary-dark': '#B50303',
+                        'surface-light': '#F8F9FA',
+                        'surface-dark': '#1E293B',
+                        'text-light': '#111827',
+                        'text-dark': '#F9FAFB',
+                        'text-muted-light': '#6B7280',
+                        'text-muted-dark': '#9CA3AF',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .brand-stripes { display: flex; flex-direction: column; gap: 4px; }
+        .brand-stripe { height: 4px; background-color: #E50914; width: 100%; }
+        .brand-stripe-thin { height: 2px; background-color: #E50914; width: 100%; }
+    </style>
+</head>
+<body class="bg-white dark:bg-surface-dark text-text-light dark:text-text-dark antialiased">
+
+    <!-- Brand Stripes -->
+    <div class="fixed top-0 left-0 right-0 z-50">
+        <div class="brand-stripes">
+            <div class="brand-stripe"></div>
+            <div class="brand-stripe-thin"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-3 bg-white/95 dark:bg-surface-dark/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-3">
+                    <a href="index.html" class="flex items-center gap-3">
+                        <div class="brand-stripes w-6">
+                            <div class="brand-stripe"></div>
+                            <div class="brand-stripe-thin"></div>
+                        </div>
+                        <span class="text-xl font-bold tracking-tight">Админко</span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="index.html" class="text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors">Главная</a>
+                    <a href="business.html" class="text-sm font-medium text-primary">Для бизнеса</a>
+                    <a href="phones.html" class="text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors">Телефоны</a>
+                    <a href="computers.html" class="text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors">Компьютеры</a>
+                    <a href="cctv.html" class="text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors">Видеонаблюдение</a>
+                    <a href="price.html" class="text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors">Цены</a>
+                    <a href="about.html" class="text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors">Контакты</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <button onclick="document.documentElement.classList.toggle('dark')" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                        <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                        <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                    </button>
+                    <button onclick="openMessengerModal()" class="hidden sm:inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-primary-dark transition-colors">
+                        <span class="material-symbols-outlined text-sm">chat</span>
+                        Написать
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-surface-light dark:bg-gray-800 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="brand-stripes w-16 mb-6">
+                        <div class="brand-stripe"></div>
+                        <div class="brand-stripe-thin"></div>
+                    </div>
+                    <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight mb-6">
+                        ИТ-аутсорсинг для <span class="text-primary">бизнеса</span>
+                    </h1>
+                    <p class="text-lg text-text-muted-light dark:text-text-muted-dark mb-8">
+                        Заменяем целый штат ИТ-специалистов. От заправки картриджей и настройки локальной сети до монтажа видеонаблюдения и поддержки серверов 1С.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="openMessengerModal()" class="inline-flex items-center justify-center gap-2 bg-primary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary-dark transition-all">
+                            <span class="material-symbols-outlined">chat</span>
+                            Оставить заявку
+                        </button>
+                        <a href="tel:+79502767171" class="inline-flex items-center justify-center gap-2 bg-white dark:bg-gray-700 text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all">
+                            <span class="material-symbols-outlined">phone</span>
+                            +7 (950) 276-71-71
+                        </a>
+                    </div>
+                    <div class="mt-8 flex items-center gap-6 text-sm text-text-muted-light dark:text-text-muted-dark">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">verified</span>
+                            <span>Работа по договору</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">schedule</span>
+                            <span>Реакция до 2 часов</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-surface-dark rounded-2xl shadow-lg p-8">
+                    <h3 class="text-2xl font-bold mb-6">Почему бизнес выбирает нас</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span class="material-symbols-outlined text-primary">shield</span>
+                            </div>
+                            <div>
+                                <p class="font-semibold mb-1">Бесперебойная работа</p>
+                                <p class="text-sm text-text-muted-light dark:text-text-muted-dark">Простой кассы, 1С или ЕГАИС = потеря денег. Мы не допускаем простоя.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span class="material-symbols-outlined text-primary">account_balance</span>
+                            </div>
+                            <div>
+                                <p class="font-semibold mb-1">Фиксированная абонентская плата</p>
+                                <p class="text-sm text-text-muted-light dark:text-text-muted-dark">Платите только за результат. Никаких скрытых доплат и «внезапных» поломок.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span class="material-symbols-outlined text-primary">engineering</span>
+                            </div>
+                            <div>
+                                <p class="font-semibold mb-1">Команда, а не разовый мастер</p>
+                                <p class="text-sm text-text-muted-light dark:text-text-muted-dark">Настоящие инженеры, а не скриптованные менеджеры по продажам.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="py-16 bg-white dark:bg-surface-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-extrabold mb-4">Услуги для бизнеса</h2>
+                <p class="text-lg text-text-muted-light dark:text-text-muted-dark max-w-2xl mx-auto">
+                    Единое окно для всех ИТ-задач вашего бизнеса
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-surface-light dark:bg-gray-800 rounded-xl p-6 border border-gray-100 dark:border-gray-700">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined text-primary text-2xl">dns</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Абонентское обслуживание компьютеров</h3>
+                    <p class="text-text-muted-light dark:text-text-muted-dark mb-4">Плановые визиты, удалённая поддержка, экстренные выезды. Всё включено.</p>
+                    <ul class="space-y-2 text-sm text-text-muted-light dark:text-text-muted-dark">
+                        <li class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-sm">check</span>
+                            <span>Настройка рабочих мест</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-sm">check</span>
+                            <span>Удалённая поддержка</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-sm">check</span>
+                            <span>Экстренные выезды</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-surface-light dark:bg-gray-800 rounded-xl p-6 border border-gray-100 dark:border-gray-700">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined text-primary text-2xl">print</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Обслуживание оргтехники</h3>
+                    <p class="text-text-muted-light dark:text-text-muted-dark mb-4">Заправка картриджей, ремонт принтеров, копиров, МФУ.</p>
+                    <ul class="space-y-2 text-sm text-text-muted-light dark:text-text-muted-dark">
+                        <li class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-sm">check</span>
+                            <span>Заправка картриджей</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-sm">check</span>
+                            <span>Ремонт любой сложности</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-sm">check</span>
+                            <span>Замена расходников</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-surface-light dark:bg-gray-800 rounded-xl p-6 border border-gray-100 dark:border-gray-700">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined text-primary text-2xl">storage</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Серверы и 1С</h3>
+                    <p class="text-text-muted-light dark:text-text-muted-dark mb-4">Настройка серверов, резервное копирование, поддержка 1С.</p>
+                    <ul class="space-y-2 text-sm text-text-muted-light dark:text-text-muted-dark">
+                        <li class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-sm">check</span>
+                            <span>Настройка серверов</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-sm">check</span>
+                            <span>Резервное копирование 1С</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-sm">check</span>
+                            <span>Поддержка баз данных</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-surface-light dark:bg-gray-800 rounded-xl p-6 border border-gray-100 dark:border-gray-700">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined text-primary text-2xl">videocam</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Видеонаблюдение</h3>
+                    <p class="text-text-muted-light dark:text-text-muted-dark mb-4">Монтаж систем видеонаблюдения для офиса, склада, магазина.</p>
+                    <ul class="space-y-2 text-sm text-text-muted-light dark:text-text-muted-dark">
+                        <li class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-sm">check</span>
+                            <span>Проектирование системы</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-sm">check</span>
+                            <span>Монтаж за 1 день</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-sm">check</span>
+                            <span>Онлайн-доступ 24/7</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="bg-surface-light dark:bg-gray-800 rounded-xl p-6 border border-gray-100 dark:border-gray-700">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined text-primary text-2xl">lan</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Локальные сети</h3>
+                    <p class="text-text-muted-light dark:text-text-muted-dark mb-4">Проектирование, монтаж и настройка ЛВС.</p>
+                    <ul class="space-y-2 text-sm text-text-muted-light dark:text-text-muted-dark">
+                        <li class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-sm">check</span>
+                            <span>Проектирование ЛВС</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-sm">check</span>
+                            <span>Монтаж кабельных трасс</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-sm">check</span>
+                            <span>Настройка оборудования</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="bg-surface-light dark:bg-gray-800 rounded-xl p-6 border border-gray-100 dark:border-gray-700">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined text-primary text-2xl">point_of_sale</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Кассы и ЕГАИС</h3>
+                    <p class="text-text-muted-light dark:text-text-muted-dark mb-4">Настройка кассового оборудования, подключение к ЕГАИС.</p>
+                    <ul class="space-y-2 text-sm text-text-muted-light dark:text-text-muted-dark">
+                        <li class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-sm">check</span>
+                            <span>Настройка онлайн-касс</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-sm">check</span>
+                            <span>Подключение к ЕГАИС</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-sm">check</span>
+                            <span>Обучение персонала</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-primary relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10">
+            <div class="absolute top-1/4 -left-10 brand-stripes w-1/2 rotate-12">
+                <div class="h-4 bg-white w-full"></div>
+                <div class="h-2 bg-white w-full"></div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">Нужен надёжный ИТ-партнёр?</h2>
+            <p class="text-xl text-red-100 mb-8 max-w-2xl mx-auto">Оставьте заявку — бесплатно проведём аудит вашей ИТ-инфраструктуры и предложим оптимальное решение</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center gap-2 bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all">
+                    <span class="material-symbols-outlined">chat</span>
+                    Оставить заявку
+                </button>
+                <a href="tel:+79502767171" class="inline-flex items-center justify-center gap-2 bg-white/10 text-white border-2 border-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all">
+                    <span class="material-symbols-outlined">phone</span>
+                    Позвонить
+                </a>
+            </div>
+        </div>
+    </section>
+
+<!-- Контейнер для футера -->
+<div id="footer-container"></div>
+
+<script src="components.js"></script>
+<script>
+    function openMessengerModal() {
+        document.getElementById('messenger-modal').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeMessengerModal() {
+        document.getElementById('messenger-modal').classList.add('hidden');
+        document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') { closeMessengerModal(); }
+    });
+</script>
+
+</body>
+</html>

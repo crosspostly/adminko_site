@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Админко — Лаборатория ИТ-ремонта и видеонаблюдения в Кемерово</title>
     <meta name="description" content="Честный ремонт ноутбуков, компьютеров и телефонов в Кемерово. Диагностика 0 руб. Смета до начала работ. Монтаж видеонаблюдения.">
+    <link rel="icon" href="/favicon.jpg" type="image/jpeg">
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -31,7 +32,7 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: "#D90404",
+                        primary: "#E50914",
                         "primary-hover": "#b00303",
                         "background-light": "#F9FAFB",
                         "background-dark": "#111827",
@@ -82,17 +83,24 @@
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <span class="material-symbols-outlined text-gray-400">search</span>
                 </div>
-                <input class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" placeholder="Какая техника сломалась?" type="text"/>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Какая техника сломалась?" 
+                    type="text"
+                    id="header-search"
+                    onkeypress="if(event.key === 'Enter') searchPrice()"
+                />
             </div>
 
             <div class="hidden md:flex items-center space-x-6">
+                <a href="business.html" class="text-sm font-medium text-primary hover:text-primary-dark transition-colors">Для бизнеса</a>
                 <a href="phones.html" class="text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary font-medium transition">Телефоны</a>
                 <a href="computers.html" class="text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary font-medium transition">Компьютеры</a>
                 <a href="cctv.html" class="text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary font-medium transition">Камеры</a>
-                <a href="https://wa.me/79000000000" target="_blank" class="inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-medium rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-sm">
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-medium rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-sm">
                     <span class="material-symbols-outlined text-sm mr-1">chat</span>
                     Написать
-                </a>
+                </button>
             </div>
 
             <div class="flex items-center md:hidden">
@@ -124,9 +132,9 @@
                         Точная смета до начала работ. Сохраним ваши данные на 100%. Проведем диагностику за 30 минут и назовем фиксированную цену в рублях. Без скрытых доплат за «термопасту» и «шлейфы».
                     </p>
                     <div class="mt-8 sm:flex sm:justify-center lg:justify-start gap-4">
-                        <a href="https://wa.me/79000000000" target="_blank" class="w-full sm:w-auto flex items-center justify-center px-8 py-3.5 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-hover shadow-md transition">
-                            <span class="material-symbols-outlined mr-2">chat</span> Написать в WhatsApp
-                        </a>
+                        <button onclick="openMessengerModal()" class="w-full sm:w-auto flex items-center justify-center px-8 py-3.5 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-hover shadow-md transition">
+                            <span class="material-symbols-outlined mr-2">chat</span> Написать в мессенджер
+                        </button>
                         <a href="#services" class="mt-3 sm:mt-0 w-full sm:w-auto flex items-center justify-center px-8 py-3.5 border border-transparent text-base font-medium rounded-md text-primary bg-red-50 hover:bg-red-100 dark:bg-gray-800 dark:text-red-400 dark:hover:bg-gray-700 transition">
                             Все услуги
                         </a>
@@ -150,6 +158,71 @@
         <div class="absolute inset-0 bg-gray-900 opacity-0 dark:opacity-20 pointer-events-none"></div>
     </div>
 </div>
+
+<!-- B2B / B2C Split Section -->
+<section class="py-12 bg-white dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- B2B -->
+            <a href="business.html" class="group block bg-surface-light dark:bg-gray-800 rounded-2xl p-8 border-2 border-gray-200 dark:border-gray-700 hover:border-primary transition-all">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary text-3xl">business</span>
+                    </div>
+                    <h3 class="text-2xl font-bold">Для бизнеса</h3>
+                </div>
+                <p class="text-text-muted-light dark:text-text-muted-dark mb-6">Абонентское обслуживание компьютеров, оргтехники, серверов 1С. Видеонаблюдение. Замена штатного ИТ-отдела.</p>
+                <ul class="space-y-2 text-sm text-text-muted-light dark:text-text-muted-dark mb-6">
+                    <li class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-sm">check</span>
+                        <span>Абонентское обслуживание от 5000 ₽/мес</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-sm">check</span>
+                        <span>Реакция до 2 часов</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-sm">check</span>
+                        <span>Работа по договору</span>
+                    </li>
+                </ul>
+                <div class="flex items-center text-primary font-semibold group-hover:translate-x-2 transition-transform">
+                    <span>Оставить заявку</span>
+                    <span class="material-symbols-outlined ml-2">arrow_forward</span>
+                </div>
+            </a>
+
+            <!-- B2C -->
+            <a href="#services" class="group block bg-surface-light dark:bg-gray-800 rounded-2xl p-8 border-2 border-gray-200 dark:border-gray-700 hover:border-primary transition-all">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary text-3xl">person</span>
+                    </div>
+                    <h3 class="text-2xl font-bold">Для себя</h3>
+                </div>
+                <p class="text-text-muted-light dark:text-text-muted-dark mb-6">Ремонт телефонов, ноутбуков, компьютеров. Сборка ПК на заказ. Установка видеонаблюдения для дома.</p>
+                <ul class="space-y-2 text-sm text-text-muted-light dark:text-text-muted-dark mb-6">
+                    <li class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-sm">check</span>
+                        <span>Диагностика бесплатно</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-sm">check</span>
+                        <span>Ремонт от 30 минут</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-sm">check</span>
+                        <span>Гарантия до 12 месяцев</span>
+                    </li>
+                </ul>
+                <div class="flex items-center text-primary font-semibold group-hover:translate-x-2 transition-transform">
+                    <span>Смотреть услуги</span>
+                    <span class="material-symbols-outlined ml-2">arrow_forward</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
 
 <section id="services" class="py-16 bg-gray-50 dark:bg-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -419,10 +492,10 @@
         </div>
         <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
             <div class="inline-flex rounded-md shadow">
-                <a href="https://wa.me/79000000000" target="_blank" class="inline-flex items-center justify-center px-6 py-4 border border-transparent text-base font-bold rounded-md text-primary bg-white hover:bg-gray-50 transition">
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-4 border border-transparent text-base font-bold rounded-md text-primary bg-white hover:bg-gray-50 transition">
                     <span class="material-symbols-outlined mr-2">chat</span>
-                    Оценить по фото в WhatsApp
-                </a>
+                    Оценить по фото
+                </button>
             </div>
         </div>
     </div>

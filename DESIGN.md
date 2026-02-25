@@ -6,7 +6,7 @@
 
 ## 2. Color Palette
 
-- **Primary**: #D90404 (яркий красный — брендовый цвет)
+- **Primary**: #E50914 (яркий красный — соответствует логотипу)
 - **Primary Dark**: #B50303 (для hover-состояний)
 - **Surface Light**: #F8F9FA (светлый фон секций)
 - **Surface Dark**: #1E293B (тёмный фон для dark mode)

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Админко — Лаборатория ИТ-ремонта и видеонаблюдения в Кемерово</title>
     <meta name="description" content="Честный ремонт ноутбуков, компьютеров и телефонов в Кемерово. Диагностика 0 руб. Смета до начала работ. Монтаж видеонаблюдения.">
+    <link rel="icon" href="/favicon.jpg" type="image/jpeg">
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -31,7 +32,7 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: "#D90404",
+                        primary: "#E50914",
                         "primary-hover": "#b00303",
                         "background-light": "#F9FAFB",
                         "background-dark": "#111827",
@@ -82,17 +83,24 @@
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <span class="material-symbols-outlined text-gray-400">search</span>
                 </div>
-                <input class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" placeholder="Какая техника сломалась?" type="text"/>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Какая техника сломалась?" 
+                    type="text"
+                    id="header-search"
+                    onkeypress="if(event.key === 'Enter') searchPrice()"
+                />
             </div>
 
             <div class="hidden md:flex items-center space-x-6">
+                <a href="business.html" class="text-sm font-medium text-primary hover:text-primary-dark transition-colors">Для бизнеса</a>
                 <a href="phones.html" class="text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary font-medium transition">Телефоны</a>
                 <a href="computers.html" class="text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary font-medium transition">Компьютеры</a>
                 <a href="cctv.html" class="text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary font-medium transition">Камеры</a>
-                <a href="https://wa.me/79000000000" target="_blank" class="inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-medium rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-sm">
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-medium rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-sm">
                     <span class="material-symbols-outlined text-sm mr-1">chat</span>
                     Написать
-                </a>
+                </button>
             </div>
 
             <div class="flex items-center md:hidden">
@@ -124,9 +132,9 @@
                         Точная смета до начала работ. Сохраним ваши данные на 100%. Проведем диагностику за 30 минут и назовем фиксированную цену в рублях. Без скрытых доплат за «термопасту» и «шлейфы».
                     </p>
                     <div class="mt-8 sm:flex sm:justify-center lg:justify-start gap-4">
-                        <a href="https://wa.me/79000000000" target="_blank" class="w-full sm:w-auto flex items-center justify-center px-8 py-3.5 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-hover shadow-md transition">
-                            <span class="material-symbols-outlined mr-2">chat</span> Написать в WhatsApp
-                        </a>
+                        <button onclick="openMessengerModal()" class="w-full sm:w-auto flex items-center justify-center px-8 py-3.5 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-hover shadow-md transition">
+                            <span class="material-symbols-outlined mr-2">chat</span> Написать в мессенджер
+                        </button>
                         <a href="#services" class="mt-3 sm:mt-0 w-full sm:w-auto flex items-center justify-center px-8 py-3.5 border border-transparent text-base font-medium rounded-md text-primary bg-red-50 hover:bg-red-100 dark:bg-gray-800 dark:text-red-400 dark:hover:bg-gray-700 transition">
                             Все услуги
                         </a>
@@ -150,6 +158,71 @@
         <div class="absolute inset-0 bg-gray-900 opacity-0 dark:opacity-20 pointer-events-none"></div>
     </div>
 </div>
+
+<!-- B2B / B2C Split Section -->
+<section class="py-12 bg-white dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- B2B -->
+            <a href="business.html" class="group block bg-surface-light dark:bg-gray-800 rounded-2xl p-8 border-2 border-gray-200 dark:border-gray-700 hover:border-primary transition-all">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary text-3xl">business</span>
+                    </div>
+                    <h3 class="text-2xl font-bold">Для бизнеса</h3>
+                </div>
+                <p class="text-text-muted-light dark:text-text-muted-dark mb-6">Абонентское обслуживание компьютеров, оргтехники, серверов 1С. Видеонаблюдение. Замена штатного ИТ-отдела.</p>
+                <ul class="space-y-2 text-sm text-text-muted-light dark:text-text-muted-dark mb-6">
+                    <li class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-sm">check</span>
+                        <span>Абонентское обслуживание от 5000 ₽/мес</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-sm">check</span>
+                        <span>Реакция до 2 часов</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-sm">check</span>
+                        <span>Работа по договору</span>
+                    </li>
+                </ul>
+                <div class="flex items-center text-primary font-semibold group-hover:translate-x-2 transition-transform">
+                    <span>Оставить заявку</span>
+                    <span class="material-symbols-outlined ml-2">arrow_forward</span>
+                </div>
+            </a>
+
+            <!-- B2C -->
+            <a href="#services" class="group block bg-surface-light dark:bg-gray-800 rounded-2xl p-8 border-2 border-gray-200 dark:border-gray-700 hover:border-primary transition-all">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary text-3xl">person</span>
+                    </div>
+                    <h3 class="text-2xl font-bold">Для себя</h3>
+                </div>
+                <p class="text-text-muted-light dark:text-text-muted-dark mb-6">Ремонт телефонов, ноутбуков, компьютеров. Сборка ПК на заказ. Установка видеонаблюдения для дома.</p>
+                <ul class="space-y-2 text-sm text-text-muted-light dark:text-text-muted-dark mb-6">
+                    <li class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-sm">check</span>
+                        <span>Диагностика бесплатно</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-sm">check</span>
+                        <span>Ремонт от 30 минут</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-sm">check</span>
+                        <span>Гарантия до 12 месяцев</span>
+                    </li>
+                </ul>
+                <div class="flex items-center text-primary font-semibold group-hover:translate-x-2 transition-transform">
+                    <span>Смотреть услуги</span>
+                    <span class="material-symbols-outlined ml-2">arrow_forward</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
 
 <section id="services" class="py-16 bg-gray-50 dark:bg-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -419,78 +492,40 @@
         </div>
         <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
             <div class="inline-flex rounded-md shadow">
-                <a href="https://wa.me/79000000000" target="_blank" class="inline-flex items-center justify-center px-6 py-4 border border-transparent text-base font-bold rounded-md text-primary bg-white hover:bg-gray-50 transition">
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-4 border border-transparent text-base font-bold rounded-md text-primary bg-white hover:bg-gray-50 transition">
                     <span class="material-symbols-outlined mr-2">chat</span>
-                    Оценить по фото в WhatsApp
-                </a>
+                    Оценить по фото
+                </button>
             </div>
         </div>
     </div>
 </section>
 
-<footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
-    <div class="brand-stripes w-full mb-8">
-        <div class="brand-stripe opacity-20"></div>
-        <div class="brand-stripe-thin opacity-20"></div>
-    </div>
-    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div>
-                <h3 class="text-sm font-semibold text-text-muted-light dark:text-text-muted-dark tracking-wider uppercase">Услуги</h3>
-                <ul class="mt-4 space-y-4">
-                    <li><a href="phones.html" class="text-base text-gray-500 dark:text-gray-400 hover:text-primary transition">Ремонт телефонов</a></li>
-                    <li><a href="computers.html" class="text-base text-gray-500 dark:text-gray-400 hover:text-primary transition">Ремонт ноутбуков</a></li>
-                    <li><a href="cctv.html" class="text-base text-gray-500 dark:text-gray-400 hover:text-primary transition">Видеонаблюдение</a></li>
-                    <li><a href="price.html" class="text-base text-gray-500 dark:text-gray-400 hover:text-primary transition">Прайс-лист</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-sm font-semibold text-text-muted-light dark:text-text-muted-dark tracking-wider uppercase">Компания</h3>
-                <ul class="mt-4 space-y-4">
-                    <li><a href="about.html" class="text-base text-gray-500 dark:text-gray-400 hover:text-primary transition">О лаборатории</a></li>
-                    <li><a href="#" class="text-base text-gray-500 dark:text-gray-400 hover:text-primary transition">Отзывы</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-sm font-semibold text-text-muted-light dark:text-text-muted-dark tracking-wider uppercase">Поддержка</h3>
-                <ul class="mt-4 space-y-4">
-                    <li><a href="#" class="text-base text-gray-500 dark:text-gray-400 hover:text-primary transition">Гарантийный отдел</a></li>
-                    <li><a href="#" class="text-base text-gray-500 dark:text-gray-400 hover:text-primary transition">Политика конфиденциальности</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-sm font-semibold text-text-muted-light dark:text-text-muted-dark tracking-wider uppercase">Связь с нами</h3>
-                <div class="mt-4 space-y-2">
-                    <p class="text-base text-gray-500 dark:text-gray-400 font-medium">Кемерово</p>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">ул. Дзержинского, 2Б</p>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">Пн-Пт: 09:00-21:00, Сб: 12:00-18:00</p>
-                    <p class="text-base font-bold text-text-light dark:text-text-dark mt-2"><a href="tel:+73842767676">+7 (3842) 76-76-76</a></p>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1"><a href="mailto:info@admin-ko.ru">info@admin-ko.ru</a></p>
-                </div>
-                <div class="mt-6 flex space-x-4 items-center">
-                    <a href="#" class="text-gray-400 hover:text-primary transition" title="ВКонтакте">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14c5.6 0 6.93-1.33 6.93-6.93V8.93C22 3.33 20.67 2 15.07 2zm3.32 14.53h-1.34c-1.25 0-1.57-1.02-2.31-1.89-.52-.61-1.02-1.2-1.57-1.2-.66 0-.85.25-.85 1.13v.68c0 1.05-.29 1.28-1.74 1.28-2.61 0-5.46-1.76-7.23-4.6-1.63-2.61-2-5.49-2-5.91 0-.32.12-.55.6-.55h1.36c.45 0 .66.21.84.69.91 2.53 2.56 5.09 3.55 5.09.28 0 .42-.13.42-.71V8.65c-.06-1.26-.69-1.38-.69-1.82 0-.21.17-.4.44-.4h2.29c.42 0 .57.21.57.65v3.13c0 .63.3.77.45.77.4 0 .71-.24 1.25-.87.97-1.12 1.66-2.58 2.07-3.69.15-.38.39-.56.88-.56h1.35c.57 0 .68.31.57.73-.32 1.21-1.92 3.49-2.71 4.39-.42.48-.56.68 0 1.27.79.83 1.95 2.01 2.37 3.01.2.49.02.82-.57.82z"/></svg>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-primary transition" title="Telegram">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.882-.666 3.453-1.503 5.756-2.497 6.909-2.981 3.287-1.385 3.97-1.624 4.418-1.63z"/></svg>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-primary transition" title="Отзывы 2ГИС">
-                        <span class="font-bold text-lg tracking-tighter">2ГИС</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="mt-8 border-t border-gray-200 dark:border-gray-800 pt-8 flex items-center justify-between">
-            <p class="text-sm text-gray-400">© 2026 Админ.Ко. Ремонт электроники по цене частного мастера. Все права защищены.</p>
-            <div class="flex items-center gap-2">
-                <button class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition" onclick="document.documentElement.classList.toggle('dark')">
-                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
-                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
-                </button>
-            </div>
-        </div>
-    </div>
-</footer>
+<!-- Контейнер для футера -->
+<div id="footer-container"></div>
+
+<script src="components.js"></script>
+<script>
+    function openMessengerModal() {
+        document.getElementById('messenger-modal').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeMessengerModal() {
+        document.getElementById('messenger-modal').classList.add('hidden');
+        document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') { closeMessengerModal(); }
+    });
+
+    // Поиск по прайс-листу
+    function searchPrice() {
+        const query = document.getElementById('header-search').value.trim();
+        if (query) {
+            window.location.href = 'price.html?search=' + encodeURIComponent(query);
+        }
+    }
+</script>
 
 </body>
 </html>

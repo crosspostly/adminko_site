@@ -45,7 +45,7 @@
     </div>
 </footer>
 
-<!-- Модалка выбора мессенджера (с формой) -->
+<!-- Модалка выбора мессенджера (только HTML) -->
 <div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
     <div class="bg-white dark:bg-surface-dark rounded-xl p-6 max-w-md w-full mx-4">
         <div class="flex justify-between items-start mb-4">
@@ -106,57 +106,3 @@
         </form>
     </div>
 </div>
-
-<script>
-    // Глобальные функции для модалки
-    window.openMessengerModal = function() {
-        document.getElementById('messenger-modal').classList.remove('hidden');
-    };
-
-    window.closeMessengerModal = function() {
-        document.getElementById('messenger-modal').classList.add('hidden');
-    };
-
-    // Инициализация обработчиков при загрузке
-    document.addEventListener('DOMContentLoaded', function() {
-        // Если уже есть initMessengerModal — переопределим аккуратно
-        if (typeof initMessengerModal === 'function') {
-            initMessengerModal();
-        } else {
-            // Простая инициализация
-            document.querySelectorAll('[data-messenger]').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const messenger = this.dataset.messenger;
-                    const form = document.getElementById('evaluation-form');
-                    const formData = new FormData(form);
-                    const name = formData.get('name') || 'Аноним';
-                    const phone = formData.get('phone') || '';
-                    const desc = formData.get('description') || 'Без описания';
-
-                    // Очищаем телефон от символов
-                    const cleanPhone = phone.replace(/\D/g, '');
-
-                    // Формируем текст
-                    const text = encodeURIComponent(
-                        `Здравствуйте! Меня зовут ${name}.\n` +
-                        `Телефон: ${phone}\n` +
-                        `Проблема: ${desc}\n` +
-                        `— Заявка с сайта admin-ko.ru (оценка за 5 минут)`
-                    );
-
-                    let url;
-                    if (messenger === 'telegram') {
-                        url = `https://t.me/+${cleanPhone}?text=${text}`;
-                    } else if (messenger === 'max') {
-                        url = `max://chat?phone=${cleanPhone}&text=${text}`;
-                    }
-
-                    if (url) {
-                        window.open(url, '_blank');
-                        closeMessengerModal();
-                    }
-                });
-            });
-        }
-    });
-</script>

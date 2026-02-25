@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin.Ko - Your Local Tech Experts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #D90404;
+            --primary-hover: #b00303;
+        }
+        @layer components {
+            .brand-stripes {
+                @apply flex flex-col gap-1;
+            }
+            .brand-stripe {
+                @apply h-1 bg-[var(--primary)] w-full;
+            }
+            .brand-stripe-thin {
+                @apply h-0.5 bg-[var(--primary)] w-full;
+            }
+        }
+    </style>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#D90404",
+                        "primary-hover": "#b00303",
+                        "background-light": "#F9FAFB",
+                        "background-dark": "#111827",
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#1F2937",
+                        "text-light": "#1F2937",
+                        "text-dark": "#F3F4F6",
+                        "text-muted-light": "#6B7280",
+                        "text-muted-dark": "#9CA3AF",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(to right, #D90404, #ff4d4d);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark transition-colors duration-300">
+<div class="brand-stripes w-full sticky top-0 z-[60]">
+<div class="brand-stripe"></div>
+<div class="brand-stripe-thin"></div>
+</div>
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-20">
+<div class="flex items-center">
+<div class="flex-shrink-0 flex items-center gap-3">
+<img alt="Admin.Ko Logo" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKlCOpMIWVfUyxjsyMw3KvKo3X011eG4G5sGrig8o4tgz2HIpwFgN13CUECaWtd8nQiVRccY76O55OmVV20QJQF_6mXw4ZXxx621__Mny6jZQj0PaOHh943PThaSfKy8bXrZmV1kr6V3WUXzpeFcE0HoZZ8CpkC-uz0qSqE1Ycjb_wLghw5-GDKzAksicJG8iupyjspwQa5-7X5k0sMtNdrS9VpNwX9gftA72VczM_cGEY74N9nxQXKCNs-mpfm114lhUTUiuHdXDj"/>
+<span class="font-bold text-2xl tracking-tight hidden md:block">
+                        Admin<span class="text-primary">.Ko</span>
+</span>
+</div>
+<div class="hidden md:ml-8 md:flex md:space-x-8 w-96 relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-icons text-gray-400">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" placeholder="What do you need help with?" type="text"/>
+</div>
+</div>
+<div class="hidden md:flex items-center space-x-6">
+<a class="text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary font-medium transition" href="#">Services</a>
+<a class="text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary font-medium transition" href="#">Pricing</a>
+<a class="text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary font-medium transition" href="#">Become a Tech</a>
+<a class="inline-flex items-center justify-center px-5 py-2 border border-transparent text-sm font-medium rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-sm" href="#">
+                    Book Now
+                </a>
+</div>
+<div class="flex items-center md:hidden">
+<button aria-controls="mobile-menu" aria-expanded="false" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary" type="button">
+<span class="sr-only">Open main menu</span>
+<span class="material-icons">menu</span>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<div class="relative overflow-hidden bg-surface-light dark:bg-surface-dark">
+<div class="max-w-7xl mx-auto">
+<div class="relative z-10 pb-8 bg-surface-light dark:bg-surface-dark sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+<svg aria-hidden="true" class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-surface-light dark:text-surface-dark transform translate-x-1/2" fill="currentColor" preserveAspectRatio="none" viewBox="0 0 100 100">
+<polygon points="50,0 100,0 50,100 0,100"></polygon>
+</svg>
+<main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+<div class="sm:text-center lg:text-left">
+<div class="brand-stripes w-16 mb-4 lg:mx-0 mx-auto">
+<div class="brand-stripe"></div>
+<div class="brand-stripe-thin"></div>
+</div>
+<h1 class="text-4xl tracking-tight font-extrabold text-text-light dark:text-text-dark sm:text-5xl md:text-6xl">
+<span class="block xl:inline">Your Local Tech Experts,</span>
+<span class="block text-primary">On Demand.</span>
+</h1>
+<p class="mt-3 text-base text-text-muted-light dark:text-text-muted-dark sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                        Professional installation, repair, and support for all your smart home and computer needs. Vetted technicians at your door as soon as today.
+                    </p>
+<div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+<div class="rounded-md shadow">
+<a class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-hover md:py-4 md:text-lg transition" href="#">
+                                Book a Service
+                            </a>
+</div>
+<div class="mt-3 sm:mt-0 sm:ml-3">
+<a class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-red-100 hover:bg-red-200 dark:bg-gray-800 dark:text-red-400 dark:hover:bg-gray-700 md:py-4 md:text-lg transition" href="#">
+                                View Services
+                            </a>
+</div>
+</div>
+<div class="mt-8 flex items-center gap-4 text-sm text-text-muted-light dark:text-text-muted-dark">
+<div class="flex items-center">
+<span class="material-icons text-green-500 mr-1 text-base">verified</span>
+                            Vetted Pros
+                        </div>
+<div class="flex items-center">
+<span class="material-icons text-green-500 mr-1 text-base">verified</span>
+                            Upfront Pricing
+                        </div>
+<div class="flex items-center">
+<span class="material-icons text-green-500 mr-1 text-base">verified</span>
+                            Satisfaction Guarantee
+                        </div>
+</div>
+</div>
+</main>
+</div>
+</div>
+<div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+<img alt="Professional technician working on electronic equipment" class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwZJCAF4CgQbEyxUmxfA3AUbuBpURj7vc0HMZ0C9PZ5s0WeEJppKLJCl932DeXVNcuTV3A8mru0PMKYv_rt018WUTm5vPvsKNi-58RT35Y2jOnU-tXek124Y6wek4y_jrUXEAY4aR9TZ6MgTYLPSu39zxS2J_CCaJI3egLjCWjI2BoWBLHhL5xezH58IAdJ9i7M5_Z8oYzfIGioGOJ0dbR7asIZx43-BqVg3-zEN2KO3JSqvLRHpyI72rURUeRsoOHGpLxpLGQ6css"/>
+<div class="absolute inset-0 bg-gray-900 opacity-0 dark:opacity-20 pointer-events-none"></div>
+</div>
+</div>
+<section class="py-12 bg-white dark:bg-gray-900">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="lg:text-center mb-10">
+<h2 class="text-base text-primary font-semibold tracking-wide uppercase inline-flex flex-col items-center">
+                Why Choose Admin.Ko
+                <div class="brand-stripes w-12 mt-1">
+<div class="brand-stripe"></div>
+<div class="brand-stripe-thin"></div>
+</div>
+</h2>
+<p class="mt-4 text-3xl leading-8 font-extrabold tracking-tight text-text-light dark:text-text-dark sm:text-4xl">
+                Tech support made simple
+            </p>
+<p class="mt-4 max-w-2xl text-xl text-text-muted-light dark:text-text-muted-dark lg:mx-auto">
+                We take the frustration out of technology with expert help delivered to your doorstep.
+            </p>
+</div>
+<div class="mt-10">
+<dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-x-8 md:gap-y-10">
+<div class="relative group">
+<dt>
+<div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
+<span class="material-icons">schedule</span>
+</div>
+<p class="ml-16 text-lg leading-6 font-medium text-text-light dark:text-text-dark">Book on your schedule</p>
+</dt>
+<dd class="mt-2 ml-16 text-base text-text-muted-light dark:text-text-muted-dark">
+                        Select a time that works for you, including evenings and weekends. Same-day appointments available.
+                    </dd>
+</div>
+<div class="relative">
+<dt>
+<div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
+<span class="material-icons">person_search</span>
+</div>
+<p class="ml-16 text-lg leading-6 font-medium text-text-light dark:text-text-dark">Expert Technicians</p>
+</dt>
+<dd class="mt-2 ml-16 text-base text-text-muted-light dark:text-text-muted-dark">
+                        Every Admin.Ko tech is background-checked, vetted, and highly experienced in their field.
+                    </dd>
+</div>
+<div class="relative">
+<dt>
+<div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
+<span class="material-icons">paid</span>
+</div>
+<p class="ml-16 text-lg leading-6 font-medium text-text-light dark:text-text-dark">Clear Pricing</p>
+</dt>
+<dd class="mt-2 ml-16 text-base text-text-muted-light dark:text-text-muted-dark">
+                        Know exactly what you'll pay before you book. No hidden fees or surprise charges.
+                    </dd>
+</div>
+</dl>
+</div>
+</div>
+</section>
+<section class="py-16 bg-gray-50 dark:bg-gray-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col items-center mb-12">
+<h2 class="text-3xl font-extrabold text-text-light dark:text-text-dark mb-2 text-center">Popular Services</h2>
+<div class="brand-stripes w-20">
+<div class="brand-stripe"></div>
+<div class="brand-stripe-thin"></div>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="group relative bg-white dark:bg-surface-dark rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700 overflow-hidden">
+<div class="h-40 bg-gray-200 dark:bg-gray-700 w-full overflow-hidden relative">
+<img alt="TV Mounting Service" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPbqV9xTT2_93amO5mepuDMGQfPx7AgvXb6czD_zwh01WFWos7hxevv4uNejp76IcGazNg-YQDKMzqE6K5B7DlKcyfTqNHxx2eNLr7Q3OtQNTj743v7qYuGPIE6i7ZveMIAYw1vgAt1NABFG2tmxCLMvnDmIIV8fJIq8zUtCYUN-pe03RJYw-azu8cOVxa4XyVg3QWxc9BZ5DzVfPHhnOP7bz1MYD7R4lWMLYYhrB5Rk-fJrSqUasDyRbTVJ44djwFybBE9Jkx1x4-"/>
+<div class="absolute top-0 right-0 p-2">
+<span class="bg-primary text-white text-xs font-bold px-2 py-1 rounded">Popular</span>
+</div>
+</div>
+<div class="p-6">
+<div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-red-100 dark:bg-red-900 text-primary mb-4">
+<span class="material-icons">tv</span>
+</div>
+<h3 class="text-lg font-bold text-text-light dark:text-text-dark mb-2">TV Mounting</h3>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark mb-4">Professional wall mounting for TVs of all sizes. Wire concealment available.</p>
+<a class="text-primary font-medium text-sm flex items-center hover:underline" href="#">
+                        Learn more <span class="material-icons text-sm ml-1">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="group relative bg-white dark:bg-surface-dark rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700 overflow-hidden">
+<div class="h-40 bg-gray-200 dark:bg-gray-700 w-full overflow-hidden">
+<img alt="Smart Home Installation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDaS6toyzOTwx5CtAeVrG8Yk3Mn0xPaAR0pRfwKzqdPH7MgTXxsB6pSPdzYV81PMRNNnoLeOW7tql-YSOZ4sUtsF2BLWBfmvI5VcZk_SbOMcHexXlxhW_3OxwWb-GU3sGeGiQ3LQmA8x_PODE7MgbMKgcC7vdNkYw3f85AoKVhQYWds-2oNG5iZTjdDJAQEifBXSyoU2HTSCqy029ZCsEGoMD7vTWWx-Qlro_KvkNovQIWswyYeVpmjbaVfeBZG_DMlA1zqCIARJAX"/>
+</div>
+<div class="p-6">
+<div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-red-100 dark:bg-red-900 text-primary mb-4">
+<span class="material-icons">home_iot_device</span>
+</div>
+<h3 class="text-lg font-bold text-text-light dark:text-text-dark mb-2">Smart Home</h3>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark mb-4">Installation of smart doorbells, thermostats, locks, cameras, and hubs.</p>
+<a class="text-primary font-medium text-sm flex items-center hover:underline" href="#">
+                        Learn more <span class="material-icons text-sm ml-1">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="group relative bg-white dark:bg-surface-dark rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700 overflow-hidden">
+<div class="h-40 bg-gray-200 dark:bg-gray-700 w-full overflow-hidden">
+<img alt="Computer Repair" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVUXJ1b2FdQGsA89oM7UyDBJoD04PMuKtWg5kMrHtzdCbaa36Pdw_CHgFm4JpZTJnU8QaU8NhuMMVCq7HOXn2LhZvAkI8_jNpvyKPWYwoXMTr3aYKNQlN-ANSiMcQ5OzxobG3SGNpDK8p8cA9lZj3cHkyfbLugmhavFs1vHguUCVk8NB5XnM3XD1iLpNbzJ2zkKzRIZdrg3RL8BM6jaIqAdSmuUUyb0b5xpXHkvSPSY9oC4GByTwrkQw9bMQ4LBcLe5uQ6iYYD6OGs"/>
+</div>
+<div class="p-6">
+<div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-red-100 dark:bg-red-900 text-primary mb-4">
+<span class="material-icons">computer</span>
+</div>
+<h3 class="text-lg font-bold text-text-light dark:text-text-dark mb-2">Computer Repair</h3>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark mb-4">Virus removal, hardware upgrades, data recovery, and troubleshooting.</p>
+<a class="text-primary font-medium text-sm flex items-center hover:underline" href="#">
+                        Learn more <span class="material-icons text-sm ml-1">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="group relative bg-white dark:bg-surface-dark rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700 overflow-hidden">
+<div class="h-40 bg-gray-200 dark:bg-gray-700 w-full overflow-hidden">
+<img alt="Appliance Repair" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRwifud-3Un6YOJ823LloAfWXfv_3PqHSvJzSslmPqtPMJSUHTSY1ibw0deNeuuf1kt5BJJxZPeoloCFddPeNy0N37VHDSUb6Wg5vqtCMAGcypfvJb226Ewl6G-vhW4_755J6xntOJJ4lokCwShk6xux2zhD-pZsErPohK0rsacq0r_v-FQO8g2zjt274rvju_HBRP0hMR3YKBveFE1y1CNouumS278MiHZEFrj_1shT9C75tFY7Wx1o2bqNrO6hDTWYSoMN2-200t"/>
+</div>
+<div class="p-6">
+<div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-red-100 dark:bg-red-900 text-primary mb-4">
+<span class="material-icons">build</span>
+</div>
+<h3 class="text-lg font-bold text-text-light dark:text-text-dark mb-2">Appliance Repair</h3>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark mb-4">Diagnostic and repair for washers, dryers, fridges, and dishwashers.</p>
+<a class="text-primary font-medium text-sm flex items-center hover:underline" href="#">
+                        Learn more <span class="material-icons text-sm ml-1">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<div class="mt-12 text-center">
+<a class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 dark:border-gray-600 shadow-sm text-base font-medium rounded-md text-text-light dark:text-text-dark bg-white dark:bg-surface-dark hover:bg-gray-50 dark:hover:bg-gray-700 transition" href="#">
+                View All Categories
+            </a>
+</div>
+</div>
+</section>
+<section class="py-16 bg-white dark:bg-surface-dark">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col items-center mb-10">
+<h2 class="text-3xl font-extrabold text-center text-text-light dark:text-text-dark mb-2">Trusted by Neighbors</h2>
+<div class="brand-stripes w-24">
+<div class="brand-stripe"></div>
+<div class="brand-stripe-thin"></div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-12 brand-stripes rotate-45 translate-x-4 -translate-y-4 opacity-10 group-hover:opacity-30 transition-opacity">
+<div class="brand-stripe"></div>
+<div class="brand-stripe-thin"></div>
+</div>
+<div class="flex items-center mb-4">
+<div class="text-yellow-400 flex">
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+</div>
+</div>
+<p class="text-text-light dark:text-text-dark italic mb-4">"The technician arrived exactly on time and mounted my 65-inch TV perfectly. He even hid the wires behind the wall. Highly recommended!"</p>
+<div class="flex items-center">
+<div class="h-10 w-10 rounded-full bg-gray-300 dark:bg-gray-600 flex items-center justify-center text-gray-500 dark:text-gray-300 font-bold">JD</div>
+<div class="ml-3">
+<p class="text-sm font-medium text-text-light dark:text-text-dark">John D.</p>
+<p class="text-xs text-text-muted-light dark:text-text-muted-dark">TV Mounting</p>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-12 brand-stripes rotate-45 translate-x-4 -translate-y-4 opacity-10 group-hover:opacity-30 transition-opacity">
+<div class="brand-stripe"></div>
+<div class="brand-stripe-thin"></div>
+</div>
+<div class="flex items-center mb-4">
+<div class="text-yellow-400 flex">
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+</div>
+</div>
+<p class="text-text-light dark:text-text-dark italic mb-4">"I was struggling with my new smart lock installation. Admin.Ko sent someone over within 2 hours and had it working in minutes."</p>
+<div class="flex items-center">
+<div class="h-10 w-10 rounded-full bg-gray-300 dark:bg-gray-600 flex items-center justify-center text-gray-500 dark:text-gray-300 font-bold">SM</div>
+<div class="ml-3">
+<p class="text-sm font-medium text-text-light dark:text-text-dark">Sarah M.</p>
+<p class="text-xs text-text-muted-light dark:text-text-muted-dark">Smart Home Setup</p>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-12 brand-stripes rotate-45 translate-x-4 -translate-y-4 opacity-10 group-hover:opacity-30 transition-opacity">
+<div class="brand-stripe"></div>
+<div class="brand-stripe-thin"></div>
+</div>
+<div class="flex items-center mb-4">
+<div class="text-yellow-400 flex">
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star_half</span>
+</div>
+</div>
+<p class="text-text-light dark:text-text-dark italic mb-4">"Great service for my washing machine repair. Honest pricing and the tech was very polite and clean."</p>
+<div class="flex items-center">
+<div class="h-10 w-10 rounded-full bg-gray-300 dark:bg-gray-600 flex items-center justify-center text-gray-500 dark:text-gray-300 font-bold">RK</div>
+<div class="ml-3">
+<p class="text-sm font-medium text-text-light dark:text-text-dark">Robert K.</p>
+<p class="text-xs text-text-muted-light dark:text-text-muted-dark">Appliance Repair</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-primary relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+<div class="absolute top-1/4 -left-10 brand-stripes w-1/2 rotate-12">
+<div class="h-4 bg-white w-full"></div>
+<div class="h-2 bg-white w-full"></div>
+</div>
+<div class="absolute bottom-1/4 -right-10 brand-stripes w-1/2 -rotate-12">
+<div class="h-4 bg-white w-full"></div>
+<div class="h-2 bg-white w-full"></div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between relative z-10">
+<h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+<span class="block">Ready to get started?</span>
+<span class="block text-red-100">Find a technician in your area today.</span>
+</h2>
+<div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
+<div class="inline-flex rounded-md shadow">
+<a class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-50" href="#">
+                    Book Now
+                </a>
+</div>
+<div class="ml-3 inline-flex rounded-md shadow">
+<a class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-800 hover:bg-red-900" href="#">
+                    Become a Tech
+                </a>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+<div class="brand-stripes w-full mb-8">
+<div class="brand-stripe opacity-20"></div>
+<div class="brand-stripe-thin opacity-20"></div>
+</div>
+<div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div>
+<h3 class="text-sm font-semibold text-text-muted-light dark:text-text-muted-dark tracking-wider uppercase">Services</h3>
+<ul class="mt-4 space-y-4">
+<li><a class="text-base text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary" href="#">TV Mounting</a></li>
+<li><a class="text-base text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary" href="#">Smart Home</a></li>
+<li><a class="text-base text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary" href="#">Computer Repair</a></li>
+<li><a class="text-base text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary" href="#">WiFi &amp; Network</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-sm font-semibold text-text-muted-light dark:text-text-muted-dark tracking-wider uppercase">Company</h3>
+<ul class="mt-4 space-y-4">
+<li><a class="text-base text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary" href="#">About Us</a></li>
+<li><a class="text-base text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary" href="#">Careers</a></li>
+<li><a class="text-base text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary" href="#">Press</a></li>
+<li><a class="text-base text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary" href="#">Blog</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-sm font-semibold text-text-muted-light dark:text-text-muted-dark tracking-wider uppercase">Support</h3>
+<ul class="mt-4 space-y-4">
+<li><a class="text-base text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary" href="#">Help Center</a></li>
+<li><a class="text-base text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary" href="#">Contact Us</a></li>
+<li><a class="text-base text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary" href="#">Privacy Policy</a></li>
+<li><a class="text-base text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-sm font-semibold text-text-muted-light dark:text-text-muted-dark tracking-wider uppercase">Connect</h3>
+<div class="mt-4 flex space-x-6">
+<a class="text-gray-400 hover:text-primary" href="#">
+<span class="sr-only">Facebook</span>
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+<path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path>
+</svg>
+</a>
+<a class="text-gray-400 hover:text-primary" href="#">
+<span class="sr-only">Instagram</span>
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+<path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772 4.902 4.902 0 011.772-1.153c.636-.247 1.363-.416 2.427-.465 1.067-.047 1.409-.06 3.809-.06h.63zm1.673 5.378-1.243 0-.01.012c-3.19.176-3.766.495-4.187.659-.69.268-1.173.616-1.638 1.081-.465.465-.813.948-1.081 1.638-.164.421-.483.996-.659 4.187l-.012.01-1.243 0-.01.012c-3.19.176-3.766.495-4.187.659-.69.268-1.173.616-1.638 1.081-.465.465-.813.948-1.081 1.638-.164.421-.483.996-.659 4.187l-.012.01 1.243 0 .01.012c3.19.176 3.766.495 4.187.659.69.268 1.173.616 1.638 1.081.465.465-.813.948 1.081 1.638-.164.421-.483.996-.659 4.187l.012.01h5.378l.012-.01c3.19-.176 3.766-.495 4.187-.659.69-.268 1.173-.616 1.638-1.081.465-.465-.813-.948 1.081-1.638.164-.421.483-.996.659-4.187l.012-.01-.012-.01c-.176-3.19-.495-3.766-.659-4.187-.268-.69-.616-1.173-1.081-1.638-.465-.465-.948-.813-1.638-1.081-.421-.164-.996-.483-4.187-.659l-.01-.012zM12 7.187c2.651 0 4.813 2.162 4.813 4.813 0 2.651-2.162 4.813-4.813 4.813-2.651 0-4.813-2.162-4.813-4.813 0-2.651 2.162-4.813 4.813-4.813zm0 1.838a2.975 2.975 0 100 5.95 2.975 2.975 0 000-5.95z" fill-rule="evenodd"></path>
+</svg>
+</a>
+</div>
+</div>
+</div>
+<div class="mt-8 border-t border-gray-200 dark:border-gray-800 pt-8 flex items-center justify-between">
+<p class="text-base text-gray-400">© 2023 Admin.Ko, Inc. All rights reserved.</p>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-icons dark:hidden">dark_mode</span>
+<span class="material-icons hidden dark:block">light_mode</span>
+</button>
+</div>
+</div>
+</div>
+</footer>
+
+</body></html>

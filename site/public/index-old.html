@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админко — Ремонт телефонов и компьютеров в Кемерово | Точная смета до начала работ</title>
+    <meta name="description" content="Ремонт ноутбуков, компьютеров и телефонов в Кемерово. Диагностика 0 руб. Гарантия 12 мес. 92% ремонтов в день обращения. WhatsApp для консультации.">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#ec1313',
+                        'background-light': '#f8f6f6',
+                        'whatsapp': '#25D366',
+                    },
+                    fontFamily: {
+                        'display': ['Space Grotesk', 'sans-serif'],
+                        'serif': ['Playfair Display', 'Georgia', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .gradient-text {
+            background: linear-gradient(135deg, #ec1313 0%, #b91c1c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Double stripe accent */
+        .double-stripe {
+            position: relative;
+        }
+        .double-stripe::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            display: flex;
+            background: linear-gradient(90deg, #ec1313 2px, rgba(236, 19, 19, 0.4) 2px 4px);
+        }
+        
+        /* Section dividers */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, rgba(236, 19, 19, 0.3) 0%, rgba(236, 19, 19, 0.1) 100%);
+            margin: 2rem 0;
+        }
+        
+        /* Modern card hover effects */
+        .modern-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .modern-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(236, 19, 19, 0.15);
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding-top: 5rem;
+                padding-bottom: 2.5rem;
+            }
+            .section-padding {
+                padding-top: 2.5rem;
+                padding-bottom: 2.5rem;
+            }
+            h1 {
+                font-size: 1.875rem !important;
+                line-height: 1.2 !important;
+            }
+            h2 {
+                font-size: 1.5rem !important;
+            }
+            .card-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+            .trust-stats {
+                grid-template-columns: 1fr !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem !important;
+            }
+            h2 {
+                font-size: 1.25rem !important;
+            }
+            p {
+                font-size: 0.875rem;
+            }
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        
+        /* Edit mode styles */
+        [contenteditable="true"] {
+            outline: 2px dashed rgba(236, 19, 19, 0.3);
+            transition: all 0.2s;
+        }
+        [contenteditable="true"]:hover {
+            outline: 2px dashed #ec1313;
+            background: rgba(236, 19, 19, 0.05);
+            cursor: text;
+        }
+        [contenteditable="true"]:focus {
+            outline: 2px solid #ec1313;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(236, 19, 19, 0.1);
+        }
+        
+        .edit-panel {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 16px;
+            display: none;
+        }
+        .edit-panel.active {
+            display: block;
+        }
+        .edit-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 10000;
+            background: #ec1313;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 24px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(236, 19, 19, 0.4);
+            transition: all 0.3s;
+        }
+        .edit-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(236, 19, 19, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-background-light font-display text-slate-900 antialiased">
+
+    <!-- Edit Mode Toggle Button -->
+    <button id="editToggle" class="edit-toggle" onclick="toggleEditMode()">
+        ✏️ Режим редактирования
+    </button>
+    
+    <!-- Edit Panel -->
+    <div id="editPanel" class="edit-panel">
+        <h3 class="font-bold mb-3 text-sm">Режим редактирования</h3>
+        <p class="text-xs text-slate-600 mb-4">Кликайте на любой текст, чтобы редактировать</p>
+        <button onclick="saveChanges()" class="w-full bg-primary text-white py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 mb-2">
+            💾 Сохранить в браузере
+        </button>
+        <button onclick="saveToFile()" class="w-full bg-green-600 text-white py-2 rounded-lg text-sm font-semibold hover:bg-green-700 mb-2">
+            💾 Сохранить изменения в файл
+        </button>
+        <button onclick="resetChanges()" class="w-full bg-slate-200 text-slate-700 py-2 rounded-lg text-sm font-semibold hover:bg-slate-300">
+            ↩️ Отменить
+        </button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 border-b border-primary/10 bg-white/95 backdrop-blur-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center gap-3">
+                        <img src="logo.png" alt="Админко" class="h-10 w-auto"/>
+                        <span class="font-serif text-xl font-bold">Админко</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="phones.html" class="text-sm font-semibold text-primary">Телефоны</a>
+                    <a href="computers.html" class="text-sm font-semibold hover:text-primary transition-colors">Компьютеры</a>
+                    <a href="cctv.html" class="text-sm font-semibold hover:text-primary transition-colors">Видеонаблюдение</a>
+                    <a href="price.html" class="text-sm font-semibold hover:text-primary transition-colors">Цены</a>
+                    <a href="about.html" class="text-sm font-semibold hover:text-primary transition-colors">Контакты</a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="https://wa.me/79000000000" target="_blank" class="hidden sm:flex items-center gap-2 bg-whatsapp text-white px-4 py-2 rounded-lg font-medium hover:bg-green-600 transition-colors">
+                        <span class="material-symbols-outlined">chat</span>
+                        <span>Написать</span>
+                    </a>
+                    <button class="md:hidden text-gray-600" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-3 space-y-2">
+                <a href="phones.html" class="block py-2 text-gray-600">Ремонт телефонов</a>
+                <a href="computers.html" class="block py-2 text-gray-600">Ремонт компьютеров</a>
+                <a href="cctv.html" class="block py-2 text-gray-600">Видеонаблюдение</a>
+                <a href="price.html" class="block py-2 text-gray-600">Цены</a>
+                <a href="about.html" class="block py-2 text-gray-600">Контакты</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section pt-24 pb-16 md:pt-32 md:pb-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <div class="inline-flex items-center gap-2 bg-blue-50 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Кемерово — выезд мастера или сервис-центр</span>
+                    </div>
+                    <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                        Сломался компьютер или телефон? <span class="gradient-text">Точная смета до начала работ.</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
+                        Сохраним ваши данные на 100%. Проведем диагностику за 30 минут и назовем фиксированную цену в рублях. Без скрытых доплат за «термопасту» и «шлейфы».
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://wa.me/79000000000" target="_blank" class="inline-flex items-center justify-center gap-2 bg-whatsapp text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-green-600 transition-all shadow-lg shadow-green-200">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                            <span>Узнать цену в WhatsApp</span>
+                        </a>
+                        <a href="#services" class="inline-flex items-center justify-center gap-2 bg-white text-primary border-2 border-primary px-8 py-4 rounded-xl font-semibold text-lg hover:bg-blue-50 transition-all">
+                            <span>Наши услуги</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Trust Indicators -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 pt-10 border-t border-gray-200">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <span class="text-primary font-bold text-lg">0₽</span>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900">Диагностика бесплатно</p>
+                                <p class="text-sm text-gray-500">Акт с точным диагнозом в день обращения. Даже если не будете чинить.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <span class="text-primary font-bold text-lg">92%</span>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900">Ремонт в день сдачи</p>
+                                <p class="text-sm text-gray-500">Собственный склад из 4 500 запчастей. Не ждем неделями.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <span class="text-primary font-bold text-lg">12</span>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900">Месяцев гарантии</p>
+                                <p class="text-sm text-gray-500">По договору. Переделаем за 48 часов или вернем деньги.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 relative">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=800&h=600&fit=crop" alt="IT Repair Laboratory" class="w-full h-auto object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-xl p-4 hidden md:block">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900">500+ ремонтов</p>
+                                <p class="text-sm text-gray-500">в этом году</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 md:py-24 bg-background-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-4 mb-8">
+                <h2 class="text-2xl font-bold">Наши услуги</h2>
+                <div class="flex-grow h-[1px] bg-slate-200"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Service 1 -->
+                <a href="phones.html" class="modern-card bg-white rounded-xl p-6 border border-slate-200 hover:border-primary/50 transition-all double-stripe block">
+                    <span class="material-symbols-outlined text-primary mb-4 text-4xl">smartphone</span>
+                    <h3 class="font-bold text-lg mb-2">📱 Смартфоны и планшеты</h3>
+                    <p class="text-sm text-slate-600 mb-4">Разбили экран, батарея садится на морозе, страшно отдавать телефон с личными фото.</p>
+                    <div class="section-divider"></div>
+                    <p class="text-sm text-slate-600">Заменим дисплей или аккумулятор за 20 минут в вашем присутствии. Ставим заводские комплектующие.</p>
+                </a>
+                
+                <!-- Service 2 -->
+                <a href="computers.html" class="modern-card bg-white rounded-xl p-6 border border-slate-200 hover:border-primary/50 transition-all double-stripe block">
+                    <span class="material-symbols-outlined text-primary mb-4 text-4xl">laptop_chromebook</span>
+                    <h3 class="font-bold text-lg mb-2">💻 Компьютеры и ноутбуки</h3>
+                    <p class="text-sm text-slate-600 mb-4">Ноутбук греется, тормозит, пролили кофе на клавиатуру, синий экран перед сдачей отчета.</p>
+                    <div class="section-divider"></div>
+                    <p class="text-sm text-slate-600">Восстановим залитую материнскую плату за 2-3 дня с вероятностью 90%. Ускорим старый ПК в 3 раза.</p>
+                </a>
+                
+                <!-- Service 3 -->
+                <a href="cctv.html" class="modern-card bg-white rounded-xl p-6 border border-slate-200 hover:border-primary/50 transition-all double-stripe block">
+                    <span class="material-symbols-outlined text-primary mb-4 text-4xl">videocam</span>
+                    <h3 class="font-bold text-lg mb-2">📹 Видеонаблюдение</h3>
+                    <p class="text-sm text-slate-600 mb-4">Кражи в магазине, слепые зоны, страх за дом, непонятно как смотреть записи.</p>
+                    <div class="section-divider"></div>
+                    <p class="text-sm text-slate-600">Спроектируем и смонтируем камеры за 1 день. Настроим онлайн-доступ в Full HD с телефона.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-4 mb-8">
+                <h2 class="text-2xl font-bold">Наша команда</h2>
+                <div class="flex-grow h-[1px] bg-slate-200"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Team Member 1 -->
+                <div class="modern-card bg-white rounded-xl p-6 border border-slate-200 double-stripe">
+                    <div class="flex items-start gap-4 mb-4">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop" alt="Алексей" class="w-20 h-20 object-cover rounded-xl shadow-md">
+                        <div>
+                            <h3 class="font-bold text-lg">Алексей</h3>
+                            <p class="text-primary text-sm font-medium">Старший инженер</p>
+                            <p class="text-slate-500 text-xs mt-1">Опыт 9 лет</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 text-sm">Спас более <strong>430 залитых ноутбуков</strong>. Выполняет сложную BGA-пайку под микроскопом.</p>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="modern-card bg-white rounded-xl p-6 border border-slate-200 double-stripe">
+                    <div class="flex items-start gap-4 mb-4">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop" alt="Михаил" class="w-20 h-20 object-cover rounded-xl shadow-md">
+                        <div>
+                            <h3 class="font-bold text-lg">Михаил</h3>
+                            <p class="text-primary text-sm font-medium">Мастер мобильной электроники</p>
+                            <p class="text-slate-500 text-xs mt-1">2 500+ ремонтов</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 text-sm">Вернул к жизни <strong>2 500+ смартфонов</strong>. Заменит экран на iPhone за <strong>22 минуты</strong>.</p>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="modern-card bg-white rounded-xl p-6 border border-slate-200 double-stripe">
+                    <div class="flex items-start gap-4 mb-4">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&h=200&fit=crop" alt="Дмитрий" class="w-20 h-20 object-cover rounded-xl shadow-md">
+                        <div>
+                            <h3 class="font-bold text-lg">Дмитрий</h3>
+                            <p class="text-primary text-sm font-medium">Инженер систем безопасности</p>
+                            <p class="text-slate-500 text-xs mt-1">150+ объектов</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 text-sm">Смонтировал <strong>150+ систем видеонаблюдения</strong> для складов и домов Кемерово.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 md:py-24 bg-background-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-4 mb-8">
+                <h2 class="text-2xl font-bold">Отзывы клиентов</h2>
+                <div class="flex-grow h-[1px] bg-slate-200"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Testimonial 1 -->
+                <div class="modern-card bg-white rounded-xl p-6 border-l-4 border-primary">
+                    <div class="flex gap-1 mb-4">
+                        <span class="material-symbols-outlined text-primary text-sm">star</span>
+                        <span class="material-symbols-outlined text-primary text-sm">star</span>
+                        <span class="material-symbols-outlined text-primary text-sm">star</span>
+                        <span class="material-symbols-outlined text-primary text-sm">star</span>
+                        <span class="material-symbols-outlined text-primary text-sm">star</span>
+                    </div>
+                    <p class="text-slate-600 mb-6 italic">«Думала, макбуку конец после пролитого вина. В другом месте насчитали <strong>40 тысяч</strong> за замену платы! Тут ребята промыли всё в ультразвуке, восстановили пару дорожек и взяли <strong>6000</strong>. Работает уже полгода без сбоев. Спасибо Алексею!»</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                            <span class="text-primary font-semibold text-sm">ЕВ</span>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-sm">Елена В.</p>
+                            <p class="text-xs text-slate-500">Менеджер проектов</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="modern-card bg-white rounded-xl p-6 border-l-4 border-primary">
+                    <div class="flex gap-1 mb-4">
+                        <span class="material-symbols-outlined text-primary text-sm">star</span>
+                        <span class="material-symbols-outlined text-primary text-sm">star</span>
+                        <span class="material-symbols-outlined text-primary text-sm">star</span>
+                        <span class="material-symbols-outlined text-primary text-sm">star</span>
+                        <span class="material-symbols-outlined text-primary text-sm">star</span>
+                    </div>
+                    <p class="text-slate-600 mb-6 italic">«Разбил экран на рабочем телефоне перед командировкой. Залетел к ним, поменяли прямо при мне минут за <strong>15</strong>. Показали маркировки, что ставят оригинал. Быстро, без навязывания защитных стекол за 5 тыщ. Респект.»</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                            <span class="text-primary font-semibold text-sm">ИТ</span>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-sm">Игорь Т.</p>
+                            <p class="text-xs text-slate-500">Предприниматель</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="modern-card bg-white rounded-xl p-6 border-l-4 border-primary">
+                    <div class="flex gap-1 mb-4">
+                        <span class="material-symbols-outlined text-primary text-sm">star</span>
+                        <span class="material-symbols-outlined text-primary text-sm">star</span>
+                        <span class="material-symbols-outlined text-primary text-sm">star</span>
+                        <span class="material-symbols-outlined text-primary text-sm">star</span>
+                        <span class="material-symbols-outlined text-primary text-sm">star</span>
+                    </div>
+                    <p class="text-slate-600 mb-6 italic">«Ставили камеры в торговый зал. Приехали вовремя, <strong>надели бахилы</strong> (шок!), просверлили аккуратно, строительным пылесосом всё убрали. Настроили приложуху мне и жене. Картинка четкая, лица видно отлично. Буду советовать.»</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                            <span class="text-primary font-semibold text-sm">С</span>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-sm">Сергей</p>
+                            <p class="text-xs text-slate-500">Владелец магазина</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    </div>
+                    <p class="text-gray-700 mb-6 leading-relaxed">«Ставили камеры в торговый зал. Приехали вовремя, <strong>надели бахилы</strong> (шок!), просверлили аккуратно, строительным пылесосом всё убрали. Настроили приложуху мне и жене. Картинка четкая, лица видно отлично. Буду советовать.»</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                            <span class="text-primary font-semibold">С</span>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-900">Сергей</p>
+                            <p class="text-sm text-gray-500">Магазин автозапчастей</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 md:py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-gray-900 mb-4">Опишите симптомы — назовем реальную цену за 5 минут</h2>
+                <p class="text-lg text-gray-600">Пришлите фото поломки или опишите проблему своими словами в любой удобный мессенджер. Дежурный инженер (не бот) сразу скажет, сколько стоит ремонт и есть ли смысл тратить на него деньги.</p>
+            </div>
+            
+            <div class="bg-background-light rounded-2xl p-8 md:p-12">
+                <form class="space-y-6" onsubmit="handleSubmit(event)">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Ваше имя</label>
+                            <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-blue-200 outline-none transition-all" placeholder="Иван">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Телефон</label>
+                            <input type="tel" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-blue-200 outline-none transition-all" placeholder="+7 (___) ___-__-__">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Что случилось с техникой?</label>
+                        <textarea rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-blue-200 outline-none transition-all resize-none" placeholder="Опишите проблему: модель устройства, что произошло, когда началось..."></textarea>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <input type="checkbox" id="photo" class="w-5 h-5 text-primary rounded border-gray-300 focus:ring-primary">
+                        <label for="photo" class="text-gray-700">Приложу фото поломки в WhatsApp</label>
+                    </div>
+                    <button type="submit" class="w-full bg-whatsapp text-white py-4 rounded-xl font-semibold text-lg hover:bg-green-600 transition-all shadow-lg shadow-green-200 flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>Отправить в WhatsApp</span>
+                    </button>
+                </form>
+                
+                <div class="mt-8 pt-8 border-t border-gray-200 text-center">
+                    <p class="text-gray-500 mb-4">Или свяжитесь с нами напрямую:</p>
+                    <a href="https://wa.me/79000000000" target="_blank" class="inline-flex items-center gap-2 text-whatsapp font-semibold text-lg hover:underline">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>+7 (900) 000-00-00</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <img src="logo.png" alt="Админко" class="h-10 w-auto">
+                        <span class="font-serif text-xl font-bold">Админко</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">Лаборатория ИТ-ремонта и видеонаблюдения в Кемерово</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Услуги</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                        <li><a href="computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                        <li><a href="cctv.html" class="hover:text-white transition-colors">Видеонаблюдение</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Информация</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                        <li><a href="about.html" class="hover:text-white transition-colors">О лаборатории</a></li>
+                        <li><a href="about.html#warranty" class="hover:text-white transition-colors">Гарантии</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Контакты</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li>Кемерово, ул. Примерная, 123</li>
+                        <li>Ежедневно 9:00–20:00</li>
+                        <li><a href="tel:+79000000000" class="hover:text-white transition-colors">+7 (900) 000-00-00</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2026 Админко. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const message = 'Здравствуйте! Я хочу узнать стоимость ремонта.';
+            window.open(`https://wa.me/79000000000?text=${encodeURIComponent(message)}`, '_blank');
+        }
+        
+        // Edit Mode Functions
+        let editMode = false;
+        let originalContent = {};
+        
+        function toggleEditMode() {
+            editMode = !editMode;
+            const panel = document.getElementById('editPanel');
+            const button = document.getElementById('editToggle');
+            
+            if (editMode) {
+                panel.classList.add('active');
+                button.textContent = '❌ Выйти из режима';
+                button.style.background = '#64748b';
+                enableEditing();
+            } else {
+                panel.classList.remove('active');
+                button.textContent = '✏️ Режим редактирования';
+                button.style.background = '#ec1313';
+                disableEditing();
+            }
+        }
+        
+        function enableEditing() {
+            // Make all text elements editable
+            const elements = document.querySelectorAll('h1, h2, h3, h4, p, span, a');
+            elements.forEach(el => {
+                if (!el.closest('.edit-panel') && !el.closest('.edit-toggle')) {
+                    originalContent[el.id] = el.innerHTML;
+                    el.setAttribute('contenteditable', 'true');
+                    el.id = 'edit-' + Math.random().toString(36).substr(2, 9);
+                }
+            });
+        }
+        
+        function disableEditing() {
+            const elements = document.querySelectorAll('[contenteditable="true"]');
+            elements.forEach(el => {
+                el.setAttribute('contenteditable', 'false');
+            });
+        }
+        
+        function saveChanges() {
+            // Save to localStorage
+            const content = {};
+            const elements = document.querySelectorAll('h1, h2, h3, h4, p, span, a');
+            elements.forEach(el => {
+                if (el.id && el.id.startsWith('edit-')) {
+                    content[el.id] = el.innerHTML;
+                }
+            });
+            localStorage.setItem('adminko_content', JSON.stringify(content));
+            alert('✅ Изменения сохранены! Они будут видны только в этом браузере.');
+        }
+        
+        async function saveToFile() {
+            // First apply saved changes from localStorage
+            const saved = localStorage.getItem('adminko_content');
+            if (saved) {
+                const content = JSON.parse(saved);
+                Object.keys(content).forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        el.innerHTML = content[id];
+                    }
+                });
+            }
+            
+            // Get the full HTML with applied changes
+            let htmlContent = document.documentElement.outerHTML;
+            
+            // Try to use FileSystem Access API if available (Chrome/Edge)
+            if ('showSaveFilePicker' in window) {
+                try {
+                    const handle = await window.showSaveFilePicker({
+                        suggestedName: 'index.html',
+                        types: [{
+                            description: 'HTML File',
+                            accept: { 'text/html': ['.html'] }
+                        }]
+                    });
+                    const writable = await handle.createWritable();
+                    await writable.write(htmlContent);
+                    await writable.close();
+                    alert('✅ Файл успешно сохранён!\n\nТеперь замените им файл site/public/index.html');
+                    return;
+                } catch (err) {
+                    if (err.name !== 'AbortError') {
+                        console.error('FileSystem Access API error:', err);
+                    }
+                }
+            }
+            
+            // Fallback: download file
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'index-updated.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            alert('📥 Файл index-updated.html загружен!\n\nЗамените им файл site/public/index.html');
+        }
+        
+        function resetChanges() {
+            if (confirm('Отменить все изменения?')) {
+                location.reload();
+            }
+        }
+        
+        // Load saved content on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const saved = localStorage.getItem('adminko_content');
+            if (saved) {
+                const content = JSON.parse(saved);
+                Object.keys(content).forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        el.innerHTML = content[id];
+                    }
+                });
+            }
+        });
+        
+        // Responsive menu handler
+        window.addEventListener('resize', () => {
+            const menu = document.getElementById('mobile-menu');
+            if (window.innerWidth >= 768) {
+                menu.classList.add('hidden');
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</body>
+</html>

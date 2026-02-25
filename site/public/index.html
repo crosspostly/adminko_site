@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админко — Ремонт телефонов и компьютеров в Кемерово</title>
+    <meta name="description" content="Ремонт ноутбуков, компьютеров и телефонов в Кемерово. Диагностика 0 руб. Гарантия 12 мес. 92% ремонтов в день обращения.">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style type="text/tailwindcss">
+        :root {
+            --primary: #D90404;
+            --primary-hover: #b00303;
+        }
+        @layer components {
+            .brand-stripes {
+                @apply flex flex-col gap-1;
+            }
+            .brand-stripe {
+                @apply h-1 bg-[var(--primary)] w-full;
+            }
+            .brand-stripe-thin {
+                @apply h-0.5 bg-[var(--primary)] w-full;
+            }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#D90404",
+                        "primary-hover": "#b00303",
+                        "background-light": "#F9FAFB",
+                        "background-dark": "#111827",
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#1F2937",
+                        "text-light": "#1F2937",
+                        "text-dark": "#F3F4F6",
+                        "text-muted-light": "#6B7280",
+                        "text-muted-dark": "#9CA3AF",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(to right, #D90404, #ff4d4d);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark transition-colors duration-300">
+
+<!-- Brand Stripes -->
+<div class="brand-stripes w-full sticky top-0 z-[60]">
+    <div class="brand-stripe"></div>
+    <div class="brand-stripe-thin"></div>
+</div>
+
+<!-- Header -->
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20">
+            <div class="flex items-center">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-4xl">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tight hidden md:block">
+                        Админ<span class="text-primary">.ко</span>
+                    </span>
+                </div>
+                <div class="hidden md:ml-8 md:flex md:space-x-8">
+                    <a href="phones.html" class="text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary font-medium transition">Телефоны</a>
+                    <a href="computers.html" class="text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary font-medium transition">Компьютеры</a>
+                    <a href="cctv.html" class="text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary font-medium transition">Видеонаблюдение</a>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="https://wa.me/79000000000" target="_blank" class="inline-flex items-center justify-center px-5 py-2 border border-transparent text-sm font-medium rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-sm">
+                    <span class="material-symbols-outlined text-sm mr-1">chat</span>
+                    Написать
+                </a>
+            </div>
+            <div class="flex items-center md:hidden">
+                <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<div class="relative overflow-hidden bg-surface-light dark:bg-surface-dark">
+    <div class="max-w-7xl mx-auto">
+        <div class="relative z-10 pb-8 bg-surface-light dark:bg-surface-dark sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+            <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-surface-light dark:text-surface-dark transform translate-x-1/2" fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                <polygon points="50,0 100,0 50,100 0,100"></polygon>
+            </svg>
+            <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+                <div class="sm:text-center lg:text-left">
+                    <div class="brand-stripes w-16 mb-4 lg:mx-0 mx-auto">
+                        <div class="brand-stripe"></div>
+                        <div class="brand-stripe-thin"></div>
+                    </div>
+                    <h1 class="text-4xl tracking-tight font-extrabold text-text-light dark:text-text-dark sm:text-5xl md:text-6xl">
+                        <span class="block xl:inline">Сломался компьютер</span>
+                        <span class="block text-primary">или телефон?</span>
+                    </h1>
+                    <p class="mt-3 text-base text-text-muted-light dark:text-text-muted-dark sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                        Точная смета до начала работ. Сохраним ваши данные на 100%. Проведем диагностику за 30 минут и назовем фиксированную цену в рублях. Без скрытых доплат за «термопасту» и «шлейфы».
+                    </p>
+                    <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                        <div class="rounded-md shadow">
+                            <a href="phones.html" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-hover md:py-4 md:text-lg transition">
+                                Ремонт телефонов
+                            </a>
+                        </div>
+                        <div class="mt-3 sm:mt-0 sm:ml-3">
+                            <a href="computers.html" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-red-100 hover:bg-red-200 dark:bg-gray-800 dark:text-red-400 dark:hover:bg-gray-700 md:py-4 md:text-lg transition">
+                                Ремонт компьютеров
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mt-8 flex items-center gap-4 text-sm text-text-muted-light dark:text-text-muted-dark justify-center lg:justify-start">
+                        <div class="flex items-center">
+                            <span class="material-symbols-outlined text-green-500 mr-1 text-base">verified</span>
+                            Диагностика 0₽
+                        </div>
+                        <div class="flex items-center">
+                            <span class="material-symbols-outlined text-green-500 mr-1 text-base">verified</span>
+                            Гарантия 12 мес.
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+        <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" src="https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=800&h=600&fit=crop" alt="IT Repair Laboratory">
+        <div class="absolute inset-0 bg-gray-900 opacity-0 dark:opacity-20 pointer-events-none"></div>
+    </div>
+</div>
+
+<!-- Services Overview -->
+<section class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col items-center mb-12">
+            <h2 class="text-3xl font-extrabold text-text-light dark:text-text-dark mb-2 text-center">Наши услуги</h2>
+            <div class="brand-stripes w-20">
+                <div class="brand-stripe"></div>
+                <div class="brand-stripe-thin"></div>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <a href="phones.html" class="group relative bg-white dark:bg-surface-dark rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700 overflow-hidden">
+                <div class="p-6">
+                    <div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-red-100 dark:bg-red-900 text-primary mb-4">
+                        <span class="material-symbols-outlined">smartphone</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-text-light dark:text-text-dark mb-2">📱 Смартфоны и планшеты</h3>
+                    <p class="text-sm text-red-600 dark:text-red-400 font-medium mb-2">Боль:</p>
+                    <p class="text-sm text-text-muted-light dark:text-text-muted-dark mb-4">Разбили экран, батарея садится на морозе, страшно отдавать телефон с личными фото.</p>
+                    <p class="text-sm text-green-600 dark:text-green-400 font-medium mb-2">Результат:</p>
+                    <p class="text-sm text-text-muted-light dark:text-text-muted-dark">Заменим дисплей или аккумулятор за 20 минут в вашем присутствии. Ставим заводские комплектующие. Вся информация и доступы к банковским приложениям останутся нетронутыми.</p>
+                </div>
+            </a>
+            <a href="computers.html" class="group relative bg-white dark:bg-surface-dark rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700 overflow-hidden">
+                <div class="p-6">
+                    <div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-red-100 dark:bg-red-900 text-primary mb-4">
+                        <span class="material-symbols-outlined">laptop_chromebook</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-text-light dark:text-text-dark mb-2">💻 Компьютеры и ноутбуки</h3>
+                    <p class="text-sm text-red-600 dark:text-red-400 font-medium mb-2">Боль:</p>
+                    <p class="text-sm text-text-muted-light dark:text-text-muted-dark mb-4">Ноутбук греется, тормозит, пролили кофе на клавиатуру, синий экран перед сдачей отчета.</p>
+                    <p class="text-sm text-green-600 dark:text-green-400 font-medium mb-2">Результат:</p>
+                    <p class="text-sm text-text-muted-light dark:text-text-muted-dark">Восстановим залитую материнскую плату за 2-3 дня с вероятностью 90%. Ускорим старый ПК в 3 раза за 1 час. Вы платите только за спасенную технику, а не за попытки мастера.</p>
+                </div>
+            </a>
+            <a href="cctv.html" class="group relative bg-white dark:bg-surface-dark rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700 overflow-hidden">
+                <div class="p-6">
+                    <div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-red-100 dark:bg-red-900 text-primary mb-4">
+                        <span class="material-symbols-outlined">videocam</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-text-light dark:text-text-dark mb-2">📹 Видеонаблюдение</h3>
+                    <p class="text-sm text-red-600 dark:text-red-400 font-medium mb-2">Боль:</p>
+                    <p class="text-sm text-text-muted-light dark:text-text-muted-dark mb-4">Кражи в магазине, слепые зоны, страх за дом, непонятно как смотреть записи.</p>
+                    <p class="text-sm text-green-600 dark:text-green-400 font-medium mb-2">Результат:</p>
+                    <p class="text-sm text-text-muted-light dark:text-text-muted-dark">Спроектируем и смонтируем камеры за 1 день. Настроим онлайн-доступ в Full HD прямо с вашего телефона. Уберем весь строительный мусор после монтажа.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Trust Stats -->
+<section class="py-16 bg-white dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="lg:text-center mb-10">
+            <h2 class="text-base text-primary font-semibold tracking-wide uppercase inline-flex flex-col items-center">
+                Почему выбирают нас
+                <div class="brand-stripes w-12 mt-1">
+                    <div class="brand-stripe"></div>
+                    <div class="brand-stripe-thin"></div>
+                </div>
+            </h2>
+            <p class="mt-4 text-3xl leading-8 font-extrabold tracking-tight text-text-light dark:text-text-dark sm:text-4xl">
+                Ремонт без сюрпризов
+            </p>
+        </div>
+        <div class="mt-10">
+            <dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-x-8 md:gap-y-10">
+                <div class="relative">
+                    <dt>
+                        <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
+                            <span class="material-symbols-outlined">search</span>
+                        </div>
+                        <p class="ml-16 text-3xl font-extrabold text-text-light dark:text-text-dark">0₽</p>
+                        <p class="ml-16 text-lg leading-6 font-medium text-text-light dark:text-text-dark">Диагностика бесплатно</p>
+                    </dt>
+                    <dd class="mt-2 ml-16 text-base text-text-muted-light dark:text-text-muted-dark">
+                        Вы получаете акт с точным диагнозом в день обращения. Это бесплатно, даже если вы решите не чинить устройство.
+                    </dd>
+                </div>
+                <div class="relative">
+                    <dt>
+                        <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
+                            <span class="material-symbols-outlined">schedule</span>
+                        </div>
+                        <p class="ml-16 text-3xl font-extrabold text-text-light dark:text-text-dark">92%</p>
+                        <p class="ml-16 text-lg leading-6 font-medium text-text-light dark:text-text-dark">Техники чиним в день сдачи</p>
+                    </dt>
+                    <dd class="mt-2 ml-16 text-base text-text-muted-light dark:text-text-muted-dark">
+                        Не ждем детали неделями — держим собственный склад из 4 500 ходовых запчастей прямо в лаборатории.
+                    </dd>
+                </div>
+                <div class="relative">
+                    <dt>
+                        <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
+                            <span class="material-symbols-outlined">shield</span>
+                        </div>
+                        <p class="ml-16 text-3xl font-extrabold text-text-light dark:text-text-dark">12</p>
+                        <p class="ml-16 text-lg leading-6 font-medium text-text-light dark:text-text-dark">Месяцев гарантии</p>
+                    </dt>
+                    <dd class="mt-2 ml-16 text-base text-text-muted-light dark:text-text-muted-dark">
+                        Если проблема вернется — переделаем бесплатно за 48 часов или вернем деньги в полном объеме.
+                    </dd>
+                </div>
+            </dl>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="py-16 bg-white dark:bg-surface-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col items-center mb-10">
+            <h2 class="text-3xl font-extrabold text-center text-text-light dark:text-text-dark mb-2">Наша команда</h2>
+            <div class="brand-stripes w-24">
+                <div class="brand-stripe"></div>
+                <div class="brand-stripe-thin"></div>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-12 brand-stripes rotate-45 translate-x-4 -translate-y-4 opacity-10 group-hover:opacity-30 transition-opacity">
+                    <div class="brand-stripe"></div>
+                    <div class="brand-stripe-thin"></div>
+                </div>
+                <div class="flex items-center mb-4">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop" alt="Алексей" class="h-12 w-12 rounded-full object-cover"/>
+                    <div class="ml-3">
+                        <p class="font-bold text-text-light dark:text-text-dark">Алексей</p>
+                        <p class="text-xs text-text-muted-light dark:text-text-muted-dark">Старший инженер, 9 лет опыта</p>
+                    </div>
+                </div>
+                <p class="text-text-light dark:text-text-dark">Спас более <strong>430 залитых ноутбуков</strong>, которые в других сервисах «приговорили» к мусорке. Выполняет сложную BGA-пайку чипов под микроскопом с ювелирной точностью.</p>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-12 brand-stripes rotate-45 translate-x-4 -translate-y-4 opacity-10 group-hover:opacity-30 transition-opacity">
+                    <div class="brand-stripe"></div>
+                    <div class="brand-stripe-thin"></div>
+                </div>
+                <div class="flex items-center mb-4">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop" alt="Михаил" class="h-12 w-12 rounded-full object-cover"/>
+                    <div class="ml-3">
+                        <p class="font-bold text-text-light dark:text-text-dark">Михаил</p>
+                        <p class="text-xs text-text-muted-light dark:text-text-muted-dark">Мастер мобильной электроники</p>
+                    </div>
+                </div>
+                <p class="text-text-light dark:text-text-dark">Вернул к жизни <strong>2 500+ смартфонов</strong>. Заменит экран на iPhone ровно за <strong>22 минуты</strong>, пока вы пьете наш кофе.</p>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-12 brand-stripes rotate-45 translate-x-4 -translate-y-4 opacity-10 group-hover:opacity-30 transition-opacity">
+                    <div class="brand-stripe"></div>
+                    <div class="brand-stripe-thin"></div>
+                </div>
+                <div class="flex items-center mb-4">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&h=100&fit=crop" alt="Дмитрий" class="h-12 w-12 rounded-full object-cover"/>
+                    <div class="ml-3">
+                        <p class="font-bold text-text-light dark:text-text-dark">Дмитрий</p>
+                        <p class="text-xs text-text-muted-light dark:text-text-muted-dark">Инженер систем безопасности</p>
+                    </div>
+                </div>
+                <p class="text-text-light dark:text-text-dark">Смонтировал <strong>150+ систем видеонаблюдения</strong> для складов, ПВЗ и частных домов Кемерово. Настроит приложение на вашем смартфоне за 5 минут и объяснит, как им пользоваться, понятным языком.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Reviews Section -->
+<section class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col items-center mb-10">
+            <h2 class="text-3xl font-extrabold text-center text-text-light dark:text-text-dark mb-2">Отзывы клиентов</h2>
+            <div class="brand-stripes w-24">
+                <div class="brand-stripe"></div>
+                <div class="brand-stripe-thin"></div>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white dark:bg-gray-900 p-6 rounded-lg relative overflow-hidden shadow-sm">
+                <div class="flex items-center mb-4">
+                    <div class="text-yellow-400 flex">
+                        <span class="material-symbols-outlined text-sm">star</span>
+                        <span class="material-symbols-outlined text-sm">star</span>
+                        <span class="material-symbols-outlined text-sm">star</span>
+                        <span class="material-symbols-outlined text-sm">star</span>
+                        <span class="material-symbols-outlined text-sm">star</span>
+                    </div>
+                </div>
+                <p class="text-text-light dark:text-text-dark italic mb-4">«Думала, макбуку конец после пролитого вина. В другом месте насчитали <strong>40 тысяч</strong> за замену платы! Тут ребята промыли всё в ультразвуке, восстановили пару дорожек и взяли <strong>6000</strong>. Работает уже полгода без сбоев. Спасибо Алексею!»</p>
+                <div class="flex items-center">
+                    <div class="h-10 w-10 rounded-full bg-red-100 flex items-center justify-center text-primary font-bold">ЕВ</div>
+                    <div class="ml-3">
+                        <p class="text-sm font-medium text-text-light dark:text-text-dark">Елена В.</p>
+                        <p class="text-xs text-text-muted-light dark:text-text-muted-dark">Менеджер проектов</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white dark:bg-gray-900 p-6 rounded-lg relative overflow-hidden shadow-sm">
+                <div class="flex items-center mb-4">
+                    <div class="text-yellow-400 flex">
+                        <span class="material-symbols-outlined text-sm">star</span>
+                        <span class="material-symbols-outlined text-sm">star</span>
+                        <span class="material-symbols-outlined text-sm">star</span>
+                        <span class="material-symbols-outlined text-sm">star</span>
+                        <span class="material-symbols-outlined text-sm">star</span>
+                    </div>
+                </div>
+                <p class="text-text-light dark:text-text-dark italic mb-4">«Разбил экран на рабочем телефоне перед командировкой. Залетел к ним, поменяли прямо при мне минут за <strong>15</strong>. Показали маркировки, что ставят оригинал. Быстро, без навязывания защитных стекол за 5 тыщ. Респект.»</p>
+                <div class="flex items-center">
+                    <div class="h-10 w-10 rounded-full bg-red-100 flex items-center justify-center text-primary font-bold">ИТ</div>
+                    <div class="ml-3">
+                        <p class="text-sm font-medium text-text-light dark:text-text-dark">Игорь Т.</p>
+                        <p class="text-xs text-text-muted-light dark:text-text-muted-dark">Предприниматель</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white dark:bg-gray-900 p-6 rounded-lg relative overflow-hidden shadow-sm">
+                <div class="flex items-center mb-4">
+                    <div class="text-yellow-400 flex">
+                        <span class="material-symbols-outlined text-sm">star</span>
+                        <span class="material-symbols-outlined text-sm">star</span>
+                        <span class="material-symbols-outlined text-sm">star</span>
+                        <span class="material-symbols-outlined text-sm">star</span>
+                        <span class="material-symbols-outlined text-sm">star</span>
+                    </div>
+                </div>
+                <p class="text-text-light dark:text-text-dark italic mb-4">«Ставили камеры в торговый зал. Приехали вовремя, <strong>надели бахилы</strong> (шок!), просверлили аккуратно, строительным пылесосом всё убрали. Настроили приложуху мне и жене. Картинка четкая, лица видно отлично. Буду советовать.»</p>
+                <div class="flex items-center">
+                    <div class="h-10 w-10 rounded-full bg-red-100 flex items-center justify-center text-primary font-bold">С</div>
+                    <div class="ml-3">
+                        <p class="text-sm font-medium text-text-light dark:text-text-dark">Сергей</p>
+                        <p class="text-xs text-text-muted-light dark:text-text-muted-dark">Магазин автозапчастей</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="bg-primary relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+        <div class="absolute top-1/4 -left-10 brand-stripes w-1/2 rotate-12">
+            <div class="h-4 bg-white w-full"></div>
+            <div class="h-2 bg-white w-full"></div>
+        </div>
+        <div class="absolute bottom-1/4 -right-10 brand-stripes w-1/2 -rotate-12">
+            <div class="h-4 bg-white w-full"></div>
+            <div class="h-2 bg-white w-full"></div>
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between relative z-10">
+        <div>
+            <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+                <span class="block">Опишите симптомы</span>
+                <span class="block text-red-100">— назовем реальную цену за 5 минут.</span>
+            </h2>
+            <p class="mt-4 text-lg text-red-100 max-w-xl">
+                Пришлите фото поломки или опишите проблему своими словами в любой удобный мессенджер. Дежурный инженер (не бот) сразу скажет, сколько стоит ремонт и есть ли смысл тратить на него деньги.
+            </p>
+        </div>
+        <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
+            <div class="inline-flex rounded-md shadow">
+                <a href="https://wa.me/79000000000" target="_blank" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-50">
+                    <span class="material-symbols-outlined mr-2">chat</span>
+                    💬 Узнать цену в WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+    <div class="brand-stripes w-full mb-8">
+        <div class="brand-stripe opacity-20"></div>
+        <div class="brand-stripe-thin opacity-20"></div>
+    </div>
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-sm font-semibold text-text-muted-light dark:text-text-muted-dark tracking-wider uppercase">Услуги</h3>
+                <ul class="mt-4 space-y-4">
+                    <li><a href="phones.html" class="text-base text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary">Ремонт телефонов</a></li>
+                    <li><a href="computers.html" class="text-base text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary">Ремонт ноутбуков</a></li>
+                    <li><a href="cctv.html" class="text-base text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary">Видеонаблюдение</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-sm font-semibold text-text-muted-light dark:text-text-muted-dark tracking-wider uppercase">Компания</h3>
+                <ul class="mt-4 space-y-4">
+                    <li><a href="about.html" class="text-base text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary">О нас</a></li>
+                    <li><a href="#" class="text-base text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary">Контакты</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-sm font-semibold text-text-muted-light dark:text-text-muted-dark tracking-wider uppercase">Поддержка</h3>
+                <ul class="mt-4 space-y-4">
+                    <li><a href="#" class="text-base text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary">Гарантия</a></li>
+                    <li><a href="#" class="text-base text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary">Доставка</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-sm font-semibold text-text-muted-light dark:text-text-muted-dark tracking-wider uppercase">Контакты</h3>
+                <div class="mt-4 space-y-2">
+                    <p class="text-base text-gray-500 dark:text-gray-400">Кемерово</p>
+                    <p class="text-base text-gray-500 dark:text-gray-400">ул. Примерная, 123</p>
+                    <p class="text-base text-gray-500 dark:text-gray-400">+7 (900) 000-00-00</p>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 border-t border-gray-200 dark:border-gray-800 pt-8 flex items-center justify-between">
+            <p class="text-base text-gray-400">© 2024 Админко. Все права защищены.</p>
+            <div class="flex items-center gap-2">
+                <button class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition" onclick="document.documentElement.classList.toggle('dark')">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

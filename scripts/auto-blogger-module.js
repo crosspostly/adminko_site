@@ -10,14 +10,10 @@ const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 const PUBLIC_DIR = path.join(__dirname, '../site/public');
 const BLOG_DIR = path.join(PUBLIC_DIR, 'blog');
 const BLOG_INDEX_FILE = path.join(BLOG_DIR, 'index.json');
-const TOPICS_FILE = path.join(__dirname, 'prioritized_topics.json');
 const SYSTEM_PROMPT_PATH = path.join(__dirname, '../docs/AGENT_PROMPT.md');
 
 const systemPrompt = fs.readFileSync(SYSTEM_PROMPT_PATH, 'utf-8');
 
-/**
- * ФАБРИКА ДИЗАЙНА (Только обертки, контент внутри генерирует ИИ)
- */
 const Layout = {
     yellowBlock: (content) => `
         <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 p-6 my-8 rounded-r-2xl shadow-sm">
@@ -42,56 +38,31 @@ const Layout = {
         </div>`
 };
 
-/**
- * ФУНКЦИЯ ОЧИСТКИ ОТ MARKDOWN (Защита от звездочек и решеток)
- */
-function cleanMarkdown(text) {
-    return text
-        .replace(/\*\*([\s\S]*?)\*\*/g, '<strong>$1</strong>') // Жирный
-        .replace(/\*([\s\S]*?)\*/g, '<em>$1</em>')             // Курсив
-        .replace(/### (.*)/g, '<h3 class="text-xl font-bold mt-4">$1</h3>') // Заголовки h3
-        .replace(/## (.*)/g, '<h2 class="text-2xl font-black mt-6 mb-4">$1</h2>') // Заголовки h2
-        .replace(/^[\s]*[-*] (.*)/gm, '<li class="ml-4 list-disc">$1</li>') // Списки
-        .replace(/```html|```/g, '') // Убираем блоки кода, если ИИ их добавил
-        .trim();
-}
-
 async function generateDeepArticle(topicData) {
     const { topic } = topicData;
-    console.log(`\n🛠️  Запуск конвейера для статьи: "${topic}"`);
+    console.log(`🛠️  Генерация: "${topic}"`);
 
     try {
-        // ЧАСТЬ 1: SEO & META
-        console.log("  [1/4] Генерация мета-данных...");
-        const metaPrompt = `Для темы "${topic}" создай SEO данные (город Кемерово). Верни ТОЛЬКО JSON: {"title": "...", "description": "...", "slug": "..."}`;
+        const metaPrompt = `SEO JSON для темы "${topic}" (город Кемерово). Верни {"title": "...", "description": "...", "slug": "..."}`;
         const metaRes = await model.generateContent(metaPrompt);
         const meta = JSON.parse(metaRes.response.text().match(/\{[\s\S]*\}/)[0]);
 
-        // ЧАСТЬ 2: ПЛАН
-        console.log("  [2/4] Проектирование плана...");
-        const planPrompt = `ТЫ — ВЕДУЩИЙ ИНЖЕНЕР. Создай план статьи: "${topic}". Верни ТОЛЬКО JSON массив из 4 названий глав.`;
+        const planPrompt = `ТЫ — ВЕДУЩИЙ ИНЖЕНЕР. План статьи: "${topic}". Верни ТОЛЬКО JSON массив из 4 глав.`;
         const planRes = await model.generateContent(planPrompt);
         const sections = JSON.parse(planRes.response.text().replace(/```json|```/g, '').trim());
 
-        // ЧАСТЬ 3: КОНТЕНТ (Поэтапно)
-        console.log("  [3/4] Написание текста по главам...");
         let chapters = [];
         for (const section of sections) {
-            const chapterPrompt = `${systemPrompt}\n\nНАПИШИ ГЛАВУ: "${section}" (Тема: ${topic})\nТРЕБОВАНИЯ: Выдавай ТОЛЬКО HTML (h2, p, ul). Если уместно - используй названия оборудования. Пиши кратко, как инженер.`;
+            const chapterPrompt = `${systemPrompt}\n\nНАПИШИ ГЛАВУ: "${section}" (Тема: ${topic})\nТРЕБОВАНИЯ: Выдавай ТОЛЬКО HTML (h2, p, ul). Кратко, инженерно.`;
             const chapterRes = await model.generateContent(chapterPrompt);
             chapters.push(chapterRes.response.text().replace(/```html|```/g, '').trim());
         }
 
-        // ЧАСТЬ 4: УМНАЯ СБОРКА ДИЗАЙНА
-        console.log("  [4/4] Финальная сборка и верстка...");
-        
-        // Генерируем "Прямой ответ" (Желтый блок) специально под тему
-        const blitzPrompt = `Напиши краткий Blitz-Answer для статьи "${topic}" (Цена, Срок, Диагностика в Кемерово). Выдай ТОЛЬКО HTML (p с тегами strong).`;
+        const blitzPrompt = `Blitz-Answer для статьи "${topic}" (Цена, Срок, Диагностика в Кемерово). Только HTML (p с strong).`;
         const blitzRes = await model.generateContent(blitzPrompt);
         const blitzHtml = blitzRes.response.text().replace(/```html|```/g, '').trim();
 
-        // Генерируем "Инженерный нюанс" (Синий блок)
-        const nuancePrompt = `Напиши один важный технический нюанс или секрет для темы "${topic}". Выдай ТОЛЬКО HTML (h3 и p).`;
+        const nuancePrompt = `Технический секрет мастера для темы "${topic}". Только HTML (h3, p).`;
         const nuanceRes = await model.generateContent(nuancePrompt);
         const nuanceHtml = nuanceRes.response.text().replace(/```html|```/g, '').trim();
 
@@ -105,18 +76,8 @@ async function generateDeepArticle(topicData) {
             <section class="mt-8">${chapters[3] || ''}</section>
         `;
 
-        // Упаковка в Мастер-Шаблон
         const MASTER_HEADER = fs.readFileSync(path.join(PUBLIC_DIR, 'header.html'), 'utf-8').replace(/href="(?!http|https|#|tel:|mailto:)/g, 'href="../').replace(/src="(?!http)/g, 'src="../');
         const MASTER_FOOTER = fs.readFileSync(path.join(PUBLIC_DIR, 'footer.html'), 'utf-8').replace(/href="(?!http|https|#|tel:|mailto:)/g, 'href="../').replace(/src="(?!http)/g, 'src="../');
-
-        const jsonLd = {
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": meta.title,
-            "description": meta.description,
-            "datePublished": new Date().toISOString(),
-            "author": { "@type": "Organization", "name": "Админ.Ко" }
-        };
 
         const finalHtml = `<!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">
@@ -126,7 +87,6 @@ async function generateDeepArticle(topicData) {
     <title>${meta.title} | Админ.Ко</title>
     <meta name="description" content="${meta.description}">
     <link rel="canonical" href="https://admin-ko.ru/blog/${meta.slug}.html">
-    <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
     <link rel="icon" href="../favicon.jpg" type="image/jpeg">
     <link rel="stylesheet" href="../styles.css?v=3.3">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -139,7 +99,7 @@ ${MASTER_HEADER}
 <main class="flex-grow max-w-4xl mx-auto px-4 py-12 w-full">
     <article class="prose dark:prose-invert prose-primary lg:prose-xl max-w-none bg-white dark:bg-gray-800 p-8 md:p-16 rounded-[3rem] shadow-2xl border border-gray-100 dark:border-gray-700">
         <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8">
-            <span class="px-3 py-1 bg-primary/10 rounded-full italic border border-primary/20">Инженерный разбор</span>
+            <span class="px-3 py-1 bg-primary/10 rounded-full italic">Инженерный разбор</span>
             <span class="text-gray-400">Кемерово</span>
         </div>
         <h1 class="text-3xl md:text-6xl font-black mb-12 text-gray-900 dark:text-white leading-tight tracking-tighter">${meta.title}</h1>
@@ -152,17 +112,16 @@ ${MASTER_FOOTER}
 </html>`;
 
         fs.writeFileSync(path.join(BLOG_DIR, `${meta.slug}.html`), finalHtml);
-        console.log(`✅ Конвейер завершен: ${meta.slug}.html`);
+        console.log(`✅ Сохранено: ${meta.slug}.html`);
 
-        // Реиндексация (опционально здесь или отдельным скриптом)
-    } catch (e) {
-        console.error(`❌ Сбой конвейера:`, e.message);
-    }
+        // Обновляем индекс
+        let blogIndex = JSON.parse(fs.readFileSync(BLOG_INDEX_FILE, 'utf-8'));
+        const existingIdx = blogIndex.findIndex(i => i.slug === meta.slug);
+        const entry = { title: meta.title, description: meta.description, slug: meta.slug, publish_date: new Date().toISOString(), topic_raw: topic };
+        if (existingIdx !== -1) blogIndex[existingIdx] = entry; else blogIndex.unshift(entry);
+        fs.writeFileSync(BLOG_INDEX_FILE, JSON.stringify(blogIndex, null, 2));
+
+    } catch (e) { console.error(`❌ Ошибка генерации:`, e.message); }
 }
 
-async function run() {
-    const topics = JSON.parse(fs.readFileSync(TOPICS_FILE, 'utf-8'));
-    // Берем первую попавшуюся тему для теста
-    if (topics.length > 0) await generateDeepArticle(topics[0]);
-}
-run();
+module.exports = { generateDeepArticle };

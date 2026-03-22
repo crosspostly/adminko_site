@@ -1,5 +1,5 @@
-<!DOCTYPE >
-< lang="ru" class="scroll-smooth">
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,378 +41,6 @@
         </div>
     </div>
 </section>
-<footer class="bg-text-light dark:bg-black text-white py-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-4 gap-8 mb-12">
-            <div>
-                <div class="flex items-center gap-2 mb-4">
-                    <div class="brand-stripes w-6">
-                        <div class="brand-stripe bg-primary"></div>
-                        <div class="brand-stripe-thin bg-primary"></div>
-                    </div>
-                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
-                </div>
-                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
-            </div>
-            <div>
-                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
-                <ul class="space-y-2 text-gray-400 text-sm">
-                    <li><a href="../phones." class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
-                    <li><a href="../computers." class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
-                    <li><a href="../other-devices." class="hover:text-white transition-colors">Другая техника</a></li>
-                    <li><a href="../cctv." class="hover:text-white transition-colors">Видеонаблюдение</a></li>
-                    <li><a href="../business." class="hover:text-white transition-colors">Для бизнеса</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
-                <ul class="space-y-2 text-gray-400 text-sm">
-                    <li><a href="../blog." class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
-                    <li><a href="../price." class="hover:text-white transition-colors">Прайс-лист</a></li>
-                    <li><a href="../about." class="hover:text-white transition-colors">О компании</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
-                <ul class="space-y-2 text-gray-400 text-sm font-bold">
-                    <li><a href="tel:+79502767171" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
-                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
-                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
-                </ul>
-            </div>
-        </div>
-        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
-            <div class="flex items-center gap-4">
-                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
-            </div>
-            <div class="flex flex-wrap justify-center gap-8">
-                <a href="../consent." class="hover:text-primary transition-colors">Согласие</a>
-                <a href="../terms." class="hover:text-primary transition-colors">Условия</a>
-                <a href="../policy." class="hover:text-primary transition-colors">Политика</a>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- Модалка ( AJAX ) -->
-<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
-    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
-        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
-            <span class="material-symbols-outlined text-2xl">close</span>
-        </button>
-        <div class="text-center mb-6">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
-                <span class="material-symbols-outlined text-3xl">phone_callback</span>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
-            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
-        </div>
-        <div id="form-success" class="hidden text-center py-8">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
-                <span class="material-symbols-outlined text-4xl">check_circle</span>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
-            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
-        </div>
-        <form id="evaluation-form" class="mb-6 space-y-4">
-            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
-            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
-            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
-                <span class="material-symbols-outlined">call</span>
-                Жду звонка
-            </button>
-        </form>
-        <div class="grid grid-cols-2 gap-3">
-            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
-                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
-            </button>
-            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
-                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
-            </button>
-        </div>
-        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
-            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
-            <a href="tel:+79502767171" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
-        </div>
-    </div>
-</div>
-<script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-</head>
-<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen">
-<div class="brand-stripes w-full sticky top-0 z-[60]">
-    <div class="brand-stripe"></div>
-    <div class="brand-stripe-thin"></div>
-</div>
-<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-20 items-center">
-            <div class="flex-shrink-0 flex items-center gap-3">
-                <a href="../index." class="flex items-center gap-3">
-                    <span class="material-symbols-outlined text-primary text-4xl">build_circle</span>
-                    <span class="font-bold text-2xl tracking-tight hidden md:block dark:text-white">
-                        Админ<span class="text-primary">.Ко</span>
-                    </span>
-                </a>
-            </div>
-            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
-                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <span class="material-symbols-outlined text-gray-400">search</span>
-                </div>
-                <input 
-                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
-                    placeholder="Какая техника сломалась?" 
-                    type="text"
-                    id="header-search"
-                />
-            </div>
-            <div class="hidden md:flex items-center space-x-6">
-                <a href="../services-consumer." class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
-                <a href="../business." class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
-                <a href="../price." class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
-                <a href="../blog." class="text-primary font-bold hover:underline transition italic">Блог</a>
-                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-medium rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-sm">
-                    <span class="material-symbols-outlined text-sm mr-1">chat</span>
-                    Написать
-                </button>
-            </div>
-            <div class="flex items-center md:hidden">
-                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
-                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
-                </button>
-            </div>
-        </div>
-    </div>
-    <!-- Mobile menu, show/hide based on menu state. -->
-    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
-        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a href="../services-consumer." class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
-            <a href="../business." class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
-            <a href="../price." class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
-            <a href="../blog." class="block px-3 py-2 rounded-md text-base font-bold text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
-            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-primary">
-                Написать инженеру
-            </button>
-        </div>
-    </div>
-</nav>
-<div id="header-container"></div>
-    <main class="flex-grow max-w-4xl mx-auto px-4 py-12 w-full">
-        <!-- Хлебные крошки -->
-        <article class="prose dark:prose-invert prose-primary lg:prose-xl max-w-none">
-            <h1 class="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight leading-tight">Разбили экран iPhone 15 в Кемерово? Срочная замена дисплея в Админ.Ко</h1>
-            <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-10 pb-6 border-b border-gray-100 dark:border-gray-800">
-                <div class="flex items-center gap-1.5">
-                    <span class="material-symbols-outlined text-sm">calendar_today</span>
-                    <span>11.03.2026</span>
-                </div>
-                <div class="flex items-center gap-1.5">
-                    <span class="material-symbols-outlined text-sm">history_edu</span>
-                    <span>Автор: Ведущий инженер</span>
-                </div>
-                <div class="flex items-center gap-1.5">
-                    <span class="material-symbols-outlined text-sm">timer</span>
-                    <span>4 мин чтения</span>
-                </div>
-            </div>
-            <div class="article-content">
-                <article itemscope itemtype="http://schema.org/Article" class="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-    <script type="application/ld+">
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "Разбили экран iPhone 15 в Кемерово? Срочная замена дисплея на Дзержинского 2Б в Админ.Ко!",
-      "image": [
-        "https://админ.ко/images/iphone-15-screen-repair.webp"
-      ],
-      "datePublished": "2023-10-27T09:00:00+07:00",
-      "dateModified": "2023-10-27T09:00:00+07:00",
-      "author": {
-        "@type": "Organization",
-        "name": "СЦ Админ.Ко",
-        "url": "https://админ.ко"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "СЦ Админ.Ко",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://админ.ко/images/logo.webp"
-        }
-      },
-      "description": "Срочная замена дисплея iPhone 15 в Кемерово на Дзержинского 2Б. Экспертный ремонт с гарантией, оригинальные запчасти. Узнайте цену и сроки в СЦ Админ.Ко."
-    }
-    </script>
-    <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white mb-6 leading-tight">Разбили экран iPhone 15 в Кемерово? Срочная замена дисплея на Дзержинского 2Б в Админ.Ко!</h1>
-    <div class="bg-primary/5 p-6 rounded-2xl mb-8 border-l-4 border-primary">
-        <p class="text-lg font-semibold text-gray-900 dark:text-white">
-            <strong class="text-primary">Разбитый экран iPhone 15 — не приговор.</strong> В СЦ «Админ.Ко» на Дзержинского 2Б мы быстро и профессионально заменим дисплейный модуль, восстановим влагозащиту и калибровку True Tone. Ваш iPhone 15 будет как новый, с гарантией на работу и запчасти.
-        </p>
-    </div>
-    <p class="mb-6 text-lg text-gray-700 dark:text-gray-300">
-        Новый iPhone 15 — это мощь, стиль, и, увы, хрупкость. Один неудачный "залитик" на асфальт, и вот уже вместо сочного Super Retina XDR у вас паутина. Знакомо? Не паникуйте. В Кемерово, на Дзержинского 2Б, мы знаем, что делать.
-    </p>
-    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4 mt-8">Почему экран iPhone 15 так легко "ловит" трещины?</h2>
-    <p class="mb-6 text-gray-700 dark:text-gray-300">
-        Apple гордится своим Ceramic Shield, но физику не обманешь. Да, он крепче обычного стекла, но не пуленепробиваемый. Удар под неправильным углом, падение на острый предмет — и привет, сервисный центр.
-    </p>
-    <ul class="list-disc list-inside space-y-2 mb-6 text-gray-700 dark:text-gray-300">
-        <li><strong class="text-primary">Конструкция:</strong> Дисплейный модуль iPhone 15 — это не просто стекло. Это сложный бутерброд из защитного стекла, сенсорного слоя, OLED-матрицы и подсветки. Все это склеено в единое целое.</li>
-        <li><strong class="text-primary">Face ID:</strong> Модуль Face ID интегрирован в верхнюю часть дисплея. Неаккуратная замена или повреждение шлейфов может привести к его "отвалу". А без Face ID — сами понимаете, уже не то.</li>
-        <li><strong class="text-primary">Влагозащита:</strong> Каждый iPhone 15 имеет защиту от воды и пыли (IP68). При вскрытии устройства эта защита нарушается. Важно восстановить ее при сборке.</li>
-    </ul>
-    <p class="mb-6 text-gray-700 dark:text-gray-300">
-        Когда вы видите трещину, это лишь верхушка айсберга. Часто повреждается не только внешнее стекло, но и сама OLED-матрица, проявляясь полосами, пятнами или полным отсутствием изображения.
-    </p>
-    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4 mt-8">Как мы меняем дисплей iPhone 15 в «Админ.Ко»? Процесс изнутри</h2>
-    <p class="mb-6 text-gray-700 dark:text-gray-300">
-        Это не просто "открутить-прикрутить". Это ювелирная работа, требующая опыта и спецоборудования.
-    </p>
-    <ol class="list-decimal list-inside space-y-3 mb-6 text-gray-700 dark:text-gray-300">
-        <li>
-            <strong class="text-primary">Диагностика:</strong> Сначала мы проверяем iPhone 15 полностью. Работает ли Face ID? Нет ли других скрытых повреждений (например, после сильного удара может пострадать контроллер питания или другие компоненты на плате)? Это критично.
-        </li>
-        <li>
-            <strong class="text-primary">Аккуратное вскрытие:</strong> Используем специальные присоски и фен, чтобы равномерно прогреть клей и безопасно отделить дисплейный модуль. Никаких ломов и отверток!
-        </li>
-        <li>
-            <strong class="text-primary">Перенос компонентов:</strong> С разбитого дисплея на новый переносится модуль Face ID, датчики приближения и освещенности. Это делается с максимальной осторожностью, чтобы не повредить тончайшие шлейфы.
-        </li>
-        <li>
-            <strong class="text-primary">Установка нового дисплея:</strong> Мы используем только качественные дисплейные модули — оригинальные или OEM-аналоги, максимально близкие по характеристикам к "ориге".
-        </li>
-        <li>
-            <strong class="text-primary">Восстановление влагозащиты:</strong> Обязательно устанавливаем новую проклейку по периметру корпуса. Это не 100% заводская герметичность, но максимально близко к ней.
-        </li>
-        <li>
-            <strong class="text-primary">Калибровка True Tone:</strong> После замены дисплея функция True Tone (автоматическая подстройка цветовой температуры) может перестать работать. Мы используем программатор, чтобы перенести данные со старого дисплея и восстановить эту функцию. Без этого — цвета будут "холодными" или "теплыми" без адаптации.
-        </li>
-        <li>
-            <strong class="text-primary">Финальное тестирование:</strong> Проверяем работу сенсора, Face ID, всех кнопок, камер, динамиков. Убеждаемся, что iPhone 15 полностью функционален.
-        </li>
-    </ol>
-    <p class="mb-6 text-gray-700 dark:text-gray-300">
-        Когда я открыл один такой iPhone 15 после падения, там был не только разбитый экран, но и слегка деформированный корпус. Пришлось сначала выправлять геометрию, чтобы новый дисплей встал ровно, без зазоров. Это не просто ремонт, это восстановление.
-    </p>
-    <p class="mb-6 text-gray-700 dark:text-gray-300">
-        Нужны <a href="../phones." class="text-primary hover:underline font-medium">цены на ремонт смартфонов</a>? Загляните в наш раздел.
-    </p>
-    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4 mt-8">FAQ: Частые вопросы по замене дисплея iPhone 15</h2>
-    <div itemscope itemtype="https://schema.org/FAQPage">
-        <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="mb-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-sm">
-            <h3 itemprop="name" class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Сколько стоит замена экрана iPhone 15?</h3>
-            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                <p itemprop="text" class="text-gray-700 dark:text-gray-300">
-                    Цена зависит от типа дисплейного модуля (оригинальный или качественный OEM-аналог). Точную стоимость мы сможем назвать после диагностики, но вы всегда можете ознакомиться с ориентировочными ценами в нашем <a href="../price." class="text-primary hover:underline font-medium">прайс-листе</a> или позвонить нам. Диагностика у нас всегда бесплатна!
-                </p>
-            </div>
-        </div>
-        <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="mb-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-sm">
-            <h3 itemprop="name" class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Как долго длится замена дисплея iPhone 15?</h3>
-            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                <p itemprop="text" class="text-gray-700 dark:text-gray-300">
-                    В большинстве случаев, если дисплейный модуль есть в наличии, замена занимает от 1 до 2 часов. Мы ценим ваше время и стараемся выполнять работу максимально оперативно, без ущерба качеству.
-                </p>
-            </div>
-        </div>
-        <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="mb-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-sm">
-            <h3 itemprop="name" class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Даете ли вы гарантию на замену экрана?</h3>
-            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                <p itemprop="text" class="text-gray-700 dark:text-gray-300">
-                    Конечно! На все работы и установленные запчасти мы предоставляем гарантию. Срок гарантии зависит от типа установленного дисплея, но обычно составляет от 3 до 6 месяцев. Мы уверены в качестве наших услуг и комплектующих.
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="mt-12 p-8 bg-gray-50 dark:bg-gray-800 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-sm text-center">
-        <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Не гадайте на кофейной гуще — спросите инженера</h3>
-        <p class="mb-8 text-gray-600 dark:text-gray-400">Диагностика в «Админ.Ко» всегда 0₽. Мы честно скажем, есть ли смысл в ремонте или проще купить новое устройство.</p>
-        <button onclick="openMessengerModal()" class="bg-primary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all flex items-center justify-center gap-2 mx-auto shadow-lg shadow-primary/20">
-            <span class="material-symbols-outlined">chat</span>
-            Бесплатная консультация
-        </button>
-    </div>
-</article>
-            </div>
-            <div class="mt-12 pt-12 border-t border-gray-100 dark:border-gray-700">
-                <h4 class="text-xl font-bold mb-6">Читайте также:</h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <a href="remont-noutbukov-kemerovo-admin-ko." class="group block p-4 rounded-xl border border-gray-100 dark:border-gray-700 hover:border-primary transition-all">
-                            <h5 class="font-bold group-hover:text-primary transition-colors mb-2">Ремонт ноутбуков в Кемерово: от залития до замены матрицы – Админ.Ко</h5>
-                            <p class="text-sm text-gray-500 line-clamp-2">Нужен срочный ремонт ноутбука в Кемерово? От залития и перегрева до замены матрицы и BGA-пайки – Админ.Ко предлагает экспертный ремонт с гарантией и бесплатной диагностикой. Быстро, надежно, профессионально.</p>
-                        </a>
-                        <a href="srochnyy-remont-telefonov-kemerovo-admin-ko." class="group block p-4 rounded-xl border border-gray-100 dark:border-gray-700 hover:border-primary transition-all">
-                            <h5 class="font-bold group-hover:text-primary transition-colors mb-2">Срочный ремонт телефонов в Кемерово: от экрана до зарядки в Админ.Ко</h5>
-                            <p class="text-sm text-gray-500 line-clamp-2">Нужен срочный ремонт телефона в Кемерово? В «Админ.Ко» быстро и качественно чиним iPhone, Samsung, Xiaomi: замена экрана, аккумулятора, ремонт после воды. Диагностика 0₽.</p>
-                        </a>
-                        <a href="samsung-a54-remont-kemerovo." class="group block p-4 rounded-xl border border-gray-100 dark:border-gray-700 hover:border-primary transition-all">
-                            <h5 class="font-bold group-hover:text-primary transition-colors mb-2">Samsung A54: как сэкономить на ремонте в Кемерово. Экспертный разбор от Админ.Ко (Кемерово).</h5>
-                            <p class="text-sm text-gray-500 line-clamp-2">Твой Samsung A54 начал тупить? Экран моргает, батарея сдохла, или вообще не заряжается? Рассказываем, как мы в Админ.Ко на Дзержинского 2Б в Кемерово чиним эти болячки, и как не переплатить за ремонт. Без воды, только по делу, от инженера с 2014 года.</p>
-                        </a>
-                </div>
-            </div>
-        </article>
-    </main>
-<!-- Модалка ( AJAX ) -->
-</div>
-<!-- Модалка ( AJAX ) -->
-</div>
-    <script src="../components.js?v=3.2"></script>
-<script src="../components.js?v=3.2"></script>
-</body>
-</>
-<!-- Модалка ( AJAX ) -->
-</div>
-<script src="../components.js?v=3.3"></script>
-</body>
-</>
-<!-- Модалка ( AJAX ) -->
-<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
-    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
-        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
-            <span class="material-symbols-outlined text-2xl">close</span>
-        </button>
-        <div class="text-center mb-6">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
-                <span class="material-symbols-outlined text-3xl">phone_callback</span>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
-            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
-        </div>
-        <div id="form-success" class="hidden text-center py-8">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
-                <span class="material-symbols-outlined text-4xl">check_circle</span>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
-            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
-        </div>
-        <form id="evaluation-form" class="mb-6 space-y-4">
-            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
-            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
-            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
-                <span class="material-symbols-outlined">call</span>
-                Жду звонка
-            </button>
-        </form>
-        <div class="grid grid-cols-2 gap-3">
-            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
-                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
-            </button>
-            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
-                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
-            </button>
-        </div>
-        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
-            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
-            <a href="tel:+79502767171" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
-        </div>
-    </div>
-</div>
-<script src="../components.js?v=3.3"></script>
-</body>
-</>
 <!-- Карта -->
 <section class="w-full mt-24 mb-16 px-4">
     <div class="max-w-7xl mx-auto">
@@ -423,6 +51,7 @@
                 ул. Дзержинского, 2Б (вход со стороны улицы)
             </p>
         </div>
+        
         <div class="bg-gray-100 dark:bg-gray-800 rounded-[2.5rem] h-[600px] md:h-[700px] overflow-hidden border border-gray-200 dark:border-gray-700 shadow-2xl relative">
             <iframe 
                 src="https://yandex.ru/map-widget/v1/?z=16&ol=biz&oid=1071276806" 
@@ -432,6 +61,7 @@
                 allowfullscreen="true" 
                 class="dark:opacity-80 dark:contrast-125">
             </iframe>
+            
             <!-- Floating Badge -->
             <div class="absolute bottom-8 right-8 hidden md:block">
                 <a href="https://yandex.ru/maps/org/admin_ko/1071276806/" target="_blank" class="flex items-center gap-4 bg-white dark:bg-gray-900 p-5 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-800 hover:scale-105 transition-transform group">
@@ -447,6 +77,7 @@
         </div>
     </div>
 </section>
+
 <footer class="bg-text-light dark:bg-black text-white py-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid md:grid-cols-4 gap-8 mb-12">
@@ -463,41 +94,49 @@
             <div>
                 <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
                 <ul class="space-y-2 text-gray-400 text-sm">
-                    <li><a href="../phones." class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
-                    <li><a href="../computers." class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
-                    <li><a href="../other-devices." class="hover:text-white transition-colors">Другая техника</a></li>
-                    <li><a href="../business." class="hover:text-white transition-colors">Для бизнеса</a></li>
-                </ul>
+<ul>
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+
+</ul>                </ul>
             </div>
             <div>
                 <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
                 <ul class="space-y-2 text-gray-400 text-sm">
-                    <li><a href="../blog." class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
-                    <li><a href="../price." class="hover:text-white transition-colors">Прайс-лист</a></li>
-                    <li><a href="../about." class="hover:text-white transition-colors">О компании</a></li>
-                </ul>
+<ul>
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+
+</ul>                </ul>
             </div>
             <div>
                 <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
                 <ul class="space-y-2 text-gray-400 text-sm font-bold">
+<ul>
                     <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
-                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+
+</ul>                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
                     <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
                 </ul>
             </div>
         </div>
+
         <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
             <div class="flex items-center gap-4">
                 <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
             </div>
             <div class="flex flex-wrap justify-center gap-8">
-                <a href="../consent." class="hover:text-primary transition-colors">Согласие</a>
-                <a href="../terms." class="hover:text-primary transition-colors">Условия</a>
-                <a href="../policy." class="hover:text-primary transition-colors">Политика</a>
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
             </div>
         </div>
     </div>
 </footer>
+
 <!-- Модалка ( AJAX ) -->
 <div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
@@ -512,6 +151,7 @@
             <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
             <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
         </div>
+
         <div id="form-success" class="hidden text-center py-8">
             <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
                 <span class="material-symbols-outlined text-4xl">check_circle</span>
@@ -519,6 +159,7 @@
             <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
             <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
         </div>
+
         <form id="evaluation-form" class="mb-6 space-y-4">
             <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
             <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
@@ -527,6 +168,7 @@
                 Жду звонка
             </button>
         </form>
+
         <div class="grid grid-cols-2 gap-3">
             <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
                 <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
@@ -541,6 +183,7 @@
         </div>
     </div>
 </div>
+
 <script src="../components.js?v=3.3"></script>
 </body>
-</>
+</html>

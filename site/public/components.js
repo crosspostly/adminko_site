@@ -1,46 +1,8 @@
 /**
  * Глобальный движок компонентов Админ.Ко v2026
- * Автоматически подгружает Header и Footer, управляет темой и модалками.
+ * Управляет темой, мобильным меню и модалками.
+ * Header и Footer синхронизируются через scripts/sync-ui.js
  */
-
-async function loadComponent(id, fileName) {
-    const placeholder = document.getElementById(id);
-    if (!placeholder) return;
-
-    // Определяем путь: если мы в подпапке (например, /blog/), нужно подняться выше
-    const isSubfolder = window.location.pathname.includes('/blog/');
-    const path = isSubfolder ? '../' + fileName : fileName;
-
-    try {
-        const response = await fetch(path);
-        if (!response.ok) throw new Error(`Failed to load ${fileName}`);
-        let html = await response.text();
-        
-        // Если мы в подпапке, исправляем ссылки в загруженном HTML
-        if (isSubfolder) {
-            html = html.replace(/href="(?!http|https|#)/g, 'href="../');
-            html = html.replace(/src="(?!http|https)/g, 'src="../');
-        }
-        
-        placeholder.innerHTML = html;
-        
-        // Инициализируем поиск, если это хедер
-        if (id === 'header-placeholder') initSearch();
-    } catch (err) {
-        console.error(`Error loading ${fileName}:`, err);
-    }
-}
-
-function initSearch() {
-    const searchInput = document.getElementById('header-search');
-    if (searchInput) {
-        searchInput.onkeypress = (e) => {
-            if (e.key === 'Enter') {
-                window.location.href = (window.location.pathname.includes('/blog/') ? '../' : '') + 'price.html?search=' + encodeURIComponent(searchInput.value);
-            }
-        };
-    }
-}
 
 // Глобальные функции
 window.toggleDarkMode = function() {
@@ -72,24 +34,41 @@ window.closeMessengerModal = function() {
     }
 };
 
-// Применение темы
+// Инициализация поиска в хедере
+function initHeaderSearch() {
+    const searchInput = document.getElementById('header-search');
+    if (searchInput) {
+        searchInput.onkeypress = (e) => {
+            if (e.key === 'Enter') {
+                const isSubfolder = window.location.pathname.includes('/blog/');
+                window.location.href = (isSubfolder ? '../' : '') + 'price.html?search=' + encodeURIComponent(searchInput.value);
+            }
+        };
+    }
+}
+
+// Применение темы и инициализация
 (function() {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
     }
     
-    // Загрузка компонентов при старте
-    document.addEventListener('DOMContentLoaded', () => {
-        loadComponent('header-placeholder', 'header.html');
-        loadComponent('footer-placeholder', 'footer.html');
-    });
+    const init = () => {
+        console.log('Admin.Ko Engine: Ready');
+        initHeaderSearch();
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
 })();
 
 document.addEventListener('DOMContentLoaded', function() {
     // Делегирование кликов для мессенджеров
     document.addEventListener('click', function(e) {
-        // Если кликнули по обычной ссылке (телефон, почта или переход) - не мешаем браузеру
         if (e.target.closest('a[href^="tel:"]') || e.target.closest('a[href^="mailto:"]') || e.target.closest('a[href^="http"]')) {
             return;
         }

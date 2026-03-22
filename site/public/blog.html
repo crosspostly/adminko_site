@@ -6,12 +6,15 @@
     <title>Инженерный Блог | Сервисный центр Админ.Ко Кемерово</title>
     <meta name="description" content="Полезные статьи, кейсы по ремонту и технические разборы от инженеров сервисного центра Админ.Ко в Кемерово. Честный ремонт с 2014 года.">
     <link rel="icon" href="/favicon.jpg" type="image/jpeg">
-    <link rel="stylesheet" href="styles.css?v=3.3">
+    <link rel="stylesheet" href="styles.css?v=3.5">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     <script>
         tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
     </script>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
@@ -84,223 +87,199 @@
     </div>
 </nav>
 
+
+
+<!-- Progress Bar -->
+<div id="scroll-progress" class="fixed top-0 left-0 w-0 h-1 bg-primary z-[60] transition-all duration-300"></div>
+
 <main class="flex-grow">
-        <!-- Hero Section -->
-        <section class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700 py-16 md:py-24">
-            <div class="max-w-7xl mx-auto px-4 text-center">
-                <span class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest uppercase text-primary bg-primary/10 rounded-full italic">База знаний v3.3</span>
-                <h1 class="text-4xl md:text-6xl font-black mb-6 tracking-tight italic uppercase italic">Инженерный Блог <span class="text-primary italic">Админ.Ко</span></h1>
-                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed font-medium">
-                    Честные кейсы, инструкции по ремонту и разборы "болячек" техники от тех, кто держит паяльник каждый день.
-                </p>
+<!-- Hero Section -->
+<section class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700 py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+        <span class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest uppercase text-primary bg-primary/10 rounded-full italic">База знаний v4.5</span>
+        <h1 class="text-4xl md:text-6xl font-black mb-6 tracking-tight italic uppercase">Инженерный Блог <span class="text-primary">Админ.Ко</span></h1>
 
-                <!-- Search Bar -->
-                <div class="max-w-xl mx-auto relative group">
-                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-primary transition-colors">search</span>
-                    <input type="text" id="blog-search" placeholder="Найти проблему (например, 'iPhone')..."
-                        class="w-full pl-12 pr-4 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm font-bold">
-                </div>
-            </div>
-        </section>
-
-        <!-- Main Content Area -->
-        <div class="max-w-7xl mx-auto px-4 py-12 flex flex-col lg:flex-row gap-12">
-
-            <!-- Sidebar -->
-            <aside class="w-full lg:w-80 space-y-10 order-2 lg:order-1">
-                <div>
-                    <h3 class="text-xs font-black uppercase tracking-widest text-gray-400 mb-6 flex items-center gap-2">
-                        <span class="material-symbols-outlined text-sm">category</span> Категории
-                    </h3>
-                    <div class="flex flex-wrap lg:flex-col gap-2" id="category-filters">
-                        <button data-category="all" class="category-chip active text-left px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-primary transition-all font-bold text-sm uppercase">Все статьи</button>
-                        <button data-category="phone" class="category-chip text-left px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-primary transition-all font-bold text-sm uppercase">Смартфоны</button>
-                        <button data-category="laptop" class="category-chip text-left px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-primary transition-all font-bold text-sm uppercase">Ноутбуки и ПК</button>
-                        <button data-category="console" class="category-chip text-left px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-primary transition-all font-bold text-sm uppercase">Приставки</button>
-                    </div>
-                </div>
-
-                <div class="p-8 rounded-[2.5rem] bg-primary/5 border border-primary/10">
-                    <h3 class="text-lg font-black mb-6 italic uppercase tracking-tighter text-gray-900 dark:text-white">Инженерный стандарт:</h3>
-                    <ul class="space-y-6">
-                        <li class="flex items-start gap-4">
-                            <span class="material-symbols-outlined text-primary">search</span>
-                            <div>
-                                <p class="text-xs font-black uppercase tracking-widest text-gray-900 dark:text-white">Диагностика 0₽</p>
-                                <p class="text-[10px] text-gray-500 font-medium leading-tight mt-1 uppercase tracking-tighter">Бесплатно всегда, даже при отказе от ремонта.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <span class="material-symbols-outlined text-primary">schedule</span>
-                            <div>
-                                <p class="text-xs font-black uppercase tracking-widest text-gray-900 dark:text-white">Ремонт за 1 день</p>
-                                <p class="text-[10px] text-gray-500 font-medium leading-tight mt-1 uppercase tracking-tighter">92% техники чиним сразу. Склад 4500 запчастей.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <span class="material-symbols-outlined text-primary">verified_user</span>
-                            <div>
-                                <p class="text-xs font-black uppercase tracking-widest text-gray-900 dark:text-white">Гарантия 1 год</p>
-                                <p class="text-[10px] text-gray-500 font-medium leading-tight mt-1 uppercase tracking-tighter">Официальный договор и честный возврат денег.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </aside>
-
-            <!-- Articles Grid -->
-            <div class="flex-grow order-1 lg:order-2">
-                <div id="articles-container" class="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-900 dark:text-white">
-                    <div class="col-span-full py-20 text-center">
-                        <div class="animate-spin inline-block w-8 h-8 border-4 border-primary border-t-transparent rounded-full mb-4"></div>
-                        <p class="text-gray-500 font-bold uppercase tracking-widest text-xs">Загружаем опыт инженеров...</p>
-                    </div>
-                </div>
-                <div id="empty-state" class="hidden py-20 text-center">
-                    <span class="material-symbols-outlined text-6xl text-gray-200 mb-4">search_off</span>
-                    <p class="text-gray-500 font-bold uppercase tracking-widest text-xs">Ничего не нашли по вашему запросу</p>
-                </div>
-            </div>
+        <!-- Category Filters -->
+        <div id="blog-filters" class="flex flex-wrap justify-center gap-3 mb-10 max-w-3xl mx-auto">
+            <button data-filter="all" class="px-6 py-2.5 rounded-full bg-primary text-white font-bold text-sm shadow-lg shadow-primary/20 transition-all filter-btn active">Все</button>
+            <button data-filter="phone" class="px-6 py-2.5 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 font-bold text-sm hover:bg-primary/10 hover:text-primary transition-all filter-btn">Смартфоны</button>
+            <button data-filter="laptop" class="px-6 py-2.5 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 font-bold text-sm hover:bg-primary/10 hover:text-primary transition-all filter-btn">Ноутбуки</button>
+            <button data-filter="business" class="px-6 py-2.5 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 font-bold text-sm hover:bg-primary/10 hover:text-primary transition-all filter-btn">Для бизнеса</button>
+            <button data-filter="appliances" class="px-6 py-2.5 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 font-bold text-sm hover:bg-primary/10 hover:text-primary transition-all filter-btn">Техника</button>
         </div>
-    </main>
 
-    <script>
-        // Динамическая подгрузка хедера и футера
-        fetch('header.html').then(r => r.text()).then(h => document.getElementById('header-placeholder').innerHTML = h);
-        fetch('footer.html').then(r => r.text()).then(f => document.getElementById('footer-placeholder').innerHTML = f);
-
-        let allArticles = [];
-        let currentFilter = 'all';
-        let currentSearch = '';
-
-        const container = document.getElementById('articles-container');
-        const emptyState = document.getElementById('empty-state');
-        const searchInput = document.getElementById('blog-search');
-        const categoryButtons = document.querySelectorAll('.category-chip');
-
-        function getCategory(article) {
-            const text = (article.title + ' ' + (article.topic_raw || '')).toLowerCase();
-            if (text.includes('iphone') || text.includes('samsung') || text.includes('xiaomi') || text.includes('телефон') || text.includes('смартфон')) return 'phone';
-            if (text.includes('macbook') || text.includes('ноутбук') || text.includes('компьютер')) return 'laptop';
-            if (text.includes('playstation') || text.includes('xbox') || text.includes('ps5')) return 'console';
-            return 'other';
-        }
-
-        function renderArticles() {
-            const now = new Date();
-            let filtered = allArticles
-                .filter(a => new Date(a.publish_date) <= now)
-                .filter(a => {
-                    const matchesSearch = (a.title + ' ' + (a.description || '')).toLowerCase().includes(currentSearch.toLowerCase());
-                    const category = getCategory(a);
-                    return (currentFilter === 'all' || category === currentFilter) && matchesSearch;
-                });
-
-            filtered.sort((a, b) => new Date(b.publish_date) - new Date(a.publish_date));
-
-            if (filtered.length === 0) {
-                container.classList.add('hidden');
-                emptyState.classList.remove('hidden');
-            } else {
-                container.classList.remove('hidden');
-                emptyState.classList.add('hidden');
-                container.innerHTML = filtered.map(article => {
-                    const category = getCategory(article);
-                    const catMap = {
-                        'phone': { label: 'Смартфон', icon: 'smartphone', class: 'text-blue-600 bg-blue-50' },
-                        'laptop': { label: 'Ноутбук/ПК', icon: 'laptop_mac', class: 'text-purple-600 bg-purple-50' },
-                        'console': { label: 'Приставка', icon: 'sports_esports', class: 'text-orange-600 bg-orange-50' },
-                        'other': { label: 'Техника', icon: 'devices_other', class: 'text-green-600 bg-green-50' }
-                    };
-                    const info = catMap[category] || catMap.other;
-
-                    return `
-                        <article class="group bg-white dark:bg-gray-800 rounded-[2.5rem] border border-gray-100 dark:border-gray-700 hover:border-primary/30 transition-all duration-500 flex flex-col h-full shadow-sm hover:shadow-xl overflow-hidden text-gray-900 dark:text-white">
-                            <div class="p-8 flex flex-col h-full">
-                                <div class="flex justify-between items-start mb-6">
-                                    <span class="flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${info.class}">${info.label}</span>
-                                    <span class="text-[10px] font-bold text-gray-300">${new Date(article.publish_date).toLocaleDateString('ru-RU')}</span>
-                                </div>
-                                <h2 class="text-2xl font-black mb-4 group-hover:text-primary transition-colors leading-tight italic uppercase italic line-clamp-2">
-                                    <a href="blog/${article.slug}.html">${article.title}</a>
-                                </h2>
-                                <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-8 line-clamp-3 flex-grow">${article.description || ''}</p>
-                                <div class="pt-6 border-t border-gray-50 dark:border-gray-700">
-                                    <a href="blog/${article.slug}.html" class="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-900 dark:text-white group-hover:text-primary transition-colors">
-                                        Читать разбор <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </article>
-                    `;
-                }).join('');
-            }
-        }
-
-        // Загрузка данных
-        document.addEventListener('DOMContentLoaded', async () => {
-            try {
-                const res = await fetch('blog/index.json');
-                allArticles = await res.json();
-                renderArticles();
-            } catch (e) {
-                console.error(e);
-                container.innerHTML = '<p class="col-span-full text-center py-20 font-bold uppercase text-red-500">Ошибка загрузки блога.</p>';
-            }
-        });
-
-        // Слушатели событий
-        categoryButtons.forEach(btn => {
-            btn.onclick = () => {
-                categoryButtons.forEach(b => b.classList.remove('active', 'bg-primary', 'text-white'));
-                btn.classList.add('active');
-                currentFilter = btn.dataset.category;
-                renderArticles();
-            };
-        });
-
-        searchInput.oninput = (e) => {
-            currentSearch = e.target.value;
-            renderArticles();
-        };
-    </script>
-<!-- Карта -->
-<section class="w-full mt-24 mb-16 px-4">
-    <div class="max-w-7xl mx-auto">
-        <div class="flex flex-col items-center mb-10 text-center">
-            <h2 class="text-3xl md:text-4xl font-black mb-3">Наш адрес в Кемерово</h2>
-            <p class="text-gray-500 dark:text-gray-400 flex items-center justify-center gap-2 text-lg">
-                <span class="material-symbols-outlined text-primary">location_on</span>
-                ул. Дзержинского, 2Б (вход со стороны улицы)
-            </p>
-        </div>
-        
-        <div class="bg-gray-100 dark:bg-gray-800 rounded-[2.5rem] h-[600px] md:h-[700px] overflow-hidden border border-gray-200 dark:border-gray-700 shadow-2xl relative">
-            <iframe 
-                src="https://yandex.ru/map-widget/v1/?z=16&ol=biz&oid=1071276806" 
-                width="100%" 
-                height="100%" 
-                frameborder="0" 
-                allowfullscreen="true" 
-                class="dark:opacity-80 dark:contrast-125">
-            </iframe>
-            
-            <!-- Floating Badge -->
-            <div class="absolute bottom-8 right-8 hidden md:block">
-                <a href="https://yandex.ru/maps/org/admin_ko/1071276806/" target="_blank" class="flex items-center gap-4 bg-white dark:bg-gray-900 p-5 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-800 hover:scale-105 transition-transform group">
-                    <div class="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center text-white shadow-lg shadow-primary/20 group-hover:rotate-6 transition-transform">
-                        <span class="material-symbols-outlined text-3xl">directions</span>
-                    </div>
-                    <div>
-                        <p class="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-1 text-left">Яндекс Карты</p>
-                        <p class="font-bold text-gray-900 dark:text-white">Построить маршрут</p>
-                    </div>
-                </a>
-            </div>
+        <!-- Search Bar -->
+        <div class="max-w-xl mx-auto relative group">
+            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-primary transition-colors">search</span>
+            <input type="text" id="blog-search" placeholder="Найти проблему..."
+                class="w-full pl-12 pr-4 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm font-bold dark:text-white">
         </div>
     </div>
 </section>
 
+<!-- Grid -->
+<div class="max-w-7xl mx-auto px-4 py-12">
+    <div id="articles-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Сюда грузятся статьи -->
+    </div>
+
+    <!-- Лоадер для бесконечного скролла -->
+    <div id="infinite-loader" class="py-20 text-center hidden">
+        <div class="animate-spin inline-block w-8 h-8 border-4 border-primary border-t-transparent rounded-full mb-4"></div>
+        <p class="text-gray-500 font-bold uppercase tracking-widest text-xs">Загружаем еще статьи...</p>
+    </div>
+
+    <div id="empty-state" class="hidden py-20 text-center">
+        <span class="material-symbols-outlined text-6xl text-gray-200 mb-4">search_off</span>
+        <p class="text-gray-500 font-bold uppercase tracking-widest text-xs">Ничего не нашли. Попробуйте другой фильтр.</p>
+    </div>
+</div>
+</main>
+
+<!-- Back to top -->
+<button id="back-to-top" class="fixed bottom-8 left-8 p-4 bg-primary text-white rounded-full shadow-2xl opacity-0 translate-y-10 transition-all duration-300 z-50 hover:scale-110 active:scale-95">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+
+
+
+<!-- НАДЕЖНЫЙ СКРИПТ ЗАГРУЗКИ СТАТЕЙ -->
+<script>
+// Встроенный контроллер блога
+let allArticles = [];
+let displayedCount = 0;
+const PAGE_SIZE = 12;
+let currentFilter = 'all';
+
+async function loadArticles() {
+    const container = document.getElementById('articles-container');
+    const emptyState = document.getElementById('empty-state');
+    const loader = document.getElementById('infinite-loader');
+
+    try {
+        const res = await fetch('blog/index.json?' + new Date().getTime());
+        allArticles = await res.json();
+
+        // Первичный рендер
+        renderBatch();
+
+        // Инициализация фильтров
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.onclick = () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('bg-primary', 'text-white', 'active'));
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.add('bg-gray-100', 'dark:bg-gray-700', 'text-gray-600', 'dark:text-gray-300'));
+
+                btn.classList.remove('bg-gray-100', 'dark:bg-gray-700', 'text-gray-600', 'dark:text-gray-300');
+                btn.classList.add('bg-primary', 'text-white', 'active');
+
+                currentFilter = btn.dataset.filter;
+                displayedCount = 0;
+                container.innerHTML = '';
+                renderBatch();
+            };
+        });
+
+        // Поиск
+        const searchInput = document.getElementById('blog-search');
+        searchInput.oninput = () => {
+            const query = searchInput.value.toLowerCase();
+            displayedCount = 0;
+            container.innerHTML = '';
+            renderBatch(query);
+        };
+
+        // UI Helpers (Scroll/BTT)
+        window.addEventListener('scroll', () => {
+            // Progress Bar
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("scroll-progress").style.width = scrolled + "%";
+
+            // Back to top
+            const btt = document.getElementById('back-to-top');
+            if (winScroll > 300) {
+                btt.classList.remove('opacity-0', 'translate-y-10');
+            } else {
+                btt.classList.add('opacity-0', 'translate-y-10');
+            }
+            
+            // Load more
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 500) {
+                renderBatch(searchInput.value.toLowerCase());
+            }
+        });
+
+        document.getElementById('back-to-top').onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
+
+    } catch (e) { console.error(e); }
+}
+
+function renderBatch(query = '') {
+    const container = document.getElementById('articles-container');
+    const emptyState = document.getElementById('empty-state');
+
+    let filtered = allArticles;
+
+    // Фильтр по рубрикам (на основе ключевых слов в slug)
+    if (currentFilter !== 'all') {
+        const map = {
+            'phone': ['iphone', 'smartfon', 'telefon', 'samsung', 'xiaomi'],
+            'laptop': ['noutbuk', 'macbook'],
+            'business': ['autsorsing', 'serverov', 'skud', 'rashody'],
+            'appliances': ['kofemashina', 'pylesos', 'robot', 'ps5', 'xbox', 'tv', 'televizor']
+        };
+        filtered = filtered.filter(a => map[currentFilter].some(key => a.slug.toLowerCase().includes(key)));
+    }
+
+    // Фильтр по поиску
+    if (query) {
+        filtered = filtered.filter(a => 
+            a.title.toLowerCase().includes(query) || 
+            a.description.toLowerCase().includes(query)
+        );
+    }
+
+    if (filtered.length === 0 && displayedCount === 0) {
+        emptyState.classList.remove('hidden');
+        return;
+    } else {
+        emptyState.classList.add('hidden');
+    }
+
+    const batch = filtered.slice(displayedCount, displayedCount + PAGE_SIZE);
+    if (batch.length === 0) return;
+
+    container.innerHTML += batch.map(a => `
+        <article class="group bg-white dark:bg-gray-800 rounded-[2.5rem] overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col h-full shadow-sm">
+            <div class="p-8 md:p-10 flex flex-col h-full">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="px-4 py-1.5 bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest rounded-full border border-primary/20 italic">Кейс #${a.slug.slice(-4).toUpperCase()}</span>
+                    <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">` + new Date(a.publish_date).toLocaleDateString('ru-RU') + `</span>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-black mb-6 group-hover:text-primary transition-colors leading-tight italic uppercase tracking-tighter">
+                    <a href="blog/${a.slug}.html">${a.title}</a>
+                </h2>
+                <p class="text-gray-600 dark:text-gray-400 mb-8 line-clamp-3 text-lg font-medium leading-relaxed">
+                    ${a.description}
+                </p>
+                <div class="mt-auto pt-6 border-t border-gray-50 dark:border-gray-800 flex items-center justify-between">
+                    <a href="blog/${a.slug}.html" class="inline-flex items-center gap-2 text-primary font-black uppercase tracking-widest text-xs group/link">
+                        Читать разбор
+                        <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+        </article>
+    `).join('');
+
+    displayedCount += PAGE_SIZE;
+}
+
+loadArticles();
+</script>
+
+<script src="components.js?v=3.6"></script>
 <footer class="bg-text-light dark:bg-black text-white py-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid md:grid-cols-4 gap-8 mb-12">

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Разбили экран телевизора: есть ли смысл в ремонте? | Админ.Ко</title>
+    <meta name="description" content="Разбили экран телевизора? Узнайте, стоит ли замена матрицы потраченных денег, сколько это стоит и когда выгоднее купить новый ТВ. Экспертный разбор от Админ.Ко.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div id="header-placeholder"></div>
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-20">
+        <!-- Заголовок и мета -->
+        <header class="mb-12 md:mb-20">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-6 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-black mb-8 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic italic">
+                Разбили экран телевизора: есть ли смысл в ремонте?
+            </h1>
+        </header>
+
+        <!-- ТЕКСТ СТАТЬИ -->
+        <div class="prose prose-lg dark:prose-invert max-w-none space-y-8 text-gray-700 dark:text-gray-300 font-medium leading-relaxed">
+            <!-- CONTENT START -->
+            <section class="mb-8">
+<h2>Почему разбитая матрица — это 80% стоимости телевизора: экономическая целесообразность</h2>
+<p>В 90% случаев при физическом повреждении экрана телевизора мы сталкиваемся с критическим вопросом клиента: «Есть ли смысл в ремонте или проще купить новый?». Как инженеры, мы даем прямой ответ, опираясь на конструктивные особенности современной техники.</p>
+<p>Матрица (панель) — это основной компонент телевизора, включающий в себя стекло, слой подсветки и дешифраторы (COF-микросхемы). Стоимость матрицы у производителя составляет порядка 70-80% от цены всего устройства. Это связано с логистикой хрупких компонентов и высокой себестоимостью производства стекла нужного диагонали.</p>
+<ul>
+    <li><strong>Дефицит запчастей:</strong> Официальные поставщики редко поставляют матрицы отдельно. Чаще всего они приходят в сборе с корпусом, что делает их заказ экономически нецелесообразным для бюджетных моделей.</li>
+    <li><strong>Риски повреждения:</strong> Замена панели требует стерильных условий и прецизионной точности. Использование профессионального оборудования, такого как <strong>термовоздушные станции Quick 861DW</strong> для подготовки шлейфов и специализированных вакуумных захватов, минимизирует риски, но стоимость работы остается высокой.</li>
+    <li><strong>Диагностика — единственный способ сэкономить:</strong> Иногда повреждение матрицы локально, и проблема кроется не в самом стекле, а в отвале шлейфа или выходе из строя платы T-CON. Именно поэтому мы проводим <strong>бесплатную диагностику</strong> перед тем, как предлагать варианты решения.</li>
+
+</ul></ul>
+<p>Если после диагностики в «Админ.Ко» выясняется, что требуется полная замена матрицы, мы честно предупреждаем о стоимости. Мы не навязываем ремонт, если цена запчасти приближается к стоимости аналогичного устройства на вторичном рынке. Наша задача — не продать услугу любой ценой, а сохранить ваш бюджет, предложив инженерно оправданное решение.</p>
+<p>Если же ремонт целесообразен (например, повреждение шлейфов или компонентов платы T-CON), мы выполняем пайку с использованием флюсов <strong>Amtech</strong> и профессиональных станций <strong>JBC</strong>, что гарантирует отсутствие коррозии контактов и стабильную работу ТВ на годы вперед.</p>
+</section>
+
+<section class="mb-8">
+<h2>Диагностика повреждений: когда ремонт возможен, а когда проще купить новый ТВ</h2>
+
+<p>Для инженера сервисного центра «Админ.Ко» телевизор — это не просто экран, а сложная система из матрицы, подсветки, драйверов управления (COF) и материнской платы. При ударе по экрану пользователь видит лишь «паутину» или полосы, но задача диагностики — определить глубину поражения системы.</p>
+
+<p>Мы классифицируем повреждения на три категории:</p>
+
+<ul>
+    <li><strong>Поверхностный дефект матрицы:</strong> Если картинка транслируется корректно, нет битых пикселей и полос, а повреждено только внешнее антибликовое покрытие (рассеивающий слой), возможна замена поляризационной пленки. Это сохраняет бюджет клиента.</li>
+    <li><strong>Повреждение дешифраторов (COF):</strong> Характеризуется наличием вертикальных или горизонтальных цветных полос. Здесь мы используем микроскоп и паяльную станцию <strong>JBC</strong> для восстановления шлейфов. Если повреждение находится вне активной зоны стекла, ремонт оправдан и дает вторую жизнь ТВ.</li>
+    <li><strong>Критическое разрушение ЖК-панели:</strong> Если трещина прошла сквозь структуру жидких кристаллов, физика процесса необратима. В этом случае мы честно сообщаем клиенту: стоимость новой матрицы с учетом логистики зачастую сопоставима с ценой нового устройства. Мы не навязываем бессмысленные услуги.</li>
+
+</ul></ul>
+
+<p>Для точного определения масштаба бедствия мы используем лабораторные методы проверки:</p>
+
+<ul>
+    <li><strong>Тепловизионная диагностика:</strong> Позволяет выявить скрытые микротрещины в платах драйверов, которые могли возникнуть из-за механического напряжения при ударе.</li>
+    <li><strong>Визуальный контроль под оптикой:</strong> Оцениваем целостность токопроводящих дорожек на стекле.</li>
+    <li><strong>Анализ LVDS-сигналов:</strong> Проверяем с помощью осциллографа <strong>Rigol</strong>, не вывело ли короткое замыкание в битой матрице из строя материнскую плату телевизора.</li>
+
+</ul></ul>
+
+<p>В отличие от «гаражных» мастерских, мы не гадаем на кофейной гуще. Если ремонт экономически целесообразен — мы восстановим устройство до заводских параметров. Если повреждения фатальны — мы сэкономим ваши деньги, прямо заявив об этом на этапе бесплатной диагностики.</p>
+</section>
+
+<section class="mb-8">
+<h2>Ремонтные риски: оригинальные запчасти, аналоги и скрытые дефекты после падения</h2>
+
+<p>Разбитая матрица телевизора — это не просто дефект изображения, а критическое нарушение целостности всей структуры панели. При обращении в сервис важно понимать разницу между компонентным ремонтом и «гаражной» заменой. Основная проблема дешевого ремонта кроется в использовании некондиционных запчастей или матриц с разбора, которые часто имеют скрытые дефекты (битые пиксели, засветы, деградацию подсветки).</p>
+
+<p>В «Админ.Ко» мы исключаем подобные риски за счет многоступенчатой входной диагностики:</p>
+
+<ul>
+    <li><strong>Контроль геометрии и шлейфов:</strong> При ударе телевизора часто происходит микродеформация рамки корпуса. Установка новой матрицы в «кривой» корпус приводит к внутреннему напряжению стекла и последующему самопроизвольному растрескиванию через 2-4 недели. Мы используем прецизионный инструмент для юстировки рамы перед монтажом.</li>
+    <li><strong>Оригинальные протоколы синхронизации:</strong> Современные панели общаются с T-CON платой по специфическим LVDS-интерфейсам. Использование аналоговых драйверов без прошивки EEPROM через программаторы типа <strong>JCID</strong> приводит к инверсии цветов, полосам или полному отсутствию видеосигнала.</li>
+    <li><strong>Проверка под тепловизором:</strong> После замены мы проверяем температурный режим работы новой матрицы. Если драйверы (COF) перегреваются, это верный признак бракованного шлейфа или некачественного монтажа, который неизбежно приведет к «отвалу» изображения в ближайшем будущем.</li>
+
+</ul></ul>
+
+<p>Мы работаем исключительно с компонентами класса Original, имеющими соответствующую сертификацию яркости и цветового охвата. В отличие от кустарных мастерских, мы не просто «приклеиваем» панель, а восстанавливаем заводской контур герметичности и теплоотвода. Использование флюсов <strong>Amtech</strong> при работе с управляющими шлейфами гарантирует отсутствие коррозии в местах пайки, что критически важно для предотвращения окисления контактов из-за высокой влажности в помещении.</p>
+
+<p>Попытка сэкономить на качестве матрицы или пренебречь диагностикой скрытых трещин в корпусе превращает ремонт телевизора в «одноразовую» процедуру. В «Админ.Ко» мы предоставляем официальную гарантию 12 месяцев по договору: мы уверены в запчастях, так как тестируем их на высокочастотных осциллографах <strong>Rigol</strong> до полной выдачи устройства клиенту.</p>
+</section>
+
+<section class="mb-8">
+<h2>Рекомендации СЦ «Админ.Ко»: как минимизировать расходы и стоит ли обращаться по страховке</h2>
+
+<p>В 90% случаев при физическом повреждении матрицы телевизора пользователи сталкиваются с маркетинговой ловушкой: производители заявляют, что замена экрана «нерентабельна» и предлагают купить новый ТВ. Как инженеры, мы даем иную оценку: стоимость восстановления зависит от модели, наличия запчастей на складе и технологического процесса интеграции матрицы в корпус.</p>
+
+<ul>
+    <li><strong>Анализ рентабельности:</strong> Мы не проводим «ремонт ради ремонта». Если стоимость матрицы превышает 70% цены нового устройства, мы прямо сообщим об этом на этапе бесплатной диагностики. Мы работаем с прямыми поставщиками комплектующих, что позволяет нам предлагать цены ниже розничных сетевых магазинов.</li>
+    <li><strong>Страховой случай:</strong> Если ваш телевизор застрахован, не спешите подписывать акт «неремонтопригодности» от авторизованных центров. Мы предоставляем официальное техническое заключение о стоимости и целесообразности восстановления, которое имеет юридическую силу для страховых компаний. Часто страховая выплачивает полную стоимость устройства, а вы сохраняете технику, которую мы приводим в рабочее состояние.</li>
+    <li><strong>Инженерный подход к замене:</strong> Замена матрицы — это прецизионная работа. При использовании дешевых аналогов или несоблюдении регламента сборки возможны засветы, нарушение цветопередачи или выход из строя контроллеров T-CON. В «Админ.Ко» мы используем антистатические посты и профессиональное оборудование для юстировки, исключающее механическое напряжение на матрицу при установке.</li>
+    <li><strong>Предотвращение коррозии:</strong> Даже при незначительных трещинах внутрь попадает влага и пыль, что при нагреве матрицы приводит к деградации шлейфов и окислению контактов. Если повреждение есть — телевизор нужно обесточить и привезти к нам на первичный осмотр. Чем быстрее мы проведем герметизацию, тем выше шансы спасти управляющую электронику от фатального замыкания.</li>
+
+</ul></ul>
+
+<p>Мы работаем честно: если восстановление нецелесообразно, мы аргументированно докажем это на этапе диагностики, сэкономив ваше время и бюджет на покупку нового ТВ.</p>
+</section>
+        </div>
+        </div>
+
+        <!-- КРАСИВЫЙ CTA БЛОК -->
+            <!-- CONTENT END -->
+        </div>
+
+        <!-- CTA БЛОК (Спросите инженера) -->
+        <section class="mt-20 bg-primary rounded-[3rem] p-8 md:p-12 text-white overflow-hidden relative group shadow-2xl shadow-primary/20">
+            <div class="relative z-10">
+                <h2 class="text-3xl md:text-4xl font-black mb-4 text-white uppercase italic">Спросите инженера</h2>
+                <p class="text-lg md:text-xl mb-8 text-white/90 font-medium">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <button onclick="openMessengerModal()" class="w-full md:w-auto bg-white text-primary px-10 py-5 rounded-2xl font-black text-xl hover:scale-105 transition-all shadow-xl flex items-center justify-center gap-3 active:scale-95 uppercase tracking-widest">
+                    <span class="material-symbols-outlined font-bold">chat</span>
+                    Бесплатная консультация
+                </button>
+            </div>
+            <span class="material-symbols-outlined absolute -right-8 -bottom-8 text-[15rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </section>
+    </article>
+</main>
+
+<!-- Карта -->
+<section class="w-full mt-24 mb-16 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col items-center mb-10 text-center">
+            <h2 class="text-3xl md:text-4xl font-black mb-3">Наш адрес в Кемерово</h2>
+            <p class="text-gray-500 dark:text-gray-400 flex items-center justify-center gap-2 text-lg">
+                <span class="material-symbols-outlined text-primary">location_on</span>
+                ул. Дзержинского, 2Б (вход со стороны улицы)
+            </p>
+        </div>
+        
+        <div class="bg-gray-100 dark:bg-gray-800 rounded-[2.5rem] h-[600px] md:h-[700px] overflow-hidden border border-gray-200 dark:border-gray-700 shadow-2xl relative">
+            <iframe 
+                src="https://yandex.ru/map-widget/v1/?z=16&ol=biz&oid=1071276806" 
+                width="100%" 
+                height="100%" 
+                frameborder="0" 
+                allowfullscreen="true" 
+                class="dark:opacity-80 dark:contrast-125">
+            </iframe>
+            
+            <!-- Floating Badge -->
+            <div class="absolute bottom-8 right-8 hidden md:block">
+                <a href="https://yandex.ru/maps/org/admin_ko/1071276806/" target="_blank" class="flex items-center gap-4 bg-white dark:bg-gray-900 p-5 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-800 hover:scale-105 transition-transform group">
+                    <div class="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center text-white shadow-lg shadow-primary/20 group-hover:rotate-6 transition-transform">
+                        <span class="material-symbols-outlined text-3xl">directions</span>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-1 text-left">Яндекс Карты</p>
+                        <p class="font-bold text-gray-900 dark:text-white">Построить маршрут</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

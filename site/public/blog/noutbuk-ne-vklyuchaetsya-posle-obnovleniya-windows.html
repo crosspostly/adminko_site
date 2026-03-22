@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ноутбук не включается после обновления Windows: что делать? Кемерово | Админ.Ко</title>
+    <meta name="description" content="Ноутбук перестал включаться после обновления Windows? Узнайте причины сбоя и эффективные способы восстановления системы. Профессиональный ремонт ПО в Кемерово от Админ.Ко.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div id="header-placeholder"></div>
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-20">
+        <!-- Заголовок и мета -->
+        <header class="mb-12 md:mb-20">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-6 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-black mb-8 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic italic">
+                Ноутбук не включается после обновления Windows: что делать? Кемерово
+            </h1>
+        </header>
+
+        <!-- ТЕКСТ СТАТЬИ -->
+        <div class="prose prose-lg dark:prose-invert max-w-none space-y-8 text-gray-700 dark:text-gray-300 font-medium leading-relaxed">
+            <!-- CONTENT START -->
+            <section class="mb-8">
+<h2>Диагностика аппаратной части: проверка питания и периферии</h2>
+
+<p>Когда ноутбук перестает реагировать на кнопку включения после обновления ОС, пользователи часто грешат на программный сбой. Однако в 40% случаев обновление становится лишь триггером для проявления скрытых дефектов цепей питания, которые до этого находились в стадии «деградации» компонентов.</p>
+
+<p>В «Админ.Ко» диагностика начинается не с переустановки Windows, а с оценки состояния материнской платы на аппаратном уровне. Мы последовательно исключаем влияние периферии и анализируем прохождение сигналов питания:</p>
+
+<ul>
+    <li><strong>Анализ первичных цепей:</strong> Используем осциллограф Rigol для проверки пульсаций напряжения и дежурных режимов (3.3V/5V). Если «дежурка» отсутствует, ноутбук не получит сигнал на запуск процессора.</li>
+    <li><strong>Проверка периферии:</strong> Замыкания в модулях Wi-Fi, клавиатуре или USB-контроллерах часто блокируют старт системы. Мы отсекаем каждый узел отдельно, чтобы найти виновника короткого замыкания.</li>
+    <li><strong>Работа с тепловизором:</strong> Если на плате есть микротрещина или пробитый конденсатор, вызывающий утечку тока, тепловизор мгновенно локализует точку перегрева. Это исключает «метод тыка» и необоснованную замену целых модулей.</li>
+    <li><strong>Контроль BIOS и EC-контроллера:</strong> Прошивка BIOS программатором JCID или специализированными программаторами для микросхем памяти — обязательный этап, если плата «зависает» на этапе инициализации (POST-код).</li>
+
+</ul></ul>
+
+<p>Важно понимать: использование дешевых паяльных станций при ремонте цепей питания приводит к перегреву текстолита и отслоению дорожек. В нашей лаборатории мы применяем паяльные системы <strong>JBC (Испания)</strong>, которые обеспечивают идеальный тепловой профиль. Это гарантирует, что после ремонта материнская плата сохранит заводскую надежность, а используемые нами флюсы <strong>Martin/Amtech</strong> исключают коррозию компонентов в долгосрочной перспективе.</p>
+
+<p>Без осциллографа и диагностических карт ремонт современных ноутбуков — это лотерея. Мы предлагаем инженерию, где каждый шаг подтвержден инструментальными измерениями.</p>
+</section>
+
+<section class="mb-8">
+<h2>Программные методы восстановления: безопасный режим и откат обновлений</h2>
+
+<p>Если ноутбук перестал включаться или завис на этапе загрузки сразу после установки обновлений Windows, проблема чаще всего кроется в конфликте драйверов или повреждении системных файлов реестра. Прежде чем приступать к аппаратному ремонту, инженер обязан исключить программную ошибку, чтобы не проводить лишние манипуляции с BGA-компонентами на материнской плате.</p>
+
+<p>Наш алгоритм программного восстановления включает следующие этапы:</p>
+
+<ul>
+    <li><strong>Вход в среду восстановления (WinRE):</strong> Принудительная перезагрузка через кнопку питания трижды активирует меню диагностики. Мы используем этот инструмент для доступа к командной строке и параметрам загрузки.</li>
+    <li><strong>Безопасный режим (Safe Mode):</strong> Загрузка системы с минимальным набором драйверов позволяет выявить, какой именно сторонний софт или драйвер оборудования вызывает "синий экран" (BSOD).</li>
+    <li><strong>Откат критических обновлений:</strong> Через командную строку мы принудительно удаляем последние пакеты обновлений (KB-файлы), которые нередко вызывают ошибку загрузки из-за несоответствия версий прошивки BIOS и текущей сборки Windows.</li>
+    <li><strong>Восстановление загрузчика BCD:</strong> Если обновление повредило таблицу разделов, мы используем инструменты командной строки для пересборки загрузочной записи, что позволяет вернуть работоспособность ОС без переустановки Windows и потери ваших данных.</li>
+
+</ul></ul>
+
+<p>Важно понимать: если программные методы не приносят результата и система уходит в циклический сброс, проблема перемещается в плоскость "железа". В сервисном центре «Админ.Ко» мы проводим первичную диагностику программной среды бесплатно. Если же выяснится, что обновление стало катализатором для выхода из строя цепей питания (например, мультиконтроллера или преобразователя напряжения), мы переходим к глубокому техническому анализу с использованием осциллографа Rigol, чтобы выявить просадки напряжения на линиях питания процессора или хаба.</p>
+
+<p>Самостоятельные попытки восстановления через сторонний софт часто приводят к полному удалению пользовательских данных. В «Админ.Ко» приоритет №1 — сохранность вашей информации. Мы работаем по регламенту, который исключает форматирование диска без прямого согласования с владельцем устройства.</p>
+</section>
+
+<section class="mb-8">
+<h2>Диагностика программных сбоев: работа с командной строкой и средой восстановления WinRE</h2>
+
+<p>Если ноутбук перестал включаться после обновления Windows, проблема чаще всего кроется в повреждении загрузчика (BCD) или конфликте драйверов, которые привели к циклической ошибке. В нашем сервисном центре «Админ.Ко» первичная диагностика начинается с анализа дампов памяти и попытки восстановления системных файлов без потери данных клиента.</p>
+
+<p>Первый этап — вход в среду восстановления (WinRE). Если система не загружается автоматически, мы инициируем принудительное восстановление. Внутри консоли наши инженеры используют специализированный набор инструментов для реанимации ОС:</p>
+
+<ul>
+    <li><strong>Восстановление загрузочных секторов:</strong> Команды <code>bootrec /fixmbr</code>, <code>bootrec /fixboot</code> и <code>bootrec /rebuildbcd</code> позволяют восстановить структуру загрузки, если обновление «затерло» пути к системным разделам.</li>
+    <li><strong>Проверка целостности системных файлов (SFC/DISM):</strong> С помощью утилиты <code>sfc /scannow</code> и <code>dism /online /cleanup-image /restorehealth</code> мы выявляем и исправляем поврежденные компоненты Windows, которые были некорректно установлены в процессе апдейта.</li>
+    <li><strong>Удаление конфликтующих обновлений:</strong> Если программная среда загружается, но выдает «синий экран смерти» (BSOD), через командную строку мы принудительно удаляем последний пакет обновлений, вызвавший критический сбой.</li>
+
+</ul></ul>
+
+<p>Важно понимать: попытки самостоятельного восстановления с помощью «советов из интернета» часто приводят к полному удалению пользовательских данных. В «Админ.Ко» мы используем профессиональный подход, исключающий форматирование диска. Если программные методы не дают результата, мы переходим к аппаратной проверке материнской платы с использованием <strong>осциллографа Rigol</strong>, чтобы исключить деградацию цепей питания, которая могла совпасть с моментом обновления ПО.</p>
+
+<p>Работа через командную строку — это хирургическое вмешательство в систему. Мы возвращаем ноутбук в рабочее состояние с сохранением всех ваших документов, настроек и лицензионного ПО.</p>
+</section>
+
+<section class="mb-8">
+<h2>Профессиональная помощь в Кемерово: когда пора обращаться в сервис Админ.Ко</h2>
+
+<p>Если ноутбук перестал реагировать на кнопку включения после автоматического обновления Windows, проблема редко кроется в самом программном обеспечении. В 90% случаев это совпадение: процесс обновления спровоцировал критический перегрев или выявил скрытые дефекты цепей питания, которые при обычной нагрузке были неактивны. Попытки самостоятельного "сброса" через извлечение батареи или нажатие комбинаций клавиш без понимания схемотехники лишь усугубляют ситуацию.</p>
+
+<p>В «Админ.Ко» мы проводим глубокую аппаратную диагностику, которая позволяет выявить истинную причину поломки:</p>
+
+<ul>
+    <li><strong>Анализ вторичных напряжений:</strong> С помощью осциллографа Rigol наши инженеры проверяют наличие сигналов запуска на мультиконтроллере. Если контроллер питания «завис» в аварийном состоянии, мы принудительно восстанавливаем прошивку микросхемы BIOS, используя программаторы JCID.</li>
+    <li><strong>Микропайка под микроскопом:</strong> При повреждении BGA-компонентов мы применяем паяльные станции JBC (Испания). Высокоточный контроль температуры исключает деформацию текстолита и «отвал» соседних элементов, что неизбежно при использовании дешевых термофенов.</li>
+    <li><strong>Чистота соединений:</strong> Мы используем профессиональные флюсы Martin и Amtech. В отличие от бытовых аналогов, они не проводят ток и не провоцируют коррозию платы после ремонта.</li>
+    <li><strong>Визуальный контроль цепей:</strong> Тепловизор позволяет мгновенно обнаружить пробитый конденсатор или короткое замыкание в цепи питания процессора, которые не видны при обычном осмотре.</li>
+
+</ul></ul>
+
+<p>Ремонт в кустарных условиях приводит к безвозвратному выходу из строя мультиконтроллеров и хабов, замена которых стоит в 3-4 раза дороже первичного восстановления цепи питания. В «Админ.Ко» мы работаем по инженерным стандартам: 0 руб. за диагностику, честная цена без навязанных услуг и гарантия 12 месяцев по официальному договору.</p>
+
+<p>Не рискуйте сохранностью своих данных и работоспособностью материнской платы. Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально и возвращаем устройства к жизни в кратчайшие сроки.</p>
+</section>
+        </div>
+        </div>
+
+        <!-- КРАСИВЫЙ CTA БЛОК -->
+            <!-- CONTENT END -->
+        </div>
+
+        <!-- CTA БЛОК (Спросите инженера) -->
+        <section class="mt-20 bg-primary rounded-[3rem] p-8 md:p-12 text-white overflow-hidden relative group shadow-2xl shadow-primary/20">
+            <div class="relative z-10">
+                <h2 class="text-3xl md:text-4xl font-black mb-4 text-white uppercase italic">Спросите инженера</h2>
+                <p class="text-lg md:text-xl mb-8 text-white/90 font-medium">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <button onclick="openMessengerModal()" class="w-full md:w-auto bg-white text-primary px-10 py-5 rounded-2xl font-black text-xl hover:scale-105 transition-all shadow-xl flex items-center justify-center gap-3 active:scale-95 uppercase tracking-widest">
+                    <span class="material-symbols-outlined font-bold">chat</span>
+                    Бесплатная консультация
+                </button>
+            </div>
+            <span class="material-symbols-outlined absolute -right-8 -bottom-8 text-[15rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </section>
+    </article>
+</main>
+
+<!-- Карта -->
+<section class="w-full mt-24 mb-16 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col items-center mb-10 text-center">
+            <h2 class="text-3xl md:text-4xl font-black mb-3">Наш адрес в Кемерово</h2>
+            <p class="text-gray-500 dark:text-gray-400 flex items-center justify-center gap-2 text-lg">
+                <span class="material-symbols-outlined text-primary">location_on</span>
+                ул. Дзержинского, 2Б (вход со стороны улицы)
+            </p>
+        </div>
+        
+        <div class="bg-gray-100 dark:bg-gray-800 rounded-[2.5rem] h-[600px] md:h-[700px] overflow-hidden border border-gray-200 dark:border-gray-700 shadow-2xl relative">
+            <iframe 
+                src="https://yandex.ru/map-widget/v1/?z=16&ol=biz&oid=1071276806" 
+                width="100%" 
+                height="100%" 
+                frameborder="0" 
+                allowfullscreen="true" 
+                class="dark:opacity-80 dark:contrast-125">
+            </iframe>
+            
+            <!-- Floating Badge -->
+            <div class="absolute bottom-8 right-8 hidden md:block">
+                <a href="https://yandex.ru/maps/org/admin_ko/1071276806/" target="_blank" class="flex items-center gap-4 bg-white dark:bg-gray-900 p-5 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-800 hover:scale-105 transition-transform group">
+                    <div class="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center text-white shadow-lg shadow-primary/20 group-hover:rotate-6 transition-transform">
+                        <span class="material-symbols-outlined text-3xl">directions</span>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-1 text-left">Яндекс Карты</p>
+                        <p class="font-bold text-gray-900 dark:text-white">Построить маршрут</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

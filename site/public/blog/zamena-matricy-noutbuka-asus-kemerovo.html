@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Замена экрана ноутбука ASUS в Кемерово: быстро, качественно и без засветов | Админ.Ко</title>
+    <meta name="description" content="Профессиональная замена матрицы ноутбука ASUS в сервисном центре Админ.Ко (Кемерово). Устраняем засветы, битые пиксели и трещины. Гарантия на работу и запчасти.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div id="header-placeholder"></div>
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-20">
+        <!-- Заголовок и мета -->
+        <header class="mb-12 md:mb-20">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-6 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-black mb-8 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic italic">
+                Замена экрана ноутбука ASUS в Кемерово: быстро, качественно и без засветов
+            </h1>
+        </header>
+
+        <!-- ТЕКСТ СТАТЬИ -->
+        <div class="prose prose-lg dark:prose-invert max-w-none space-y-8 text-gray-700 dark:text-gray-300 font-medium leading-relaxed">
+            <!-- CONTENT START -->
+            <section class="mb-8">
+<h2>Почему экран ноутбука ASUS выходит из строя и как распознать неисправность матрицы</h2>
+
+<p>Матрица ноутбука ASUS — это сложный узел, состоящий из тонкопленочных транзисторов (TFT) и слоя жидких кристаллов. В условиях лаборатории «Админ.Ко» мы чаще всего фиксируем выход компонента из строя по трем техническим причинам:</p>
+
+<ul>
+    <li><strong>Механическое воздействие:</strong> Микротрещины на стекле матрицы из-за закрытия крышки с оставленным на клавиатуре предметом или физического давления на верхнюю крышку.</li>
+    <li><strong>Деградация шлейфа матрицы (LVDS/eDP):</strong> Из-за постоянных циклов открытия-закрытия ноутбука перетираются сигнальные линии, что приводит к «артефактам» или полосам.</li>
+    <li><strong>Электрический пробой:</strong> Неисправности цепей питания подсветки на материнской плате, которые выжигают контроллер матрицы (T-CON).</li>
+
+</ul></ul>
+
+<p>Распознать неисправность инженер может по первичным симптомам. Если вы наблюдаете «битые» пиксели, вертикальные полосы, изменение цветопередачи или полное отсутствие изображения при подключении внешнего монитора через HDMI — проблема локализована в дисплейном модуле.</p>
+
+<p>Важно понимать: замена матрицы в «Админ.Ко» — это не просто «открутил и прикрутил». Мы используем профессиональный инструмент для разбора корпуса, чтобы не повредить пластиковые защелки и не допустить перекоса матрицы. <strong>Некачественный монтаж приводит к засветам по краям экрана</strong>, так как создается избыточное давление на матрицу изнутри. Наши инженеры строго соблюдают заводские допуски по затяжке крепежных винтов, обеспечивая равномерное распределение нагрузки и идеальную цветопередачу без «пятен» на засвеченных участках.</p>
+</section>
+
+<section class="mb-8">
+<h2>Профессиональная замена дисплея в сервисном центре «Админ.Ко»: пошаговый процесс работы</h2>
+
+<p>Замена матрицы ноутбука ASUS в «Админ.Ко» — это не просто механическая установка новой детали, а технологический процесс, исключающий риск повреждения шлейфов и элементов питания материнской платы. Мы работаем по регламенту, который исключает возникновение засветов, битых пикселей и проблем с передачей цвета.</p>
+
+<ul>
+    <li><strong>Аппаратная диагностика:</strong> Перед вскрытием корпуса мы используем осциллограф Rigol для проверки параметров питания видеочипа и матрицы. Это исключает случаи, когда проблема кроется не в дисплее, а в неисправном контроллере на плате.</li>
+    <li><strong>Безопасный демонтаж:</strong> Разборка крышки матрицы ASUS выполняется специализированным инструментом, что предотвращает появление царапин на пластиковом корпусе или повреждение хрупких защелок. Мы не используем «подручные средства» — только профессиональные пластиковые медиаторы и диэлектрические лопатки.</li>
+    <li><strong>Микро-пайка компонентов:</strong> В моделях с тонкими LVDS-шлейфами или встроенными инверторами, где требуется восстановление контактных площадок, мы используем паяльные станции JBC. Высокая точность нагрева исключает перегрев текстолита и разрушение дорожек, что неизбежно происходит при использовании дешевых китайских паяльников.</li>
+    <li><strong>Работа с химией:</strong> При подключении шлейфов мы используем флюсы Martin/Amtech. Это профессиональные составы, которые после пайки не требуют агрессивной смывки и предотвращают процесс электрохимической коррозии (гниения) контактов в будущем.</li>
+    <li><strong>Калибровка и тестирование:</strong> После установки матрицы проводится программная проверка цветопередачи и равномерности подсветки. Мы контролируем отсутствие паразитных засветов по периметру матрицы, которые часто возникают при перетяжке винтов или использовании некачественных комплектующих.</li>
+
+</ul></ul>
+
+<p>Для сохранения заводских параметров вашего ноутбука ASUS мы используем только оригинальные матрицы или их сертифицированные аналоги класса ААА+. После завершения работ устройство проходит стресс-тест в течение 30 минут, что позволяет нам уверенно предоставлять гарантию 12 месяцев на выполненную услугу.</p>
+</section>
+
+<section class="mb-8">
+<h2>Преимущества выбора оригинальных комплектующих и отсутствие «засветов» после установки</h2>
+
+<p>Многие сервисы в Кемерово предлагают «бюджетную» замену матриц, устанавливая дешевые копии. Результат такой экономии всегда предсказуем: неравномерная подсветка, искажение цветопередачи, низкий запас яркости и появление «засветов» по краям экрана. В СЦ «Админ.Ко» мы используем принципиально иной подход, исключающий подобные дефекты.</p>
+
+<p>Проблема «засветов» при замене экрана на ASUS часто вызвана не только качеством самой панели, но и нарушением технологии сборки. В нашей лаборатории мы придерживаемся следующих инженерных стандартов:</p>
+
+<ul>
+    <li><strong>Геометрическая точность:</strong> Мы не используем агрессивные адгезивы, которые деформируют пластиковый корпус или рамку матрицы. Применение оригинальных монтажных прокладок гарантирует отсутствие механического напряжения на кристалл.</li>
+    <li><strong>Контроль подсветки:</strong> Использование оригинальных комплектующих обеспечивает идентичную заводской равномерность светового потока. Мы исключаем «пережатие» матрицы, которое у дилетантов приводит к появлению белесых пятен в углах дисплея.</li>
+    <li><strong>Микропайка шлейфов:</strong> При подключении EDP-кабеля (Embedded DisplayPort) мы используем паяльные станции <strong>JBC (Испания)</strong>. Это позволяет восстановить или зафиксировать коннекторы без термического воздействия на соседние компоненты материнской платы, что критически важно для ноутбуков ASUS серии ROG и ZenBook.</li>
+    <li><strong>Чистота процесса:</strong> Замена матрицы проводится в условиях антистатической защиты. Мы исключаем попадание пыли между слоями дисплея, что часто случается в «гаражных» мастерских, не оснащенных профессиональным оборудованием для очистки компонентов.</li>
+
+</ul></ul>
+
+<p>Использование флюсов <strong>Martin</strong> и профессионального измерительного оборудования позволяет нам добиться идеальной калибровки изображения. После установки мы проверяем матрицу на наличие «битых» пикселей и соответствие цветовому охвату sRGB/Adobe RGB, заявленному производителем. Вы получаете ноутбук в состоянии «как с завода», с сохранением всех заводских параметров контрастности и угла обзора.</p>
+</section>
+
+<section class="mb-8">
+<h2>Гарантия на ремонт и рекомендации по эксплуатации экрана вашего ноутбука в Кемерово</h2>
+
+<p>В «Админ.Ко» мы не просто меняем матрицу — мы возвращаем заводскую герметичность и качество изображения. На каждый установленный дисплейный модуль ASUS распространяется официальная гарантия 12 месяцев, закрепленная договором. Если после замены вы заметите малейшие отклонения в цветопередаче или яркости, мы устраним их бесплатно.</p>
+
+<p>Наши инженеры используют специализированные диэлектрические материалы при монтаже, что исключает риск короткого замыкания на шлейфах матрицы. Это стандарт качества, недоступный при «домашнем» ремонте или в кустарных мастерских без должного оборудования.</p>
+
+<ul>
+    <li><strong>Проверка под нагрузкой:</strong> Каждый экран перед выдачей проходит тесты на «битые» пиксели и равномерность подсветки с использованием лабораторного оборудования.</li>
+    <li><strong>Использование оригинальных термопрокладок:</strong> При замене экрана мы восстанавливаем теплоотводящие контуры, если они предусмотрены конструкцией крышки ноутбука, что защищает матрицу от перегрева.</li>
+    <li><strong>Правила ухода:</strong> Чтобы экран служил дольше, протирайте его только специализированными микрофибровыми салфетками без использования спиртосодержащих средств. Агрессивная химия разрушает антибликовое покрытие (олеофобный слой) матрицы ASUS.</li>
+    <li><strong>Физическая защита:</strong> Никогда не оставляйте посторонние предметы (ручки, наушники) на клавиатуре перед закрытием крышки ноутбука — это самая частая причина точечных засветов и трещин матрицы в Кемерове.</li>
+    <li><strong>Контроль зазора:</strong> Мы гарантируем отсутствие люфтов и зазоров между матрицей и корпусной рамкой. Использование профессиональных адгезивов обеспечивает плотное прилегание без перекосов.</li>
+
+</ul></ul>
+
+<p>Замена экрана в «Админ.Ко» — это исключение риска повреждения шлейфов и материнской платы. Мы работаем так, чтобы ноутбук после ремонта выглядел и функционировал как новый — без следов разбора, сколов пластика и некачественной проклейки.</p>
+</section>
+        </div>
+        </div>
+
+        <!-- КРАСИВЫЙ CTA БЛОК -->
+            <!-- CONTENT END -->
+        </div>
+
+        <!-- CTA БЛОК (Спросите инженера) -->
+        <section class="mt-20 bg-primary rounded-[3rem] p-8 md:p-12 text-white overflow-hidden relative group shadow-2xl shadow-primary/20">
+            <div class="relative z-10">
+                <h2 class="text-3xl md:text-4xl font-black mb-4 text-white uppercase italic">Спросите инженера</h2>
+                <p class="text-lg md:text-xl mb-8 text-white/90 font-medium">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <button onclick="openMessengerModal()" class="w-full md:w-auto bg-white text-primary px-10 py-5 rounded-2xl font-black text-xl hover:scale-105 transition-all shadow-xl flex items-center justify-center gap-3 active:scale-95 uppercase tracking-widest">
+                    <span class="material-symbols-outlined font-bold">chat</span>
+                    Бесплатная консультация
+                </button>
+            </div>
+            <span class="material-symbols-outlined absolute -right-8 -bottom-8 text-[15rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </section>
+    </article>
+</main>
+
+<!-- Карта -->
+<section class="w-full mt-24 mb-16 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col items-center mb-10 text-center">
+            <h2 class="text-3xl md:text-4xl font-black mb-3">Наш адрес в Кемерово</h2>
+            <p class="text-gray-500 dark:text-gray-400 flex items-center justify-center gap-2 text-lg">
+                <span class="material-symbols-outlined text-primary">location_on</span>
+                ул. Дзержинского, 2Б (вход со стороны улицы)
+            </p>
+        </div>
+        
+        <div class="bg-gray-100 dark:bg-gray-800 rounded-[2.5rem] h-[600px] md:h-[700px] overflow-hidden border border-gray-200 dark:border-gray-700 shadow-2xl relative">
+            <iframe 
+                src="https://yandex.ru/map-widget/v1/?z=16&ol=biz&oid=1071276806" 
+                width="100%" 
+                height="100%" 
+                frameborder="0" 
+                allowfullscreen="true" 
+                class="dark:opacity-80 dark:contrast-125">
+            </iframe>
+            
+            <!-- Floating Badge -->
+            <div class="absolute bottom-8 right-8 hidden md:block">
+                <a href="https://yandex.ru/maps/org/admin_ko/1071276806/" target="_blank" class="flex items-center gap-4 bg-white dark:bg-gray-900 p-5 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-800 hover:scale-105 transition-transform group">
+                    <div class="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center text-white shadow-lg shadow-primary/20 group-hover:rotate-6 transition-transform">
+                        <span class="material-symbols-outlined text-3xl">directions</span>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-1 text-left">Яндекс Карты</p>
+                        <p class="font-bold text-gray-900 dark:text-white">Построить маршрут</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

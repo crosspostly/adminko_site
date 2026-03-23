@@ -76,9 +76,6 @@ async function generateDeepArticle(topicData) {
             <section class="mt-8">${chapters[3] || ''}</section>
         `;
 
-        const MASTER_HEADER = fs.readFileSync(path.join(PUBLIC_DIR, 'header.html'), 'utf-8').replace(/href="(?!http|https|#|tel:|mailto:)/g, 'href="../').replace(/src="(?!http)/g, 'src="../');
-        const MASTER_FOOTER = fs.readFileSync(path.join(PUBLIC_DIR, 'footer.html'), 'utf-8').replace(/href="(?!http|https|#|tel:|mailto:)/g, 'href="../').replace(/src="(?!http)/g, 'src="../');
-
         const finalHtml = `<!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">
 <head>
@@ -88,14 +85,14 @@ async function generateDeepArticle(topicData) {
     <meta name="description" content="${meta.description}">
     <link rel="canonical" href="https://admin-ko.ru/blog/${meta.slug}.html">
     <link rel="icon" href="../favicon.jpg" type="image/jpeg">
-    <link rel="stylesheet" href="../styles.css?v=3.3">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }</script>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
-${MASTER_HEADER}
+<div id="header-placeholder"></div>
 <main class="flex-grow max-w-4xl mx-auto px-4 py-12 w-full">
     <article class="prose dark:prose-invert prose-primary lg:prose-xl max-w-none bg-white dark:bg-gray-800 p-8 md:p-16 rounded-[3rem] shadow-2xl border border-gray-100 dark:border-gray-700">
         <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8">
@@ -106,8 +103,8 @@ ${MASTER_HEADER}
         ${finalBody}
     </article>
 </main>
-${MASTER_FOOTER}
-<script src="../components.js?v=3.3"></script>
+<div id="footer-placeholder"></div>
+<script src="../components.js?v=3.6"></script>
 </body>
 </html>`;
 

@@ -9,7 +9,7 @@ const path = require('path');
 
 const PRIORITIZED_TOPICS_FILE = path.join(__dirname, 'prioritized_topics.json');
 const CATEGORIES = ['phone', 'laptop', 'b2b_it', 'cctv', 'consoles', 'appliances', 'tv', 'data_recovery'];
-const ARTICLES_PER_CATEGORY = 2; // Итого 16 статей в день
+const ARTICLES_PER_CATEGORY = 1; // 1 статья на категорию в день, итого 8 статей за запуск
 
 const backupManager = require('./backup-manager');
 

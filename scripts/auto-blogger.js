@@ -62,7 +62,7 @@ function cleanMarkdown(text) {
     clean = clean.replace(/^## (.*$)/gm, '<h2 class="text-3xl font-black mt-16 mb-8 text-gray-900 dark:text-white uppercase tracking-tighter italic border-l-8 border-primary pl-6">$1</h2>');
 
     // 3. Списки
-    clean = clean.replace(/^[\s]*[-*•] (.*)/gm, '<li class="relative pl-8 mb-4 before:content-[\\'—\\'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">$1</li>');
+    clean = clean.replace(/^[\s]*[-*•] (.*)/gm, '<li class="relative pl-8 mb-4 before:content-[\'—\'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">$1</li>');
 
     // 4. Инфо-блоки (Цена, Сроки)
     clean = clean.replace(/^(Цена|Примерная цена|Сроки|Диагностика)[^:]*:(.*$)/gm, 
@@ -71,62 +71,83 @@ function cleanMarkdown(text) {
         '<p class="text-2xl font-black text-gray-900 dark:text-white m-0">$2</p></div>');
 
     // 5. РАЗБИВКА НА АБЗАЦЫ
-    const lines = clean.split('\\n');
+    const lines = clean.split('\n');
     let finalHtml = '';
     lines.forEach(line => {
         const trimmed = line.trim();
         if (!trimmed) return;
         if (trimmed.startsWith('<h') || trimmed.startsWith('<li') || trimmed.startsWith('<div')) {
-            finalHtml += trimmed + '\\n';
+            finalHtml += trimmed + '\n';
         } else {
             const isPointHeader = trimmed.startsWith('<strong>');
             const spacingClass = isPointHeader ? 'mt-12 mb-6' : 'mb-10';
-            finalHtml += \`<p class="\${spacingClass} leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">\${trimmed}</p>\\n\`;
+            finalHtml += `<p class="${spacingClass} leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">${trimmed}</p>\n`;
         }
     });
     return finalHtml;
 }
 
 async function generateDeepArticle(topicData) {
-    const { topic } = topicData;
-    console.log(\`\\n🚀 СТАРТ: "\${topic}"\`);
+    const { topic, customSlug } = topicData;
+    console.log(`\n🚀 СТАРТ: "${topic}"`);
 
     try {
         // [1] SEO
-        const metaPrompt = \`Для темы "\${topic}" создай SEO данные (город Кемерово). Верни ТОЛЬКО JSON: {"title": "...", "description": "...", "slug": "..."}\`;
+        const metaPrompt = `Для темы "${topic}" создай SEO данные (город Кемерово). Верни ТОЛЬКО JSON: {"title": "...", "description": "...", "slug": "..."}`;
         const metaRes = await model.generateContent(metaPrompt);
-        const meta = JSON.parse(metaRes.response.text().match(/\\{[\\s\\S]*\\}/)[0]);
+        const metaText = metaRes.response.text();
+        const jsonMatch = metaText.match(/\{[\s\S]*\}/);
+        if (!jsonMatch) throw new Error("JSON meta fail");
+        const meta = JSON.parse(jsonMatch[0]);
+
+        // Если передан кастомный слаг, используем его
+        if (customSlug) {
+            meta.slug = customSlug;
+        }
 
         // [2] ПЛАН
-        const planPrompt = \`Создай план статьи из 4 глав для: "\${topic}". Верни ТОЛЬКО JSON массив строк.\`;
+        const planPrompt = `Создай план статьи из 4 глав для: "${topic}". Верни ТОЛЬКО JSON массив строк.`;
         const planRes = await model.generateContent(planPrompt);
-        const sections = JSON.parse(planRes.response.text().match(/\\[[\\s\\S]*\\]/)[0]);
+        const sectionsMatch = planRes.response.text().match(/\[[\s\S]*\]/);
+        if (!sectionsMatch) throw new Error("JSON sections fail");
+        const sections = JSON.parse(sectionsMatch[0]);
 
         // [3] КОНТЕНТ
         let chapters = [];
         for (const section of sections) {
-            const chapterPrompt = \`\${systemPrompt}\\n\\nНАПИШИ ГЛАВУ: "\${section}" (Тема: \${topic})\\nТРЕБОВАНИЯ: ТОЛЬКО чистый текст с HTML (h2, p, ul). НИКАКОГО MARKDOWN!\`;
+            const chapterPrompt = `${systemPrompt}\n\nНАПИШИ ГЛАВУ: "${section}" (Тема: ${topic})\nТРЕБОВАНИЯ: ТОЛЬКО чистый текст с HTML (h2, p, ul). НИКАКОГО MARKDOWN!`;
             const chapterRes = await model.generateContent(chapterPrompt);
             chapters.push(cleanMarkdown(chapterRes.response.text()));
         }
 
         // [4] СБОРКА
-        const blitzPrompt = \`Напиши Blitz-Answer (Цена, Срок, Диагностика) для "\${topic}". Без Markdown.\`;
-        const blitzHtml = cleanMarkdown((await model.generateContent(blitzPrompt)).response.text());
+        const blitzPrompt = `Напиши Blitz-Answer (Цена, Срок, Диагностика) для "${topic}". Без Markdown.`;
+        const blitzRes = await model.generateContent(blitzPrompt);
+        const blitzHtml = cleanMarkdown(blitzRes.response.text());
 
-        const nuancePrompt = \`Напиши технический секрет инженера для "\${topic}". Без Markdown.\`;
-        const nuanceHtml = cleanMarkdown((await model.generateContent(nuancePrompt)).response.text());
+        const nuancePrompt = `Напиши технический секрет инженера для "${topic}". Без Markdown.`;
+        const nuanceRes = await model.generateContent(nuancePrompt);
+        const nuanceHtml = cleanMarkdown(nuanceRes.response.text());
 
         const MASTER_HEADER = fs.readFileSync(path.join(PUBLIC_DIR, 'header.html'), 'utf-8').replace(/href="(?!http|https|#|tel:|mailto:)/g, 'href="../').replace(/src="(?!http)/g, 'src="../');
         const MASTER_FOOTER = fs.readFileSync(path.join(PUBLIC_DIR, 'footer.html'), 'utf-8').replace(/href="(?!http|https|#|tel:|mailto:)/g, 'href="../').replace(/src="(?!http)/g, 'src="../');
 
-        const finalHtml = \`<!DOCTYPE html>
+        const jsonLd = {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": meta.title,
+            "description": meta.description,
+            "datePublished": new Date().toISOString(),
+            "author": { "@type": "Organization", "name": "Админ.Ко" }
+        };
+
+        const finalHtml = `<!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>\${meta.title} | Админ.Ко</title>
-    <meta name="description" content="\${meta.description}">
+    <title>${meta.title} | Админ.Ко</title>
+    <meta name="description" content="${meta.description}">
     <link rel="icon" href="../favicon.jpg" type="image/jpeg">
     <link rel="stylesheet" href="../styles.css?v=3.4">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -140,7 +161,7 @@ async function generateDeepArticle(topicData) {
     </script>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
-\${MASTER_HEADER}
+${MASTER_HEADER}
 <main class="flex-grow">
     <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
         <header class="mb-16 md:mb-24">
@@ -148,31 +169,31 @@ async function generateDeepArticle(topicData) {
                 <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
                 <span class="text-gray-400">Лаборатория Админ.Ко</span>
             </div>
-            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">\${meta.title}</h1>
-            <meta name="published_at" content="\${new Date().toISOString()}">
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">${meta.title}</h1>
+            <meta name="published_at" content="${new Date().toISOString()}">
         </header>
         <div class="prose prose-lg dark:prose-invert max-w-none">
             <!-- CONTENT START -->
-            <section>\${chapters[0]}</section>
-            \${Layout.yellowBlock(blitzHtml)}
-            <section>\${chapters[1]}</section>
-            \${Layout.blueBlock(nuanceHtml)}
-            \${Layout.ctaBlock}
-            <section>\${chapters[2] || ''}</section>
-            <section class="mt-12">\${chapters[3] || ''}</section>
+            <section>${chapters[0]}</section>
+            ${Layout.yellowBlock(blitzHtml)}
+            <section>${chapters[1]}</section>
+            ${Layout.blueBlock(nuanceHtml)}
+            ${Layout.ctaBlock}
+            <section>${chapters[2] || ''}</section>
+            <section class="mt-12">${chapters[3] || ''}</section>
             <!-- CONTENT END -->
         </div>
     </article>
 </main>
-\${MASTER_FOOTER}
+${MASTER_FOOTER}
 <script src="../components.js?v=3.4"></script>
 </body>
-</html>\`;
+</html>`;
 
-        fs.writeFileSync(path.join(BLOG_DIR, \`\${meta.slug}.html\`), finalHtml);
-        console.log(\`✅ Готово: \${meta.slug}.html\`);
+        fs.writeFileSync(path.join(BLOG_DIR, `${meta.slug}.html`), finalHtml);
+        console.log(`✅ Готово: ${meta.slug}.html`);
     } catch (e) {
-        console.error(\`❌ Ошибка: \`, e.message);
+        console.error(`❌ Ошибка: `, e.message);
     }
 }
 

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Восстановление данных с зашифрованных дисков в Кемерово | Экспертно, Конфиденциально | Админ.Ко</title>
+    <meta name="description" content="Срочное восстановление данных с зашифрованных дисков (BitLocker, VeraCrypt, TrueCrypt) в Кемерово. Гарантируем полную конфиденциальность, экспертный подход и высокий процент успеха. Верните доступ к важной информации безопасно и быстро!">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Восстановление данных с зашифрованных дисков в Кемерово | Экспертно, Конфиденциально</h1>
+            <meta name="published_at" content="2026-03-24T03:12:34.983Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Восстановление данных с зашифрованного диска в Кемерово: Конфиденциальность и экспертный подход</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Ваши данные на зашифрованном диске недоступны? Разбитый ноутбук, вышедший из строя внешний накопитель или поврежденный системный диск с BitLocker, FileVault или VeraCrypt представляют собой критическую проблему. Админ.Ко в Кемерово предлагает экспертное восстановление данных с зашифрованных носителей, гарантируя конфиденциальность и высокий процент успеха.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Blitz-Answer (Блок конверсии)</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Проблема:</b> Потеря доступа к данным на зашифрованном диске (логические сбои, физические повреждения, системные ошибки).</li>
+<li><b>Срок:</b> От 1 рабочего дня (зависит от сложности и состояния носителя).</li>
+<li><b>Цена:</b> От 5000 руб. (определяется после диагностики).</li>
+<li><b>Диагностика:</b> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Экспертный разбор: Когда проблема становится критичной</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Восстановление данных с зашифрованного диска — это задача, требующая не только глубоких знаний в области восстановления информации, но и понимания принципов криптографии. Стандартные методы восстановления могут привести к безвозвратной потере данных, если неправильно работать с файловой системой или структурой шифрования. Ключевая проблема заключается не только в считывании "сырых" данных, но и в их корректной дешифровке после восстановления.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">В лаборатории Админ.Ко мы используем профессиональные комплексы, способные работать с поврежденными секторами и контроллерами дисков, минимизируя риск дальнейшего разрушения данных. Если диск имеет физические повреждения (например, не раскручивается или издает посторонние звуки), мы применяем специализированное оборудование для восстановления его работоспособности на аппаратном уровне. Для диагностики электроники контроллера и цепей питания используется осциллограф Rigol, позволяющий выявить мельчайшие отклонения. В случае необходимости микро-пайки на плате диска, обеспечивающей стабильный доступ к данным, задействуется паяльная станция JBC, гарантирующая точное и безопасное вмешательство без перегрева чувствительных компонентов.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Наши инженеры работают с логическими структурами зашифрованных томов, восстанавливая файловые системы таким образом, чтобы после физического или логического восстановления данные могли быть корректно расшифрованы при наличии пользовательского ключа или пароля. Мы понимаем, что конфиденциальность в таких случаях является приоритетом, поэтому все работы проводятся в строгом соответствии с протоколами безопасности, исключающими несанкционированный доступ.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Инженерный стандарт Админ.Ко</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Диагностика 0 руб.:</b> Мы точно определяем проблему и стоимость восстановления до начала работ.</li>
+<li><b>Сохранность данных:</b> Приоритет №1. Мы гарантируем, что ваши данные не будут повреждены или утеряны в процессе восстановления.</li>
+<li><b>Запчасти в наличии:</b> Для ремонта дисков и восстановления доступа к ним используются проверенные компоненты.</li>
+<li><b>Честная цена:</b> Прозрачное ценообразование, основанное на сложности работы, без скрытых платежей.</li>
+<li><b>Гарантия 1 год по договору:</b> На выполненные работы и замененные компоненты (применимо к ремонту дисков).</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Локальный призыв (GEO CTA)</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Не рискуйте вашими ценными и конфиденциальными данными. Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально. Обратитесь к профессионалам Админ.Ко для безопасного и эффективного восстановления информации с зашифрованных дисков.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Blitz-Ответ: Восстановление данных с зашифрованного диска</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"></p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Бесплатная и конфиденциальная. Включает оценку типа шифрования, состояния диска и перспектив восстановления. Срок: от 1-2 часов до 1 рабочего дня (зависит от сложности первичной оценки). При наличии ключа шифрования - оценка более точна и быстра.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Зависит от типа шифрования (BitLocker, VeraCrypt, ransomware), наличия ключа/пароля и степени повреждения диска (логические, физические).</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Типично: От 3-5 рабочих дней (при наличии ключа и незначительных повреждениях) до 2-4 недель и более для комплексных случаев (физические повреждения, подбор ключа, криптоанализ).</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"></p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Формируется индивидуально, только после полной диагностики.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Начальная стоимость: от 8 000 - 15 000 рублей (для логических повреждений с известным ключом).</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Может значительно возрастать (от 25 000 - 50 000+ рублей) для сложных случаев: физические повреждения диска, восстановление или подбор ключа шифрования, специализированный криптоанализ.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Гарантия полной конфиденциальности данных включена в стоимость.</p>
+
+        </div>
+            <section><h2>Экспертный подход: Почему восстановление зашифрованных данных требует особых знаний и технологий</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Восстановление данных с зашифрованных накопителей — это задача, которая выходит за рамки стандартных процедур. Шифрование призвано защищать информацию от несанкционированного доступа, и даже при физическом повреждении диска эта защита остается активной. Для успешного восстановления необходим не только глубокий инженерный анализ, но и специализированное оборудование, способное работать на пределе технических возможностей.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Диск, будь то HDD или SSD, может быть зашифрован программно (BitLocker, VeraCrypt) или аппаратно (OPAL-совместимые SSD). В обоих случаях доступ к данным требует либо корректной дешифровки, либо обхода механизма шифрования через низкоуровневое взаимодействие с контроллером накопителя. При наличии физических повреждений, проблема усугубляется, и стандартные программные методы становятся неэффективными или вовсе невозможными.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы применяем комплексный подход, который охватывает как логические, так и физические неисправности, гарантируя максимальную вероятность восстановления при сохранении конфиденциальности:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Микро-пайка JBC (Испания):</strong> Для доступа к данным на сильно поврежденных зашифрованных SSD или внешних HDD часто требуется восстановление контроллерной платы. Оборудование JBC позволяет проводить микроскопическую пайку компонентов (например, NAND-чипов или чипов контроллера) без риска перегрева и дальнейшего повреждения чувствительных к температуре элементов или смещения BGA-компонентов, что критически важно для сохранения целостности шифровальных ключей.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Паяльная станция Quick 861DW:</strong> При необходимости реболинга или замены BGA-чипов на плате контроллера (например, при выходе из строя мостового контроллера внешнего диска, который управляет шифрованием), Quick 861DW обеспечивает точный и контролируемый процесс нагрева и пайки, минимизируя риск необратимого повреждения.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Тепловизор:</strong> Выявление скрытых дефектов на плате, таких как короткие замыкания, утечки тока или перегрев отдельных компонентов, которые могут блокировать доступ к зашифрованному диску. Тепловизор позволяет точно локализовать проблемный участок и предотвратить его дальнейшее разрушение при диагностике.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Осциллограф Rigol:</strong> Необходим для анализа сигналов на интерфейсных шинах и контроллерной плате. При работе с зашифрованными данными важно убедиться, что контроллер диска обменивается информацией корректно и без ошибок. Осциллограф позволяет выявить нарушения в работе шины данных, питании или синхронизации, что может быть причиной невозможности доступа к зашифрованным секторам.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Специализированные программаторы (включая принципы JCID):</strong> Для некоторых видов SSD и зашифрованных накопителей требуется доступ к служебной области или прямое взаимодействие с контроллером через специальные интерфейсы. Мы используем специализированные программаторы, которые позволяют считывать и записывать прошивку контроллера, обходить защиты или переводить диск в технологический режим для извлечения данных, что является аналогией работы программаторов JCID с мобильными устройствами для сохранения ключевых функций.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без этого оборудования любая попытка восстановления зашифрованных данных превращается в крайне рискованное мероприятие. "Кустарный" подход может привести к необратимому повреждению служебной информации, шифровальных ключей или самого накопителя, делая восстановление невозможным. Только лаборатория, оснащенная такими высокоточными инструментами, может гарантировать безопасность и успешность процесса, а также строгую конфиденциальность ваших данных.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Истинный технический секрет восстановления данных с зашифрованного диска, особенно при наличии физических повреждений, заключается не только в знании пароля или ключа, но и в глубоком понимании *структурной анатомии* шифрованного тома.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Экспертный подход требует не просто посекторного копирования, а целенаправленной стратегии по приоритетному извлечению критически важных *метаданных шифрования* — заголовков, ключевых слотов и таблиц мастер-ключей — даже из сильно поврежденных областей диска. Эти данные, зачастую занимающие всего несколько специфических секторов, являются фундаментом для последующей дешифрации. Без их целостного восстановления даже при наличии правильного пароля доступ к пользовательским данным будет невозможен.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Таким образом, наш секрет — это способность *реконструировать логическую структуру зашифрованного тома* из его физически деградировавших фрагментов, обеспечивая "точку входа" для дешифрации еще до начала полномасштабного восстановления самих пользовательских файлов.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Безопасность прежде всего: Гарантии конфиденциальности при восстановлении ваших данных</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Проблема:</strong> Недоступны данные на зашифрованном диске (повреждение логической структуры, утеря пароля, сбой шифрования).<br></p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Срок:</strong> От 1 дня (в зависимости от сложности шифрования и типа повреждения).<br></p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Цена:</strong> От 3500 руб.<br></p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Диагностика:</strong> 0 руб.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Восстановление данных с зашифрованного диска в Кемерово: Конфиденциальность и экспертный подход</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Работа с зашифрованными накопителями требует не только глубоких технических знаний, но и абсолютной гарантии конфиденциальности. Зашифрованный диск – это надежная защита ваших данных, но при логических сбоях, повреждении файловой системы или физических неисправностях самого носителя доступ к информации становится невозможным. Попытки самостоятельного восстановления без специализированного оборудования и понимания криптографических принципов могут привести к безвозвратной потере данных.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Лаборатория Админ.Ко располагает специализированными программно-аппаратными комплексами для низкоуровневой работы с накопителями. Это позволяет создавать точные посекторные образы дисков, обходя логические ошибки и работая с поврежденными областями без риска дальнейшего разрушения. Для расшифровки и восстановления данных с таких носителей, как BitLocker, FileVault, VeraCrypt и других, мы используем алгоритмические подходы, требующие не только вычислительных мощностей, но и экспертизы в области криптографии и файловых систем. Некорректные действия в этом процессе могут необратимо повредить зашифрованный контейнер.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">При восстановлении данных с зашифрованных дисков конфиденциальность является нашим приоритетом. Мы гарантируем полную защиту вашей информации на всех этапах работы:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Изолированные рабочие станции:</strong> Все операции проводятся на физически изолированных от внешней сети компьютерах, что полностью исключает возможность утечки данных.</li>
+<li><strong>Строгий контроль доступа:</strong> Доступ к данным имеют только сертифицированные инженеры, прошедшие проверку и обучение по протоколам информационной безопасности.</li>
+<li><strong>Договор о неразглашении:</strong> С каждым клиентом заключается официальный договор, обеспечивающий юридическую защиту конфиденциальности всей переданной информации.</li>
+<li><strong>Прозрачность процесса:</strong> Мы предоставляем полную отчетность о ходе работ и гарантируем уничтожение временных копий данных после их успешной передачи клиенту.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Инженерный стандарт Админ.Ко: Ваш залог успеха</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>0 рублей за диагностику:</strong> Мы проведем полную и точную диагностику вашего зашифрованного накопителя без предоплаты и скрытых платежей.</li>
+<li><strong>Оборудование и ПО в наличии:</strong> Наша лаборатория оснащена специализированными программно-аппаратными комплексами и лицензионным ПО, необходимыми для работы с любыми типами шифрования и повреждений.</li>
+<li><strong>Гарантия качества по договору:</strong> Мы работаем официально, предоставляя все необходимые документы и гарантии на выполненные услуги по восстановлению данных.</li>
+<li><strong>Сохранность и конфиденциальность данных:</strong> Мы гарантируем абсолютную безопасность ваших данных на каждом этапе восстановления, от приемки до передачи.</li>
+<li><strong>Честная цена:</strong> Стоимость услуг рассчитывается прозрачно, исходя из сложности и объема работ, без навязывания лишних опций.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Мы находимся в центре Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Не рискуйте конфиденциальностью и целостностью ваших данных. При проблемах с зашифрованным диском доверьтесь профессионалам Админ.Ко. Мы находимся по адресу: г. Кемерово, ул. Дзержинского 2Б. Ориентиры: СРК Арена и ТЦ Я. Работаем официально.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+</section>
+            <section class="mt-12"><h2>Восстановление данных с зашифрованного диска в Кемерово: Конфиденциальность и экспертный подход</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Проблема:</strong> Утеря доступа к данным на зашифрованном диске, повреждение носителя, забыт пароль.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Срок:</strong> От 3 до 10 рабочих дней (зависит от степени повреждения и типа шифрования).</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Цена:</strong> От 7000 руб.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Диагностика:</strong> 0 руб.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h2>Экспертный разбор: Почему восстановление зашифрованных данных требует особого подхода</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Восстановление данных с зашифрованного носителя — одна из самых сложных задач в сфере Data Recovery. Проблема не сводится к банальному ремонту или программному восстановлению. Здесь мы имеем дело с многоуровневой защитой информации, будь то BitLocker, FileVault, VeraCrypt или другая система.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Любое физическое повреждение диска (например, "бэды", вышедшие из строя головки, проблемы с платой контроллера) на зашифрованном носителе приводит к значительному усложнению процесса. Малейшее нарушение в последовательности секторов или потеря даже небольшой части данных может сделать дешифрование невозможным. Стандартные утилиты для восстановления данных бессильны, так как они работают поверх логической структуры, которая для шифрованных дисков является по сути "шумом" до момента дешифровки.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">В нашей лаборатории используется специализированный комплекс PC-3000 Express/Portable от ACE Lab – промышленный стандарт для профессионального восстановления данных. Этот аппаратно-программный комплекс позволяет работать на низком уровне, обходя штатные микропрограммы накопителя, что критически важно при повреждении служебной зоны или контроллера. С его помощью мы можем посекторно считывать данные даже с нестабильных дисков, игнорируя логические ошибки и собирая "сырые" данные.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">После считывания данных в образ диска, начинается этап криптоанализа и логического восстановления. Мы обладаем глубокими знаниями файловых систем (NTFS, APFS, EXT4, FAT32) и принципов работы основных систем шифрования. В случае физического повреждения диска, работы проводятся в чистой комнате класса 100/ISO 5, чтобы исключить попадание пыли на гермоблок.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Использование такого оборудования, как JBC для тонкой пайки, осциллографа Rigol для диагностики электроники, а также многолетний опыт инженеров, гарантирует максимально возможный процент успеха и полную конфиденциальность ваших данных. Попытки самостоятельного восстановления или обращение к неквалифицированным специалистам могут окончательно уничтожить данные, сделав их невосстановимыми.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h2>Инженерный стандарт Админ.Ко</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Бесплатная и точная диагностика состояния вашего носителя.</li>
+<li>Собственный парк профессионального оборудования, включая PC-3000, для работы с любыми типами шифрования и повреждений.</li>
+<li>Гарантия полной конфиденциальности ваших данных, закрепленная официальным договором.</li>
+<li>Максимальная сохранность данных: работаем исключительно с посекторной копией вашего диска, оригинал остаётся нетронутым.</li>
+<li>Прозрачное ценообразование: вы заранее знаете полную стоимость восстановления без скрытых платежей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Географический призыв к действию</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Если вы столкнулись с проблемой утери данных на зашифрованном диске, не рискуйте ценной информацией. Обратитесь к профессионалам. Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально, предоставляя полный пакет документов.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

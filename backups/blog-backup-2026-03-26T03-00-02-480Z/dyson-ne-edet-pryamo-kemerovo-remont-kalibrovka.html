@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dyson не едет прямо в Кемерово? Ремонт, калибровка датчиков пылесоса | Админ.Ко</title>
+    <meta name="description" content="Ваш робот-пылесос Dyson едет криво или по кругу в Кемерово? Проведем диагностику: калибровка датчиков, ремонт или замена колес, чистка моторов. Быстро и с гарантией!">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Dyson не едет прямо в Кемерово? Ремонт, калибровка датчиков пылесоса</h1>
+            <meta name="published_at" content="2026-03-25T03:08:33.851Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Глава 1: Кривой путь в Кемерово: Почему ваш Dyson сбился с курса?</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Робот-пылесос Dyson, спроектированный для точной и эффективной навигации, порой начинает двигаться непредсказуемо, оставляя неочищенные участки или натыкаясь на препятствия. В Кемерово это одна из наиболее частых жалоб владельцев. Причины такого "сбившегося с курса" поведения кроются либо в нарушениях калибровки или поломке чувствительных датчиков, либо в проблемах с механической частью — системой привода колес. Без специализированного оборудования и глубоких инженерных знаний, попытки самостоятельного ремонта или обращение к кустарным мастерам приводят лишь к временным решениям или к усугублению проблемы.</p></p>
+<h3>Экспертная диагностика Админ.Ко: от датчиков до привода</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для выявления истинной причины некорректного движения Dyson, инженеры Админ.Ко применяют комплексную аппаратную диагностику:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Анализ системы датчиков:</strong> Современные роботы-пылесосы Dyson оснащены сложной системой навигации, включающей оптические, инфракрасные датчики, лидары (LDS) и датчики перепада высоты. Некорректная работа одного из них может дезориентировать устройство. С помощью <strong>осциллографа Rigol</strong> мы попиксельно анализируем выходные сигналы каждого датчика, выявляя сбои в передаче данных или нарушения их калибровки. Тепловизор помогает обнаружить перегрев микросхем на основной плате, ответственных за обработку сигналов, что часто является следствием микротрещин или коротких замыканий.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Наши методы позволяют отличить проблему загрязнения датчика от аппаратного сбоя в управляющей электронике, где может потребоваться ювелирная пайка с использованием станции <strong>JBC</strong> для замены неисправного элемента.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Проверка механизма привода колес:</strong> Если датчики исправны, но пылесос все равно "косит", проблема может быть в системе привода. Это включает в себя износ резины колес, заклинивание редукторов, повреждение электромоторов или сбои в работе драйверов двигателей на основной плате. Мы используем специализированные стенды для измерения крутящего момента каждого колеса и анализа потребляемого тока. <strong>Осциллограф Rigol</strong> позволяет проверить управляющие импульсы на драйверы двигателей, выявляя проблемы в их работе или обрывы в цепях питания.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В случае выхода из строя драйвера или другого компонента на плате, требующего перепайки, используется паяльная станция <strong>JBC</strong>, гарантирующая точечное воздействие на компонент без перегрева многослойной платы. Для надежного соединения применяются флюсы премиум-класса <strong>Martin/Amtech</strong>, которые предотвращают коррозию и обеспечивают долговечность ремонта.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Почему ремонт "на коленке" — это путь к новым поломкам?</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без доступа к профессиональному диагностическому оборудованию и оригинальным комплектующим, большинство попыток ремонта робота-пылесоса сводятся к замене "наугад" или поверхностной чистке. Это может привести к:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Неправильной калибровке после замены датчиков, что вызовет новые ошибки навигации.</li>
+<li>Использованию низкокачественных аналогов колес или моторов, быстро выходящих из строя.</li>
+<li>Повреждению основной платы при неаккуратной пайке или некорректной разборке.</li>
+<li>Неустраненным скрытым дефектам, которые проявятся вскоре после ремонта.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко каждый этап ремонта Dyson, от диагностики до финального тестирования, соответствует строгим инженерным стандартам. Мы не просто устраняем симптом, мы находим и исправляем коренную причину, обеспечивая вашему роботу-пылесосу Dyson возвращение к безупречной работе на улицах Кемерово.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Blitz-Answer:</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"></p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Бесплатно при последующем ремонте, иначе 500-800 руб. Срок: 1-2 рабочих дня. Включает полную проверку датчиков на калибровку и загрязнение, состояния моторов и редукторов колес, а также электроники.</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"></p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">От 1500 руб. (за калибровку или чистку датчиков) до 7500 руб. (за ремонт или замену модуля колеса). Точная стоимость определяется после диагностики, исходя из конкретной неисправности и стоимости запчастей.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">От 1 до 5 рабочих дней. Зависит от сложности ремонта и наличия необходимых запчастей на складе.</p>
+
+        </div>
+            <section><h2>Глава 2: Загадки сенсоров: Как проверить и откалибровать "глаза" робота-пылесоса?</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Когда робот-пылесос Dyson перестает двигаться по прямой траектории, одним из ключевых подозреваемых становятся его навигационные сенсоры. Эти "глаза" и "уши" устройства — сложная система, включающая инфракрасные, оптические, ультразвуковые и контактные датчики, а также, в случае Dyson, лидар или камеру для картографирования. Их точная и синхронная работа критически важна для корректной навигации.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Проблема с прямолинейным движением часто указывает на некорректные показания одного или нескольких датчиков, которые отвечают за ориентацию в пространстве и определение препятствий. Это может быть связано с несколькими причинами:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Загрязнение оптики:</strong> Пыль, волосы, мелкий мусор могут оседать на линзах оптических или инфракрасных датчиков, искажая их показания. Даже микроскопические частицы способны вызвать существенные ошибки в навигации.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Физическое повреждение:</strong> Удары или падения могут повредить сами сенсоры или их крепления, изменив угол обзора или вызвав внутренние неисправности. Это особенно актуально для бамперных и боковых датчиков.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Электронный сбой:</strong> Отказ или некорректная работа электронных компонентов на платах сенсоров или на главной управляющей плате может приводить к ложным сигналам или их полному отсутствию. Температурные перепады, влажность, естественное старение компонентов способствуют таким сбоям.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Деградация калибровки:</strong> Со временем заводская калибровка датчиков может сбиваться. Это приводит к тому, что даже при корректной работе самих датчиков, система интерпретирует их данные с ошибками, что проявляется в отклонении от прямой траектории.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для пользователя возможности "проверки и калибровки" датчиков обычно сводятся к их тщательной очистке. Однако в большинстве случаев это лишь временное решение или вовсе неэффективно, если проблема глубже. Внутренняя калибровка и диагностика электронных неисправностей требует специализированного оборудования.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы применяем профессиональный инструментарий для точной диагностики навигационных систем:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Осциллограф Rigol:</strong> Позволяет анализировать сигналы, поступающие от каждого датчика. Мы можем выявить шумы, прерывания сигнала, некорректную амплитуду или форму волны, что указывает на дефект сенсора или проблемы с его подключением к основной плате.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Тепловизор:</strong> Используется для выявления локальных перегревов на платах сенсоров или главной плате, которые могут быть признаком скрытых коротких замыканий или перегрузки отдельных компонентов, влияющих на работу датчиков.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Специализированное диагностическое программное обеспечение:</strong> Для Dyson существуют сервисные программы, позволяющие напрямую считывать данные с каждого датчика, проверять их на соответствие эталонным значениям и, при необходимости, выполнять заводскую перекалибровку или обновление прошивки, которая может содержать патчи для алгоритмов навигации.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без такого оборудования невозможно точно определить источник проблемы — будь то сбитая калибровка, механическое повреждение или электронный сбой. Только комплексная диагностика позволяет гарантировать, что после ремонта ваш робот-пылесос Dyson снова будет двигаться точно и эффективно.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Технический секрет инженера (для Кемерово и не только):</strong></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"Ваш Dyson в Кемерово вдруг решил имитировать дрифт по угольной пыли? Не спешите винить местную гравитацию или прошивку. Инженерный секрет прямолинейности робота-пылесоса кроется в двух банальностях, которые система воспринимает как фундаментальную ложь.</p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Первое и главное – дифференциальное сопротивление колес.</strong> Если одно из ведущих колес загрязнено, намотало волосы, нитки или его подшипник начал "подклинивать" (что в Кемерово особенно актуально из-за мелкой пыли), оно будет вращаться с меньшей эффективностью или силой. Мотор подает одинаковую мощность, но фактическое перемещение одной стороны меньше. Робот "думает", что едет прямо, а по факту его постоянно тянет в сторону более слабого колеса. <strong>Решение:</strong> Тщательная чистка осей, приводных механизмов колес, проверка их свободного хода.</p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Второе, коварнее – оптические датчики одометрии (скорости).</strong> Dyson, как и многие другие, использует нижние датчики (по сути, миниатюрные камеры), которые постоянно "смотрят" на пол, измеряя его движение относительно робота. Это его "глаза" для определения пройденного расстояния и направления. Если один из этих датчиков загрязнен (частицей пыли, волосом, или просто мутным налетом, особенно после контакта с влагой или специфическими напольными покрытиями), он будет передавать в систему неверные данные о скорости и пройденном пути для своей стороны. Робот, получая искаженную информацию от одного датчика, пытается компенсировать "ошибку" и, сам того не зная, начинает вилять. Он *верит*, что корректирует курс, а на самом деле уводит себя в сторону, основываясь на ложных входных данных. <strong>Решение:</strong> Аккуратная и тщательная протирка всех оптических сенсоров на нижней части корпуса чистой сухой микрофиброй или ватной палочкой.</p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Вывод инженера:</strong> Прежде чем залезать в калибровки через сервисное меню или заказывать новые моторы, убедитесь, что ваш робот физически способен ехать прямо и что его "глаза" видят пол без искажений. В большинстве случаев в Кемерово проблема решается именно таким образом."</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Глава 3: Механические неполадки: Диагностика и ремонт колесной базы Dyson</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если ваш робот-пылесос Dyson начал движение не по прямой линии, вращается на месте или застревает без видимых причин, проблема может быть вызвана двумя основными факторами: сбоем в работе навигационных датчиков или механическими неполадками в колесной базе.</p></p>
+<h3>Экспертный разбор: Точная диагностика и инженерный подход</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Первичная диагностика всегда начинается с визуального осмотра. Мы проверяем колеса на наличие посторонних предметов – волос, ниток, мелкого мусора, которые могут блокировать движение или создавать неравномерную нагрузку. В случае отсутствия внешних препятствий, переходим к аппаратной диагностике.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для определения источника неисправности (датчики или механика) в Админ.Ко применяется следующий подход:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Анализ сигналов с помощью осциллографа Rigol:</strong> Каждый робот-пылесос Dyson оснащен энкодерами или датчиками Холла, которые отслеживают скорость и направление вращения каждого колеса. Нестабильные или отсутствующие сигналы с одного из датчиков, выявляемые с помощью осциллографа Rigol, однозначно указывают на сбой в электронной части датчика или на некорректную передачу данных в процессор. Это позволяет исключить или подтвердить неисправность сенсорной системы.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Диагностика механической части:</strong> Если сигналы датчиков в норме, фокус смещается на механические компоненты. Мы производим полную, аккуратную разборку колесной базы. Это позволяет выявить износ шестеренок, подшипников, деформацию осей или выход из строя самих мотор-редукторов колес. Без специализированного инструментария и опыта, самостоятельная разборка чревата повреждением хрупких пластиковых элементов корпуса и внутренних соединений.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Микро-пайка с JBC:</strong> В случае, если проблема заключается в вышедшем из строя моторе колеса или поврежденной дорожке на плате управления, мы используем паяльные станции JBC (Испания). Эти станции обеспечивают точный контроль температуры и позволяют выполнять микро-пайку на печатных платах без риска перегрева и повреждения соседних компонентов. Это критично для нежной электроники Dyson. При этом используются только высококачественные флюсы Martin/Amtech, которые гарантируют чистоту соединения и предотвращают коррозию платы в будущем, что является частой проблемой при некачественном ремонте.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Замена компонентов:</strong> Мы осуществляем замену неисправных мотор-редукторов или поврежденных элементов колесной базы на новые, оригинальные или аналоги высокого качества, восстанавливая заводскую геометрию и функциональность.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Инженерный стандарт Админ.Ко</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В нашем сервисном центре мы придерживаемся строгих стандартов, обеспечивая клиентам Кемерово уверенность в качестве и прозрачности ремонта:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Диагностика 0 рублей:</strong> Мы не берем плату за определение неисправности. Вы платите только за результат.</li>
+<li><strong>Запчасти в наличии:</strong> Большинство ходовых компонентов для роботов-пылесосов Dyson всегда доступны на складе, что сокращает сроки ремонта.</li>
+<li><strong>Гарантия 1 год по договору:</strong> На все выполненные работы и установленные запчасти предоставляется официальная гарантия, закрепленная договором.</li>
+<li><strong>Сохранность данных и настроек:</strong> Мы гарантируем бережное отношение к вашему устройству и сохранение всех пользовательских настроек и прошивки.</li>
+<li><strong>Честная цена:</strong> Стоимость ремонта прозрачна и согласовывается с вами до начала работ, без скрытых платежей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Локальный призыв к действию</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не позволяйте вашему роботу-пылесосу Dyson блуждать по квартире. Доверьте ремонт профессионалам, использующим передовое оборудование. Мы находимся в центре Кемерово, ул. Дзержинского 2Б, рядом с СРК Арена и ТЦ Я. Работаем официально, обеспечивая надежный и качественный сервис.</p></p>
+</section>
+            <section class="mt-12"><h2>Ремонт робота-пылесоса Dyson в Кемерово: почему он едет криво и как это исправить</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваш робот-пылесос Dyson внезапно начал двигаться по странной траектории, утыкается в препятствия или крутится на месте? Это распространенная проблема, которая требует точной диагностики. В Админ.Ко мы решим эту неисправность, вернув вашему устройству идеальную навигацию.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Проблема:</b> Робот-пылесос Dyson не едет прямо, сбивается с курса.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Срок:</b> От 1 дня (с учетом диагностики и ремонта).</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Цена:</b> От 1500 руб. (зависит от сложности ремонта: калибровка датчиков, ремонт или замена колеса).</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Диагностика:</b> 0 руб.</</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Неправильное движение робота-пылесоса Dyson – это не "глюк", а четкий признак технической неисправности. Причины могут быть как механическими, так и электронными, требующими квалифицированного вмешательства.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Экспертный разбор проблемы:</b></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Нарушение прямолинейного движения робота-пылесоса Dyson может быть вызвано следующими факторами:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Загрязнение или износ колес и привода:</b> Волосы, пыль и мелкий мусор могут намотаться на оси колес, блокируя их или увеличивая сопротивление. Износ резинового покрытия колес приводит к проскальзыванию. Для точного определения причины необходимо демонтировать колесные блоки и провести осмотр.</li>
+<li><b>Неисправность моторов колес или редукторов:</b> Один из моторов может работать некорректно, выдавая недостаточную мощность или нестабильные обороты. Это приводит к разнице в скорости вращения колес и, как следствие, к отклонению от прямого курса. Диагностика требует проверки электрических параметров моторов и состояния шестерен редуктора.</li>
+<li><b>Отказ или загрязнение датчиков:</b> Роботы-пылесосы Dyson оснащены различными датчиками (оптические, инфракрасные, датчики обрыва, энкодеры колес), которые отвечают за навигацию и определение положения в пространстве. Загрязнение линз, смещение или выход из строя одного из датчиков приведет к некорректному восприятию окружающей среды и, как следствие, к неверному построению маршрута.</li>
+<li><b>Проблемы с платой управления:</b> В редких случаях причиной может быть неисправность на основной плате, отвечающей за обработку сигналов датчиков и управление моторами. Это самая сложная диагностика, требующая использования осциллографа Rigol для анализа сигналов и тепловизора для выявления перегретых компонентов.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Самостоятельный ремонт или обращение к неквалифицированным специалистам несет высокие риски. Без специализированных инструментов и опыта легко повредить хрупкие крепления, шлейфы или дорогостоящие электронные компоненты. Неправильная калибровка датчиков после чистки или замены может усугубить проблему, а использование некачественных запчастей приведет к повторным поломкам.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Инженерный стандарт Админ.Ко:</b></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Обращаясь в нашу лабораторию, вы получаете комплексное решение, соответствующее самым высоким стандартам:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Диагностика 0 руб.:</b> Мы точно определим причину неисправности без скрытых платежей.</li>
+<li><b>Запчасти в наличии:</b> Основные компоненты для роботов-пылесосов Dyson, включая колесные блоки и датчики, всегда есть на нашем складе, что значительно ускоряет ремонт.</li>
+<li><b>Гарантия 1 год по договору:</b> На все выполненные работы и установленные запчасти мы предоставляем официальную гарантию, подкрепленную договором.</li>
+<li><b>Сохранность устройства:</b> Ваш робот-пылесос будет отремонтирован с максимальной аккуратностью, без риска повреждения других узлов. Мы гарантируем целостность и полную работоспособность устройства после ремонта.</li>
+<li><b>Честная цена:</b> Стоимость ремонта формируется прозрачно и обоснованно, без накруток и дополнительных услуг, которые вам не нужны.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Мы находимся в центре Кемерово, ул. Дзержинского 2Б.</b> Рядом СРК Арена и ТЦ Я. Мы работаем официально и готовы принять ваше устройство для восстановления его идеальной траектории движения.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

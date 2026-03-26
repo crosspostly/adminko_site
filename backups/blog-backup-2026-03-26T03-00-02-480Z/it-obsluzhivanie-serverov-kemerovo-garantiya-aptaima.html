@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ИТ-Обслуживание Серверов в Кемерово: Бесперебойная Работа, Гарантия Аптайма по Договору | Админ.Ко</title>
+    <meta name="description" content="Нужно надежное ИТ-обслуживание серверов в Кемерово? Мы гарантируем бесперебойную работу и высокий аптайм по договору. Круглосуточный мониторинг, оперативное решение проблем и профилактика сбоев для стабильности вашего бизнеса.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">ИТ-Обслуживание Серверов в Кемерово: Бесперебойная Работа, Гарантия Аптайма по Договору</h1>
+            <meta name="published_at" content="2026-03-25T03:04:23.483Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Глава 1: Почему бесперебойная работа серверов критична для бизнеса Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В современной экономике Кемерово, как и во всем мире, бизнес-процессы критически зависят от стабильности ИТ-инфраструктуры. Серверы — это сердце любой цифровой операции, обеспечивающее работу сайтов, CRM-систем, 1С, электронной почты, баз данных и внутренних корпоративных приложений. Любой сбой в их работе немедленно транслируется в прямые финансовые потери и репутационный ущерб.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Простой сервера, даже кратковременный, приводит к немедленной остановке рабочих процессов. Клиенты не могут оформить заказ, менеджеры не имеют доступа к информации, бухгалтерия не может провести операции. Для розничной торговли это означает упущенную выручку; для производственных компаний — остановку производственных линий; для сферы услуг — невозможность предоставления сервиса. В Кемерово, где конкуренция высока, такой простой может привести к переходу клиентов к конкурентам и долгосрочным негативным последствиям.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Технически, поддержание бесперебойной работы серверов требует глубокой экспертизы и системного подхода. Это не просто "ремонт железа". Это комплекс мер, включающий:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Проактивный мониторинг состояния всех аппаратных и программных компонентов. Современные системы мониторинга в реальном времени отслеживают нагрузку на ЦПУ, использование памяти, состояние дисковых подсистем, сетевой трафик и критические системные службы. Отсутствие такого мониторинга равнозначно эксплуатации сложного механизма без приборов контроля.</li>
+<li>Внедрение избыточности (резервирования) на всех уровнях: RAID-массивы для дисков, дублирующие блоки питания, резервные сетевые адаптеры и каналы связи. Без этого, отказ одного компонента приведет к полному коллапсу системы.</li>
+<li>Регулярное резервное копирование и тщательно протестированные планы аварийного восстановления (Disaster Recovery Plan). Данные — это главный актив, и их потеря является катастрофой, от которой не защитит ни одно "быстрое решение" без предварительной подготовки.</li>
+<li>Системное обновление программного обеспечения и патчи безопасности. Устаревшее ПО является основной точкой входа для кибератак, которые могут парализовать работу и привести к утечке конфиденциальной информации.</li>
+<li>Поддержание оптимальных условий окружающей среды: температурный режим, влажность, бесперебойное электропитание (ИБП, дизель-генераторы). Перегрев, перепады напряжения или внезапное отключение электроэнергии — прямые угрозы для стабильности и долговечности серверного оборудования.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Пренебрежение любым из этих аспектов создает критические уязвимости. Самостоятельные попытки "поддержать работоспособность" без специализированного оборудования и инженеров, понимающих всю сложность серверных архитектур, неминуемо приведут к частым сбоям, потере данных и, в конечном итоге, к значительно более высоким затратам, чем профессиональное обслуживание.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Бесперебойная работа серверов — это фундамент цифрового бизнеса. Ее обеспечение требует не просто реакции на поломки, а системного, проактивного управления, основанного на глубоких инженерных знаниях и использовании специализированных инструментов, предотвращающих проблемы еще до их возникновения.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> От 15 000 руб/мес. Индивидуальный расчет после аудита, фиксируется в договоре.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: От 6 месяцев. Рекомендуем долгосрочное сотрудничество (12+ мес.) для стабильности и выгодных условий.</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Бесплатный экспресс-аудит вашей ИТ-инфраструктуры в Кемерово для оценки состояния и выявления потребностей.</p></div>
+
+        </div>
+            <section><h2>Бесперебойная работа серверов в Кемерово: ИТ-обслуживание по договору с гарантией аптайма</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Проблема: Нестабильная работа серверов, сбои в ИТ-инфраструктуре, отсутствие квалифицированного системного администратора в штате, риск потери данных.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: Круглосуточный мониторинг 24/7, реакция на инциденты от 15 минут, плановое обслуживание.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Цена: От 10 000 руб./мес.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Диагностика: Аудит текущей ИТ-инфраструктуры для заключения договора — 0 руб.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Экспертный разбор: Почему бесперебойная работа серверов критична</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Современный бизнес полностью зависит от надежности ИТ-инфраструктуры. Любой сбой в работе серверов, будь то отказ жесткого диска, перегрев процессора или программный конфликт, приводит к остановке бизнес-процессов, финансовым потерям и репутационным рискам. Доверять обслуживание критически важного оборудования сторонним специалистам без необходимых компетенций и инструментов — это осознанный риск.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">В Админ.Ко мы используем специализированные решения для обеспечения максимального аптайма ваших серверов:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Проактивный мониторинг:</strong> Внедряем системы класса Zabbix или Prometheus, которые круглосуточно отслеживают сотни параметров — загрузку процессора, оперативную память, дисковое пространство, температуру, состояние сетевых интерфейсов и критически важных сервисов. Это позволяет выявлять потенциальные проблемы и устранять их ДО возникновения сбоев.</li>
+<li><strong>Надежные системы резервного копирования:</strong> Используем профессиональные решения, такие как Veeam Backup & Replication или Acronis Cyber Protect, для создания регулярных бэкапов ваших данных. Разрабатываем стратегии RTO (Recovery Time Objective) и RPO (Recovery Point Objective), чтобы в случае инцидента минимизировать время простоя и объем потерянных данных.</li>
+<li><strong>Отказоустойчивая виртуализация:</strong> Внедряем и обслуживаем кластеры виртуализации на базе VMware ESXi или Proxmox VE, что позволяет обеспечить высокую доступность сервисов и быстрое восстановление виртуальных машин при аппаратных сбоях.</li>
+<li><strong>Аппаратная диагностика и профилактика:</strong> Регулярно проводим тестирование серверного оборудования, очистку от пыли, проверку блоков питания, систем охлаждения и дисковых подсистем. Мы понимаем, что без превентивных мер любое оборудование рано или поздно выйдет из строя.</li>
+<li><strong>Защита от сбоев питания:</strong> Интегрируем источники бесперебойного питания (ИБП) и настраиваем корректное завершение работы серверов при длительных отключениях электроэнергии, предотвращая повреждение оборудования и потерю данных.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Отсутствие комплексного подхода и специализированного оборудования неизбежно ведет к нестабильной работе, потере данных и простоям. Наш инженерный подход исключает "ремонт на коленке" и гарантирует стабильность вашей ИТ-инфраструктуры.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Инженерный стандарт Админ.Ко при ИТ-обслуживании</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Аудит ИТ-инфраструктуры — 0 руб.</strong> Мы проведем полную проверку вашей сети, серверов и программного обеспечения перед заключением договора, чтобы предложить оптимальное решение.</li>
+<li><strong>Запчасти в наличии и отлаженная логистика.</strong> Мы имеем доступ к широкому ассортименту серверных компонентов и оперативную логистику для быстрой замены вышедшего из строя оборудования, минимизируя время простоя.</li>
+<li><strong>Гарантия аптайма по договору.</strong> Мы фиксируем ответственность за бесперебойную работу вашей ИТ-инфраструктуры в договоре SLA (Service Level Agreement), обеспечивая прозрачность и нашу приверженность результату.</li>
+<li><strong>Полная сохранность данных.</strong> Разрабатываем и внедряем многоуровневые системы резервного копирования и восстановления данных, обеспечивая их безопасность и доступность.</li>
+<li><strong>Честная цена.</strong> Прозрачное ценообразование без скрытых платежей. Вы всегда знаете, за что платите.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Локальный призыв: ИТ-обслуживание в Кемерово от Админ.Ко</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально, предоставляя полный пакет документов и заключая договор на ИТ-обслуживание. Обратитесь к нам, чтобы ваша ИТ-инфраструктура работала как часы.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Инженерный секрет нашей бесперебойной работы серверов в Кемерово – это не просто мониторинг статуса "включено/выключено". Наш главный принцип – "слышать" систему на уровне её "дыхания". Каждый сервер, каждая служба обладает уникальным, здоровым ритмом и паттернами поведения. Наша задача – не дожидаться, когда сервер "закричит" о проблеме, а улавливать малейшие отклонения в его "пульсе": тонкие изменения в производительности, незаметные аномалии в логах или сетевом трафике, которые еще не являются критической ошибкой, но уже сигнализируют о потенциальном сбое. Это позволяет нам вмешиваться превентивно, устраняя "симптом" до того, как он превратится в полноценную "болезнь" и затронет работоспособность. Мы не просто тушим пожары – мы ощущаем запах дыма задолго до появления первого пламени.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2 id="garantiya-aptaima">Глава 3: Гарантия аптайма: механизмы, преимущества и реальное обеспечение стабильности</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Обеспечение бесперебойной работы серверов является критически важным для любого современного бизнеса. В Админ.Ко мы понимаем, что каждая минута простоя — это потенциальные потери и репутационные риски. Именно поэтому основой наших ИТ-услуг является гарантия аптайма.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Суть проблемы:</strong> Внезапные сбои серверов, потеря данных, остановка ключевых бизнес-процессов.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Решение от Админ.Ко:</strong> Проактивный мониторинг 24/7, время реакции на инцидент от 15 минут.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Стоимость:</strong> Индивидуальный тариф по договору, формируется по запросу.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Начало работы:</strong> Бесплатный первичный аудит вашей ИТ-инфраструктуры.</p></p>
+<h3>Экспертный разбор: Как мы обеспечиваем стабильность</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Гарантия аптайма — это не просто обещание, а результат комплексного подхода и применения специализированных инженерных решений. Мы используем инструментарий и методологии, доказавшие свою эффективность в реальных условиях:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Системы мониторинга (Zabbix, Prometheus):</strong> В отличие от реактивного обслуживания, когда проблемы выявляются уже после сбоя, наши системы круглосуточно отслеживают сотни параметров: нагрузку на ЦПУ, использование оперативной памяти, дисковое пространство, сетевой трафик, состояние критических служб. Это позволяет идентифицировать потенциальные проблемы (например, аномальный рост нагрузки или переполнение диска) ДО того, как они приведут к отказу. Без такого мониторинга ремонт всегда будет запаздывающим и более дорогим.</li>
+<li><strong>Резервирование и отказоустойчивость:</strong> Мы строим инфраструктуру с учетом принципа отсутствия единой точки отказа (SPOF). Это включает использование RAID-массивов для дисковых подсистем, конфигурации с несколькими блоками питания, а также развертывание отказоустойчивых кластеров для критически важных сервисов. Применение этих технологий позволяет серверу продолжать работу даже при выходе из строя отдельных компонентов, исключая внезапную остановку.</li>
+<li><strong>Профессиональное резервное копирование и восстановление (BDR):</strong> Разрабатываем и внедряем стратегии RPO (Recovery Point Objective) и RTO (Recovery Time Objective), адаптированные под нужды вашего бизнеса. Регулярное, автоматизированное создание резервных копий с их верификацией и тестированием процедуры восстановления — фундамент сохранности ваших данных. Использование специализированных решений предотвращает потерю информации при любых сценариях.</li>
+<li><strong>Управляемые обновления и патчинг:</strong> Систематическое применение обновлений безопасности и патчей является залогом стабильности и защиты от киберугроз. Наши инженеры планируют и проводят эти операции в согласованное время, минимизируя риски и гарантируя совместимость, в отличие от хаотичных обновлений, которые могут привести к критическим сбоям.</li>
+<li><strong>Документирование инфраструктуры:</strong> Каждая обслуживаемая система полностью документируется. Это включает сетевые схемы, логины/пароли, конфигурационные файлы, инструкции по восстановлению. Наличие актуальной документации в разы сокращает время на диагностику и устранение любых инцидентов.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Обеспечение аптайма требует глубоких знаний и непрерывного контроля. Отсутствие системного подхода, "ремонт по факту поломки", неизбежно ведет к непредсказуемым простоям и финансовым потерям.</p></p>
+<h3>Инженерный стандарт Админ.Ко для ИТ-обслуживания</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><p><strong>0р аудит ИТ-инфраструктуры:</strong> Мы начинаем работу с полного и бесплатного аудита вашей серверной и сетевой инфраструктуры. Это позволяет выявить слабые места, определить оптимальные решения и предложить прозрачный план обслуживания.</p></li>
+<li><p><strong>Оперативное реагирование и доступность ЗИП:</strong> За счет налаженных партнерских связей с поставщиками оборудования и наличия критического ЗИП (запасных частей и принадлежностей) на складе, мы обеспечиваем максимально быстрое устранение аппаратных неисправностей, когда они возникают.</p></li>
+<li><p><strong>Гарантия аптайма по договору:</strong> Наша ответственность за бесперебойную работу ваших серверов закреплена в договоре в виде SLA (Service Level Agreement), где четко прописаны параметры доступности, время реакции и восстановления.</p></li>
+<li><p><strong>Сохранность данных как приоритет:</strong> Все наши решения по обеспечению аптайма строятся вокруг принципа абсолютной сохранности ваших данных, используя передовые методы резервного копирования, шифрования и восстановления.</p></li>
+<li><p><strong>Честная и прозрачная цена:</strong> Вы получаете обоснованное и предсказуемое ценообразование на ИТ-услуги, без скрытых платежей и с четким пониманием, за что вы платите. Мы инвестируем в стабильность вашего бизнеса.</p></li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Локальный призыв к действию</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для обсуждения индивидуального договора на ИТ-обслуживание серверов и гарантии аптайма, приглашаем вас в наш офис в центре Кемерово по адресу: ул. Дзержинского 2Б. Мы расположены рядом с СРК Арена и ТЦ Я. Работая официально, мы обеспечиваем надежность и прозрачность всех операций, подтвержденную документально.</p></p>
+</section>
+            <section class="mt-12"><p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>РАЗДЕЛ: "Глава 4: Выбор надежного партнера в Кемерово: как договорное ИТ-обслуживание освобождает ваш бизнес"</p></p>
+<h2>ИТ-обслуживание серверов в Кемерово: Бесперебойная работа бизнеса с гарантией аптайма</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Мы понимаем критичность серверной инфраструктуры для любого современного бизнеса. В Админ.Ко, мы обеспечиваем не просто ремонт, а системное поддержание работоспособности ваших серверов, гарантируя непрерывность бизнес-процессов.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Blitz-Answer (Блок конверсии)</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Проблема:</strong> Сбои серверов, потеря данных, простои бизнеса, отсутствие квалифицированной ИТ-поддержки.</li>
+<li><strong>Срок реакции:</strong> От 15 минут на критические инциденты.</li>
+<li><strong>Цена:</strong> От 5000 руб/мес (зависит от сложности инфраструктуры).</li>
+<li><strong>Диагностика (аудит инфраструктуры):</strong> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Экспертный разбор: Почему профессиональное ИТ-обслуживание – это не роскошь, а необходимость.</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Серверы являются основой цифровой инфраструктуры компании. Их бесперебойная работа напрямую влияет на производительность, доступность данных и репутацию бизнеса. Отсутствие системного подхода к обслуживанию приводит к непредсказуемым сбоям, потере критически важных данных и, как следствие, к финансовым потерям и репутационным рискам.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Профессиональное ИТ-обслуживание от Админ.Ко включает в себя комплекс мер, предотвращающих большинство потенциальных проблем:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Проактивный мониторинг:</strong> Мы используем специализированные системы мониторинга, которые в режиме 24/7 отслеживают состояние всех ключевых параметров серверов – загрузку ЦПУ, оперативную память, дисковое пространство, сетевую активность, состояние сервисов. Это позволяет выявить и устранить проблему до того, как она приведет к сбою.</li>
+<li><strong>Регулярное резервное копирование:</strong> Внедряем и контролируем политики резервного копирования критически важных данных с последующей проверкой их целостности и возможности восстановления. Это обеспечивает сохранность вашей информации даже в случае аппаратного сбоя или кибератаки.</li>
+<li><strong>Управление обновлениями и безопасностью:</strong> Проводим своевременное обновление операционных систем и программного обеспечения, устанавливаем патчи безопасности, настраиваем фаерволы и системы обнаружения вторжений для минимизации рисков киберугроз.</li>
+<li><strong>Оптимизация производительности:</strong> Регулярно анализируем логи, выявляем "узкие места" и проводим оптимизацию настроек сервера и баз данных для обеспечения максимальной производительности.</li>
+<li><strong>Система реагирования на инциденты:</strong> Наши инженеры готовы оперативно реагировать на любые сбои. Мы не ждем, пока проблема станет катастрофой, а действуем превентивно или устраняем инциденты в кратчайшие сроки, минимизируя время простоя.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Без такого системного подхода серверы подвержены риску аппаратных отказов из-за перегрева, программных сбоев из-за отсутствия обновлений, потери данных из-за неработающих бэкапов и кибератак из-за незащищенности. Админ.Ко обеспечивает надежную и стабильную работу вашей серверной инфраструктуры, позволяя вам сосредоточиться на развитии бизнеса.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Инженерный стандарт Админ.Ко: Ваши преимущества</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Выбирая Админ.Ко для ИТ-обслуживания ваших серверов, вы получаете:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>0 руб. за аудит инфраструктуры:</strong> Мы проведем полную оценку состояния вашей ИТ-среды перед началом работ.</li>
+<li><strong>Запчасти и компоненты в наличии/оперативный доступ:</strong> Для критически важных узлов серверов мы обеспечиваем оперативный доступ к необходимым комплектующим или их поддержание в ЗИП.</li>
+<li><strong>Гарантия 1 год по договору:</strong> На все выполненные работы и предоставляемые услуги мы даем годовую гарантию, закрепленную юридически, включая гарантию аптайма согласно SLA.</li>
+<li><strong>Сохранность данных:</strong> Приоритет нашей работы — абсолютная сохранность вашей информации. Мы используем проверенные методики бэкапа и восстановления.</li>
+<li><strong>Честная цена:</strong> Прозрачное ценообразование без скрытых платежей, основанное на реальном объеме услуг и сложности вашей инфраструктуры.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Мы находимся в центре Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Наш офис и сервисный центр расположены по адресу: <strong>ул. Дзержинского 2Б</strong>. Рядом с нами находятся СРК Арена и ТЦ Я. Мы работаем официально, предоставляя полный пакет документов для юридических лиц и гарантируя высочайший уровень сервиса.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

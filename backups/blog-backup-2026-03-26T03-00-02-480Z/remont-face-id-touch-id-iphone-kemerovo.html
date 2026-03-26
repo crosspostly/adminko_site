@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ремонт Face ID / Touch ID iPhone в Кемерово: Восстановление функций безопасности | Админ.Ко</title>
+    <meta name="description" content="Не работает Face ID или Touch ID на вашем iPhone в Кемерово? Профессиональный ремонт и восстановление функций безопасности. Быстрая диагностика, качественные запчасти и гарантия на устранение неисправностей Face ID/Touch ID.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Ремонт Face ID / Touch ID iPhone в Кемерово: Восстановление функций безопасности</h1>
+            <meta name="published_at" content="2026-03-25T03:01:46.741Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Глава 1: Отказ Face ID/Touch ID на iPhone в Кемерово: Почему это важно и как это влияет на вас?</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Проблема:</strong> Не работает Face ID / Touch ID на iPhone.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Срок ремонта:</strong> От 3 часов.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Стоимость:</strong> От 3500 руб.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Диагностика:</strong> 0 руб.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Отказ систем Face ID или Touch ID на iPhone не просто лишает удобства разблокировки и подтверждения покупок в Apple Pay. Это прямое нарушение безопасности вашего устройства и доступа к личным данным. Эти технологии являются ключевыми компонентами экосистемы Apple, и их работоспособность зависит от сложной взаимосвязи аппаратного и программного обеспечения.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Техническая суть проблемы:</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Face ID</strong> использует модуль TrueDepth, который включает в себя инфракрасную камеру, точечный проектор и ИК-излучатель. Эти компоненты создают и анализируют уникальную трехмерную карту вашего лица. Повреждение любого из этих элементов, шлейфов, ведущих к ним, или даже микротрещины на материнской плате может привести к неработоспособности функции. Частые причины: механические удары, попадание влаги, неквалифицированный ремонт дисплея, при котором повреждается шлейф датчиков.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Touch ID</strong> основан на емкостном датчике, встроенном в кнопку «Домой». Он сканирует уникальный рисунок ваших отпечатков пальцев. Основные проблемы возникают из-за повреждения самой кнопки (физический износ, удар), разрыва ее шлейфа или попадания влаги. Важно понимать, что каждый модуль Touch ID (кнопка) привязан к конкретной материнской плате и не подлежит простой замене без потери функциональности.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Почему без специализированного оборудования качественный ремонт невозможен?</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Восстановление Face ID и Touch ID — это не просто замена детали, а сложная микроэлектронная операция. В лаборатории Админ.Ко для этого используется арсенал профессионального оборудования:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>JBC (Испания):</strong> Станции для микропайки позволяют работать с компонентами размером менее миллиметра на материнской плате без риска перегрева и повреждения соседних элементов. Это критично для восстановления тонких дорожек или замены контроллеров, связанных с биометрическими модулями.</li>
+<li><strong>Quick 861DW:</strong> Профессиональная термовоздушная станция обеспечивает точный контроль температуры и потока воздуха, необходимый для безопасного демонтажа и монтажа BGA-компонентов и тонких шлейфов без деформации.</li>
+<li><strong>Тепловизор:</strong> Позволяет быстро и точно локализовать перегретые участки на плате, указывающие на короткое замыкание или неисправность компонента в цепях питания Face ID/Touch ID.</li>
+<li><strong>Осциллограф Rigol:</strong> Необходим для диагностики сигналов на шинах данных и питания. С его помощью мы выявляем нарушения в передаче данных между датчиками и процессором, что невозможно без глубокого понимания схемотехники.</li>
+<li><strong>Программаторы JCID:</strong> Это ключевой инструмент для Face ID и Touch ID. Без него невозможно восстановить функции после замены компонентов, так как Apple использует строгую привязку серийных номеров. JCID позволяет перенести или перепрограммировать необходимые данные, чтобы избежать ошибок "Unable to activate Face ID" или потери функции True Tone. Это обеспечивает полную функциональность, как у нового устройства.</li>
+<li><strong>Флюсы Martin/Amtech:</strong> Использование высококачественных бессвинцовых флюсов минимизирует риски коррозии и обеспечивает надежное соединение на долгие годы, в отличие от дешевых аналогов, которые могут вызывать окисление платы.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Обращение в неавторизованные сервисы без такого оборудования часто приводит к полной утрате функций Face ID/Touch ID, а в некоторых случаях — к необратимому повреждению материнской платы. Мы не "меняем" детали, а восстанавливаем сложную систему.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Инженерный стандарт Админ.Ко:</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>0 руб. диагностика:</strong> Мы проведем полную проверку вашего iPhone совершенно бесплатно, даже если вы решите не делать ремонт у нас.</li>
+<li><strong>Запчасти в наличии:</strong> Большинство необходимых комплектующих для ремонта Face ID/Touch ID всегда на нашем складе, что сокращает сроки выполнения работ.</li>
+<li><strong>Гарантия 1 год по договору:</strong> На все выполненные работы и установленные детали предоставляется официальная гарантия, закрепленная в договоре.</li>
+<li><strong>Сохранность данных:</strong> Мы гарантируем неприкосновенность и полную сохранность вашей личной информации. Все работы проводятся без сброса настроек или удаления данных.</li>
+<li><strong>Честная цена:</strong> Вы всегда знаете конечную стоимость ремонта до начала работ. Никаких скрытых платежей и накруток.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Админ.Ко — это не просто сервис, это инженерная лаборатория в Кемерово.</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально, предоставляя официальные гарантии на все выполненные работы и комплектующие. Доверьте ремонт своего iPhone профессионалам, которые понимают, как работают его ключевые системы.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Восстановление Touch ID от 3500 руб., Face ID от 5500 руб. Точная стоимость определяется после диагностики.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: От 1 часа до 3 рабочих дней, в зависимости от модели и характера неисправности.</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Бесплатно при заказе ремонта. Занимает 15-30 минут.</p></div>
+
+        </div>
+            <section><h2>Глава 2: Первые шаги при поломке: Диагностика проблемы и что можно попробовать сделать самому до обращения в сервис</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Когда функции Face ID или Touch ID на вашем iPhone перестают работать, это не только вызывает неудобства, но и ставит под угрозу безопасность данных. Прежде чем обращаться в сервисный центр, существуют базовые шаги, которые могут помочь определить характер проблемы или даже временно ее устранить.</p></p>
+<h3>Первичная диагностика и действия пользователя:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Перезагрузка устройства:</strong> Простейший, но часто эффективный метод. Временные программные сбои могут быть устранены полной перезагрузкой iPhone.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Обновление iOS:</strong> Убедитесь, что на вашем устройстве установлена актуальная версия iOS. Apple регулярно выпускает обновления, которые могут включать исправления ошибок, влияющих на работу датчиков.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Очистка области датчиков:</strong> Для Face ID аккуратно протрите область выреза в верхней части экрана мягкой безворсовой тканью. Для Touch ID очистите кнопку «Домой». Загрязнения, пыль или влага могут мешать корректному считыванию.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Проверка настроек:</strong> Перейдите в «Настройки» > «Face ID и код-пароль» или «Touch ID и код-пароль». Убедитесь, что соответствующая функция активна. Попробуйте удалить существующие отпечатки/лица и настроить их заново.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Снятие аксессуаров:</strong> Защитные пленки, стекла или чехлы, особенно некачественные или слишком толстые, могут создавать препятствия для работы датчиков Face ID. Временно снимите их и проверьте функциональность.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Когда самостоятельные действия не помогают:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если после выполнения всех вышеперечисленных шагов проблема с Face ID или Touch ID сохраняется, это, как правило, указывает на аппаратную неисправность. Самостоятельный ремонт модулей Face ID (которые включают Dot Projector, Flood Illuminator, IR Camera) или Touch ID (встроенный в кнопку Home) крайне не рекомендуется из-за их сложности и тесной интеграции с материнской платой и системой безопасности iPhone.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Любое неквалифицированное вмешательство может привести к необратимым повреждениям или к невозможности восстановления функций безопасности. Эти системы привязаны к конкретной логической плате устройства, и их замена без специализированного оборудования, такого как программаторы JCID, приведет к системным ошибкам и полному отказу.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В таких случаях необходима точная диагностика и ремонт в специализированной лаборатории. В Кемерово такую экспертизу и оборудование предлагает Админ.Ко по адресу Дзержинского 2Б.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Технический секрет инженера:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Когда Face ID или Touch ID вашего iPhone перестает работать, большинство пользователей думают: «Наверное, сломалась камера» или «Кнопка Home». Но настоящий технический секрет инженера, знакомого с нюансами Apple, гораздо глубже, особенно в случае Face ID.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Секрет №1: Система Face ID (TrueDepth) – это не одна деталь, а сложный комплекс из трех ключевых модулей: инфракрасной камеры, проектора точек и инфракрасного излучателя. И самое главное – *каждый* из этих модулей *намертво привязан (сериализован)* к материнской плате вашего iPhone. Это означает, что вы не можете просто заменить один из них на новый или взять с донора – система не будет работать из-за отсутствия «пары» с вашей уникальной платой.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Секрет №2: Эти модули соединены с платой чрезвычайно тонкими и хрупкими шлейфами. Даже малейшее механическое воздействие, неосторожная попытка ремонта (например, при замене экрана или батареи) или даже незначительное попадание влаги могут повредить эти микроскопические проводники или их разъемы. Внешне повреждений может быть не видно, но целостность цепи нарушена, и Face ID/Touch ID перестает получать необходимые данные для аутентификации.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Именно поэтому восстановление требует не просто замены детали, а глубокой диагностики на уровне микрокомпонентов, понимания схемотехники и наличия специализированного оборудования. В Кемерово такой ремонт – это ювелирная работа, требующая высокой квалификации и опыта, чтобы не потерять эту уникальную «привязку» и восстановить функции безопасности вашего iPhone.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Глава 3: Профессиональное восстановление функций безопасности в Кемерово: Когда нужен специалист и как выбрать сервисный центр</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если на вашем iPhone перестал работать Face ID или Touch ID, вы сталкиваетесь не просто с неудобством, но и с серьезной угрозой безопасности ваших данных и нарушением базовой функциональности устройства. В Кемерово восстановление этих критически важных функций требует специализированного оборудования и глубоких инженерных знаний.</p></p>
+<h3>Краткий обзор проблемы и решения в Админ.Ко:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Проблема:</strong> Не работает Face ID/Touch ID на iPhone (отсутствует распознавание лица/отпечатка, устройство выдает ошибку, невозможно настроить функцию).</li>
+<li><strong>Срок ремонта:</strong> Восстановление Face ID от 1 рабочего дня. Восстановление Touch ID от 2 часов (при наличии запчастей).</li>
+<li><strong>Ориентировочная цена:</strong> Восстановление Face ID от 3500 руб. Восстановление Touch ID от 2500 руб. (точная стоимость после диагностики).</li>
+<li><strong>Диагностика:</strong> 0 руб. (даже при отказе от ремонта).</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Экспертный разбор: Почему Face ID и Touch ID так сложны в ремонте?</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Функции Face ID и Touch ID – это не просто датчики, а сложные биометрические системы, глубоко интегрированные в архитектуру безопасности iPhone. Каждая система (модуль Dot Projector для Face ID, сенсор Touch ID в кнопке Home) уникально "прошита" к материнской плате устройства. При замене даже одного компонента без переноса оригинальных данных, функция перестанет работать, и iPhone выдаст сообщение об ошибке.</p></p>
+<h4>Причины отказа Face ID и Touch ID:</h4>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Face ID</strong> состоит из нескольких ключевых компонентов: ИК-камера, проектор точек (Dot Projector), осветитель заливающего света (Flood Illuminator). Частые причины выхода из строя включают механические повреждения (падения), попадание влаги, а также неквалифицированный ремонт (например, при замене экрана с повреждением шлейфа Face ID). Восстановление Face ID требует не только точной микропайки, но и переноса уникальных калибровочных данных с оригинального шлейфа на новый. Без этого функция будет безвозвратно утеряна.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Touch ID</strong>: Сенсор Touch ID встроен в кнопку Home и связан с материнской платой посредством сложного шлейфа. Повреждение кнопки (трещина, разрыв шлейфа, попадание жидкости) часто приводит к его неработоспособности. Как и в случае с Face ID, простой заменой кнопки функция Touch ID не восстанавливается. Требуется либо ремонт оригинального шлейфа, либо перенос данных с оригинальной EEPROM-микросхемы кнопки на новую (если это технически возможно и кнопка не полностью разрушена), что крайне сложный процесс.</p></p>
+<h4>Инженерное оборудование Админ.Ко – ключ к успешному ремонту:</h4>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Программаторы JCID V1S/V1SE/V1S PRO:</strong> Это специализированное оборудование является абсолютно критичным для восстановления Face ID и Touch ID. С его помощью производится чтение и запись уникальных данных с оригинальных шлейфов/кнопок на новые компоненты, что позволяет сохранить функциональность после замены. Без JCID невозможно перенести необходимую информацию, и биометрические функции будут безвозвратно утеряны.</li>
+<li><strong>Паяльные станции JBC (Испания):</strong> Для микропайки компонентов Face ID и Touch ID, а также ремонта соответствующих шлейфов на материнской плате, требуется высокая точность. Паяльные станции JBC обеспечивают мгновенный нагрев и точный контроль температуры, минимизируя риск перегрева и повреждения чувствительных элементов платы, что крайне важно для сохранения сложных цепей безопасности.</li>
+<li><strong>Термовоздушные станции Quick 861DW:</strong> При работе с хрупкими шлейфами и мельчайшими компонентами, Quick 861DW позволяет выполнять работы по демонтажу и монтажу с контролируемым потоком воздуха и температурой, предотвращая повреждение соседних элементов.</li>
+<li><strong>Осциллограф Rigol:</strong> Для диагностики сложных проблем с Face ID и Touch ID необходимо проверять целостность сигналов на шинах данных и питания. Осциллограф Rigol позволяет инженерам Админ.Ко выявлять неочевидные неисправности на компонентном уровне, которые не видны при визуальном осмотре.</li>
+<li><strong>Высококачественные флюсы Martin/Amtech:</strong> Мы используем только профессиональные флюсы Martin и Amtech. Это гарантирует отсутствие коррозии и окисления после пайки, что критически важно для долгосрочной стабильности восстановленных функций и защиты материнской платы от деградации.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Инженерный стандарт Админ.Ко:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>0 рублей за диагностику:</strong> Мы проводим полную диагностику бесплатно, даже если вы решите отказаться от ремонта.</li>
+<li><strong>Запчасти в наличии:</strong> Большинство необходимых компонентов для восстановления Face ID и Touch ID всегда на нашем складе, что сокращает время ремонта.</li>
+<li><strong>Гарантия 1 год по договору:</strong> На все выполненные работы и установленные компоненты мы предоставляем официальную гарантию сроком на 12 месяцев.</li>
+<li><strong>Сохранность ваших данных:</strong> При ремонте мы гарантируем полную конфиденциальность и сохранность всей информации на вашем устройстве.</li>
+<li><strong>Честная цена:</strong> Мы предлагаем прозрачное ценообразование, где каждая услуга обоснована и понятна клиенту.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Ваше решение проблемы находится в центре Кемерово:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не рискуйте безопасностью и функциональностью своего iPhone, доверяя его непрофессионалам. Мы ждем вас по адресу: <strong>г. Кемерово, ул. Дзержинского 2Б</strong>. Наш сервисный центр удобно расположен в самом центре города, рядом с СРК Арена и ТЦ Я. Мы работаем официально и предоставляем полный пакет документов.</p></p>
+</section>
+            <section class="mt-12"><h2>Глава 4: Процесс ремонта Face ID/Touch ID: От диагностики до возврата полностью рабочего iPhone и гарантии в Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Проблема:</strong> Не работает Face ID / Touch ID на iPhone.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Срок ремонта:</strong> От 1 рабочего дня (зависит от сложности).</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Стоимость:</strong> От 3500 руб.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Диагностика:</strong> 0 руб.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Функции Face ID и Touch ID на iPhone — это не просто удобство, а сложная система биометрической безопасности, глубоко интегрированная в аппаратную и программную архитектуру устройства. Их выход из строя — серьезная проблема, требующая точной диагностики и высокотехнологичного ремонта. Причины могут быть разными: механические повреждения после падения, попадание жидкости, перебои в цепях питания, а также неквалифицированное вмешательство.</p></p>
+<h3>Экспертный разбор: Почему ремонт Face ID/Touch ID требует лабораторного подхода</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ремонт Face ID и Touch ID на компонентном уровне — это одна из самых сложных операций в микроэлектронике смартфонов. Модуль Face ID, состоящий из проектора точек (Dot Projector), инфракрасного излучателя (Flood Illuminator) и ИК-камеры, а также сенсор Touch ID, уникально привязаны к материнской плате устройства. Любая попытка замены или ремонта без соблюдения строгих протоколов и использования специализированного оборудования приводит к безвозвратной потере функциональности.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы применяем исключительно профессиональные инструменты для восстановления этих критически важных систем:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>JBC (Испания):</strong> Паяльные станции JBC позволяют проводить микро-пайку компонентов Face ID (например, восстановление обрыва шлейфа Dot Projector) и Touch ID с минимальным и контролируемым нагревом. Это исключает риск перегрева и повреждения чувствительных частей платы или соседних элементов.</li>
+<li><strong>Программаторы JCID:</strong> Это ключевое оборудование для ремонта Face ID/Touch ID. С помощью JCID мы можем считать и перенести калибровочные данные со старого модуля (даже если он частично поврежден) на новый, или восстановить их, если проблема заключается в программном сбое или ошибке синхронизации. Без JCID Face ID или Touch ID не будет работать, и iPhone будет выдавать системные ошибки, даже при физической замене модуля.</li>
+<li><strong>Тепловизор:</strong> Используется для быстрой и точной локализации коротких замыканий, утечек тока или перегретых участков на плате, которые могут быть первопричиной отказа Face ID/Touch ID, особенно после попадания жидкости.</li>
+<li><strong>Осциллограф Rigol:</strong> С его помощью инженеры анализируют сигналы на шинах данных и питания Face ID/Touch ID модулей. Это позволяет выявить нестабильность, отсутствие импульсов или неверные логические уровни, указывающие на сбой контроллера или обрыв цепи.</li>
+<li><strong>Флюсы Martin/Amtech:</strong> Мы используем только проверенные расходные материалы от Martin и Amtech. Эти флюсы обеспечивают надежные паяные соединения, предотвращая коррозию и деградацию контактов в будущем, что критично для долгосрочной работы отремонтированных функций.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Попытки самостоятельного ремонта или обращение к мастерам без соответствующего оборудования не только не решат проблему, но и могут привести к необратимым повреждениям материнской платы, окончательной потере Face ID/Touch ID и даже данных.</p></p>
+<h3>Инженерный стандарт Админ.Ко: Ваша уверенность в Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>0 руб. диагностика:</strong> Мы проведем полную проверку вашего iPhone, чтобы точно установить причину неисправности Face ID/Touch ID без скрытых платежей.</li>
+<li><strong>Запчасти в наличии:</strong> Для большинства моделей iPhone у нас имеются необходимые компоненты для ремонта Face ID/Touch ID, включая донорские модули и новые шлейфы, что сокращает сроки ожидания.</li>
+<li><strong>Гарантия 1 год по договору:</strong> На все выполненные работы и установленные компоненты предоставляется официальная гарантия, закрепленная договором.</li>
+<li><strong>Сохранность данных:</strong> Мы гарантируем полную сохранность ваших личных данных на устройстве. Ремонт производится без доступа к вашей информации.</li>
+<li><strong>Честная цена:</strong> Стоимость ремонта Face ID/Touch ID формируется на основе сложности работ, стоимости компонентов и прозрачна для клиента. Вы платите только за реальный результат.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Несите ваш iPhone на ремонт Face ID/Touch ID в Админ.Ко — Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если Face ID или Touch ID на вашем iPhone перестал работать, не рискуйте устройством и данными. Обратитесь к профессионалам, способным обеспечить качественный и надежный ремонт с использованием специализированного оборудования и многолетнего опыта. Мы находимся в центре Кемерово, <strong>ул. Дзержинского 2Б</strong>. Рядом с нами расположены СРК Арена и ТЦ Я. Мы работаем официально и ждем вас.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

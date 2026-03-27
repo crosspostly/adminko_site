@@ -28,10 +28,10 @@ async function repair(limit = null) {
         } else {
             const stats = fs.statSync(filePath);
             const content = fs.readFileSync(filePath, 'utf8');
-            // Если файл слишком маленький или содержит признаки мусора
-            if (stats.size < 5000 || !content.includes('<!-- CONTENT START -->')) {
+            // Если файл слишком маленький, отсутствует маркер контента или нет футера
+            if (stats.size < 5000 || !content.includes('<!-- CONTENT START -->') || !content.includes('<footer')) {
                 needsWork = true;
-                console.log(`\n⚠️  Битый/Мусорный файл: [${article.slug}]`);
+                console.log(`\n⚠️  Битый/Мусорный файл (размер, маркер или футер): [${article.slug}]`);
             }
         }
 

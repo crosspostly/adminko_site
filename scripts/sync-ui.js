@@ -68,6 +68,11 @@ function syncBlogArticle(filePath) {
         html = html.split('<footer')[0] + blogFooter + `\n<script src="../components.js?v=3.3"></script>\n</body>\n</html>`;
     } else if (html.includes('<!-- Карта -->')) {
         html = html.split('<!-- Карта -->')[0] + blogFooter + `\n<script src="../components.js?v=3.3"></script>\n</body>\n</html>`;
+    } else if (html.includes('<!-- CONTENT END -->')) {
+        html = html.split('<!-- CONTENT END -->')[0] + "<!-- CONTENT END -->\n        </div>\n    </article>\n</main>\n" + blogFooter + `\n<script src="../components.js?v=3.3"></script>\n</body>\n</html>`;
+    } else {
+        // Жесткий фоллбек: если всё сломано, просто лепим в конец перед body
+        html = html.split('</body>')[0] + blogFooter + `\n<script src="../components.js?v=3.3"></script>\n</body>\n</html>`;
     }
 
     fs.writeFileSync(filePath, html);

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ремонт ноутбуков и компьютеров в Кемерово — Админ.Ко</title>
+    <meta name="description" content="Профессиональный ремонт ноутбуков и ПК в Кемерово. Чистка, замена матриц, ремонт плат после залития. Опыт 12 лет, диагностика 0₽.">
+    <link rel="canonical" href="https://admin-ko.ru/computers.html">
+    <meta property="og:title" content="Ремонт ноутбуков и ПК в Кемерово | Админ.Ко">
+    <meta property="og:description" content="Восстановление 90% залитых устройств. Сложная пайка чипов.">
+    <meta property="og:image" content="https://admin-ko.ru/logo.png">
+    <link rel="stylesheet" href="styles.css?v=3.1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+</head>
+<body class="bg-white dark:bg-surface-dark text-text-light dark:text-text-dark antialiased">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+    <section class="relative bg-surface-light dark:bg-gray-800 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="brand-stripes w-16 mb-6">
+                        <div class="brand-stripe"></div>
+                        <div class="brand-stripe-thin"></div>
+                    </div>
+                    <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight mb-6">
+                        Ремонт ноутбуков<br>
+                        <span class="text-primary">в Кемерово</span>
+                    </h1>
+                    <p class="text-lg text-text-muted-light dark:text-text-muted-dark mb-8">
+                        Восстановим залитую материнскую плату за 2-3 дня с вероятностью 90%. Ускорим старый ПК в 3 раза за 1 час.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="openMessengerModal()" class="inline-flex items-center justify-center gap-2 bg-primary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary-dark transition-all">
+                            <span class="material-symbols-outlined">chat</span>
+                            Узнать цену
+                        </button>
+                    </div>
+                    <div class="mt-8 flex items-center gap-6 text-sm text-text-muted-light dark:text-text-muted-dark">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">verified</span>
+                            <span>Диагностика 0₽</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">memory</span>
+                            <span>BGA-пайка</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=800&h=600&fit=crop" alt="Ремонт ноутбуков" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 bg-white dark:bg-surface-dark rounded-xl shadow-xl p-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                <span class="material-symbols-outlined text-primary">laptop</span>
+                            </div>
+                            <div>
+                                <p class="font-bold">Все бренды</p>
+                                <p class="text-sm text-text-muted-light dark:text-text-muted-dark">Apple, ASUS, Lenovo, HP</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Stats -->
+    <section class="py-16 bg-white dark:bg-surface-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-8 rounded-2xl bg-surface-light dark:bg-gray-800">
+                    <p class="text-5xl font-extrabold text-primary mb-2">90%</p>
+                    <p class="font-semibold mb-1">Успех восстановления</p>
+                    <p class="text-sm text-text-muted-light dark:text-text-muted-dark">После залива жидкостью</p>
+                </div>
+                <div class="text-center p-8 rounded-2xl bg-surface-light dark:bg-gray-800">
+                    <p class="text-5xl font-extrabold text-primary mb-2">3×</p>
+                    <p class="font-semibold mb-1">Ускорение ПК</p>
+                    <p class="text-sm text-text-muted-light dark:text-text-muted-dark">После апгрейда за 1 час</p>
+                </div>
+                <div class="text-center p-8 rounded-2xl bg-surface-light dark:bg-gray-800">
+                    <p class="text-5xl font-extrabold text-primary mb-2">12</p>
+                    <p class="font-semibold mb-1">Месяцев гарантии</p>
+                    <p class="text-sm text-text-muted-light dark:text-text-muted-dark">На все работы</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Points -->
+    <section class="py-16 bg-surface-light dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col items-center mb-12">
+                <h2 class="text-3xl font-extrabold text-center mb-2">Решаем сложные проблемы</h2>
+                <div class="brand-stripes w-20">
+                    <div class="brand-stripe"></div>
+                    <div class="brand-stripe-thin"></div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white dark:bg-surface-dark p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+                    <div class="w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-xl flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined text-primary text-2xl">water_drop</span>
+                    </div>
+                    <h3 class="font-bold mb-2">Залил кофе/воду</h3>
+                    <p class="text-sm text-text-muted-light dark:text-text-muted-dark">Ультразвуковая чистка, восстановление дорожек, замена чипов</p>
+                </div>
+                <div class="bg-white dark:bg-surface-dark p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+                    <div class="w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-xl flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined text-primary text-2xl">memory</span>
+                    </div>
+                    <h3 class="font-bold mb-2">BGA-пайка</h3>
+                    <p class="text-sm text-text-muted-light dark:text-text-muted-dark">Замена видеочипов, северных и южных мостов</p>
+                </div>
+                <div class="bg-white dark:bg-surface-dark p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+                    <div class="w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-xl flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined text-primary text-2xl">speed</span>
+                    </div>
+                    <h3 class="font-bold mb-2">Тормозит/греется</h3>
+                    <p class="text-sm text-text-muted-light dark:text-text-muted-dark">Чистка от пыли, замена термопасты, апгрейд</p>
+                </div>
+                <div class="bg-white dark:bg-surface-dark p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+                    <div class="w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-xl flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined text-primary text-2xl">error</span>
+                    </div>
+                    <h3 class="font-bold mb-2">Синий экран</h3>
+                    <p class="text-sm text-text-muted-light dark:text-text-muted-dark">Диагностика и устранение ошибок Windows</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="py-16 bg-white dark:bg-surface-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col items-center mb-12">
+                <h2 class="text-3xl font-extrabold text-center mb-2">Услуги и цены</h2>
+                <div class="brand-stripes w-20">
+                    <div class="brand-stripe"></div>
+                    <div class="brand-stripe-thin"></div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <div class="flex items-center justify-between p-6 bg-surface-light dark:bg-gray-800 rounded-xl">
+                    <div class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-primary text-2xl">water_drop</span>
+                        <div>
+                            <h3 class="font-bold">Ремонт после залива</h3>
+                            <p class="text-sm text-text-muted-light dark:text-text-muted-dark">Ультразвуковая чистка</p>
+                        </div>
+                    </div>
+                    <p class="text-xl font-bold text-primary">от 3 000 ₽</p>
+                </div>
+                <div class="flex items-center justify-between p-6 bg-surface-light dark:bg-gray-800 rounded-xl">
+                    <div class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-primary text-2xl">memory</span>
+                        <div>
+                            <h3 class="font-bold">BGA-пайка</h3>
+                            <p class="text-sm text-text-muted-light dark:text-text-muted-dark">Замена чипов</p>
+                        </div>
+                    </div>
+                    <p class="text-xl font-bold text-primary">от 5 000 ₽</p>
+                </div>
+                <div class="flex items-center justify-between p-6 bg-surface-light dark:bg-gray-800 rounded-xl">
+                    <div class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-primary text-2xl">air</span>
+                        <div>
+                            <h3 class="font-bold">Чистка от пыли</h3>
+                            <p class="text-sm text-text-muted-light dark:text-text-muted-dark">+ замена термопасты</p>
+                        </div>
+                    </div>
+                    <p class="text-xl font-bold text-primary">от 1 500 ₽</p>
+                </div>
+                <div class="flex items-center justify-between p-6 bg-surface-light dark:bg-gray-800 rounded-xl">
+                    <div class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-primary text-2xl">speed</span>
+                        <div>
+                            <h3 class="font-bold">Апгрейд</h3>
+                            <p class="text-sm text-text-muted-light dark:text-text-muted-dark">SSD, RAM</p>
+                        </div>
+                    </div>
+                    <p class="text-xl font-bold text-primary">от 2 500 ₽</p>
+                </div>
+                <div class="flex items-center justify-between p-6 bg-surface-light dark:bg-gray-800 rounded-xl">
+                    <div class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-primary text-2xl">keyboard</span>
+                        <div>
+                            <h3 class="font-bold">Замена клавиатуры</h3>
+                            <p class="text-sm text-text-muted-light dark:text-text-muted-dark">Оригинальная клавиатура</p>
+                        </div>
+                    </div>
+                    <p class="text-xl font-bold text-primary">от 2 000 ₽</p>
+                </div>
+                <div class="flex items-center justify-between p-6 bg-surface-light dark:bg-gray-800 rounded-xl">
+                    <div class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-primary text-2xl">desktop_windows</span>
+                        <div>
+                            <h3 class="font-bold">Замена матрицы</h3>
+                            <p class="text-sm text-text-muted-light dark:text-text-muted-dark">Экрана ноутбука</p>
+                        </div>
+                    </div>
+                    <p class="text-xl font-bold text-primary">от 4 000 ₽</p>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <a href="price.html" class="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
+                    <span>Смотреть полный прайс-лист</span>
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Expert -->
+    <section class="py-16 bg-surface-light dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col items-center mb-12">
+                <h2 class="text-3xl font-extrabold text-center mb-2">Ваш инженер</h2>
+                <div class="brand-stripes w-20">
+                    <div class="brand-stripe"></div>
+                    <div class="brand-stripe-thin"></div>
+                </div>
+            </div>
+            <div class="max-w-2xl mx-auto bg-white dark:bg-surface-dark rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-700">
+                <div class="flex items-center gap-6 mb-6">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop" alt="Алексей" class="w-24 h-24 rounded-full object-cover">
+                    <div>
+                        <h3 class="text-2xl font-bold">Алексей</h3>
+                        <p class="text-primary font-semibold">Старший инженер</p>
+                        <p class="text-text-muted-light dark:text-text-muted-dark">9 лет опыта</p>
+                    </div>
+                </div>
+                <p class="text-lg mb-4">Спас более <strong>430 залитых ноутбуков</strong>, которые в других сервисах «приговорили» к мусорке. Выполняет сложную BGA-пайку чипов под микроскопом с ювелирной точностью.</p>
+                <div class="flex items-center gap-2 text-text-muted-light dark:text-text-muted-dark">
+                    <span class="material-symbols-outlined text-primary">workspace_premium</span>
+                    <span>Сертифицированный специалист по микропайке</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Review -->
+    <section class="py-16 bg-white dark:bg-surface-dark">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-surface-light dark:bg-gray-800 rounded-2xl p-8 relative">
+                <div class="absolute top-4 right-4 text-yellow-400 flex">
+                    <span class="material-symbols-outlined">star</span>
+                    <span class="material-symbols-outlined">star</span>
+                    <span class="material-symbols-outlined">star</span>
+                    <span class="material-symbols-outlined">star</span>
+                    <span class="material-symbols-outlined">star</span>
+                </div>
+                <p class="text-lg italic mb-6">«Думала, макбуку конец после пролитого вина. В другом месте насчитали 40 тысяч за замену платы! Тут ребята промыли всё в ультразвуке, восстановили пару дорожек и взяли 6000. Работает уже полгода без сбоев. Спасибо Алексею!»</p>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold">ЕВ</div>
+                    <div>
+                        <p class="font-bold">Елена В.</p>
+                        <p class="text-sm text-text-muted-light dark:text-text-muted-dark">Менеджер проектов</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-primary relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10">
+            <div class="absolute top-1/4 -left-10 brand-stripes w-1/2 rotate-12">
+                <div class="h-4 bg-white w-full"></div>
+                <div class="h-2 bg-white w-full"></div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">Проблемы с ноутбуком?</h2>
+            <p class="text-xl text-red-100 mb-8 max-w-2xl mx-auto">Напишите нам — назовём цену за 5 минут и скажем, есть ли смысл ремонтировать</p>
+            <button onclick="openMessengerModal()" class="inline-flex items-center justify-center gap-2 bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all">
+                <span class="material-symbols-outlined">chat</span>
+                Написать в мессенджер
+            </button>
+        </div>
+    </section>
+
+
+
+
+</div>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="components.js?v=3.3"></script>
+</body>
+</html>

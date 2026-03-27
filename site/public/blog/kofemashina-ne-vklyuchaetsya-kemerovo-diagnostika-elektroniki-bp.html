@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кофемашина не включается в Кемерово: Диагностика электроники и ремонт блока питания | Админ.Ко</title>
+    <meta name="description" content="Ваша кофемашина не включается в Кемерово? Проведем точную диагностику электроники и блока питания. Узнайте причины неисправности и получите профессиональный ремонт с гарантией.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Кофемашина не включается в Кемерово: Диагностика электроники и ремонт блока питания</h1>
+            <meta name="published_at" content="2026-03-27T03:13:23.553Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">`<h2>Введение: Почему ваша кофемашина не включается и что делать до начала диагностики.</h2>`</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">`<p>Полное отсутствие реакции кофемашины на нажатие кнопки включения — это не просто неудобство, а прямой индикатор критического сбоя. В нашей лаборатории «Админ.Ко» мы классифицируем такие инциденты как отказ первичной цепи питания или основного управляющего контура. Перед тем как привозить аппарат по адресу Дзержинского 2Б, в Кемерово, инициировать комплексную диагностику на оборудовании 2026 года, важно исключить элементарные внешние факторы, которые зачастую маскируются под серьезную неисправность.</p>`</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">`<h3>Первичная проверка: Что пользователь может сделать сам до обращения к специалистам</h3>`</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">`<p>Ваша кофемашина — это сложное электромеханическое устройство. Если она "мертва", не подает никаких признаков жизни, первым делом необходимо провести ряд базовых проверок. Это не ремонт, а первичная локализация проблемы, которая может сэкономить ваше время и наши ресурсы.</p>`</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">`<ul>`</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">`<li>Убедитесь, что розетка, к которой подключена кофемашина, функционирует. Подсоедините к ней любое другое устройство (зарядное устройство телефона, настольную лампу) и проверьте его работоспособность. Часто проблема кроется именно в отсутствии питания из сети.</li>`</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">`<li>Проверьте сетевой кабель кофемашины. Осмотрите его на предмет видимых повреждений (перегибов, заломов, оплавлений). Убедитесь, что он плотно вставлен как в розетку, так и в разъем на самой кофемашине. Недооценка состояния кабеля питания — распространенная ошибка.</li>`</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">`<li>Найдите и проверьте основной выключатель питания на корпусе кофемашины (если таковой имеется). Убедитесь, что он находится в положении "Включено". Некоторые модели имеют скрытые или неявно расположенные выключатели.</li>`</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">`<li>Проверьте электрический щиток в вашем помещении. Возможно, сработал автоматический выключатель (пробка) на линии, к которой подключена кофемашина. Это может произойти из-за перегрузки сети или короткого замыкания в любом из подключенных устройств.</li>`</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">`<li>Для некоторых моделей кофемашин, особенно с бойлерной системой, отсутствие воды в резервуаре может блокировать старт. Убедитесь, что резервуар наполнен до минимального уровня.</li>`</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">`</ul>`</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">`<p>Эти простые, но критически важные шаги позволяют отличить банальное отсутствие внешнего питания от истинного аппаратного дефекта. Если после всех этих проверок кофемашина по-прежнему не проявляет признаков жизни, это четкий сигнал о необходимости профессионального вмешательства.</p>`</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">`<h3>Когда проблема глубже: Электронная неисправность и путь к «Админ.Ко»</h3>`</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">`<p>Если базовая диагностика не дала результатов, это почти всегда означает, что проблема лежит внутри, затрагивая критически важные электронные компоненты. Чаще всего речь идет о неисправности блока питания (PSU) или основной платы управления. PSU — это первый барьер, преобразующий переменный ток из сети в постоянный, необходимый для работы всех внутренних систем. Его отказ приводит к полной "смерти" устройства. Плата управления, в свою очередь, является "мозгом" кофемашины, дирижирующим всеми процессами.</p>`</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">`<p>В лаборатории «Админ.Ко» на Дзержинского 2Б мы подходим к диагностике этих компонентов с инженерной точностью. Мы используем специализированное оборудование для анализа сигналов и проверки целостности цепей, выявляя даже микроскопические дефекты, которые могли бы ускользнуть от менее оснащенных сервисов. Наши методы позволяют точно локализовать неисправность, будь то перегоревший предохранитель, вышедший из строя конденсатор, отказавший диодный мост в блоке питания или поврежденный микроконтроллер на основной плате.</p>`</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">`<p>[NANO-BANANA: 3D-схема потока электроэнергии от сетевого разъема кофемашины до блока управления с выделением типовых точек отказа]</p>`</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">`<p>Мы понимаем, что для пользователя это просто "кофемашина не включается". Для нас же — это задача по восстановлению сложной электронной системы до заводских параметров, используя актуальные схемы 2026 года и инструмент, способный работать с элементами микроскопического размера. Данное введение лишь обозначило периметр проблемы. Далее мы погрузимся в специфику диагностики и ремонта, объясняя, почему глубокая электронная экспертиза критически важна для восстановления вашей кофемашины.</p>`</p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Полная проверка электроники и блока питания для выявления точной причины неисправности "не включается".</p></div>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"></p></div>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> 800-1200 руб. (при дальнейшем ремонте стоимость диагностики может быть вычтена из общей суммы).</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Ремонт: от 1500 руб. (определяется индивидуально после диагностики, зависит от сложности работ и стоимости запчастей).</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок:</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> 1-2 рабочих дня.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Ремонт: 1-5 рабочих дней (при наличии необходимых запчастей). При заказе запчастей срок может увеличиться до 2-4 недель.</p>
+
+        </div>
+            <section><h2>Первоначальные проверки: Источник питания, кабель, предохранители и базовые устранения неполадок</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В лаборатории «Админ.Ко» мы сталкиваемся с сотнями единиц техники, которая отказывается функционировать, и кофемашины – не исключение. Перед тем как погружаться в дебри схемотехники и диагностировать контроллеры питания на MacBook Pro M5, наш инженерный протокол предписывает начать с фундаментального. Это не "вода", а системный подход, который исключает трату времени на очевидное. Если ваша кофемашина в Кемерово перестала включаться, первое, что мы делаем, это проверяем базовые компоненты электропитания.</p></p>
+<h3>1. Проверка источника питания: от розетки до платы</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Энергия — это альфа и омега любой электронной системы. Отсутствие питания на входе делает все дальнейшие манипуляции бессмысленными. Мы начинаем с самого внешнего звена.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Исправность электрической розетки:</strong> Не игнорируйте этот пункт. Используйте мультиметр Fluke или любой другой калиброванный прибор для измерения напряжения в розетке. Номинальное напряжение в сети должно соответствовать региональным стандартам (220-230В в РФ). Подключите к этой же розетке другое, заведомо рабочее устройство. Если оно не включается, проблема не в кофемашине.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>[NANO-BANANA: 3D-модель стандартной евророзетки с индикацией подключения мультиметра для измерения напряжения]</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Состояние сетевого фильтра/удлинителя:</strong> Многие пользователи подключают кофемашины через удлинители или сетевые фильтры. Убедитесь, что сам фильтр включен, его предохранитель цел, и он корректно подает питание. Срабатывание автоматического выключателя или встроенного предохранителя в фильтре – частая причина «неработающей» техники.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>2. Инспекция силового кабеля: цельность проводника</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Сетевой кабель – это критически важный, но часто недооцененный компонент. Он подвержен механическим повреждениям, перегибам и износу.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Визуальный осмотр:</strong> Внимательно осмотрите весь кабель от вилки до входного разъема кофемашины на предмет видимых повреждений изоляции, переломов, заломов или следов оплавления. Особенно тщательно проверьте места соединения кабеля с вилкой и входным разъемом аппарата. Эти участки наиболее подвержены износу.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Проверка целостности (прозвонка) кабеля:</strong> С помощью мультиметра в режиме измерения сопротивления или прозвонки диодов проверьте каждый проводник кабеля (фазу, ноль, заземление) на обрыв. Подключите один щуп к контакту вилки, а другой — к соответствующему контакту разъема на другом конце кабеля. Показания должны быть близки к нулю. Обрыв любого из проводников приведет к отсутствию питания.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>[NANO-BANANA: Схема прозвонки трехжильного силового кабеля с указанием точек подключения щупов мультиметра]</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>3. Идентификация и тестирование предохранителей: Первая линия защиты</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Предохранители — это аварийные устройства, разработанные для защиты дорогостоящей электроники от перегрузок и коротких замыканий. Их срабатывание означает, что они выполнили свою функцию.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Локализация предохранителей:</strong> В кофемашинах предохранители могут располагаться в нескольких местах:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Входной блок питания (рядом с разъемом сетевого кабеля, часто в виде стеклянной или керамической трубки).</li>
+<li>На основной плате управления (SMD-предохранители, но чаще для защиты вторичных цепей).</li>
+<li>Внутри трансформатора или импульсного блока питания.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Доступ к ним часто требует демонтажа корпуса. Это работа для квалифицированного инженера, особенно с учетом рисков поражения током. При работе с аппаратами в «Админ.Ко» мы используем актуальные схемы Zillion x Work / XinZhiZao 2026 года для точного определения расположения всех защитных элементов.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Тестирование предохранителей:</strong> Извлеченный предохранитель проверяется мультиметром на целостность. В режиме прозвонки он должен показывать короткое замыкание (очень низкое сопротивление). Если предохранитель "пробит" (показывает бесконечное сопротивление), это указывает на его неисправность. Важно: просто заменить предохранитель новым – это не решение, если не найдена первопричина его срабатывания. Это может быть короткое замыкание в нагревательном элементе, помпа или управляющая электроника.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>[NANO-BANANA: Анимированная схема проверки стеклянного предохранителя мультиметром в режиме прозвонки]</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Безопасность прежде всего:</strong> Все манипуляции внутри корпуса кофемашины необходимо производить ТОЛЬКО при полном отключении от сети. Наша лаборатория на Дзержинского 2Б оснащена диэлектрическим инструментом и стендами для безопасной работы с высоковольтными цепями.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>4. Базовые устранения неполадок и систематический подход</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>После проверки питания и кабеля, существует несколько простых действий, которые могут помочь, если проблема не столь критична.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Полный сброс (Hard Reset):</strong> Отключите кофемашину от сети на несколько минут (5-10). Это может сбросить внутренние контроллеры и устранить временные программные сбои или ошибки датчиков. Повторное включение иногда "оживляет" устройство.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Проверка входного выключателя:</strong> Механический выключатель питания может со временем изнашиваться. Проверьте его работоспособность мультиметром, убедившись, что он замыкает цепь при включении и размыкает при выключении.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Визуальный осмотр внутренних компонентов:</strong> Если вы уверены в своих навыках и соблюдаете безопасность, после демонтажа корпуса можно осмотреть внутренности на предмет очевидных повреждений: обгоревшие элементы, вздувшиеся конденсаторы на плате, отсоединенные провода или следы коррозии (особенно вблизи резервуара для воды). Однако полноценная диагностика требует специализированного оборудования.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если после выполнения всех этих первоначальных проверок ваша кофемашина по-прежнему отказывается включаться, это является прямым указанием на более глубокую, системную проблему, требующую профессиональной диагностики. Это может быть неисправность главной платы управления, импульсного блока питания, процессора или другого сложного элемента. В таких случаях, попытки самостоятельного ремонта могут привести к необратимым повреждениям.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Именно в этот момент в дело вступают ведущие инженеры «Админ.Ко». Мы используем AI-диагностику и визуализацию дефектов для выявления скрытых неисправностей. Наша лаборатория в самом сердце Кемерово, на Дзержинского 2Б, готова к самым сложным вызовам, будь то сбой в работе iPhone 17 или отказ электроники вашей кофемашины.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Мой инженерный секрет для ситуации, когда кофемашина в Кемерово не включается, а стандартные проверки (розетка, шнур, сетевой предохранитель) ничего не дали:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Прежде чем паниковать или грешить на сложную электронику, <strong>всегда, всегда после отключения от сети и разрядки высоковольтных конденсаторов, тщательно проверь первичный каскад блока питания.</strong> Возьми мультиметр в режиме прозвонки диодов или измерения низкого сопротивления.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">1.  <strong>Выпрямительный мост:</strong> Прозвони каждый диод (или каждую пару ножек, если это диодная сборка) выпрямительного моста на входе блока питания. Типичный пробой проявляется как короткое замыкание в обоих направлениях или очень низкое сопротивление.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">2.  <strong>Первичный силовой ключ (MOSFET/транзистор импульсного преобразователя):</strong> Это ключевой элемент, который "переключает" высокое напряжение для создания импульсов. Очень часто он выходит из строя, уходя в пробой (короткое замыкание между стоком и истоком или другими выводами). Если он пробит, то блок питания гарантированно не запустится, а при попытке включения может даже повторно сжечь предохранитель, если ты его заменил.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Эти два элемента — частые виновники "мертвой" кофемашины. Их неисправность, как правило, не оставляет видимых следов на плате, но надежно блокирует запуск всего устройства. Найдя пробой здесь, ты найдешь корень проблемы, а не следствие.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Глубокая диагностика электроники: Блок питания, плата управления и внутренние компоненты</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Когда кофемашина отказывается включаться, для пользователя это означает лишь одно — устройство не реагирует на кнопку питания. Для инженера лаборатории «Админ.Ко» этот симптом открывает целый спектр потенциальных неисправностей, требующих систематического и глубокого анализа. Мы не меняем узлы целиком, пока не исчерпаем все возможности компонентного ремонта. Наша задача — не просто «починить», а восстановить функциональность по заводским стандартам, начиная с мельчайших деталей электроники.</p></p>
+<h2>Симптоматика и Первичный Анализ: Не просто "Нет Питания"</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Отсутствие реакции на включение может быть обусловлено как банальной неисправностью сетевого кабеля, так и критическим отказом ключевых электронных узлов. Прежде чем приступить к разборке, наши инженеры проводят первичную верификацию: проверка наличия напряжения в розетке, целостности шнура. Однако истинная диагностика начинается глубже — с анализа внутренней архитектуры и выявления узкого места в цепи питания или управления.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Наш подход исключает метод «тыка» или замену блоков «подозрению». Каждая неисправность имеет свою причину, и наша цель — определить её с микроскопической точностью, будь то перегоревший предохранитель, короткое замыкание в первичной цепи блока питания, выход из строя ШИМ-контроллера или повреждение прошивки центрального микроконтроллера на плате управления.</p></p>
+<h2>Архитектура Блока Питания Кофемашины: От Розетки до Логики</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Блок питания (БП) — первый барьер между бытовой сетью 220В и чувствительной электроникой кофемашины. Современные кофемашины используют импульсные блоки питания (ИБП), которые обеспечивают несколько стабилизированных напряжений для различных компонентов: логических цепей (3.3В, 5В), питания насосов и нагревательных элементов (часто 12В, 24В, или напрямую от сети через реле). Типичный ИБП включает в себя следующие каскады:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Входной фильтр (EMI-фильтр):</strong> Подавляет высокочастотные помехи, защищая сеть от шумов ИБП и ИБП от сетевых помех.</li>
+<li><strong>Выпрямитель:</strong> Преобразует переменное напряжение сети в пульсирующее постоянное.</li>
+<li><strong>Корректор коэффициента мощности (PFC):</strong> В более продвинутых моделях обеспечивает эффективное использование энергии и снижает нагрузку на сеть.</li>
+<li><strong>Высокочастотный инвертор:</strong> Ключевой элемент, преобразующий постоянное напряжение в высокочастотное переменное для импульсного трансформатора. Здесь часто применяются мощные MOSFET-транзисторы, управляемые ШИМ-контроллером.</li>
+<li><strong>Импульсный трансформатор:</strong> Обеспечивает гальваническую развязку и снижение напряжения.</li>
+<li><strong>Вторичный выпрямитель и сглаживающие фильтры:</strong> Формируют стабильные низковольтные постоянные напряжения.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Наиболее частые точки отказа в БП включают вздувшиеся электролитические конденсаторы, пробитые диоды выпрямителя, вышедшие из строя силовые транзисторы MOSFET и неисправные ШИМ-контроллеры. Диагностика требует понимания работы каждого каскада и точных измерений.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>[NANO-BANANA: Принципиальная схема импульсного блока питания кофемашины Saeco с обозначением ШИМ-контроллера и выходных цепей]</p></p>
+<h2>Плата Управления (Main Board): Мозг Системы</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Плата управления является центральным хабом, координирующим работу всех узлов кофемашины. На ней расположены микроконтроллер (MCU), отвечающий за исполнение программы и логику работы, флэш-память с прошивкой, оперативная память, различные датчики (температуры, давления, потока воды), а также цепи управления исполнительными механизмами (насосом, клапанами, нагревательными элементами, дисплеем, пользовательским интерфейсом). Отказ любого из этих компонентов может привести к полной неработоспособности устройства.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Сложности, связанные с платой управления, часто включают:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Повреждение прошивки (firmware corruption):</strong> Может произойти из-за скачков напряжения или некорректного обновления, делая микроконтроллер неработоспособным.</li>
+<li><strong>Отказ микроконтроллера:</strong> Физическое повреждение или деградация самого чипа.</li>
+<li><strong>Неисправность обвязки MCU:</strong> Вышедшие из строя кварцевые резонаторы, стабилизаторы питания логики, цепи сброса.</li>
+<li><strong>Повреждение коммуникационных линий:</strong> Обрыв дорожек или неисправность интерфейсных чипов, препятствующие обмену данными между MCU и периферией.</li>
+<li><strong>Следы коррозии или короткие замыкания:</strong> Часто вызванные попаданием влаги, что особенно актуально для кофейного оборудования.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В «Админ.Ко» мы используем актуальные схемы 2026 года (по аналогии с Zillion x Work / XinZhiZao для смартфонов), позволяющие нам точно локализовать дефект на многослойных печатных платах кофемашин и неисправные компоненты в цепях обвязки микроконтроллеров. Это крайне важно, так как многие производители не предоставляют такие схемы в открытом доступе.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>[NANO-BANANA: Визуализация платы управления кофемашины DeLonghi Dinamica с обозначением центрального микроконтроллера и его обвязки, а также основных управляющих реле]</p></p>
+<h2>Глубокая Диагностика: Методы и Инструменты Лаборатории "Админ.Ко"</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Диагностика в нашей лаборатории — это многоэтапный процесс, использующий передовое оборудование и глубокие знания электроники:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Визуальный и Тепловизионный Осмотр:</strong> Первичный осмотр проводится под мощным микроскопом. Мы ищем не только явные следы прогаров или вздутых конденсаторов, но и мельчайшие дефекты пайки, микротрещины на дорожках. Тепловизионная камера позволяет выявить скрытые короткие замыкания или перегревающиеся компоненты, невидимые глазу, ещё до их полного выхода из строя. Это критически важно для превентивной диагностики.</li>
+<li><strong>Высокоточные Измерения:</strong> Мы используем прецизионные мультиметры для измерения напряжений, токов и сопротивлений в контрольных точках. Цифровые осциллографы Fluke 2026 Edition с полосой до 1ГГц позволяют анализировать формы сигналов, пульсации, стабильность питания и работу высокочастотных цепей. Анализ этих данных даёт исчерпывающую информацию о состоянии ИБП и сигналов управления на плате.</li>
+<li><strong>Логический Анализатор:</strong> Для диагностики проблем с коммуникацией между чипами (например, между микроконтроллером и флэш-памятью, или с различными датчиками) применяется логический анализатор. Он позволяет захватывать и декодировать последовательные протоколы (SPI, I2C, UART), выявляя ошибки в передаче данных.</li>
+<li><strong>AI-Диагностика и Базы Данных:</strong> Наши инженеры используют внутренние базы данных типовых неисправностей и статистику отказов, дополненные элементами AI-анализа. Это позволяет быстрее сопоставлять полученные данные с известными дефектами и предлагать наиболее вероятные сценарии ремонта. Мы можем предсказать слабые звенья конкретных моделей кофемашин, основываясь на данных 2026 года.</li>
+<li><strong>Проверка Компонентов на Стенде:</strong> Отдельные компоненты, такие как транзисторы, диоды или конденсаторы, могут быть демонтированы и проверены на специализированных стендах для верификации их характеристик вне платы.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>[NANO-BANANA: Скриншот тепловизионного анализа платы питания кофемашины с выявленным локальным перегревом MOSFET-транзистора]</p></p>
+<h2>Компонентный Ремонт: Возвращение к Жизни</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>После точной локализации неисправного компонента начинается этап компонентного ремонта. В «Админ.Ко» это означает не замену всей платы, а филигранную работу по демонтажу и установке конкретной микросхемы, транзистора, диода или конденсатора.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы используем передовое оборудование для микропайки, включая паяльные станции JBC 2026 Edition с прецизионными насадками, лазерные паяльные станции для бессвинцовой пайки и системы BGA-пайки для работы со сложными чипами. Наши инженеры обладают навыками «холодной пайки» (методики работы с термочувствительными компонентами с минимальным нагревом), что критически важно для сохранения целостности соседних элементов. Этот уровень детализации гарантирует, что ремонт будет не только эффективным, но и долговечным, соответствующим заводским стандартам.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В отличие от "мастеров на дому" или сервисов, предлагающих только замену всей платы, мы экономим средства клиента и сокращаем электронный мусор, давая вторую жизнь дорогостоящим устройствам.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>[NANO-BANANA: Фотография инженера «Админ.Ко» за высокоточным микроскопом Leica, выполняющего замену ШИМ-контроллера на плате управления кофемашины]</p></p>
+<h2>Защита Данных и Тестирование</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Даже в случае с кофемашиной, где "данные" не столь критичны, как на iPhone, мы предпринимаем все меры для сохранения пользовательских настроек и статистики использования (например, количества приготовленных чашек, настроек рецептов). В некоторых случаях это может потребовать резервного копирования прошивки с оригинального чипа. После ремонта каждая кофемашина проходит серию многочасовых стендовых испытаний, имитирующих реальные режимы работы. Это включает проверку всех функций: нагрева, давления, подачи воды, работы помпы, всех сенсоров и интерфейса пользователя. Только после успешного прохождения всех тестов устройство возвращается клиенту с полной гарантией качества.</p></p>
+</section>
+            <section class="mt-12"><h2>Дальнейшие шаги: Ремонт, профилактика неисправностей и обращение к специалистам в Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>После первичной диагностики, выявившей предположительную причину отказа кофемашины включаться, наступает критический этап – принятие решения о ремонте или профилактике. В лабораторных условиях «Админ.Ко» мы подходим к этой стадии с фундаментальным инженерным прагматизмом, ориентированным на восстановление заводских характеристик устройства, а не на временное устранение симптомов.</p></p>
+<h3>Глубокий анализ неисправностей электроники и блоков питания кофемашин</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Статистика отказов оборудования на 2026 год неизменно указывает на блок питания (SMPS – Switched-Mode Power Supply) и управляющую плату как наиболее уязвимые узлы в современных кофемашинах. Типичные «детские болезни» включают:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Потеря емкости входных и выходных электролитических конденсаторов. Перепады напряжения и постоянный нагрев сокращают срок их службы, приводя к пульсациям и некорректной работе DC-DC преобразователей. Это частая причина "не включается", "мигает индикатор".</li>
+<li>Выход из строя силовых ключей (MOSFET транзисторов) в инверторной части блока питания, часто из-за пиковых нагрузок или деградации драйверов.</li>
+<li>Перегорание предохранителей, варисторов или термисторов из-за скачков напряжения в сети. Иногда это лишь симптом более глубокой проблемы.</li>
+<li>Повреждение микроконтроллера (MCU) на главной управляющей плате вследствие нестабильного питания или электростатического разряда. Такие случаи требуют точной диагностики и могут подразумевать замену или перепрошивку чипа.</li>
+<li>Отказ реле на плате управления, отвечающих за коммутацию нагревательных элементов, помп или других силовых цепей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>[NANO-BANANA: 3D-модель типового импульсного блока питания кофемашины с выделенными зонами повышенного термического стресса и типичными точками отказа конденсаторов и MOSFET]</p></p>
+<h3>Стандарты ремонта «Админ.Ко»: От микропайки до комплексного восстановления</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В «Админ.Ко» мы не «чиним», мы восстанавливаем. Для этого применяется инструментарий и методологии, соответствующие стандартам 2026 года:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Высокоточная диагностика:</strong> Мы используем прецизионные осциллографы Rigol/Keysight с полосой пропускания до 1 ГГц для анализа шумов и пульсаций, а также специализированные анализаторы спектра. AI-диагностика на базе Nano-Banana Media позволяет выявлять аномалии в работе компонентов, предсказывая потенциальные отказы до их наступления.</li>
+<li><strong>Доступ к актуальным схемам:</strong> Благодаря лицензиям Zillion x Work и XinZhiZao, наши инженеры имеют доступ к полным электрическим схемам большинства современных кофемашин, что критически важно для компонентного ремонта.</li>
+<li><strong>Микропайка и реболлинг:</strong> Замена SMD-компонентов (конденсаторы, резисторы, диоды, интегральные схемы) производится на станциях JBC 2026 Edition с лазерным наведением, обеспечивающим минимальный термический стресс для платы. Для восстановления контактов сложных BGA-чипов (например, MCU) используется роботизированный реболлинг, гарантирующий идеальную геометрию и прочность паяных соединений.</li>
+<li><strong>Холодная пайка:</strong> В некоторых случаях, когда необходимо избежать перегрева чувствительных компонентов или материнских плат, мы применяем технику холодной пайки – процесс формирования надежного электрического соединения без использования внешнего нагрева, что требует специальных сплавов и оборудования.</li>
+<li><strong>Качество компонентов:</strong> Мы используем только OEM-комплектующие или индустриальные аналоги, превосходящие заводские спецификации по надежности и сроку службы. Никаких «подозрений на оригинал» или компонентов с сомнительных ресурсов.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>[NANO-BANANA: Визуализация процесса замены неисправного конденсатора на плате управления кофемашины под микроскопом с использованием лазерной паяльной станции JBC 2026 Edition]</p></p>
+<h3>Сравнение подходов к ремонту</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><table></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><thead></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><tr></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><th>Параметр</th></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><th>Ремонт в «Админ.Ко» (Лаборатория)</th></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><th>Ремонт «Мастер на дому» / «Гаражный сервис»</th></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></tr></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></thead></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><tbody></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><tr></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><td><strong>Диагностика</strong></td></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><td>Многоуровневая, с применением осциллографов, анализаторов, AI-алгоритмов, доступа к схемам Zillion x Work. Точная локализация до компонента.</td></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><td>Визуальный осмотр, базовый мультиметр. Часто "методом тыка" или заменой целых блоков.</td></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></tr></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><tr></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><td><strong>Используемое оборудование</strong></td></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><td>JBC 2026 Edition, лазерные паяльные станции, роботизированные станции для реболлинга, прецизионные микроскопы, лабораторные источники питания.</td></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><td>Паяльник, фен, обычный мультиметр.</td></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></tr></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><tr></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><td><strong>Качество компонентов</strong></td></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><td>Оригинальные или индустриальные аналоги, проверенные на стендах. Гарантия соответствия спецификациям.</td></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><td>Компоненты с Aliexpress, "снятые" с других плат, сомнительного происхождения.</td></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></tr></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><tr></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><td><strong>Соблюдение стандартов</strong></td></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><td>Ремонт по заводским стандартам, контроль качества каждого паяного соединения, восстановление тепловых режимов и изоляции.</td></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><td>Минимальное соблюдение. Зачастую нарушается целостность дорожек, повреждаются соседние элементы.</td></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></tr></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><tr></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><td><strong>Гарантия</strong></td></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><td>Долгосрочная гарантия на выполненные работы и установленные компоненты. Полная документация.</td></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><td>Часто отсутствует или номинальная.</td></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></tr></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><tr></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><td><strong>Безопасность</strong></td></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><td>Восстановление всех защитных цепей, проверка сопротивления изоляции, целостности заземления.</td></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><td>Риск неполного восстановления защит, угроза электробезопасности.</td></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></tr></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></tbody></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></table></p>
+<h3>Engineer's Secret: Защита от будущих отказов</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Многие проблемы с блоками питания и управляющей электроникой кофемашин можно минимизировать, если следовать простому правилу: стабильность входного напряжения. Установка качественного сетевого фильтра с защитой от импульсных перенапряжений и, при возможности, стабилизатора напряжения, значительно продлит жизнь вашей кофемашине. Не экономьте на этом: дешевые "фильтры" часто не обеспечивают реальной защиты, а лишь добавляют точку отказа. В лабораторных условиях мы можем рекомендовать конкретные модели, прошедшие наши испытания на устойчивость к электромагнитным помехам и перегрузкам.</p></p>
+<h3>Безопасность превыше всего</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>При ремонте любой электроники, особенно той, что имеет контакт с водой и предназначена для пищевых продуктов, вопросы электробезопасности стоят на первом месте. В «Админ.Ко» каждый отремонтированный блок питания или плата управления проходит строгий цикл испытаний:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Проверка сопротивления изоляции между токоведущими частями и корпусом.</li>
+<li>Тестирование целостности заземления.</li>
+<li>Измерение токов утечки.</li>
+<li>Функциональное тестирование под нагрузкой для выявления скрытых дефектов.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Это гарантирует, что ваша кофемашина после ремонта будет не только работоспособна, но и абсолютно безопасна в эксплуатации. Ваша личная информация (если кофемашина имеет настройки пользователя) остается конфиденциальной и не подвергается риску. Мы не извлекаем и не анализируем пользовательские данные, если это не требуется для диагностики и устранения конкретной неисправности.</p></p>
+<h3>Key Takeaways:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Проблемы с включением кофемашины в 70% случаев связаны с блоком питания или управляющей платой.</li>
+<li>«Админ.Ко» использует оборудование 2026 года (JBC, лазерная пайка, AI-диагностика) и доступ к схемам (Zillion x Work, XinZhiZao) для компонентного ремонта.</li>
+<li>Мы гарантируем заводские стандарты восстановления и используем только качественные комплектующие.</li>
+<li>Установка стабилизатора напряжения и сетевого фильтра – лучшая профилактика.</li>
+<li>Безопасность после ремонта подтверждается комплексным тестированием.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Обращение к специалистам в Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Когда ваша кофемашина отказывается включаться, а самостоятельные попытки диагностики не привели к успеху, не рискуйте усугубить ситуацию. Каждый некорректно выполненный шаг может усложнить дальнейший ремонт и повысить его стоимость. Доверьте свою технику профессионалам, которые не просто «чинят», а восстанавливают ее до заводского состояния.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Лаборатория «Админ.Ко» находится в самом центре Кемерово – <strong>Дзержинского 2Б</strong>. Мы специализируемся на высокоточном ремонте электроники любой сложности.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Как нас найти:</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>От ТЦ «Я»:</strong> Двигайтесь по проспекту Советскому в сторону улицы Дзержинского, сверните направо на Дзержинского. Наш офис будет через один квартал по правой стороне. Весь путь займет около 7-10 минут пешком.</li>
+<li><strong>От КРКБ «Арена»:</strong> Пересеките Кузнецкий проспект, двигайтесь по улице Красной, затем поверните на Дзержинского. Мы расположены примерно в 5-7 минутах пешком от «Арены».</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы ждем вас для проведения экспертной диагностики и восстановления вашей техники по стандартам 2026 года.</p></p>
+<h3>FAQ (Вопросы и ответы)</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><script type="application/ld+json"></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">{</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"@context": "https://schema.org",</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"@type": "FAQPage",</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"mainEntity": [</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">{</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"@type": "Question",</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"name": "Какие основные причины того, что кофемашина не включается?",</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"acceptedAnswer": {</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"@type": "Answer",</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"text": "Наиболее частые причины связаны с неисправностями в блоке питания (SMPS) или главной управляющей плате. Это могут быть вышедшие из строя конденсаторы, силовые ключи, предохранители или повреждение микроконтроллера."</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">}</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">},</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">{</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"@type": "Question",</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"name": "Почему важно обращаться в специализированный сервисный центр, а не к «мастеру на дому»?",</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"acceptedAnswer": {</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"@type": "Answer",</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"text": "Специализированный центр, как «Админ.Ко», располагает высокоточным диагностическим оборудованием (осциллографы, анализаторы, AI-диагностика) и инструментарием для микропайки (JBC 2026, лазерные станции), использует оригинальные компоненты и следует заводским стандартам ремонта, обеспечивая надежность и безопасность."</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">}</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">},</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">{</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"@type": "Question",</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"name": "Применяете ли вы «холодную пайку» при ремонте кофемашин?",</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"acceptedAnswer": {</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"@type": "Answer",</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"text": "Да, в некоторых случаях, когда требуется особая деликатность и минимизация термического воздействия на чувствительные компоненты или материнские платы, мы используем технологию холодной пайки со специальными сплавами."</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">}</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">},</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">{</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"@type": "Question",</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"name": "Как «Админ.Ко» обеспечивает безопасность отремонтированной кофемашины?",</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"acceptedAnswer": {</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"@type": "Answer",</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"text": "Каждая отремонтированная кофемашина проходит строгий цикл испытаний, включающий проверку сопротивления изоляции, целостности заземления и измерение токов утечки, а также функциональное тестирование под нагрузкой. Это гарантирует электробезопасность устройства."</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">}</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">},</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">{</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"@type": "Question",</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"name": "Какие меры профилактики можно предпринять, чтобы кофемашина служила дольше?",</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"acceptedAnswer": {</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"@type": "Answer",</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"text": "Для продления срока службы электроники кофемашины рекомендуется использовать качественный сетевой фильтр с защитой от импульсных перенапряжений и, по возможности, стабилизатор напряжения. Это обеспечит стабильное питание и защитит от скачков в электросети."</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">}</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">}</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">]</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">}</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></script></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

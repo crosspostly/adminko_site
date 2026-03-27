@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Политика конфиденциальности | Админ.Ко Кемерово</title>
+    <meta name="description" content="Политика в отношении обработки персональных данных в сервисный центрии ИТ-ремонта Админ.Ко">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <link rel="icon" href="/favicon.jpg" type="image/jpeg">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#E50914',
+                        'primary-hover': '#b00303',
+                        'background-light': '#F9FAFB',
+                        'background-dark': '#111827',
+                        'surface-light': '#FFFFFF',
+                        'surface-dark': '#1F2937',
+                        'text-light': '#1F2937',
+                        'text-dark': '#F3F4F6',
+                        'text-muted-light': '#6B7280',
+                        'text-muted-dark': '#9CA3AF',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    
+    <!-- Hero -->
+    <div class="text-center mb-12">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+            <span class="material-symbols-outlined text-3xl">shield</span>
+        </div>
+        <h1 class="text-3xl md:text-4xl font-extrabold text-text-light dark:text-text-dark mb-4">
+            Политика конфиденциальности
+        </h1>
+        <p class="text-lg text-text-muted-light dark:text-text-muted-dark">
+            В отношении обработки персональных данных в сервисный центрии ИТ-ремонта «Админ.Ко»
+        </p>
+        <p class="text-sm text-text-muted-light dark:text-text-muted-dark mt-4">
+            Последнее обновление: <time datetime="2026-02-25">25 февраля 2026 г.</time>
+        </p>
+    </div>
+
+    <!-- Content -->
+    <div class="bg-surface-light dark:bg-surface-dark rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 p-6 md:p-8">
+        
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-text-light dark:text-text-dark mb-4">1. Общие положения</h2>
+            <div class="space-y-4 text-text-muted-light dark:text-text-muted-dark">
+                <p>
+                    1.1. Политика в отношении обработки персональных данных (далее — Политика) направлена на защиту прав и свобод физических лиц, персональные данные которых обрабатывает сервисный центр ИТ-ремонта «Админ.Ко» (далее — Оператор).
+                </p>
+                <p>
+                    1.2. Политика разработана в соответствии с положениями Федерального закона от 27 июля 2006 г. № 152-ФЗ «О персональных данных» (далее — ФЗ «О персональных данных»), другими законодательными и нормативными правовыми актами в области сбора и обработки Персональных данных (далее – «Законодательство») и определяет порядок работы с Персональными данными Субъекта, которые Оператор собирает посредством сайта, а также требованиями к обеспечению их безопасности.
+                </p>
+                <p>
+                    1.3. Политика является общедоступным документом, текст которого постоянно размещен в сети Интернет по адресу: <a href="https://admin-ko.ru/policy" class="text-primary hover:underline">https://admin-ko.ru/policy</a>.
+                </p>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-text-light dark:text-text-dark mb-4">2. Термины</h2>
+            <div class="space-y-3 text-text-muted-light dark:text-text-muted-dark">
+                <div>
+                    <span class="font-semibold text-text-light dark:text-text-dark">2.1. Персональные данные</span> – любая информация, относящаяся к прямо или косвенно определенному или определяемому физическому лицу (Субъекту Персональных данных).
+                </div>
+                <div>
+                    <span class="font-semibold text-text-light dark:text-text-dark">2.2. Сайт</span> – информационная система, включающая программно-аппаратный комплекс, размещенный на доменном имени <a href="https://admin-ko.ru" class="text-primary hover:underline">https://admin-ko.ru</a> и иных связанных доменах.
+                </div>
+                <div>
+                    <span class="font-semibold text-text-light dark:text-text-dark">2.3. Обработка Персональных данных</span> – любое действие (операция) или совокупность действий (операций) с Персональными данными, совершаемых с использованием средств автоматизации или без использования таких средств, включая сбор, запись, систематизацию, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передачу (предоставление, доступ), обезличивание, блокирование, удаление и уничтожение Персональных данных.
+                </div>
+                <div>
+                    <span class="font-semibold text-text-light dark:text-text-dark">2.4. Оператор</span> – сервисный центр ИТ-ремонта «Админ.Ко», осуществляющая обработку персональных данных.
+                </div>
+                <div>
+                    <span class="font-semibold text-text-light dark:text-text-dark">2.5. Субъект Персональных данных</span> – физическое лицо, которое прямо или косвенно определено или определяемо с помощью Персональных данных. По смыслу Политики под Субъектом понимается Клиент или иное лицо, посещающее Сайт, а также работники Оператора.
+                </div>
+                <div>
+                    <span class="font-semibold text-text-light dark:text-text-dark">2.6. Клиент</span> – физическое лицо, использующее услуги сервисный центрии ИТ-ремонта «Админ.Ко» для ремонта техники, установки видеонаблюдения или иных услуг.
+                </div>
+                <div>
+                    <span class="font-semibold text-text-light dark:text-text-dark">2.7. Cookie-файлы</span> – информация, которая может содержать следующие сведения о Субъекте: IP-адрес устройства, данные геолокации, информацию о программе, с помощью которой осуществляется доступ к Сайту, технические характеристики оборудования и программного обеспечения, которое использует Субъект, дата и время доступа к Сайту, а также иные подобные сведения.
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-text-light dark:text-text-dark mb-4">3. Сведения об Операторе</h2>
+            <div class="space-y-3 text-text-muted-light dark:text-text-muted-dark">
+                <p>
+                    3.1. Оператор ведет свою деятельность по адресу: <strong>650000, Кемеровская область, г. Кемерово, ул. Дзержинского, д. 2Б</strong>.
+                </p>
+                <p>
+                    3.2. Ответственный за организацию обработки персональных данных назначается приказом руководителя.
+                </p>
+                <p>
+                    3.3. Базы данных, содержащие персональные данные Субъектов Персональных данных, находятся на территории Российской Федерации в дата-центрах, соответствующих требованиям Федерального закона № 152-ФЗ.
+                </p>
+                <p>
+                    3.4. Контактные данные Оператора:
+                </p>
+                <ul class="list-disc list-inside ml-4 space-y-1">
+                    <li>Телефон: <a href="tel:+79502767171" class="text-primary hover:underline">+7 (950) 276-71-71</a></li>
+                    <li>Email: <a href="mailto:info@admin-ko.ru" class="text-primary hover:underline">info@admin-ko.ru</a></li>
+                    <li>Адрес: г. Кемерово, ул. Дзержинского, 2Б</li>
+                    <li>Режим работы: пн-пт 9:00–21:00, сб 12:00–18:00</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-text-light dark:text-text-dark mb-4">4. Сведения об обработке персональных данных</h2>
+            <div class="space-y-4 text-text-muted-light dark:text-text-muted-dark">
+                <p>
+                    4.1. Обработка Персональных данных Оператором допускается в следующих случаях:
+                </p>
+                <ul class="list-disc list-inside ml-4 space-y-1">
+                    <li>При наличии согласия Клиента на обработку его Персональных данных, полученного во время оформления заявки на ремонт или консультацию на Сайте;</li>
+                    <li>При наличии оснований, предусмотренных Законодательством, допускающих обработку Персональных данных в отсутствие согласия Субъекта Персональных данных.</li>
+                </ul>
+                <p>
+                    4.2. Оператор обрабатывает персональные данные на законной и справедливой основе для выполнения возложенных законодательством функций, полномочий и обязанностей, осуществления прав и законных интересов Оператора, работников Оператора и третьих лиц.
+                </p>
+                <p>
+                    4.3. Оператор получает персональные данные непосредственно у Субъектов Персональных данных при:
+                </p>
+                <ul class="list-disc list-inside ml-4 space-y-1">
+                    <li>Оформлении заявки на ремонт техники через Сайт;</li>
+                    <li>Обращении в сервисный центрию лично или по телефону;</li>
+                    <li>Записи на диагностику или консультацию;</li>
+                    <li>Оформлении договора на установку видеонаблюдения;</li>
+                    <li>Участии в опросах и оставлении отзывов.</li>
+                </ul>
+                <p>
+                    4.4. Оператор обрабатывает персональные данные Субъекта автоматизированным и неавтоматизированным способами, с использованием средств вычислительной техники и без использования таких средств.
+                </p>
+                <p>
+                    4.5. Действия по обработке персональных данных включают сбор, запись, систематизацию, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передачу (распространение, предоставление, доступ), обезличивание, блокирование, удаление и уничтожение.
+                </p>
+                <p>
+                    4.6. Базы данных, содержащие персональные данные граждан Российской Федерации, находятся на территории Российской Федерации. Доступ к базам данных осуществляется работниками Оператора в рамках исполнения трудовых обязанностей.
+                </p>
+                <p>
+                    4.7. Персональные данные хранятся и обрабатываются в течение срока, необходимого для достижения заявленных целей Обработки, а также в течение сроков, установленных законодательством РФ для хранения документов бухгалтерского и налогового учёта.
+                </p>
+                <p>
+                    4.8. Оператор прекращает Обработку Персональных данных при достижении целей Обработки, в случае истечения срока действия или отзыва Субъектом своего согласия на Обработку, а также в случае выявления неправомерной Обработки Персональных данных.
+                </p>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-text-light dark:text-text-dark mb-4">5. Обработка персональных данных работников</h2>
+            <div class="space-y-4 text-text-muted-light dark:text-text-muted-dark">
+                <p>
+                    5.1. Оператор обрабатывает персональные данные работников в рамках правоотношений, урегулированных трудовым договором и положениями Трудового Кодекса Российской Федерации.
+                </p>
+                <p>
+                    5.2. Обработка персональных данных работников осуществляется для цели обеспечения соблюдения законов и иных нормативных правовых актов, в т. ч. в части заключения и исполнения трудового договора, отражения информации в кадровых документах, начисления заработной платы.
+                </p>
+                <p>
+                    5.3. Для достижения указанной цели Оператор осуществляет обработку следующих персональных данных:
+                </p>
+                <ul class="list-disc list-inside ml-4 space-y-1">
+                    <li>Фамилия, имя, отчество, дата и место рождения, гражданство, паспортные данные;</li>
+                    <li>Сведения об образовании (образовательное учреждение, время обучения, присвоенная квалификация);</li>
+                    <li>Сведения об опыте работы, о местах работы;</li>
+                    <li>Сведения о семейном положении, детях;</li>
+                    <li>Сведения о месте регистрации, проживания;</li>
+                    <li>Контактная информация;</li>
+                    <li>Сведения о постановке на налоговый учет (ИНН);</li>
+                    <li>Сведения о регистрации в Пенсионном фонде (СНИЛС);</li>
+                    <li>Сведения об открытых банковских счетах;</li>
+                    <li>Сведения о воинском учете (для лиц, состоящих на воинском учете);</li>
+                    <li>Сведения о социальных льготах.</li>
+                </ul>
+                <p>
+                    5.4. Персональные данные обрабатываются Оператором до момента прекращения трудовых отношений с работником. Если в силу положений действующего законодательства РФ Оператор обязан продолжить обработку персональных данных работников и после момента прекращения трудовых отношений, такая обработка осуществляется до момента прекращения соответствующей обязанности Оператора.
+                </p>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-text-light dark:text-text-dark mb-4">6. Обработка персональных данных Клиентов</h2>
+            <div class="space-y-4 text-text-muted-light dark:text-text-muted-dark">
+                <p>
+                    6.1. Оператор обрабатывает персональные данные Клиентов в рамках правоотношений, урегулированных Гражданским Кодексом Российской Федерации, договорами на выполнение работ (оказание услуг) по ремонту техники и установке видеонаблюдения.
+                </p>
+                <p>
+                    6.2. Оператор обрабатывает персональные данные Клиентов в целях:
+                </p>
+                <ul class="list-disc list-inside ml-4 space-y-1">
+                    <li>Заключать и выполнять обязательства по договорам с клиентами;</li>
+                    <li>Информировать о статусе ремонта;</li>
+                    <li>Предоставлять информацию об услугах, акциях и специальных предложениях;</li>
+                    <li>Обеспечивать техническую поддержку и гарантийное обслуживание.</li>
+                </ul>
+                <p>
+                    6.3. Оператор обрабатывает персональные данные Клиентов с их согласия, предоставляемого на срок действия заключенных с ними договоров. В случаях, предусмотренных ФЗ «О персональных данных», согласие предоставляется в письменном виде. В иных случаях согласие считается полученным при заключении договора или при совершении конклюдентных действий (оформление заявки на Сайте, звонок по телефону).
+                </p>
+                <p>
+                    6.4. Оператор обрабатывает персональные данные Клиентов в течение сроков действия заключенных с ними договоров. Оператор может обрабатывать персональные данные Клиентов после окончания сроков действия договоров в течение срока, установленного законодательством РФ (в т. ч. для целей бухгалтерского и налогового учёта).
+                </p>
+                <p>
+                    6.5. Оператор обрабатывает следующие персональные данные Клиентов:
+                </p>
+                <ul class="list-disc list-inside ml-4 space-y-1">
+                    <li>Фамилия, имя, отчество;</li>
+                    <li>Номер контактного телефона;</li>
+                    <li>Адрес электронной почты;</li>
+                    <li>Адрес доставки (при необходимости);</li>
+                    <li>Модель и серийный номер устройства (при ремонте);</li>
+                    <li>Описание неисправности;</li>
+                    <li>Фотографии устройства (при необходимости).</li>
+                </ul>
+                <p>
+                    6.6. Персональные данные Клиентов могут быть переданы третьим лицам только в случаях, необходимых для выполнения обязательств по договору (например, курьерской службе для доставки устройства), при условии обеспечения конфиденциальности и безопасности таких данных.
+                </p>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-text-light dark:text-text-dark mb-4">7. Cookie-файлы и аналитика</h2>
+            <div class="space-y-4 text-text-muted-light dark:text-text-muted-dark">
+                <p>
+                    7.1. Сайт использует Cookie-файлы для улучшения качества обслуживания пользователей, анализа трафика и персонализации контента.
+                </p>
+                <p>
+                    7.2. При посещении Сайта автоматически собираются следующие данные:
+                </p>
+                <ul class="list-disc list-inside ml-4 space-y-1">
+                    <li>IP-адрес устройства;</li>
+                    <li>Информация о браузере и операционной системе;</li>
+                    <li>Дата и время доступа к Сайту;</li>
+                    <li>Страницы, посещенные пользователем;</li>
+                    <li>Реферер (адрес предыдущей страницы).</li>
+                </ul>
+                <p>
+                    7.3. Пользователь может отключить сохранение Cookie-файлов в настройках своего браузера. Однако это может ограничить функциональность Сайта.
+                </p>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-text-light dark:text-text-dark mb-4">8. Сведения об обеспечении безопасности персональных данных</h2>
+            <div class="space-y-4 text-text-muted-light dark:text-text-muted-dark">
+                <p>
+                    8.1. Оператор назначает ответственного за организацию обработки персональных данных для выполнения обязанностей, предусмотренных ФЗ «О персональных данных».
+                </p>
+                <p>
+                    8.2. Оператор обеспечивает Конфиденциальность Персональных данных, в том числе Оператор не раскрывает третьим лицам и не распространяет Персональные данные без согласия Субъекта, если иное не предусмотрено Законодательством.
+                </p>
+                <p>
+                    8.3. Оператор применяет комплекс правовых, организационных и технических мер по обеспечению безопасности персональных данных:
+                </p>
+                <ul class="list-disc list-inside ml-4 space-y-1">
+                    <li>Ограничение доступа к персональным данным;</li>
+                    <li>Использование защищённых каналов связи;</li>
+                    <li>Регулярное обучение работников;</li>
+                    <li>Применение средств криптографической защиты;</li>
+                    <li>Резервное копирование данных;</li>
+                    <li>Уничтожение носителей по истечении срока хранения.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-text-light dark:text-text-dark mb-4">9. Права и обязанности Оператора и Субъектов персональных данных</h2>
+            <div class="space-y-4 text-text-muted-light dark:text-text-muted-dark">
+                <p>
+                    9.1. Субъект персональных данных имеет право:
+                </p>
+                <ul class="list-disc list-inside ml-4 space-y-1">
+                    <li>На получение информации, касающейся обработки Персональных данных Субъекта;</li>
+                    <li>На уточнение, блокирование или уничтожение его персональных данных в случае, если они являются неполными, устаревшими, неточными, незаконно полученными или не являются необходимыми для заявленной цели обработки;</li>
+                    <li>На отзыв согласия на обработку персональных данных;</li>
+                    <li>На защиту своих прав и законных интересов, в том числе на возмещение убытков и компенсацию морального вреда в судебном порядке;</li>
+                    <li>На обжалование действий или бездействия Оператора в уполномоченный орган по защите прав субъектов персональных данных или в судебном порядке.</li>
+                </ul>
+                <p>
+                    9.2. Оператор обязан:
+                </p>
+                <ul class="list-disc list-inside ml-4 space-y-1">
+                    <li>Принимать меры, необходимые и достаточные для соблюдения прав Субъекта и выполнения обязанностей, предусмотренных Законодательством;</li>
+                    <li>Предоставить Субъекту информацию, касающуюся Обработки Персональных данных при получении запроса;</li>
+                    <li>Прекратить Обработку в случае выявления фактов неправомерной Обработки Персональных данных;</li>
+                    <li>Уничтожить Персональные данные в порядке, установленном Законодательством в случае, если обеспечить правомерность Обработки невозможно.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-text-light dark:text-text-dark mb-4">10. Изменение, удаление и уничтожение персональных данных</h2>
+            <div class="space-y-4 text-text-muted-light dark:text-text-muted-dark">
+                <p>
+                    10.1. Субъект вправе в любой момент изменить (обновить, дополнить) Персональные данные путем направления письменного заявления Оператору на электронную почту: <a href="mailto:info@admin-ko.ru" class="text-primary hover:underline">info@admin-ko.ru</a>.
+                </p>
+                <p>
+                    10.2. Субъект вправе требовать от Оператора уточнения его Персональных данных, их блокирования или уничтожения в случае, если Персональные данные являются неполными, устаревшими, неточными, незаконно полученными или не являются необходимыми для заявленной цели Обработки.
+                </p>
+                <p>
+                    10.3. При получении запроса Субъекта о получении информации, касающейся Обработки Персональных данных, Оператор обязуется безвозмездно в доступной форме в течение 30 (тридцати) календарных дней предоставить Субъекту такую информацию.
+                </p>
+                <p>
+                    10.4. Субъект может в любой момент отозвать свое согласие на Обработку Персональных данных путем направления письменного заявления Оператору на электронную почту: <a href="mailto:info@admin-ko.ru" class="text-primary hover:underline">info@admin-ko.ru</a>.
+                </p>
+                <p>
+                    10.5. При получении Оператором запроса, содержащего отзыв согласия Субъекта на Обработку Персональных данных, в течение 30 (тридцати) календарных дней с момента его получения Оператор обязан удалить Персональные данные и прекратить их Обработку, за исключением случаев, прямо предусмотренных Законодательством.
+                </p>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-text-light dark:text-text-dark mb-4">11. Заключительные положения</h2>
+            <div class="space-y-4 text-text-muted-light dark:text-text-muted-dark">
+                <p>
+                    11.1. Политика вступает в силу с момента её размещения на Сайте и действует бессрочно до её замены новой версией.
+                </p>
+                <p>
+                    11.2. Оператор вправе вносить изменения в Политику в одностороннем порядке. Новая редакция Политики вступает в силу с момента её размещения на Сайте.
+                </p>
+                <p>
+                    11.3. Актуальная версия Политики всегда доступна по адресу: <a href="https://admin-ko.ru/policy" class="text-primary hover:underline">https://admin-ko.ru/policy</a>.
+                </p>
+                <p>
+                    11.4. Все предложения или вопросы по поводу Политики следует направлять по адресу: <a href="mailto:info@admin-ko.ru" class="text-primary hover:underline">info@admin-ko.ru</a>.
+                </p>
+            </div>
+        </section>
+
+        <section class="border-t border-gray-200 dark:border-gray-700 pt-8">
+            <h2 class="text-2xl font-bold text-text-light dark:text-text-dark mb-4">12. Реквизиты Оператора</h2>
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 space-y-2 text-text-muted-light dark:text-text-muted-dark">
+                <p><span class="font-semibold text-text-light dark:text-text-dark">Наименование:</span> Сервисный центр «Админ.Ко»</p>
+                <p><span class="font-semibold text-text-light dark:text-text-dark">Адрес:</span> г. Кемерово, ул. Дзержинского, 2Б</p>
+                <p><span class="font-semibold text-text-light dark:text-text-dark">Телефон:</span> <a href="tel:+79502767171" class="text-primary hover:underline">+7 (950) 276-71-71</a></p>
+                <p><span class="font-semibold text-text-light dark:text-text-dark">Email:</span> <a href="mailto:info@admin-ko.ru" class="text-primary hover:underline">info@admin-ko.ru</a></p>
+            </div>
+        </section>
+
+    </div>
+
+    
+    <section class="mt-12 bg-primary rounded-2xl p-8 text-center relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10">
+            <div class="absolute top-1/4 -left-10 brand-stripes w-1/2 rotate-12">
+                <div class="h-4 bg-white w-full"></div>
+                <div class="h-2 bg-white w-full"></div>
+            </div>
+        </div>
+        <div class="relative z-10">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-4">
+                Остались вопросы?
+            </h2>
+            <p class="text-lg text-red-100 mb-8 max-w-2xl mx-auto">
+                Свяжитесь с нами — мы ответим на все вопросы о обработке ваших персональных данных
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="tel:+79502767171" class="inline-flex items-center justify-center gap-2 bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all">
+                    <span class="material-symbols-outlined">phone</span>
+                    Позвонить
+                </a>
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center gap-2 bg-white/10 text-white border-2 border-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all">
+                    <span class="material-symbols-outlined">chat</span>
+                    Написать в мессенджер
+                </button>
+            </div>
+        </div>
+    </section>
+
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="components.js?v=3.3"></script>
+</body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О компании Админ.Ко — Сервисный центр в Кемерово</title>
+    <meta name="description" content="Узнайте больше о сервисном центре Админ.Ко. 12 лет опыта, команда из 16 профессионалов, современное оборудование. Как нас найти в Кемерово.">
+    <link rel="icon" href="/favicon.jpg" type="image/jpeg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#E50914',
+                        'primary-dark': '#B50303',
+                        'surface-light': '#F8F9FA',
+                        'surface-dark': '#1E293B',
+                        'text-light': '#111827',
+                        'text-dark': '#F9FAFB',
+                        'text-muted-light': '#6B7280',
+                        'text-muted-dark': '#9CA3AF',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .brand-stripes { display: flex; flex-direction: column; gap: 4px; }
+        .brand-stripe { height: 4px; background-color: #E50914; width: 100%; }
+        .brand-stripe-thin { height: 2px; background-color: #E50914; width: 100%; }
+    </style>
+</head>
+<body class="bg-white dark:bg-surface-dark text-text-light dark:text-text-dark antialiased">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+</div>
+
+    
+
+    <!-- Hero Section -->
+    <section class="relative bg-surface-light dark:bg-gray-800 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    
+                <div class="bg-white dark:bg-surface-dark rounded-2xl shadow-lg p-8">
+                    <h3 class="text-2xl font-bold mb-6">Контакты</h3>
+                    <div class="space-y-4">
+                        <a href="tel:+79502767171" class="flex items-center gap-4 p-4 bg-surface-light dark:bg-gray-800 rounded-xl hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                <span class="material-symbols-outlined text-primary">phone</span>
+                            </div>
+                            <div>
+                                <p class="text-sm text-text-muted-light dark:text-text-muted-dark">Телефон</p>
+                                <p class="font-semibold text-lg">+7 (950) 276-71-71</p>
+                            </div>
+                        </a>
+                        <button onclick="openMessengerModal()" class="flex items-center gap-4 p-4 bg-surface-light dark:bg-gray-800 rounded-xl hover:shadow-md transition-shadow w-full text-left">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                <span class="material-symbols-outlined text-primary">chat</span>
+                            </div>
+                            <div>
+                                <p class="text-sm text-text-muted-light dark:text-text-muted-dark">Мессенджеры</p>
+                                <p class="font-semibold text-lg">Написать сообщение</p>
+                            </div>
+                        </button>
+                        <div class="flex items-center gap-4 p-4 bg-surface-light dark:bg-gray-800 rounded-xl">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                <span class="material-symbols-outlined text-primary">email</span>
+                            </div>
+                            <div>
+                                <p class="text-sm text-text-muted-light dark:text-text-muted-dark">Email</p>
+                                <p class="font-semibold">info@admin-ko.ru</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="py-16 bg-white dark:bg-surface-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center p-6 bg-surface-light dark:bg-gray-800 rounded-2xl">
+                    <p class="text-4xl md:text-5xl font-extrabold text-primary mb-2">12</p>
+                    <p class="text-text-muted-light dark:text-text-muted-dark">лет на рынке</p>
+                </div>
+                <div class="text-center p-6 bg-surface-light dark:bg-gray-800 rounded-2xl">
+                    <p class="text-4xl md:text-5xl font-extrabold text-primary mb-2">15000+</p>
+                    <p class="text-text-muted-light dark:text-text-muted-dark">выполненных ремонтов</p>
+                </div>
+                <div class="text-center p-6 bg-surface-light dark:bg-gray-800 rounded-2xl">
+                    <p class="text-4xl md:text-5xl font-extrabold text-primary mb-2">16</p>
+                    <p class="text-text-muted-light dark:text-text-muted-dark">опытных сотрудников</p>
+                </div>
+                <div class="text-center p-6 bg-surface-light dark:bg-gray-800 rounded-2xl">
+                    <p class="text-4xl md:text-5xl font-extrabold text-primary mb-2">12</p>
+                    <p class="text-text-muted-light dark:text-text-muted-dark">месяцев гарантии</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment -->
+    <section class="py-16 bg-surface-light dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col items-center mb-12">
+                <h2 class="text-3xl font-extrabold text-center mb-2">Наше оборудование</h2>
+                <p class="text-text-muted-light dark:text-text-muted-dark">Профессиональные инструменты для качественного ремонта</p>
+                
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white dark:bg-surface-dark rounded-2xl p-6 shadow-sm">
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined text-primary text-3xl">biotech</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Оптические микроскопы</h3>
+                    <p class="text-text-muted-light dark:text-text-muted-dark text-sm">Профессиональная оптика с 40-кратным увеличением для восстановления микродорожек и пайки компонентов размером 0.2 мм.</p>
+                </div>
+                <div class="bg-white dark:bg-surface-dark rounded-2xl p-6 shadow-sm">
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined text-primary text-3xl">memory</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">BGA-комплексы</h3>
+                    <p class="text-text-muted-light dark:text-text-muted-dark text-sm">Профессиональные станции с ИК-подогревом для безопасной замены процессоров, видеочипов и мостов без риска деформации платы.</p>
+                </div>
+                <div class="bg-white dark:bg-surface-dark rounded-2xl p-6 shadow-sm">
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined text-primary text-3xl">thermostat</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Тепловизоры</h3>
+                    <p class="text-text-muted-light dark:text-text-muted-dark text-sm">Инфракрасная диагностика позволяет за секунды обнаружить утечки тока и локальный перегрев, выявляя скрытые дефекты плат.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Warranty -->
+    <section id="warranty" class="py-16 bg-white dark:bg-surface-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    
+            </div>
+        </div>
+    </section>
+
+    
+
+    
+    <section class="bg-primary relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10">
+            <div class="absolute top-1/4 -left-10 brand-stripes w-1/2 rotate-12">
+                <div class="h-4 bg-white w-full"></div>
+                <div class="h-2 bg-white w-full"></div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">Приезжайте или пишите</h2>
+            <p class="text-xl text-red-100 mb-8 max-w-2xl mx-auto">Бесплатная диагностика. Назовём точную цену до начала работ.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="tel:+79502767171" class="inline-flex items-center justify-center gap-2 bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all">
+                    <span class="material-symbols-outlined">phone</span>
+                    Позвонить
+                </a>
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center gap-2 bg-white/10 text-white border-2 border-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all">
+                    <span class="material-symbols-outlined">chat</span>
+                    Написать в мессенджер
+                </button>
+            </div>
+        </div>
+    </section>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="components.js?v=3.3"></script>
+</body>
+</html>

@@ -3,10 +3,12 @@ const fs = require('fs');
 const path = require('path');
 
 /**
- * ТОТАЛЬНЫЙ ОРКЕСТРАТОР v5.0 (Мастер-план 1000)
+ * ТОТАЛЬНЫЙ ОРКЕСТРАТОР v6.0 (Мастер-план 1000 + Yandex Wordstat)
  * Темп: 16 статей за запуск (по 2 на каждую из 8 ниш).
+ * Источник тем: Yandex Wordstat API (реальная статистика запросов)
  */
 
+const WORDSTAT_TOPICS_FILE = path.join(__dirname, '../data/wordstat_topics.json');
 const PRIORITIZED_TOPICS_FILE = path.join(__dirname, 'prioritized_topics.json');
 const CATEGORIES = ['phone', 'laptop', 'b2b_it', 'cctv', 'consoles', 'appliances', 'tv', 'data_recovery'];
 const ARTICLES_PER_CATEGORY = 1; // 1 статья на категорию в день, итого 8 статей за запуск
@@ -19,13 +21,34 @@ async function orchestrate() {
     // 0. Автоматический бэкап ПЕРЕД любыми изменениями
     backupManager();
 
-    // 1. Проверка наличия тем
-    if (!fs.existsSync(PRIORITIZED_TOPICS_FILE) || JSON.parse(fs.readFileSync(PRIORITIZED_TOPICS_FILE, 'utf-8')).length < 20) {
-        console.log("⚠️ Тем мало. Пополняем базу через AI-анализатор...");
-        execSync('node scripts/ai-keyword-analyzer.js', { stdio: 'inherit' });
+    // 1. ПРОВЕРКА: Сначала пытаемся загрузить темы из Yandex Wordstat
+    let topics = [];
+    
+    if (fs.existsSync(WORDSTAT_TOPICS_FILE)) {
+        const wordstatData = JSON.parse(fs.readFileSync(WORDSTAT_TOPICS_FILE, 'utf-8'));
+        console.log(`✅ Загружено ${wordstatData.length} тем из Yandex Wordstat`);
+        topics = wordstatData;
     }
-
-    let topics = JSON.parse(fs.readFileSync(PRIORITIZED_TOPICS_FILE, 'utf-8'));
+    
+    // 2. Если тем из Wordstat мало (< 20), используем AI-анализатор как резерв
+    if (topics.length < 20) {
+        console.log("⚠️ Тем из Wordstat мало. Пополняем базу через AI-анализатор...");
+        execSync('node scripts/ai-keyword-analyzer.js', { stdio: 'inherit' });
+        
+        if (fs.existsSync(PRIORITIZED_TOPICS_FILE)) {
+            const aiTopics = JSON.parse(fs.readFileSync(PRIORITIZED_TOPICS_FILE, 'utf-8'));
+            console.log(`✅ Загружено ${aiTopics.length} тем из AI-анализатора`);
+            // Объединяем: сначала Wordstat, потом AI
+            topics = [...topics, ...aiTopics.filter(t => !topics.some(wt => wt.topic === t.topic))];
+        }
+    }
+    
+    if (topics.length === 0) {
+        console.error("❌ Нет тем для генерации! Сначала запустите: node scripts/yandex-wordstat.js topics");
+        process.exit(1);
+    }
+    
+    console.log(`📂 Всего доступно тем: ${topics.length}`);
 
     // 2. Идем по всем категориям и берем задачи
     for (const category of CATEGORIES) {

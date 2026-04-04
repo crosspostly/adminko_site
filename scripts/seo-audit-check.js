@@ -17,6 +17,17 @@ const AUDITOR_DIR = path.join(__dirname, '../seo_skill_repo_tmp/.agents/skills/i
 const OUTPUT_DIR = path.join(__dirname, '../logs/seo-audits');
 const MIN_SCORE = parseInt(process.env.SEO_MIN_SCORE || '80');
 
+// Ensure auditor dependencies are installed
+if (!fs.existsSync(path.join(AUDITOR_DIR, 'node_modules'))) {
+  console.log('Installing SEO auditor dependencies...');
+  try {
+    const { execSync } = require('child_process');
+    execSync('npm install', { cwd: AUDITOR_DIR, encoding: 'utf-8', stdio: 'inherit' });
+  } catch (e) {
+    console.error('Warning: Could not install SEO auditor dependencies:', e.message);
+  }
+}
+
 // Ensure output dir exists
 if (!fs.existsSync(OUTPUT_DIR)) {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });

@@ -166,3 +166,40 @@ ${MASTER_FOOTER}
 }
 
 module.exports = { generateDeepArticle };
+
+// --- CLI Entry Point ---
+// When run directly: node scripts/auto-blogger.js
+// Reads the first topic from prioritized_topics.json and generates it
+async function main() {
+    const PRIORITIZED_TOPICS_FILE = path.join(__dirname, 'prioritized_topics.json');
+    const WORDSTAT_TOPICS_FILE = path.join(__dirname, '../data/wordstat_topics.json');
+
+    let topics = [];
+
+    // Try prioritized topics first
+    if (fs.existsSync(PRIORITIZED_TOPICS_FILE)) {
+        topics = JSON.parse(fs.readFileSync(PRIORITIZED_TOPICS_FILE, 'utf-8'));
+    }
+
+    // Fallback to wordstat topics
+    if (topics.length === 0 && fs.existsSync(WORDSTAT_TOPICS_FILE)) {
+        topics = JSON.parse(fs.readFileSync(WORDSTAT_TOPICS_FILE, 'utf-8'));
+    }
+
+    if (topics.length === 0) {
+        console.error('❌ Нет тем для генерации!');
+        process.exit(1);
+    }
+
+    // Take first topic
+    const topic = topics[0];
+    await generateDeepArticle(topic);
+}
+
+// Run if executed directly (not required)
+if (require.main === module) {
+    main().catch(err => {
+        console.error('Fatal error:', err);
+        process.exit(1);
+    });
+}

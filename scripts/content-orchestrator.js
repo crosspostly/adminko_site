@@ -63,16 +63,48 @@ async function orchestrate() {
 
         for (const task of catTasks) {
             console.log(`  📝 Статья: "${task.topic}"`);
-            
+
             // Подсовываем конкретную задачу в начало для auto-blogger
             const otherTopics = topics.filter(t => t.topic !== task.topic);
             fs.writeFileSync(PRIORITIZED_TOPICS_FILE, JSON.stringify([task, ...otherTopics], null, 2));
+
+            let generatedFile = null;
 
             try {
                 // Генерируем статью
                 execSync('node scripts/auto-blogger.js', { stdio: 'inherit' });
                 // Убираем выполненную задачу из основного списка
                 topics = topics.filter(t => t.topic !== task.topic);
+
+                // Находим сгенерированный файл (последний в blog/)
+                const blogDir = path.join(__dirname, '../site/public/blog');
+                if (fs.existsSync(blogDir)) {
+                    const files = fs.readdirSync(blogDir)
+                        .filter(f => f.endsWith('.html'))
+                        .map(f => ({ name: f, mtime: fs.statSync(path.join(blogDir, f)).mtime }))
+                        .sort((a, b) => b.mtime - a.mtime);
+                    if (files.length > 0) {
+                        generatedFile = path.join(blogDir, files[0].name);
+                    }
+                }
+
+                // SEO аудит сгенерированной статьи
+                if (generatedFile && fs.existsSync(generatedFile)) {
+                    const minScore = process.env.SEO_MIN_SCORE || 80;
+                    console.log(`\n  🔍 SEO Audit: проверяем качество...`);
+                    try {
+                        const auditResult = execSync(
+                            `node scripts/seo-audit-check.js --file "${generatedFile}" --min-score ${minScore}`,
+                            { encoding: 'utf-8', timeout: 120000 }
+                        );
+                        console.log(`  ${auditResult.trim()}`);
+                    } catch (auditErr) {
+                        // Audit скрипт вернул exit code 1 (score < min)
+                        const output = auditErr.stdout || auditErr.stderr || auditErr.message;
+                        console.log(`  ⚠️ SEO Audit результат:\n  ${output.trim()}`);
+                        // Не блокируем пайплайн, просто логируем
+                    }
+                }
             } catch (e) {
                 console.error(`  ❌ Ошибка при генерации "${task.topic}":`, e.message);
             }

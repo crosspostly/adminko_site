@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Телевизор Philips не подключается к Wi-Fi в Кемерово? Настройка и ремонт | Админ.Ко | Админ.Ко</title>
+    <meta name="description" content="Ваш телевизор Philips в Кемерово перестал подключаться к Wi-Fi или не видит сеть? Мастера Админ.Ко выполнят профессиональную диагностику, настройку и ремонт вашего Смарт ТВ. Быстро восстановим доступ к интернету, устраним любые проблемы с Wi-Fi подключением. Вызов специалиста по Кемерово.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Телевизор Philips не подключается к Wi-Fi в Кемерово? Настройка и ремонт | Админ.Ко</h1>
+            <meta name="published_at" content="2026-03-22T14:17:43.304Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h1>Телевизор Philips не подключается к Wi-Fi в Кемерово? Настройка и ремонт | Админ.Ко</h1>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Проблема:</b> Телевизор Philips не подключается к Wi-Fi, не видит сети или постоянно теряет соединение.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Срок ремонта:</b></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Диагностика: 0 руб., от 30 минут.</li>
+<li>Настройка/прошивка: от 1 часа.</li>
+<li>Замена Wi-Fi модуля: от 1 дня (при наличии модуля).</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Цена:</b></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Диагностика: 0 руб.</li>
+<li>Настройка ПО: от 800 руб.</li>
+<li>Ремонт/замена модуля: от 2500 руб. (зависит от модели и сложности).</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Диагностика:</b> 0 руб.</p></p>
+<h2>Глава 1: Первичная диагностика: Почему ваш Philips TV в Кемерово не видит Wi-Fi?</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Отсутствие подключения к беспроводной сети на телевизоре Philips – частая проблема, которая может быть вызвана как программными сбоями, так и аппаратными неисправностями. Самостоятельная "диагностика на глаз" или сброс настроек редко приводят к устойчивому решению. Для точного определения причины необходимо специализированное оборудование и экспертные знания.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы применяем комплексный подход:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Проверка программного обеспечения и прошивки:</b> Часто проблема кроется в устаревшей или поврежденной прошивке, несовместимости программного обеспечения. С помощью программаторов мы можем корректно обновить или восстановить системное ПО телевизора без риска "окирпичивания".</li>
+<li><b>Диагностика Wi-Fi модуля:</b> Это ключевой компонент. Выход из строя самого модуля, его обвязки или антенны – распространенная причина. Наш осциллограф Rigol позволяет точно измерить целостность сигналов на шинах данных и питания Wi-Fi модуля, выявить аномалии. Тепловизор покажет локальный перегрев, указывающий на неисправность компонента.</li>
+<li><b>Контроль питающих напряжений:</b> Стабильное питание критично для работы любого электронного компонента. С помощью высокоточного оборудования мы проверяем все питающие линии, идущие к Wi-Fi модулю и другим связанным элементам платы. Нестабильность напряжения может вызывать периодические отключения или полное отсутствие связи.</li>
+<li><b>Микро-пайка на уровне компонентов:</b> Если проблема в обвязке Wi-Fi модуля (резисторы, конденсаторы) или требуется его замена на уровне BGA, мы используем паяльные станции JBC (Испания). Их прецизионный контроль температуры исключает перегрев платы, что критично для долговечности ремонта и исключения скрытых повреждений соседних элементов.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без использования такого оборудования ремонт сведется к "наугад", что неизбежно приведет к повторным поломкам или усугублению неисправности. Мы гарантируем, что каждый этап ремонта проводится с полным пониманием технического процесса и применением проверенных стандартов.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>При обращении в сервисный центр Админ.Ко вы получаете:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>0 руб. диагностика:</b> Мы не берем плату за поиск неисправности. Вы платите только за результат.</li>
+<li><b>Запчасти в наличии:</b> Большинство ходовых Wi-Fi модулей и компонентов для Philips TV есть на нашем складе, что сокращает время ремонта.</li>
+<li><b>Гарантия 1 год по договору:</b> На все выполненные работы и установленные компоненты предоставляется официальная гарантия, закрепленная в договоре.</li>
+<li><b>Сохранность ваших данных:</b> Мы гарантируем конфиденциальность и целостность ваших пользовательских настроек и данных на телевизоре.</li>
+<li><b>Честная цена:</b> Стоимость ремонта озвучивается после точной диагностики и не меняется в процессе работы. Мы используем флюсы Martin/Amtech, которые исключают коррозию платы после пайки, обеспечивая надежность ремонта.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально, предоставляя полный пакет документов.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Админ.Ко поможет с подключением Philips TV к Wi-Fi в Кемерово!</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Выезд мастера и первичная диагностика на дому – от 300 руб. (в черте города).</p></div>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Настройка ПО/сети – от 800 руб. Ремонт/замена Wi-Fi модуля – от 1500 руб. + стоимость детали.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: Устранение типовых проблем – в течение 1-2 часов на месте. Сложный ремонт – до 2-3 дней.</p>
+
+        </div>
+            <section><h2>Пошаговая настройка и устранение проблем с подключением Wi-Fi на телевизорах Philips</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Когда телевизор Philips перестает подключаться к Wi-Fi, это часто вызывает фрустрацию. Прежде чем обратиться в сервисный центр, можно предпринять ряд самостоятельных шагов, которые могут решить проблему на программном уровне. Однако важно понимать, что не все проблемы решаются перезагрузкой.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Вот основные шаги, которые рекомендуется выполнить:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Перезагрузка телевизора и маршрутизатора:</b> Отключите оба устройства от сети на 2-3 минуты, затем включите маршрутизатор, дождитесь полной загрузки, и только потом включите телевизор. Это помогает сбросить временные сетевые ошибки.</li>
+<li><b>Проверка имени сети (SSID) и пароля:</b> Убедитесь, что вы выбираете правильную сеть Wi-Fi и вводите корректный пароль. Включите отображение символов пароля, чтобы исключить опечатки.</li>
+<li><b>Обновление прошивки телевизора:</b> Устаревшее программное обеспечение может содержать баги, влияющие на сетевое подключение. Если есть возможность подключить телевизор временно кабелем Ethernet или через точку доступа смартфона, проверьте наличие обновлений.</li>
+<li><b>Сброс сетевых настроек или полный сброс к заводским установкам:</b> В меню телевизора Philips найдите раздел сетевых настроек и сбросьте их. Как крайняя мера, можно выполнить полный сброс телевизора до заводских настроек (учтите, что это удалит все ваши приложения и настройки).</li>
+<li><b>Удаленность от маршрутизатора и помехи:</b> Переместите маршрутизатор ближе к телевизору или убедитесь, что между ними нет крупных металлических препятствий или мощных источников помех (микроволновые печи, DECT-телефоны).</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если после выполнения всех этих шагов проблема сохраняется, это, как правило, указывает на аппаратный дефект. В большинстве случаев самостоятельная диагностика и ремонт на этом этапе становятся невозможными без специализированного оборудования и глубоких знаний электроники.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В «Админ.Ко» мы подходим к таким неисправностям системно. Наши инженеры начинают с комплексной диагностики, используя профессиональное оборудование. С помощью <a href="#" target="_blank">осциллографа Rigol</a> мы проверяем стабильность питающих напряжений Wi-Fi модуля и целостность сигнальных линий на материнской плате. Нестабильное питание или повреждение шин данных может привести к некорректной работе модуля, даже если сам он исправен.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В случае выявления неисправности самого Wi-Fi модуля или его обвязки, мы применяем прецизионную <a href="#" target="_blank">паяльную станцию JBC</a>. Это оборудование испанского производства позволяет проводить микро-пайку с минимальным тепловым воздействием на плату, исключая риск повреждения соседних компонентов. Мы используем только высококачественные флюсы <a href="#" target="_blank">Martin/Amtech</a>, которые не оставляют коррозионно-активных остатков, предотвращая «гниение» платы в будущем. Это обеспечивает не только устранение текущей проблемы, но и долговечность ремонта.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без такого оборудования и экспертизы ремонт Wi-Fi модуля часто сводится к попыткам «прогреть» или непрофессионально заменить компонент, что почти всегда приводит к повторным поломкам, более серьезным повреждениям материнской платы или некорректной работе телевизора в целом. Мы гарантируем, что после нашего вмешательства ваш телевизор Philips будет стабильно и надежно подключаться к сети Wi-Fi.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Технический секрет инженера Админ.Ко по Wi-Fi для Philips TV в Кемерово:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Если ваш телевизор Philips на Android TV упорно не видит Wi-Fi сеть, или постоянно с ней разрывает соединение после обычной перезагрузки, то вот что часто помогает, когда другие методы бессильны:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"Глубокий сброс питания" (Hard Power Cycle)</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">1.  Полностью отключите телевизор Philips от сети 220В, вытащив вилку из розетки.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">2.  Нажмите и удерживайте кнопку питания на самом телевизоре (НЕ на пульте) в течение 10-15 секунд. Это помогает разрядить остаточные конденсаторы и гарантированно обнулить энергозависимую память.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">3.  Оставьте телевизор полностью обесточенным на срок не менее 5-10 минут. Это критически важно! За это время происходит полная очистка сетевого кэша, сброс состояний сетевого контроллера и операционной системы Android, которая часто "держит" старые или поврежденные сетевые настройки даже после обычного выключения.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">4.  Снова подключите телевизор к розетке и включите.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">5.  Повторите попытку подключения к Wi-Fi.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">В большинстве случаев, когда проблема не аппаратная, этот метод решает "зависшие" сетевые ошибки и позволяет телевизору заново корректно просканировать сети и установить соединение.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Глава 3: Внешние факторы и углубленная диагностика: Роутер, помехи и обновление прошивки.</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Проблемы с подключением телевизора Philips к Wi-Fi часто имеют корни не в самом телевизоре, а во внешних факторах. Игнорирование этих аспектов приводит к затягиванию диагностики и ошибочным выводам.</p></p>
+<h3>Роутер и сетевая инфраструктура</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Прежде чем приступать к ремонту телевизора, необходимо исключить неисправности в источнике сигнала. Это включает:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Расположение роутера:</b> Слишком большое расстояние, капитальные стены или металлические конструкции между роутером и телевизором существенно ослабляют сигнал, что приводит к нестабильному или отсутствующему соединению.</li>
+<li><b>Конфигурация Wi-Fi:</b> Телевизоры Philips, особенно старых моделей, могут не поддерживать современные стандарты 802.11ac/ax или диапазон 5 ГГц. Некорректные настройки безопасности (например, WPA3, который не поддерживается старыми чипами) или чрезмерная нагрузка на канал 2.4 ГГц также вызывают сбои.</li>
+<li><b>Настройки DHCP и MAC-фильтрации:</b> Отсутствие автоматической выдачи IP-адресов или активация MAC-фильтрации на роутере, при которой не разрешен доступ новым устройствам, блокируют подключение телевизора.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Наша диагностика включает глубокий анализ сетевой среды, проверку прошивки роутера и его конфигурации для исключения внешних блокировок.</p></p>
+<h3>Электромагнитные помехи</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Wi-Fi сигнал уязвим к помехам, которые могут исходить от различных бытовых приборов и соседних беспроводных сетей. К распространенным источникам относятся:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Микроволновые печи:</b> Работают на частоте, близкой к 2.4 ГГц, что может полностью заглушить Wi-Fi сигнал.</li>
+<li><b>Беспроводные телефоны:</b> Многие DECT-телефоны используют диапазон 2.4 ГГц.</li>
+<li><b>Bluetooth-устройства:</b> Могут создавать локальные помехи.</li>
+<li><b>Соседние Wi-Fi сети:</b> В многоквартирных домах каналы 2.4 ГГц часто перегружены, что ведет к низкой скорости и нестабильности соединения.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для выявления подобных помех требуются специализированные анализаторы спектра, позволяющие оценить чистоту канала и выбрать оптимальные параметры для беспроводной сети, что является частью нашей комплексной проверки.</p></p>
+<h3>Обновление прошивки телевизора</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Прошивка (firmware) телевизора — это его операционная система. Устаревшая или поврежденная прошивка может быть причиной множества проблем, включая сбои в работе Wi-Fi модуля. Производители регулярно выпускают обновления, которые устраняют ошибки, улучшают стабильность и добавляют поддержку новых стандартов безопасности или сетевых протоколов.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Некорректное или прерванное обновление прошивки может привести к "окирпичиванию" устройства, когда телевизор полностью перестает функционировать. В Админ.Ко мы используем специализированное оборудование и программное обеспечение для безопасного и полного обновления прошивки, что гарантирует устранение программных ошибок, влияющих на Wi-Fi, без риска повреждения устройства.</p></p>
+</section>
+            <section class="mt-12"><h2>Глава 4: Когда нужен ремонт: Профессиональная помощь от Админ.Ко в Кемерово и профилактика</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Когда ваш телевизор Philips отказывается подключаться к Wi-Fi, это может быть как незначительной программной неполадкой, так и серьезной аппаратной проблемой. Пользовательские методы, такие как перезагрузка роутера, самого телевизора или сброс сетевых настроек, часто помогают в простых случаях. Однако если эти действия не принесли результата, или проблема возвращается, значит, пришло время для профессиональной диагностики.</p></p>
+<h3>Когда обращаться за ремонтом в Админ.Ко:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Выполнили базовые действия (перезагрузка, сброс настроек) – безрезультатно.</li>
+<li>Другие устройства стабильно подключаются к вашей Wi-Fi сети, а телевизор Philips – нет.</li>
+<li>Телевизор обнаруживает сеть, но не может получить IP-адрес или постоянно отключается.</li>
+<li>В системных меню телевизора отображаются ошибки, связанные с Wi-Fi модулем или сетевым адаптером.</li>
+<li>Wi-Fi сеть исчезает из списка доступных сетей только на телевизоре.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Профессиональная помощь от Админ.Ко в Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В нашем сервисном центре в Кемерово, на Дзержинского 2Б, мы проводим глубокую диагностику неисправностей Wi-Fi модулей телевизоров Philips. Первым этапом всегда является бесплатная диагностика, которая позволяет точно определить причину сбоя – программное обеспечение, неисправность самого Wi-Fi модуля, или же проблемы с материнской платой телевизора.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Наши инженеры используют специализированное оборудование для точной локализации неисправности. Если проблема кроется в аппаратной части, например, в неисправном Wi-Fi модуле или повреждении контактных площадок на плате, мы используем станции для микро-пайки JBC (Испания), которые обеспечивают прецизионный нагрев без риска повреждения соседних компонентов. Для сложных компонентных работ с материнской платой, требующих высокоточного температурного контроля, применяется паяльная станция Quick 861DW. Анализ электрических цепей и сигналов проводится с помощью осциллографов Rigol, что позволяет выявить скрытые дефекты.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы используем только качественные расходные материалы, такие как флюсы Martin/Amtech, которые гарантируют долговечность паяных соединений и предотвращают коррозию платы в будущем. Большинство необходимых запчастей для ремонта телевизоров Philips уже есть на нашем складе, что значительно сокращает сроки выполнения работ.</p></p>
+<h3>Профилактика проблем с Wi-Fi в телевизоре Philips:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Регулярно обновляйте прошивку телевизора. Производители часто выпускают обновления, улучшающие стабильность работы Wi-Fi.</li>
+<li>Обеспечьте адекватную вентиляцию телевизора. Перегрев может негативно сказаться на работе всех внутренних компонентов, включая Wi-Fi модуль.</li>
+<li>Используйте стабильный источник питания и, по возможности, сетевой фильтр для защиты от перепадов напряжения.</li>
+<li>Размещайте роутер в оптимальном месте, чтобы обеспечить стабильный и сильный сигнал Wi-Fi для телевизора. Избегайте препятствий, таких как толстые стены или другие электронные устройства.</li>
+<li>Периодически перезагружайте роутер и телевизор для очистки сетевых кэшей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы находимся в центре Кемерово по адресу ул. Дзержинского 2Б. При возникновении любых проблем с подключением вашего телевизора Philips к интернету, обращайтесь в Админ.Ко за профессиональной помощью.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

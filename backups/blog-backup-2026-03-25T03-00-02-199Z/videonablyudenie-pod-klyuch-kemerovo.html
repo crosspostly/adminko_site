@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Видеонаблюдение под ключ в Кемерово: Установка и Настройка | Админ.Ко</title>
+    <meta name="description" content="Профессиональная установка и настройка видеонаблюдения под ключ в Кемерово. Монтаж систем безопасности для дома, офиса, склада. Гарантия качества.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Видеонаблюдение под ключ в Кемерово: Установка и Настройка</h1>
+            <meta name="published_at" content="2026-03-22T16:17:55.506Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Видеонаблюдение под ключ в Кемерово: Гарантия вашей безопасности</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Проблема:</b> Риск краж, несанкционированного доступа, потребность в непрерывном контроле за объектом и персоналом.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Срок установки:</b> От 1 рабочего дня (зависит от сложности и масштаба проекта).</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Стоимость системы "под ключ":</b> От 15 000 руб (за базовый комплект оборудования и монтаж).</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Диагностика и выезд инженера:</b> 0 руб.</p></p>
+<h3>Экспертный разбор: Почему профессиональная установка видеонаблюдения критична?</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Установка современной системы видеонаблюдения – это не просто монтаж камер, а комплексный инженерный проект, требующий глубоких знаний в области сетевых технологий, электроники и систем безопасности. Админ.Ко обладает необходимой квалификацией и специализированным оборудованием, чтобы гарантировать безупречную работу вашей системы на долгие годы.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Наши инженеры используют специализированные инструменты и методики для каждого этапа, обеспечивая высочайшее качество:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Сетевые анализаторы и кабельные тестеры (аналоги Fluke Networks):</b> Мы проводим полную диагностику и сертификацию всех проложенных кабельных трасс. Это исключает потери сигнала, обеспечивает стабильное питание по технологии PoE и гарантирует надежность всей сетевой инфраструктуры. Без профессиональной проверки кабеля система будет нестабильна, подвержена помехам, что приведет к пропускам важных событий и дорогостоящим простоям.</li>
+<li><b>Высокоточные оптические инструменты:</b> Используются для юстировки камер, расчета оптимальных углов обзора и зон покрытия, минимизации "слепых" зон. Это обеспечивает максимальную эффективность наблюдения, где каждая камера работает с полной отдачей, а вы видите именно то, что должны.</li>
+<li><b>Диагностическое оборудование для систем питания:</b> Мы тщательно проверяем качество электросети и обеспечиваем стабильное питание для NVR/DVR и камер, предотвращая перепады напряжения, которые являются частой причиной выхода оборудования из строя. Нестабильное питание сокращает срок службы системы и ведет к незапланированным расходам.</li>
+<li><b>Тепловизор:</b> Применяется для контроля температурного режима критически важных узлов – NVR, коммутаторов, блоков питания. Это позволяет выявить потенциальные точки перегрева до того, как они приведут к сбою системы.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы не применяем "кустарные" методы. Только проверенные технологии и сертифицированное оборудование для монтажа и настройки, что исключает ошибки и обеспечивает долгосрочную бесперебойную работу вашей системы безопасности.</p></p>
+<h3>Инженерный стандарт Админ.Ко: Ваша безопасность в надежных руках</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Диагностика и выезд инженера 0 руб:</b> Перед началом работ наш специалист бесплатно выезжает на ваш объект в Кемерово, проводит оценку, разрабатывает оптимальную схему размещения камер и оборудования, а также предоставляет подробную смету без скрытых платежей.</li>
+<li><b>Запчасти и оборудование в наличии:</b> Мы работаем напрямую с ведущими производителями систем видеонаблюдения (такими как Hikvision, Dahua и др.), имеем собственный склад. Это гарантирует оперативный подбор и установку необходимых компонентов без задержек.</li>
+<li><b>Гарантия 1 год по договору:</b> На все выполненные работы по установке и настройке, а также на все установленное оборудование, предоставляется официальная гарантия сроком на 12 месяцев, закрепленная в договоре. Вы получаете полную юридическую защиту и уверенность.</li>
+<li><b>Сохранность и конфиденциальность данных:</b> Мы настраиваем системы таким образом, чтобы ваши видеозаписи хранились безопасно, были доступны только авторизованным пользователям и соответствовали всем нормам по защите персональных данных, включая шифрование и резервное копирование.</li>
+<li><b>Честная цена без скрытых платежей:</b> Стоимость всех работ и оборудования максимально прозрачна и фиксируется в договоре. Вы всегда точно знаете, за что платите, без неприятных сюрпризов.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Наши двери всегда открыты для вас в Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Админ.Ко – это ваш надежный партнер в вопросах комплексного обеспечения безопасности. Мы находимся в самом центре Кемерово по адресу <b>улица Дзержинского 2Б</b>. Ориентиры – спортивно-развлекательный комплекс "Арена" и торговый центр "Я". Работаем официально, предоставляя полный пакет документов и заключая договор. Доверьте свою безопасность и сохранность имущества настоящим профессионалам.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Видеонаблюдение под ключ в Кемерово:</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> От 25 000 рублей за базовую систему. Точная стоимость рассчитывается индивидуально после обследования объекта, зависит от количества камер, сложности монтажа и выбранного оборудования.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: Установка от 1 рабочего дня для типовых объектов. Для комплексных систем срок может составлять 3-5 рабочих дней. Согласование и старт работ — максимально оперативно после утверждения проекта.</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Бесплатный выезд инженера для оценки вашего объекта в Кемерово. Включает подбор оптимального решения, составление предварительного проекта и точного коммерческого предложения без скрытых платежей.</p></div>
+
+        </div>
+            <section><h2>Что включает услуга «под ключ»: От проектирования до современного оборудования</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Услуга «видеонаблюдение под ключ» от Админ.Ко — это комплексный инженерный подход, обеспечивающий максимальную эффективность и надежность системы безопасности. Мы не просто устанавливаем камеры, а создаем полноценную архитектуру, адаптированную под уникальные требования объекта в Кемерово. Это исключает типовые ошибки и гарантирует бесперебойную работу на годы вперед.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Детальное проектирование и технический аудит:</strong> Наш процесс начинается с глубокого анализа объекта. Мы оцениваем специфику территории, потенциальные уязвимости, углы обзора, зоны освещенности и требования к хранению данных. Инженерное проектирование включает:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Разработку оптимальной схемы расположения видеокамер с учетом перекрытия зон и минимизации «слепых пятен».</li>
+<li>Выбор оборудования: IP-камеры высокого разрешения (до 4K/8K) с функциями аналитики (детекция движения, пересечение линий, распознавание лиц/номеров), специализированные камеры (тепловизионные, PTZ), видеорегистраторы (NVR) с поддержкой RAID и удаленного доступа.</li>
+<li>Расчет сетевой инфраструктуры (PoE, оптоволоконные линии, защищенные Wi-Fi мосты) для обеспечения стабильной и безопасной передачи данных.</li>
+<li>Формирование подробного технического задания и сметы, исключающей скрытые платежи.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Использование современного оборудования и компонентов:</strong> Мы применяем только сертифицированные системы видеонаблюдения от ведущих производителей, отличающиеся высокой надежностью и долговечностью в климатических условиях Кемерово. Это включает:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Профессиональные IP-камеры с сенсорами Starlight или DarkFighter для сверхчеткого изображения в условиях низкой освещенности.</li>
+<li>Видеорегистраторы с интеллектуальными функциями видеоаналитики, позволяющими значительно повысить эффективность мониторинга и снизить нагрузку на оператора.</li>
+<li>Высококачественные медные и оптоволоконные кабели, а также защищенные коммутаторы, гарантирующие стабильность сети и минимизирующие помехи.</li>
+<li>Профессиональное программное обеспечение для управления видео (VMS), обеспечивающее удобный мониторинг, архивацию и экспорт данных.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Квалифицированный монтаж и пусконаладочные работы:</strong> Установка систем видеонаблюдения осуществляется нашей командой инженеров в строгом соответствии с проектной документацией, СНиП и ПУЭ. После монтажа проводится комплексная пусконаладка:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Точная настройка камер, объективов и фокусных расстояний.</li>
+<li>Конфигурация сетевого оборудования и обеспечение безопасного удаленного доступа.</li>
+<li>Настройка функций видеоаналитики и интеграция с существующими системами безопасности (СКУД, охранная сигнализация).</li>
+<li>Проверка работоспособности всех компонентов системы в реальных условиях эксплуатации.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Выбирая «Админ.Ко», вы получаете не просто установку камер, а экспертно спроектированную и профессионально реализованную систему безопасности, обеспечивающую полный контроль над вашим объектом.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Вот технический секрет инженера по видеонаблюдению:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"Клиент часто видит камеры, мониторы и красивое изображение. Но настоящий технический секрет надежной системы видеонаблюдения, которая будет работать годами без сбоев в Кемерово, кроется в том, что обычно скрыто от глаз.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Это невидимая инфраструктура: качество кабелей, надежность блоков питания, стабильность сетевых коммутаторов и прочность крепежных элементов. Дешевые комплектующие в этих узлах – гарантия будущих проблем: от помех на изображении и нестабильной работы камер до полного отказа системы.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Наш инженерный подход заключается в том, чтобы никогда не экономить на этой «невидимой» основе. Мы выбираем только проверенные кабели, промышленные блоки питания и сетевое оборудование, рассчитанное на круглосуточную работу и перепады температур. Это то, что гарантирует вам четкую картинку, непрерывную запись и бесперебойный удаленный доступ годами, а не месяцами.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Красивая картинка начинается с идеального, но незаметного фундамента."</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Профессиональная установка и настройка: Этапы реализации вашего проекта</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Эффективность системы видеонаблюдения напрямую зависит от качества ее установки и последующей настройки. В «Админ.Ко» мы подходим к каждому проекту с инженерной точностью, обеспечивая не просто монтаж, а создание отказоустойчивой и функциональной системы безопасности. Наш подход исключает компромиссы и гарантирует максимальную производительность.</p></p>
+<h3>Этапы реализации проекта видеонаблюдения</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Техническая экспертиза и проектирование.</strong> Мы начинаем с детального анализа объекта: оцениваем зоны риска, особенности периметра, существующую инфраструктуру. На этом этапе определяется оптимальное количество и тип камер (IP, аналоговые HD, PTZ), их размещение для исключения "слепых зон", выбор видеорегистратора (NVR/DVR) с учетом требуемого объема хранения и продолжительности записи, а также построение кабельной трассы. Профессиональное проектирование предотвращает избыточные затраты и обеспечивает масштабируемость системы в будущем.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Подбор и поставка оборудования.</strong> Мы используем только проверенное оборудование от ведущих производителей, соответствующее заявленным характеристикам и требованиям надежности. Это исключает проблемы совместимости и преждевременный выход из строя, что часто случается при использовании недорогих компонентов без гарантии.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Монтаж кабельных систем.</strong> Качественная кабельная инфраструктура — основа надежного видеонаблюдения. Наши инженеры выполняют прокладку кабелей (экранированные CAT5e/CAT6 для IP-систем, коаксиальные для аналоговых) согласно стандартам, обеспечивая их защиту от внешних воздействий и электромагнитных помех. Это включает правильное заземление, надежную изоляцию и аккуратную укладку, что критически важно для стабильной передачи видеосигнала без потерь и шумов.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Установка и позиционирование камер.</strong> Камеры монтируются на оптимальной высоте и под необходимыми углами обзора, с учетом архитектурных особенностей и освещенности. Для уличных камер обеспечивается герметичность соединений и надежная фиксация кронштейнов, устойчивых к ветровым нагрузкам и актам вандализма. Точная юстировка каждой камеры гарантирует максимально информативную картинку.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Настройка видеорегистратора и сетевого оборудования.</strong> Производится профессиональная настройка NVR/DVR: конфигурирование сетевых параметров (IP-адресация, порты), режимов записи (по движению, по расписанию, непрерывная), настройка доступа к архиву, резервного копирования, а также интеграция с охранными системами при необходимости. Особое внимание уделяется настройке удаленного доступа через мобильные устройства и ПК, обеспечивая безопасность соединения.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Калибровка и тестирование системы.</strong> После завершения монтажа и базовой настройки проводится всестороннее тестирование. Проверяется работа каждой камеры, качество записи, функционирование датчиков движения, уведомлений, стабильность удаленного доступа. Мы проводим калибровку изображения (баланс белого, контрастность, экспозиция) для достижения наилучшей видимости в различных условиях освещения. Только после полного подтверждения работоспособности всех компонентов система считается готовой к эксплуатации.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Инструктаж пользователя и документация.</strong> Мы обучаем клиентов основам работы с системой: просмотр живого видео, доступ к архиву, управление настройками, экспорт видеофрагментов. Предоставляется полная техническая документация и гарантийный талон.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Выбирая «Админ.Ко» для установки видеонаблюдения, вы получаете не просто набор устройств, а комплексное решение, реализованное по высоким инженерным стандартам, с гарантией качества и стабильности на каждом этапе проекта. Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально.</p></p>
+</section>
+            <section class="mt-12"><h2>Почему выбирают нас: Преимущества, поддержка и начало сотрудничества</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Выбор подрядчика для системы видеонаблюдения – это инвестиция в вашу безопасность и спокойствие. Админ.Ко гарантирует не только установку, но и долгосрочную надежную работу всей системы благодаря нашим инженерным стандартам.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Бесплатный выезд и расчет сметы.</strong> Прежде чем приступить к работе, наш инженер бесплатно выезжает на объект, оценивает его особенности, ваши потребности и предлагает оптимальное решение. Вы получаете точный расчет без скрытых платежей.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Оборудование в наличии и прямые поставки.</strong> Мы работаем с проверенными поставщиками, а ключевые компоненты систем видеонаблюдения всегда доступны на складе. Это исключает задержки и гарантирует оперативное выполнение проекта.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Гарантия 12 месяцев по договору.</strong> Каждая установленная нами система сопровождается официальным договором и годовой гарантией на оборудование и монтажные работы. Это ваша уверенность в стабильной и бесперебойной работе видеонаблюдения.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Конфиденциальность и защита данных.</strong> Мы строго соблюдаем принципы конфиденциальности. Ваши данные и записи видеонаблюдения остаются защищенными, а доступ к системе контролируется согласно вашим требованиям и законодательству.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Честная и прозрачная цена.</strong> Смета, озвученная после оценки объекта, является окончательной. Мы не навязываем ненужные услуги и компоненты, предлагая только те решения, которые оптимально соответствуют вашему бюджету и задачам.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

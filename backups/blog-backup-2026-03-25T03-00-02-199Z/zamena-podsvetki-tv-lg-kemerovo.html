@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Замена подсветки телевизора LG в Кемерово | Ремонт ТВ Админ.Ко | Админ.Ко</title>
+    <meta name="description" content="Профессиональная замена подсветки телевизора LG в Кемерово. Быстрый и качественный ремонт ТВ любых моделей с гарантией от Админ.Ко. Звоните!">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Замена подсветки телевизора LG в Кемерово | Ремонт ТВ Админ.Ко</h1>
+            <meta name="published_at" content="2026-03-22T16:19:08.304Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Глава 1: Проблемы с подсветкой телевизоров LG: Почему это происходит и актуальность ремонта в Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Замена подсветки телевизора LG в Кемерово: восстановим яркую картинку за 1 день с гарантией 12 месяцев, используя оригинальные компоненты и лабораторное оборудование.</p></p>
+<h3><p>Блиц-ответ по ремонту подсветки телевизоров LG</p></h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><p><strong>Проблема:</strong> Отсутствие изображения при наличии звука, темные пятна, мерцание экрана.</p></li>
+<li><p><strong>Срок:</strong> От 1 рабочего дня (при наличии запчастей).</p></li>
+<li><p><strong>Цена:</strong> От 3500 руб. (зависит от модели ТВ и типа подсветки).</p></li>
+<li><p><strong>Диагностика:</strong> 0 руб.</p></li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3><p>Экспертный разбор: Почему выходит из строя подсветка LG и как мы это чиним</p></h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Основная причина выхода из строя подсветки в телевизорах LG – это деградация светодиодов. Со временем, под воздействием рабочего тока и высокой температуры, кристаллы светодиодов теряют яркость, а затем и вовсе выходят из строя. Иногда это происходит из-за нестабильного напряжения в сети, заводского брака компонентов или конструктивных особенностей модели, приводящих к перегреву.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Признаки неисправности подсветки очевидны: при включении телевизора есть звук, но отсутствует изображение (или оно очень темное, едва различимое), могут появиться темные пятна или полосы, либо экран начинает мерцать. Пытаться решить эту проблему самостоятельно или доверять ремонт непрофессионалам чревато необратимыми последствиями для матрицы, которая является самой дорогой частью телевизора.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы подходим к ремонту подсветки с инженерной точностью:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><p><strong>Диагностика с Rigol:</strong> Сначала мы проводим полную диагностику с использованием осциллографа Rigol. Это позволяет точно определить, связана ли проблема только с самими светодиодами или есть сопутствующие неисправности в плате питания или драйвере подсветки, которые могли вызвать износ LED-линеек. Поверхностная проверка может не выявить скрытых проблем, ведущих к повторной поломке.</p></li>
+<li><p><strong>Аккуратный демонтаж:</strong> Разборка телевизора, особенно отделение матрицы, требует предельной осторожности и использования специализированных инструментов. Матрица LG крайне хрупкая, и любое неверное движение приведет к ее повреждению. Мы используем вакуумные присоски и специальные приспособления, чтобы избежать малейшего давления на нее.</p></li>
+<li><p><strong>Полная замена линеек:</strong> Мы всегда меняем не одну-две вышедших из строя линейки, а полный комплект подсветки. Это критически важно, потому что оставшиеся «старые» светодиоды уже имеют выработанный ресурс и вскоре тоже выйдут из строя, что приведет к повторному ремонту. Мы устанавливаем только новые, проверенные линейки подсветки, соответствующие спецификациям производителя.</p></li>
+<li><p><strong>Качественные расходные материалы:</strong> В процессе пайки, если требуется замена отдельных светодиодов на линейке (что мы делаем крайне редко, предпочитая полную замену), мы используем только флюсы Martin/Amtech, которые обеспечивают надежное соединение и не вызывают коррозии платы со временем. Это предотвращает последующие проблемы с контактами.</p></li>
+<li><p><strong>Тестирование:</strong> После сборки телевизор проходит многочасовое тестирование на разных режимах яркости, чтобы убедиться в равномерности подсветки и отсутствии дефектов.</p></li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без использования профессионального оборудования и соблюдения технологии ремонта, есть высокий риск повреждения матрицы, неравномерной подсветки, или быстрого повторного выхода из строя оставшихся старых светодиодов.</p></p>
+<h3><p>Инженерный стандарт Админ.Ко: Почему стоит выбрать нас</p></h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><p><strong>0 руб. диагностика:</strong> Полная и точная диагностика всегда бесплатна.</p></li>
+<li><p><strong>Запчасти в наличии:</strong> Большинство ходовых комплектующих, включая линейки подсветки для популярных моделей LG, уже есть на нашем складе, что значительно ускоряет ремонт.</p></li>
+<li><p><strong>Гарантия 1 год по договору:</strong> На все выполненные работы и установленные компоненты предоставляется официальная гарантия 12 месяцев.</p></li>
+<li><p><strong>Сохранность данных:</strong> Мы гарантируем полную сохранность ваших персональных настроек и данных, если ремонт не затрагивает накопители.</p></li>
+<li><p><strong>Честная цена:</strong> Вы всегда знаете конечную стоимость ремонта до его начала, без скрытых платежей.</p></li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3><p>Локальный призыв (GEO CTA)</p></h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально, предоставляя честный и качественный сервис по ремонту вашей техники.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Вот ваш Blitz-Answer для "Замена подсветки телевизора LG в Кемерово | Ремонт ТВ - Админ.Ко":</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Замена подсветки телевизора LG в Кемерово от 3500 до 6000 руб. Окончательная стоимость зависит от модели ТВ, размера экрана и цены на необходимые LED-элементы. Включена стоимость запчастей и работы мастера.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: От 1 до 3 рабочих дней при наличии нужных комплектующих на складе. В случае заказа редких деталей срок может увеличиться до 5-7 рабочих дней.</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Бесплатна при последующем ремонте. Если вы отказываетесь от ремонта, стоимость точной диагностики неисправности составляет 500 руб.</p></div>
+
+        </div>
+            <section><h2>Глава 2: Процесс замены подсветки LG TV в «Админ.Ко»: Диагностика, выбор комплектующих и этапы работы</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Замена подсветки телевизора LG – это не просто монтаж новых светодиодных линеек, а комплексный инженерный процесс, требующий высокой точности, специализированного оборудования и глубоких знаний электроники. В «Админ.Ко» мы подходим к этой задаче системно, чтобы гарантировать долговечность и качество ремонта.</p></p>
+<h3>Этап 1: Профессиональная диагностика</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Первостепенная задача — точно определить причину неисправности. Слепое замещение комплектующих без детального анализа приводит к повторным поломкам. Наши инженеры используют:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Специализированные LED-тестеры для точного выявления неисправных светодиодов или целых линеек. Это позволяет не только найти вышедшие из строя элементы, но и оценить состояние соседних.</li>
+<li>Осциллограф Rigol для анализа питающих напряжений и сигналов на блоке питания и драйвере подсветки. Часто причиной выхода из строя подсветки является нестабильность или перегрузка в цепи питания, которую невозможно выявить без точного измерительного оборудования.</li>
+<li>Тепловизор (опционально) для выявления зон перегрева на плате блока питания или драйвера подсветки, которые могут быть предвестниками скорого отказа.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Такая всесторонняя диагностика гарантирует, что мы устраняем не только следствие, но и первопричину поломки, предотвращая рецидивы. В «Админ.Ко» диагностика всегда бесплатна.</p></p>
+<h3>Этап 2: Выбор комплектующих и подготовка к работе</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Качество комплектующих критически важно для надежности ремонта. Мы используем только новые, сертифицированные светодиодные линейки, идентичные оригинальным или их высококачественные аналоги. Применение б/у или дешевых некачественных запчастей гарантирует скорый повторный выход из строя и потерю качества изображения.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Подготовка рабочей зоны включает:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Создание антистатической среды для предотвращения повреждения чувствительных электронных компонентов.</li>
+<li>Поддержание чистоты для исключения попадания пыли между слоями матрицы, что критично для конечного качества изображения.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Этап 3: Процесс замены подсветки</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Замена подсветки телевизора LG – это многоступенчатая операция, требующая аккуратности и опыта:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ol></p>
+<li><strong>Деликатная разборка телевизора:</strong> Производится с применением профессионального инструмента, чтобы исключить повреждение корпуса, крепежей и шлейфов.</li>
+<li><strong>Демонтаж матрицы:</strong> Самый ответственный этап. Матрица телевизора чрезвычайно хрупка и чувствительна к механическим воздействиям. Работа выполняется на специализированных столах в условиях, исключающих загрязнение и повреждение.</li>
+<li><strong>Удаление старых светодиодных линеек:</strong> Старые, деградировавшие линейки демонтируются, а места их крепления тщательно очищаются.</li>
+<li><strong>Установка новых линеек:</strong> Новые светодиодные линейки устанавливаются строго в соответствии с заводскими стандартами, обеспечивая равномерное распределение света. При необходимости, производится модификация цепей питания для снижения тока подсветки и продления срока службы новых линеек, если это не влияет на яркость и соответствует ожиданиям клиента.</li>
+<li><strong>Обратная сборка и тестирование:</strong> После установки новых линеек телевизор собирается в обратной последовательности. Проводится многочасовое тестирование во всех режимах работы для проверки равномерности подсветки, отсутствия засветов и стабильности работы.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ol></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Наш подход исключает компромиссы в качестве, гарантируя, что ваш LG TV вернется к работе с полноценной, яркой и равномерной подсветкой.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Технический секрет инженера для "Замена подсветки телевизора LG в Кемерово | Ремонт ТВ - Админ.Ко":</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Наш главный инженерный секрет при замене подсветки в телевизорах LG, особенно в моделях с прямым типом подсветки (Direct LED), заключается не просто в установке новых линеек светодиодов, а в обязательной последующей МОДИФИКАЦИИ цепи LED-драйвера на плате питания.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Дело в том, что заводские настройки часто устанавливают завышенный ток для светодиодов, что приводит к их ускоренному перегреву и деградации – это и есть первопричина повторных выходов из строя. Чтобы обеспечить действительно долговечный ремонт и превзойти заводскую надежность, мы после установки новой подсветки аккуратно вычисляем и удаляем один (реже – два, в зависимости от модели и номиналов) из шунтирующих (токоизмерительных) резисторов в цепи LED-драйвера. Обычно они находятся в группе малоомных резисторов (например, R815, R816, R817) рядом с микросхемой драйвера.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Это снижает рабочий ток через новые светодиоды на безопасный уровень, значительно уменьшает их нагрев и продлевает срок службы подсветки в разы, исключая быстрый повторный ремонт. Это не просто замена, это инженерная доработка, которая делает телевизор надежнее, чем он был с завода. Важно делать это с пониманием схемотехники, чтобы не переборщить с уменьшением тока и не вызвать артефакты изображения.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Глава 3: Преимущества профессионального ремонта подсветки LG TV в «Админ.Ко» для жителей Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Выбирая сервисный центр для восстановления подсветки вашего телевизора LG в Кемерово, критически важно учитывать не только стоимость, но и стандарты качества, оборудования и гарантийные обязательства. В «Админ.Ко» мы строим нашу работу на принципах прозрачности, надежности и инженерного превосходства, что особенно актуально для такого сложного ремонта, как замена подсветки.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Бесплатная диагностика:</b> Мы начинаем любой ремонт с тщательной и абсолютно бесплатной диагностики. Это позволяет точно определить причину отказа подсветки LG TV, исключить сопутствующие неисправности и сформировать точный план работ без каких-либо скрытых платежей.</li>
+<li><b>Запчасти в наличии:</b> Большинство необходимых компонентов для ремонта подсветки телевизоров LG, включая оригинальные светодиодные планки и драйверы, постоянно находятся на нашем складе. Это гарантирует оперативное выполнение работ и минимизирует время, пока ваш телевизор находится в ремонте.</li>
+<li><b>Гарантия 1 год по договору:</b> На все выполненные работы по замене подсветки LG TV и установленные комплектующие предоставляется официальная гарантия сроком на 12 месяцев, закрепленная юридическим договором. Это не просто слова, а наше обязательство перед вами за качество и долговечность ремонта.</li>
+<li><b>Сохранность вашего устройства:</b> Мы используем специализированное оборудование и строго следуем техническим регламентам, что исключает риск повреждения матрицы или других чувствительных компонентов вашего телевизора LG во время ремонта подсветки.</li>
+<li><b>Честная цена без накруток:</b> Стоимость ремонта подсветки LG TV формируется на основе объективной оценки объема работ и цен на качественные комплектующие. Вы получаете прозрачный прайс и лучшее соотношение цены и качества в Кемерово.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы приглашаем жителей Кемерово оценить эти преимущества лично. Наш сервисный центр «Админ.Ко» расположен по адресу: улица Дзержинского 2Б, в удобной доступности от СРК «Арена» и ТЦ «Я». Мы работаем официально, предоставляя полный пакет документов и гарантируя профессиональный подход к ремонту вашей техники.</p></p>
+</section>
+            <section class="mt-12"><h2>Глава 4: Как заказать замену подсветки LG TV в «Админ.Ко» в Кемерово: Контакты, гарантии и другие услуги</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Заказать профессиональную замену подсветки вашего телевизора LG в сервисном центре «Админ.Ко» в Кемерово – это простой и прозрачный процесс, ориентированный на максимальное удобство клиента и неизменно высокое качество выполнения работ.</p></p>
+<h3>Этапы обращения в «Админ.Ко»:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Консультация и запись:</b> Вы можете связаться с нами по телефону или посетить наш сервисный центр для получения предварительной консультации. Наши квалифицированные специалисты предоставят исчерпывающие ответы на все ваши вопросы и предложат удобное время для визита.</li>
+<li><b>Бесплатная диагностика:</b> При сдаче телевизора LG в ремонт в «Админ.Ко» проводится полная аппаратная и программная диагностика. Эта услуга абсолютно бесплатна и позволяет точно определить причину неисправности, а также рассчитать точную стоимость и сроки ремонта.</li>
+<li><b>Согласование и ремонт:</b> После проведения диагностики мы предоставляем вам точную смету работ и необходимых комплектующих. Ремонт начинается только после вашего полного одобрения. Мы используем только оригинальные или проверенные высококачественные аналоговые компоненты, а также специализированное оборудование, гарантируя долговечность ремонта.</li>
+<li><b>Получение устройства:</b> Ваш телевизор будет готов к выдаче в строго оговоренные сроки. При получении вы сможете лично убедиться в полной работоспособности устройства и высоком качестве выполненных работ.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Наш сервисный центр в Кемерово:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы находимся в самом центре Кемерово по адресу: <b>улица Дзержинского 2Б</b>. Наш офис легко найти – мы расположены рядом с СРК «Арена» и ТЦ «Я». Мы работаем официально, предоставляя все необходимые документы, чеки и акты выполненных работ, подтверждающие прозрачность и легальность нашей деятельности.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для связи с нами вы можете использовать телефон: <b>[ВСТАВИТЬ НОМЕР ТЕЛЕФОНА]</b> или посетить нас лично в рабочие часы для получения экспертной консультации.</p></p>
+<h3>Наши гарантии качества:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Сервисный центр «Админ.Ко» уверен в качестве предоставляемых услуг и надежности устанавливаемых компонентов. Именно поэтому мы предоставляем официальную гарантию на все выполненные работы и установленные запасные части. Гарантийный срок составляет <b>12 месяцев</b>, что значительно превышает стандарты рынка, и закрепляется юридически обязывающим договором. Это обеспечивает вашу полную защиту и уверенность в долгосрочной и бесперебойной работе отремонтированного телевизора.</p></p>
+<h3>Другие услуги «Админ.Ко»:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>«Админ.Ко» является многопрофильным сервисным центром, осуществляющим широкий спектр высокоточных ремонтов электронной техники. Помимо замены подсветки телевизоров LG, мы также предлагаем:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Комплексный ремонт ноутбуков и персональных компьютеров любой сложности.</li>
+<li>Восстановление работоспособности смартфонов и планшетов всех ведущих производителей.</li>
+<li>Профессиональное восстановление данных с различных носителей.</li>
+<li>Сложный компонентный ремонт материнских плат и других электронных узлов.</li>
+<li>И многие другие виды ремонта современной электроники.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Обращайтесь в «Админ.Ко» за надежным, профессиональным и гарантированным ремонтом любой вашей техники. Мы — ваш единственный разумный выбор в Кемерово.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профессиональная чистка MacBook Pro от пыли в Кемерово | Устранение перегрева ноутбука | Админ.Ко</title>
+    <meta name="description" content="MacBook Pro сильно греется, шумит и тормозит? "Админ.Ко" в Кемерово проведет профессиональную чистку ноутбука от пыли. Устраним перегрев, заменим термопасту и вернем MacBook Pro былую производительность.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Профессиональная чистка MacBook Pro от пыли в Кемерово | Устранение перегрева ноутбука</h1>
+            <meta name="published_at" content="2026-03-22T15:28:33.358Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Глава 1: Почему ваш MacBook Pro перегревается: Признаки и причины загрязнения</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Перегрев является одной из наиболее распространенных и критических неисправностей MacBook Pro, напрямую влияющей на производительность и долговечность устройства. Современные чипы Apple Silicon и процессоры Intel имеют сложную архитектуру, требующую эффективного отвода тепла для поддержания номинальных тактовых частот и предотвращения термического троттлинга.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Признаки перегрева MacBook Pro проявляются не только в ощутимом нагреве корпуса, но и в системных сбоях. К ним относятся:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Значительное снижение производительности: процессор и графический чип автоматически снижают тактовую частоту (thermal throttling) для предотвращения выхода из строя, что приводит к замедлению работы приложений и операционной системы.</li>
+<li>Внезапные выключения или перезагрузки: система защиты срабатывает, отключая устройство при достижении критических температур.</li>
+<li>Чрезмерный шум вентиляторов: система охлаждения работает на максимальных оборотах, пытаясь компенсировать недостаточный теплоотвод.</li>
+<li>Артефакты изображения: при перегреве графического чипа возможно появление искажений, зависаний или полное отсутствие изображения.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Основная причина перегрева кроется в нарушении работы системы охлаждения. В процессе эксплуатации внутрь корпуса проникает пыль, шерсть и мелкий мусор, которые осаждаются на радиаторах и лопастях вентиляторов. Это создает плотный изоляционный слой, препятствующий эффективному рассеиванию тепла. Кроме того, со временем термопаста, нанесенная между процессором/графическим чипом и радиатором, высыхает и теряет свои теплопроводящие свойства, что дополнительно ухудшает отвод тепла.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без использования специализированного оборудования точная диагностика причин перегрева затруднена. Например, для выявления локальных зон перегрева и оценки эффективности теплоотвода применяется тепловизор, который позволяет визуализировать температурное поле на плате и компонентах. Это критично для понимания, где именно система охлаждения не справляется. Некачественная чистка, выполненная без полного демонтажа системы охлаждения и замены термоинтерфейсов на профессиональные составы (например, Arctic MX-4 или аналоги), не устраняет проблему, а лишь откладывает ее решение, усугубляя деградацию компонентов.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> От 2490 руб. (включая профессиональную замену термопасты).</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: От 1 часа. В большинстве случаев чистка занимает 2-3 часа.</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Полная диагностика причин перегрева MacBook Pro - бесплатно при заказе чистки в Админ.Ко.</p></div>
+
+        </div>
+            <section><h2>Глава 2: Подготовка к чистке: Необходимые инструменты и меры предосторожности</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Эффективная и безопасная чистка MacBook Pro от пыли начинается задолго до физического воздействия на компоненты. Критически важен этап подготовки, включающий подбор правильного инструментария и строгое соблюдение мер предосторожности. Неправильный подход к данному этапу может привести к необратимым повреждениям материнской платы, шлейфов или корпуса устройства.</p></p>
+<h3>Необходимые инструменты для профессиональной чистки:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Прецизионные отвертки:</strong> Для MacBook Pro требуются специфические типы: P5 Pentalobe для винтов нижней крышки, а также T5 Torx и Philips #000 для внутренних компонентов. Использование несовместимых отверток гарантирует повреждение шлицов и затруднение доступа.</li>
+<li><strong>Пластиковые лопатки (спуджеры):</strong> Незаменимы для безопасного отсоединения шлейфов и разъемов, а также для аккуратного разъединения корпусных элементов. Металлические инструменты могут вызвать короткие замыкания или физические повреждения.</li>
+<li><strong>Антистатический браслет и мат:</strong> Электростатический разряд (ESD) является одной из главных угроз для чувствительной электроники. Профессиональная защита от ESD предотвращает повреждение микросхем, невидимое невооруженным глазом, но критичное для долгосрочной работоспособности.</li>
+<li><strong>Баллон со сжатым воздухом или безмасляный компрессор:</strong> Эффективен для удаления пыли из труднодоступных мест и радиаторов. Важно контролировать давление и избегать длительного воздействия на вентиляторы, чтобы не допустить их раскручивания до чрезмерных оборотов.</li>
+<li><strong>Изопропиловый спирт (не менее 99% чистоты) и безворсовые салфетки/кисти:</strong> Применяются для удаления старой термопасты и загрязнений с микросхем, таких как CPU и GPU. Высокая чистота спирта исключает образование токопроводящих осадков.</li>
+<li><strong>Высококачественная термопаста:</strong> После очистки требуется нанесение новой термопасты с высокой теплопроводностью. Админ.Ко использует только проверенные составы, обеспечивающие стабильный теплоотвод.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Ключевые меры предосторожности:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Полное обесточивание:</strong> Перед началом любых манипуляций с внутренними компонентами MacBook Pro должен быть полностью выключен, а зарядное устройство отсоединено.</li>
+<li><strong>Отключение аккумулятора:</strong> Первым шагом после снятия нижней крышки является обязательное и безопасное отключение коннектора аккумулятора. Это исключает риск короткого замыкания и повреждения материнской платы во время работы.</li>
+<li><strong>Работа в чистой среде:</strong> Чистка должна производиться на чистой, хорошо освещенной поверхности, свободной от посторонних предметов и потенциальных источников статического электричества.</li>
+<li><strong>Аккуратность и последовательность:</strong> Каждый винт и компонент имеет свое место. Необходимо запоминать или фиксировать порядок демонтажа и монтажа, чтобы избежать ошибок при сборке. Использование специализированных органайзеров для винтов упрощает этот процесс.</li>
+<li><strong>Избегание прямого контакта с компонентами:</strong> По возможности минимизируйте прямой контакт рук с чувствительными микросхемами и контактами, даже при использовании антистатической защиты.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Соблюдение этих правил обеспечивает не только успешное устранение перегрева, но и гарантирует сохранность всех функциональных возможностей устройства.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Вот технический секрет инженера от "Админ.Ко" по чистке MacBook Pro от пыли:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Секрет теплообменника: Как выбить "пылевой валенок"</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Многие думают, что главная проблема – это пыль на лопастях вентиляторов. Это лишь часть правды. Настоящий враг эффективного охлаждения и причина перегрева – это плотный, спрессованный слой пыли, который со временем образуется между тонкими алюминиевыми рёбрами радиатора (теплообменника), к которому подходят тепловые трубки. Этот слой становится похожим на войлок или "пылевой валенок", который фактически забивает просветы между рёбрами, превращая радиатор в отличный… термоизолятор! Воздух через него просто не проходит, или проходит очень плохо.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Инженерный подход к решению этой проблемы:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">1.  Подготовка: Откройте нижнюю крышку MacBook Pro.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">2.  Безопасность прежде всего: ОБЯЗАТЕЛЬНО отсоедините кабель аккумулятора от материнской платы. Это не только предотвратит короткое замыкание, но и защитит вентиляторы.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">3.  Отключение вентиляторов: Отключите кабель питания каждого вентилятора от материнской платы. ЭТО КРАЙНЕ ВАЖНО! При продувке сжатым воздухом вентилятор может раскрутиться до запредельных оборотов и выйти из строя, или даже повредить соответствующий контроллер на плате.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">4.  Целевая продувка: Теперь, когда вентиляторы обесточены, используйте баллончик со сжатым воздухом или компрессор с регулируемым, НИЗКИМ давлением. Не просто продувайте вентиляторы! Аккуратно, короткими импульсами, продувайте непосредственно рёбра радиатора. Цель – выбить тот самый "пылевой валенок" ИЗНУТРИ, то есть со стороны вентилятора, чтобы пыль вылетела наружу через вентиляционные отверстия корпуса. Возможно, вам придется немного поменять угол, чтобы добраться до всех участков.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">5.  Главный секрет для упрямой пыли: Если "валенок" очень плотный и не поддается продувке, вот "секретный" приём: возьмите очень тонкую, НЕметаллическую, гибкую пластиковую карточку (например, обрезанную старую банковскую карту, пластиковый медиатор для гитары или даже очень плотную визитку) и ОЧЕНЬ АККУРАТНО, без малейших усилий, попробуйте "продвинуть" её между рёбрами радиатора. Действуйте крайне осторожно, чтобы не погнуть тонкие алюминиевые пластины! Цель – физически разрушить или сдвинуть слой спрессованной пыли. После этого повторите продувку. Этот метод позволяет буквально "соскрести" прилипшую пыль.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">6.  Финальная сборка: После полного удаления пыли, подключите кабели вентиляторов обратно, затем подключите аккумулятор. Закройте нижнюю крышку.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Этот метод гарантирует максимальное удаление пыли из самых критичных мест системы охлаждения, восстанавливая её первоначальную эффективность и устраняя перегрев. Помните: осторожность и неспешность – ваши лучшие помощники.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Глава 3: Как безопасно и эффективно очистить MacBook Pro от пыли</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Перегрев MacBook Pro, проявляющийся в шумной работе вентиляторов, снижении производительности и нагреве корпуса, является прямым следствием накопления пыли внутри системы охлаждения. Многие пользователи рассматривают самостоятельную чистку как простое решение, однако истинная эффективность и безопасность этой процедуры требуют глубокого понимания устройства и использования специализированных средств.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Самостоятельные попытки очистки MacBook Pro, как правило, не только не приносят желаемого результата, но и сопряжены с высоким риском необратимых повреждений. Вот основные причины, по которым дилетантский подход опасен:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Риск статического электричества:</b> Внутренние компоненты MacBook Pro крайне чувствительны к статическому разряду, который может вызвать мгновенный выход из строя логической платы или других элементов. Профессиональные сервисы используют антистатическое оборудование.</li>
+<li><b>Повреждение шлейфов и разъемов:</b> Неаккуратная разборка без специального инструмента часто приводит к повреждению тонких шлейфов, защелок и разъемов, что влечет за собой дорогостоящий ремонт или потерю функциональности (например, неработающая клавиатура, трекпад или дисплей).</li>
+<li><b>Недостаточная очистка:</b> Продувка воздухом через внешние отверстия или частичная разборка лишь сдувает поверхностный слой пыли. Основная масса загрязнений оседает между ребрами радиатора и на лопастях вентиляторов, требуя полного демонтажа системы охлаждения.</li>
+<li><b>Неправильная замена термопасты:</b> Ключевой элемент эффективного охлаждения — термопаста. Самостоятельная замена часто выполняется некачественными материалами или с нарушением технологии нанесения, что приводит к еще более быстрому перегреву, чем до чистки.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Эффективная и безопасная очистка MacBook Pro от пыли — это комплексная процедура, которая включает:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Полная аппаратная разборка:</b> Устройство полностью разбирается для обеспечения доступа ко всем элементам системы охлаждения.</li>
+<li><b>Бережная очистка:</b> Удаление пыли с лопастей вентиляторов и радиаторов осуществляется с помощью специализированного сжатого воздуха и антистатических инструментов, без риска повреждения компонентов.</li>
+<li><b>Замена термопасты:</b> Старая, высохшая термопаста, теряющая свои теплопроводящие свойства, полностью удаляется с центрального процессора (CPU) и графического процессора (GPU). На ее место наносится новая, высококачественная термопаста (например, Arctic MX-4 или Thermal Grizzly), обеспечивающая максимальную теплоотдачу.</li>
+<li><b>Проверка и тестирование:</b> После сборки устройства проводятся тесты под нагрузкой для контроля температурного режима и подтверждения стабильной работы системы охлаждения.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Только такой подход гарантирует не только устранение текущей проблемы с перегревом, но и продлевает срок службы вашего MacBook Pro, предотвращая более серьезные поломки, вызванные длительной работой в условиях повышенных температур.</p></p>
+</section>
+            <section class="mt-12"><h2>Глава 4: После чистки и профилактика: Как поддерживать оптимальную температуру MacBook Pro</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Профессиональная чистка MacBook Pro от пыли и замена термопасты в Админ.Ко восстанавливает эффективность системы охлаждения. Однако для поддержания оптимальной температуры и предотвращения повторного перегрева необходимо соблюдать ряд рекомендаций. Это продлит срок службы компонентов и обеспечит стабильную производительность вашего устройства.</p></p>
+<h3>Обеспечение адекватной вентиляции</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Избегайте блокировки вентиляционных отверстий:</strong> MacBook Pro оснащен отверстиями для забора и вывода воздуха. Использование ноутбука на мягких поверхностях (постель, диван, колени) блокирует эти отверстия, затрудняя отвод тепла и способствуя накоплению пыли.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Используйте твердые ровные поверхности:</strong> Всегда размещайте MacBook Pro на столешнице или других твердых, плоских поверхностях, чтобы обеспечить беспрепятственный приток воздуха к вентиляционным решеткам.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Охлаждающие подставки:</strong> В условиях интенсивной нагрузки или работы в жарком помещении, использование активных охлаждающих подставок может дополнительно снизить температуру корпуса и внутренних компонентов.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Программные методы управления температурой</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Мониторинг процессов:</strong> Используйте стандартное приложение "Мониторинг активности" (Activity Monitor) в macOS для выявления ресурсоемких приложений и фоновых процессов, которые могут неоправданно нагружать процессор и графический чип, приводя к нагреву.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Обновления macOS:</strong> Регулярно устанавливайте обновления операционной системы. Apple постоянно оптимизирует энергопотребление и управление теплом через программные патчи.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Закрытие неиспользуемых приложений:</strong> Держите открытыми только те приложения, которые активно используете. Каждая фоновая программа потребляет ресурсы и генерирует тепло.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Поддержание окружающей среды и периодичность обслуживания</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Оптимальная температура помещения:</strong> Избегайте использования MacBook Pro в условиях прямого солнечного света или в помещениях с очень высокой температурой воздуха (выше 30°C).</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Регулярная профилактика:</strong> Несмотря на профессиональную чистку, пыль неизбежно накапливается со временем. Рекомендуется проводить полную профессиональную чистку системы охлаждения с заменой термопасты в сервисной лаборатории Админ.Ко каждые 12-24 месяца, в зависимости от условий эксплуатации.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Соблюдение этих простых правил поможет поддерживать ваш MacBook Pro в оптимальном температурном режиме, обеспечивая его долговечность и максимальную производительность. При любых признаках повторного перегрева, таких как частое включение вентиляторов на высокой скорости или снижение производительности, обращайтесь в Админ.Ко для экспертной диагностики.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

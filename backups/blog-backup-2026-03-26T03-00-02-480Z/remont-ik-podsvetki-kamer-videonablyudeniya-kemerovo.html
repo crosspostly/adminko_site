@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ремонт ИК-подсветки камер видеонаблюдения в Кемерово | Плохое ночное изображение | Админ.Ко</title>
+    <meta name="description" content="Камера видеонаблюдения в Кемерово показывает темное или нечеткое черно-белое изображение ночью? Мы профессионально отремонтируем ИК-подсветку, восстановив качество и дальность ночного видения. Выезд мастера по Кемерово.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Ремонт ИК-подсветки камер видеонаблюдения в Кемерово | Плохое ночное изображение</h1>
+            <meta name="published_at" content="2026-03-25T03:05:58.704Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Камеры видеонаблюдения в Кемерово показывают черно-белое ночью: экспертный ремонт ИК-подсветки</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваши камеры видеонаблюдения перестали давать четкое изображение ночью или показывают исключительно черно-белую картинку? Это прямое указание на неисправность системы инфракрасной (ИК) подсветки. В Админ.Ко мы предлагаем профессиональное восстановление функциональности вашего оборудования.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Проблема: Камеры видеонаблюдения выдают черно-белое изображение ночью или ИК-светодиоды не работают.</li>
+<li>Срок: Диагностика от 30 минут, ремонт от 1 часа (при наличии необходимых компонентов).</li>
+<li>Цена: От 800 руб. (зависит от типа камеры и характера неисправности).</li>
+<li>Диагностика: 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Экспертный разбор (The Proof): Почему камеры показывают черно-белое изображение ночью</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для захвата цветного изображения камере необходим достаточный уровень освещенности. В условиях низкой освещенности или полной темноты большинство камер видеонаблюдения автоматически переходят в монохромный (черно-белый) режим. Этот переход позволяет повысить светочувствительность сенсора и получить более детализированное изображение за счет отказа от цветовой информации. В ночном режиме камера активирует встроенную инфракрасную (ИК) подсветку, излучающую свет в невидимом для человеческого глаза спектре. Этот ИК-свет "освещает" сцену, делая объекты видимыми для сенсора камеры.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если ваша камера показывает черно-белое изображение, но видимой ИК-подсветки (слабого красного свечения от светодиодов) нет, или изображение слишком темное, это указывает на проблемы с ИК-системой. Основные причины неисправностей:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Деградация или выход из строя ИК-светодиодов:</strong> Со временем светодиоды теряют яркость или полностью перегорают.</li>
+<li><strong>Неисправность ИК-фильтра (IR-Cut Filter):</strong> В дневное время этот фильтр блокирует ИК-свет для корректной цветопередачи. Ночью он должен отключаться. Если механизм заклинивает или выходит из строя, ИК-свет не достигает сенсора, или, наоборот, фильтр не включается днем, искажая цвета.</li>
+<li><strong>Проблемы с питанием:</strong> Недостаточное или нестабильное напряжение на ИК-матрицу или контроллер приводит к отказу подсветки.</li>
+<li><strong>Сбой на управляющей плате:</strong> Реже, но встречаются сбои в логике, ответственной за переключение режимов и активацию ИК-подсветки.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для точной диагностики и устранения этих проблем в Админ.Ко используется специализированное оборудование. Мы применяем осциллограф Rigol для анализа стабильности и формы питающих напряжений, а также контроля управляющих сигналов. Высокоточный мультиметр позволяет определить целостность цепей и корректность выходных напряжений. При необходимости замены светодиодов или компонентов управляющей цепи используется паяльная станция JBC (Испания). Это оборудование обеспечивает микро-пайку без перегрева платы, что критически важно для сохранения работоспособности чувствительных компонентов и предотвращения скрытых дефектов. Применение качественных флюсов Martin/Amtech гарантирует отсутствие коррозии и долговечность паяных соединений. Без такого подхода ремонт ИК-системы может привести к повторным поломкам или полному выходу камеры из строя.</p></p>
+<h2>Инженерный стандарт Админ.Ко</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Выбирая Админ.Ко для ремонта вашей системы видеонаблюдения, вы получаете:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>0р диагностика:</strong> Мы проведем полную и точную диагностику причины неисправности вашей камеры абсолютно бесплатно.</li>
+<li><strong>Запчасти в наличии:</strong> Наиболее востребованные компоненты для ремонта ИК-подсветки и других систем видеонаблюдения всегда имеются на нашем складе, что значительно сокращает сроки ремонта.</li>
+<li><strong>Гарантия 1 год по договору:</strong> Мы предоставляем официальную гарантию на все выполненные работы и замененные детали, подтвержденную договором.</li>
+<li><strong>Сохранность устройства:</strong> Все работы проводятся с максимальной аккуратностью, гарантируя сохранение корпуса, оптики и заводской герметичности вашей камеры.</li>
+<li><strong>Честная цена:</strong> Вы всегда будете знать полную стоимость ремонта до его начала, без скрытых платежей и непредвиденных расходов.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Локальный призыв (GEO CTA)</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не позволяйте неисправной ИК-подсветке ставить под угрозу безопасность вашего объекта. Приезжайте в Админ.Ко для профессионального восстановления функциональности вашей камеры видеонаблюдения. Мы находимся в центре Кемерово по адресу: ул. Дзержинского 2Б. Нас легко найти — рядом расположены СРК Арена и ТЦ Я. Мы работаем официально и готовы предложить экспертное решение вашей проблемы.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> 800-1500 руб. на месте в Кемерово. (Часто бесплатно при заказе ремонта).</p></div>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> от 1500 руб. (замена ИК-модуля или ремонт питания) до 4500 руб. (при серьезных повреждениях).</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: От 1 часа (на месте при наличии запчастей) до 3-5 рабочих дней (при заказе специфических компонентов).</p>
+
+        </div>
+            <section><h2>Диагностика проблем с ИК-подсветкой в камерах: Как определить неисправность</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Когда камеры видеонаблюдения показывают только черно-белое изображение в ночное время, а видимость снижается до нуля, это прямо указывает на неисправность инфракрасной (ИК) подсветки. Эффективная диагностика требует не только опыта, но и специализированного оборудования, чтобы точно локализовать проблему и избежать дорогостоящей замены всей системы.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><h3>Основные признаки неисправности ИК-подсветки:</h3></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Полное отсутствие изображения в темноте.</li>
+<li>Крайне низкая четкость или "замыленность" картинки ночью.</li>
+<li>Черно-белое изображение даже при наличии внешнего источника света (датчик освещенности не переключается).</li>
+<li>Визуально заметно, что часть ИК-диодов на камере не светится (можно проверить через камеру смартфона).</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><h3>Методы профессиональной диагностики в Админ.Ко:</h3></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Самостоятельная проверка часто сводится к визуальному осмотру, который не позволяет выявить скрытые дефекты. В условиях лаборатории Админ.Ко применяется комплексный подход:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Визуальный и оптический контроль:</b> Первичный осмотр состояния ИК-диодов и защитного стекла. Используем камеры с ИК-фильтром (например, смартфон или специализированный ИК-детектор) для проверки свечения каждого диода. Повреждения линз или деградация материала могут снижать эффективность подсветки.</li>
+<li><b>Измерение питающих напряжений:</b> С помощью высокоточных мультиметров проверяется подача стабильного напряжения на модуль ИК-подсветки и датчик освещенности (фоторезистор CDS). Нестабильное питание может быть причиной периодических сбоев.</li>
+<li><b>Анализ работы датчика освещенности (CDS):</b> Этот датчик отвечает за автоматическое включение ИК-подсветки в темноте. Применяем контролируемые источники света и затемнения для проверки его срабатывания и переключения камеры в ночной режим. Неисправный датчик может "обманывать" систему, оставляя ИК выключенной даже ночью.</li>
+<li><b>Диагностика драйвера ИК-диодов с помощью осциллографа Rigol:</b> ИК-диоды питаются через специальный драйвер. Осциллограф Rigol позволяет анализировать форму импульсов и стабильность выходного сигнала драйвера. Проблемы с ШИМ-управлением (PWM) или обрывы цепи могут приводить к неполному свечению или полному отказу подсветки.</li>
+<li><b>Тепловизионное обследование:</b> Одним из ключевых инструментов является тепловизор. Он позволяет мгновенно выявить ИК-диоды, которые не работают или, наоборот, перегреваются из-за внутренних замыканий. Тепловая карта объективно показывает распределение нагрузки и места скрытых дефектов на печатной плате, которые невозможно обнаружить обычным визуальным осмотром.</li>
+<li><b>Тестирование отдельных компонентов:</b> В случае подозрения на неисправность конкретного ИК-диода или элемента цепи, производится аккуратный демонтаж с использованием станции JBC (Испания) для точечного и безопасного выпаивания компонентов без перегрева окружающих элементов платы. Затем каждый диод или компонент тестируется на специализированном стенде.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Некачественный ремонт без должной диагностики часто приводит к повторным поломкам. Применение современного оборудования в Админ.Ко позволяет не просто заменить вышедший из строя элемент, но и устранить первопричину неисправности, гарантируя долгосрочную и стабильную работу вашей системы видеонаблюдения.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Технический секрет инженера для ремонта ИК-подсветки камеры в Кемерово:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Многие сразу бросаются проверять сами инфракрасные диоды или их питание. Но вот вам инженерный секрет: в 70% случаев, когда ИК-подсветка кажется слабой, мерцает или вовсе не включается ночью, проблема кроется не в самих ИК-диодах, а в *датчике освещенности (фоторезисторе)*, который управляет их включением.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">В условиях города, будь то Кемерово или любой другой мегаполис, фоторезистор может быть "ослеплен" или "обманут" слабым фоновым светом от уличных фонарей, рекламных вывесок, фар проезжающих машин или даже светом из окна соседнего здания. Это приводит к тому, что датчик "думает", что еще не так темно, чтобы включать ИК-подсветку на полную мощность, или постоянно переключает ее, вызывая мерцание и нестабильное черно-белое изображение.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Ваш ход: В абсолютной темноте *полностью перекройте фоторезистор* (обычно это маленькая круглая деталь рядом с объективом). Если ИК-подсветка включится ярко и стабильно, проблема в нем. Возможно, он загрязнен, неправильно ориентирован, "ловит" посторонний свет или его порог срабатывания нужно отрегулировать (если камера позволяет). Иногда достаточно просто почистить его или изменить его положение, чтобы он "видел" только истинную темноту, а не смесь света и тени, заставляющую камеру работать в "полуночном" режиме.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Ремонт ИК-подсветки камер видеонаблюдения в Кемерово: Четкое ночное видение</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваши камеры видеонаблюдения стали показывать черно-белое изображение ночью, либо совсем не различают объекты в темноте? Это верный признак неисправности инфракрасной (ИК) подсветки – ключевого элемента для качественного ночного видения. В Админ.Ко мы предлагаем профессиональное восстановление функциональности ИК-систем камер видеонаблюдения, обеспечивая четкий обзор в любое время суток.</p></p>
+<h3>Блиц-ответ по ремонту ИК-подсветки:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Проблема:</b> Камера показывает черно-белое изображение ночью, низкая детализация или полное отсутствие видимости в темноте.</li>
+<li><b>Срок ремонта:</b> От 1 рабочего дня (включая диагностику).</li>
+<li><b>Цена:</b> От 1500 руб.</li>
+<li><b>Диагностика:</b> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Экспертный разбор: Почему ИК-подсветка выходит из строя и как мы это исправляем</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Инфракрасная подсветка камер видеонаблюдения обеспечивает невидимое для человеческого глаза освещение, позволяя сенсору камеры "видеть" в полной темноте. Основные причины выхода из строя ИК-подсветки включают:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Износ ИК-светодиодов:</b> Постоянная работа под напряжением, температурные перепады и естественный ресурс приводят к деградации или полному выходу из строя отдельных светодиодов или всего массива.</li>
+<li><b>Проблемы с питанием:</b> Нестабильное напряжение или неисправность драйвера ИК-подсветки может вызвать некорректную работу или отказ.</li>
+<li><b>Неисправность фоторезистора:</b> Этот датчик отвечает за автоматическое включение ИК-подсветки при снижении уровня освещенности. Его поломка приводит к тому, что подсветка либо не включается, либо работает постоянно.</li>
+<li><b>Попадание влаги:</b> Коррозия контактов и элементов платы, особенно в уличных камерах, может вывести из строя всю систему.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h4>Инженерный подход Админ.Ко к диагностике и ремонту:</h4>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для точного определения и устранения неисправностей мы используем специализированное оборудование:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Осциллограф Rigol:</b> Позволяет контролировать стабильность питающих напряжений и управляющих сигналов, поступающих на ИК-матрицу и фоторезистор. Это критически важно для выявления скрытых проблем с электроникой, которые не видны при поверхностном осмотре.</li>
+<li><b>Тепловизор:</b> Применяется для выявления перегретых или вышедших из строя ИК-светодиодов в массиве. Тепловизор точно локализует дефектные компоненты, которые не излучают тепло или, наоборот, чрезмерно нагреваются из-за внутреннего короткого замыкания.</li>
+<li><b>Паяльная станция JBC (Испания):</b> Для замены неисправных светодиодов и других компонентов мы используем прецизионную паяльную станцию JBC. Это оборудование обеспечивает точный контроль температуры и локальный нагрев, предотвращая перегрев и повреждение соседних элементов платы и дорожек, что крайне важно для миниатюрной электроники.</li>
+<li><b>Флюсы Martin/Amtech:</b> При пайке мы используем только высококачественные флюсы Martin или Amtech. Эти флюсы обеспечивают идеальное качество пайки, предотвращают образование коррозии и гарантируют долговечность соединений, что исключает повторный выход из строя из-за окисления.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без использования такого арсенала оборудования и качественных материалов ремонт ИК-подсветки зачастую бывает некачественным или недолговечным. Использование неточных методов или дешевых аналогов приводит к повторным поломкам, нестабильной работе или значительному сокращению срока службы отремонтированной камеры.</p></p>
+<h3>Инженерный стандарт Админ.Ко: Почему нам доверяют</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>0 руб. диагностика:</b> Мы бесплатно проведем полную диагностику вашей камеры, чтобы точно определить причину неисправности ИК-подсветки.</li>
+<li><b>Запчасти в наличии:</b> Для большинства популярных моделей камер комплектующие для ИК-подсветки есть на нашем складе, что значительно сокращает сроки ремонта.</li>
+<li><b>Гарантия 1 год по договору:</b> На все выполненные работы и установленные компоненты предоставляется официальная гарантия 12 месяцев, закрепленная договором.</li>
+<li><b>Сохранность данных и настроек:</b> Мы гарантируем, что в процессе ремонта все настройки вашей камеры и записи на носителе останутся нетронутыми.</li>
+<li><b>Честная цена:</b> Стоимость ремонта формируется прозрачно, исходя из сложности работ и стоимости качественных комплектующих, без скрытых платежей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Обратитесь в Админ.Ко – верните четкое ночное видение вашим камерам!</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально, предоставляя профессиональные услуги по ремонту и обслуживанию электроники.</p></p>
+</section>
+            <section class="mt-12"><h2>Оптимизация ночного видения и профилактика неисправностей ИК-подсветки в условиях Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Камеры видеонаблюдения, функционирующие в условиях Кемерово, часто сталкиваются с проблемой неэффективного ночного видения, выражающейся в постоянно черно-белом изображении или его полном отсутствии. Это прямое следствие неисправности инфракрасной (ИК) подсветки, которая является ключевым элементом для работы камеры в условиях низкой освещенности. Черно-белый режим активируется, когда фоточувствительный сенсор камеры определяет недостаток света и сдвигает ИК-фильтр, полагаясь на ИК-светодиоды для освещения сцены. Если ИК-подсветка не работает должным образом, изображение остается темным или неинформативным.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Причины неисправностей ИК-подсветки многообразны и часто усугубляются климатическими условиями Кемерово: перепады температур, высокая влажность, конденсат. Среди наиболее частых поломок:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Деградация или полный выход из строя ИК-светодиодов из-за перегрева, перепадов напряжения или естественного износа.</li>
+<li>Повреждение управляющей электроники или драйверов питания ИК-массива.</li>
+<li>Окисление контактов и токопроводящих дорожек на плате ИК-подсветки.</li>
+<li>Неисправность фоторезистора, отвечающего за автоматическое включение/выключение ИК-подсветки.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Экспертная диагностика и ремонт ИК-подсветки в Админ.Ко</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Качественный ремонт ИК-подсветки требует не только понимания схемотехники, но и использования специализированного оборудования, чтобы обеспечить долговечность и надежность системы видеонаблюдения, критически важной для безопасности. В Админ.Ко мы применяем арсенал профессиональных инструментов, позволяющих точно определить причину неисправности и выполнить ремонт на компонентном уровне:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Тепловизор:</strong> Позволяет выявить локальные перегревы на плате ИК-подсветки или в цепях питания, указывающие на вышедшие из строя компоненты или короткие замыкания. Это критически важно для предотвращения дальнейших повреждений, которые могли бы возникнуть при диагностике методом "наугад".</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Осциллограф Rigol:</strong> Необходим для анализа сигналов управления ИК-светодиодами, проверки стабильности питающих напряжений и корректной работы фоторезистора. Мы можем точно диагностировать сбои в логике переключения режимов "день/ночь" и выявить скрытые дефекты.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Паяльные станции JBC (Испания) и Quick 861DW:</strong> Эти станции обеспечивают сверхточную пайку и демонтаж SMD-компонентов без риска перегрева чувствительных элементов камеры и основной платы. Это особенно важно при работе с миниатюрными ИК-светодиодами и микросхемами драйверов. Неконтролируемый нагрев при использовании непрофессионального оборудования может привести к отслоению дорожек, повреждению соседних компонентов и полной неработоспособности устройства.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Флюсы Martin/Amtech:</strong> Мы используем только проверенные флюсы высшего качества, которые обеспечивают идеальное смачивание контактов при пайке и не оставляют агрессивных остатков. Это гарантирует прочность и долговечность паяных соединений, предотвращая их коррозию и последующее отгнивание, что критически важно для устройств, эксплуатируемых на открытом воздухе в условиях Кемерово.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Ремонт ИК-подсветки без применения такого оборудования часто сводится к поверхностной замене модулей, что не всегда устраняет первопричину, или к некачественной пайке, которая быстро выйдет из строя. Наша методика позволяет не просто заменить вышедший из строя элемент, но и провести профилактику системы, повышая ее устойчивость к внешним факторам. Мы обеспечиваем не только восстановление функциональности, но и оптимизацию ночного видения для максимальной эффективности в условиях Кемерово.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

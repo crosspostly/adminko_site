@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Почему Xiaomi 12T греется при зарядке: диагностика и ремонт в Кемерово | Админ.Ко</title>
+    <meta name="description" content="Ваш Xiaomi 12T сильно греется при зарядке? Узнайте возможные причины перегрева, методы диагностики и профессионального ремонта в Кемерово. Быстрое и надежное устранение проблемы перегрева смартфона.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Почему Xiaomi 12T греется при зарядке: диагностика и ремонт в Кемерово</h1>
+            <meta name="published_at" content="2026-03-22T15:20:17.004Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Глава 1: Нормально ли, что Xiaomi 12T греется? Понимание физики процесса и допустимых норм.</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Проблема:</b> Xiaomi 12T критически греется при зарядке или под нагрузкой.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Срок:</b> От 2 часов (диагностика), от 1 дня (ремонт).</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Цена:</b> От 1500 руб (чистка системы охлаждения), от 3500 руб (ремонт контроллера питания/PMIC).</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Диагностика:</b> 0 руб.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Нагрев смартфона Xiaomi 12T в процессе зарядки или при выполнении ресурсоемких задач – это естественный физический процесс. Электрическая энергия преобразуется в тепловую из-за сопротивления компонентов. Однако существуют допустимые температурные нормы, превышение которых указывает на проблему и может привести к деградации аккумулятора, троттлингу процессора и выходу из строя других элементов.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В норме, температура корпуса при зарядке или активном использовании не должна превышать 40-45°C. Если же устройство становится ощутимо горячим (более 50°C), это требует профессиональной диагностики.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Основные причины аномального перегрева Xiaomi 12T:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Неисправный контроллер питания (PMIC):</b> Одна из наиболее частых причин. Неправильное распределение энергии или короткое замыкание в цепях питания вызывает избыточное тепловыделение.</li>
+<li><b>Износ аккумулятора:</b> Старый или поврежденный аккумулятор имеет повышенное внутреннее сопротивление, что приводит к сильному нагреву при зарядке.</li>
+<li><b>Загрязнение системы охлаждения:</b> Пыль и грязь внутри корпуса препятствуют эффективному отводу тепла от процессора и других греющихся компонентов.</li>
+<li><b>Программные сбои:</b> Некорректно работающие приложения или фоновые процессы могут создавать избыточную и постоянную нагрузку на процессор.</li>
+<li><b>Повреждение тепловых трубок или термопрокладок:</b> Если элементы системы охлаждения повреждены или термоинтерфейсы высохли, отвод тепла нарушается.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В лабораторных условиях Админ.Ко для точной диагностики перегрева мы используем:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Тепловизор:</b> Позволяет точно локализовать источник перегрева на плате, выявить компоненты с аномальным тепловыделением, которые могут быть неисправны.</li>
+<li><b>Осциллограф Rigol:</b> Используется для анализа стабильности напряжений, пульсаций и наличия коротких замыканий в цепях питания, что критично для выявления неисправностей PMIC и других контроллеров.</li>
+<li><b>Паяльные станции JBC (Испания):</b> При необходимости замены контроллера питания или других BGA-компонентов, JBC обеспечивает точный и безопасный демонтаж/монтаж с минимальным риском перегрева соседних элементов и деформации платы.</li>
+<li><b>Микроскоп:</b> Для детального осмотра платы на предмет микротрещин, коррозии или поврежденных элементов, невидимых невооруженным глазом.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Использование бытового оборудования или попытки "кустарного" ремонта могут привести к необратимым повреждениям платы, короткому замыканию и полному выходу устройства из строя. Например, перегрев платы обычным паяльником при попытке заменить контроллер питания может повредить соседние слои платы или вызвать отвал компаунда, что сделает ремонт значительно дороже или невозможным. При замене компонентов и восстановлении теплового контура мы используем только профессиональные флюсы и термоинтерфейсы от Martin/Amtech, что исключает коррозию платы и гарантирует долговременную стабильность ремонта.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Выбирая Админ.Ко для диагностики и ремонта вашего Xiaomi 12T, вы получаете:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Бесплатная диагностика:</b> Мы точно определим причину перегрева без предоплаты.</li>
+<li><b>Запчасти в наличии:</b> Основные компоненты, включая контроллеры питания и аккумуляторы, всегда на складе, что сокращает сроки ремонта.</li>
+<li><b>Гарантия 1 год по договору:</b> На все выполненные работы и установленные компоненты.</li>
+<li><b>Сохранность данных:</b> Приоритет в процессе ремонта – полная безопасность ваших личных данных.</li>
+<li><b>Честная цена:</b> Отсутствие скрытых платежей, стоимость работ оговаривается до начала ремонта.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для профессиональной диагностики и качественного ремонта вашего Xiaomi 12T, ждем вас в нашем сервисном центре.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально, предоставляя полный пакет документов и гарантий.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Полная бесплатная диагностика вашего Xiaomi 12T для выявления точной причины перегрева при зарядке. Займет 15-30 минут.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок ремонта: От 1 часа (при простых неисправностях, например, замена аккумулятора при наличии детали) до 1-3 рабочих дней для более сложных ремонтов.</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Стоимость ремонта будет озвучена после проведения диагностики и определения конкретной неисправности. Диагностика в нашем сервисном центре в Кемерово абсолютно бесплатна.</p></div>
+
+        </div>
+            <section><h2>Глава 2: Распространенные причины перегрева при зарядке: от программных сбоев до внешних факторов и аксессуаров.</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Перегрев смартфона Xiaomi 12T в процессе зарядки — распространенная проблема, которая может быть вызвана как внутренними сбоями, так и внешними факторами. Понимание этих причин критически важно для корректной диагностики и предотвращения дальнейших повреждений устройства. В «Админ.Ко» мы сталкиваемся с полным спектром таких неисправностей и проводим точную локализацию проблемы.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Основные источники перегрева можно систематизировать следующим образом:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Программные сбои и высокая нагрузка:</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Активные фоновые приложения:</strong> Даже при подключении к зарядному устройству, ресурсоемкие приложения, работающие в фоновом режиме, могут значительно нагружать процессор и графический ускоритель, что приводит к нагреву.</li>
+<li><strong>Устаревшее ПО:</strong> Неактуальная версия операционной системы MIUI или отдельных приложений может содержать ошибки оптимизации, вызывающие избыточное потребление ресурсов и, как следствие, тепловыделение.</li>
+<li><strong>Вредоносное ПО:</strong> Вирусы или скрытые майнеры криптовалюты могут незаметно использовать вычислительные мощности устройства, провоцируя его интенсивный нагрев.</li>
+<li><strong>Интенсивное использование во время зарядки:</strong> Запуск тяжелых игр, потокового видео или ресурсоемких приложений одновременно с зарядкой значительно увеличивает тепловую нагрузку на аккумулятор и основные компоненты.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Неисправности аккумулятора:</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Износ батареи:</strong> Со временем химический состав литий-ионных аккумуляторов деградирует. Изношенный аккумулятор теряет способность эффективно отдавать и принимать заряд, что сопровождается повышенным тепловыделением и снижением емкости.</li>
+<li><strong>Внутреннее короткое замыкание:</strong> Редкие, но критические внутренние дефекты аккумулятора могут приводить к неконтролируемому нагреву и требуют немедленной замены.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Некачественные или несовместимые аксессуары:</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Сторонние зарядные устройства и кабели:</strong> Использование неоригинальных или несертифицированных адаптеров и USB-кабелей может привести к подаче нестабильного тока, неправильному напряжению или некорректной работе протоколов быстрой зарядки, что вызывает перегрев как самого зарядного устройства, так и смартфона.</li>
+<li><strong>Дефектные аксессуары:</strong> Даже если аксессуар оригинальный, он может иметь заводской брак, который проявляется в аномальном нагреве при работе.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Внешние факторы и условия эксплуатации:</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Высокая температура окружающей среды:</strong> Зарядка смартфона в жарком помещении, под прямыми солнечными лучами или рядом с источниками тепла (батареи, обогреватели) существенно затрудняет отвод тепла от устройства.</li>
+<li><strong>Чехлы, препятствующие теплоотводу:</strong> Некоторые плотные или невентилируемые чехлы могут блокировать естественное рассеивание тепла, создавая "парниковый эффект" внутри корпуса.</li>
+<li><strong>Загрязнение порта зарядки:</strong> Накопление пыли, ворса или мелких частиц в USB-C порту может привести к плохому контакту, искрению и локальному нагреву.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В «Админ.Ко» мы проводим комплексную диагностику, чтобы точно определить первопричину перегрева вашего Xiaomi 12T. Это позволяет нам не просто устранить симптом, но и гарантировать долгосрочную стабильную работу устройства.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Мой главный технический секрет по Xiaomi 12T, когда он греется при зарядке, звучит так: "Дело не только в самой батарее, а в системе распределения и преобразования энергии на материнской плате, которая работает на пределе возможностей при 120W зарядке".</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Понимаете, Xiaomi 12T оснащен невероятно быстрой зарядкой. Для того чтобы безопасно и эффективно подать эти 120 Ватт в аккумулятор, внутри телефона стоит очень мощный и сложный контроллер заряда (PMIC) и сопутствующие ему компоненты. Он в буквальном смысле "прокачивает" огромные токи и напряжения, чтобы доставить эту энергию. И именно на этом этапе, при высочайшей нагрузке, генерируется значительная часть тепла из-за физических потерь. Это норма, но...</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Если у вас греется сверх нормы, то первым делом я, как инженер, проверяю не только саму батарею, но и:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">1.  <strong>Качество и оригинальность зарядного устройства и кабеля.</strong> Некачественные аксессуары создают дополнительное сопротивление и нагрузку на контроллер, заставляя его работать еще усерднее и, соответственно, сильнее греться.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">2.  <strong>Состояние самого контроллера заряда.</strong> Иногда, при постоянных пиковых нагрузках, его эффективность может снижаться, или на его обвязке появляются микротрещины, что ведет к избыточному тепловыделению.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">3.  <strong>Наличие фоновых процессов в ПО.</strong> Даже идеально работающее железо может перегреваться, если процессор занят интенсивными задачами во время зарядки, накладывая дополнительную тепловую нагрузку на систему.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">В Кемерово я бы начал диагностику именно с этих трех точек: контроллер, периферия, батарея, прежде чем искать глубокие проблемы в материнской плате, которые, к слову, тоже могут быть, но чаще всего источник перегрева при 120W именно здесь.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Глава 3: Аппаратные неисправности Xiaomi 12T: когда перегрев указывает на серьезную поломку (батарея, контроллер питания, плата)</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Перегрев Xiaomi 12T во время зарядки — это не просто дискомфорт, а четкий индикатор аппаратной проблемы, требующей профессиональной диагностики. Самостоятельные попытки решить такую проблему могут привести к усугублению неисправности или полной неработоспособности устройства. В лаборатории Админ.Ко в Кемерово мы располагаем специализированным оборудованием для точной локализации и устранения подобных дефектов.</p></p>
+<h3>Основные причины перегрева Xiaomi 12T при зарядке:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Неисправность аккумуляторной батареи:</strong> Со временем химический состав литий-ионных батарей деградирует. Внутреннее сопротивление возрастает, что приводит к выделению избыточного тепла во время зарядки. В редких случаях возможен внутренний микро-КЗ, вызывающий интенсивный нагрев и риск вздутия или возгорания.</li>
+<li><strong>Выход из строя контроллера питания (PMIC):</strong> Контроллер питания — это "сердце" системы управления энергией устройства. Его задача — распределять и регулировать напряжение для всех компонентов. Некорректная работа PMIC (например, из-за скачка напряжения или дефекта компонента) приводит к неэффективному преобразованию энергии, избыточному нагреву и может влиять на всю плату.</li>
+<li><strong>Короткое замыкание на материнской плате:</strong> Микроскопические короткие замыкания в цепях питания или других участках материнской платы могут вызывать локальный перегрев. Это могут быть поврежденные конденсаторы, диоды или линии передачи данных, которые потребляют избыточный ток, конвертируя его в тепло.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Экспертная диагностика и ремонт в Админ.Ко:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для точного определения источника перегрева в Xiaomi 12T требуется комплексный подход и специализированное оборудование, недоступное в обычных мастерских:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Тепловизионная диагностика:</strong> С помощью профессионального тепловизора мы мгновенно идентифицируем точные точки перегрева на плате. Это позволяет нам не гадать, а точно указать на проблемный компонент или область, будь то дефектный PMIC, микросхема памяти или область с коротким замыканием.</li>
+<li><strong>Осциллографический анализ (Rigol):</strong> Использование осциллографа Rigol незаменимо для детального анализа цепей питания. Мы измеряем пульсации напряжения, стабильность сигналов и токовые характеристики на различных шинах питания, что позволяет выявить некорректную работу контроллера питания или других компонентов, которые могут быть не видны при обычной проверке мультиметром.</li>
+<li><strong>Диагностика батареи:</strong> Мы проверяем фактическую емкость аккумулятора, его внутреннее сопротивление и стабильность напряжения под нагрузкой, чтобы исключить или подтвердить деградацию батареи как причину перегрева.</li>
+<li><strong>Микро-пайка с использованием JBC и Quick 861DW:</strong> После точной локализации неисправности, замена компонентов на системной плате производится с использованием высокоточных паяльных станций JBC (Испания) и инфракрасной станции Quick 861DW. JBC обеспечивает точечный нагрев и прецизионную пайку без перегрева соседних элементов, что критически важно для многослойных плат Xiaomi 12T. Использование качественных флюсов Martin/Amtech гарантирует отсутствие коррозии и долговечность паяных соединений.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без такого уровня оснащения ремонт, связанный с перегревом и платой, чаще всего будет "жаркой платы" или заменой целых узлов без устранения первопричины, что гарантирует повторный выход из строя или нестабильную работу устройства. В Админ.Ко мы предлагаем честную диагностику (0 руб.) и ремонт с использованием запчастей высокого качества и обязательной гарантией до 12 месяцев по договору. Ваши данные будут сохранены в целости.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально.</p></p>
+</section>
+            <section class="mt-12"><h2>Глава 4: Профессиональная диагностика и ремонт перегрева Xiaomi 12T в Кемерово: куда обратиться и чего ожидать.</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Перегрев смартфона Xiaomi 12T, особенно во время зарядки, — это не просто дискомфорт, а сигнал о серьезных внутренних проблемах, которые могут привести к ускоренному износу компонентов или полному выходу устройства из строя. Игнорировать такую проблему крайне опасно.</p></p>
+<h3><span style="color:#d43f3a;">Кратко о решении вашей проблемы:</span></h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Проблема:</strong> Перегрев Xiaomi 12T при зарядке, быстрая разрядка.</li>
+<li><strong>Срок:</strong> От 4 часов (включая диагностику и типовой ремонт).</li>
+<li><strong>Цена:</strong> От 1500 руб (зависит от сложности выявленной неисправности).</li>
+<li><strong>Диагностика:</strong> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Экспертный разбор проблемы: почему Xiaomi 12T греется?</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Перегрев Xiaomi 12T при зарядке чаще всего свидетельствует о нарушении работы системы питания или деградации аккумуляторной батареи. Однако без точной диагностики определить истинную причину невозможно.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Наиболее распространенные технические причины:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Износ аккумулятора:</strong> Со временем химический состав батареи деградирует, внутреннее сопротивление растет, что приводит к повышенному тепловыделению, особенно при быстрой зарядке.</li>
+<li><strong>Неисправность контроллера питания (PMIC):</strong> Одна из самых сложных проблем, требующая микропайки. PMIC регулирует подачу энергии на все компоненты. Его некорректная работа может вызвать перегрев и нестабильность напряжения.</li>
+<li><strong>Короткое замыкание на материнской плате:</strong> Мельчайшие замыкания в цепях питания могут вызывать локальный перегрев, который быстро распространяется по всей плате.</li>
+<li><strong>Проблемы с зарядным портом или кабелем:</strong> Хотя менее частые, поврежденные контакты или использование некачественных аксессуаров могут привести к неэффективной зарядке и тепловыделению.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для точной локализации и устранения подобных неисправностей требуется специализированное оборудование и глубокие инженерные знания.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Тепловизор:</strong> Позволяет мгновенно определить точную область перегрева на материнской плате, выявить компоненты, работающие некорректно или испытывающие избыточную нагрузку. Без него поиск замыканий или неисправных микросхем превращается в трудоемкий и неточный процесс.</li>
+<li><strong>Осциллограф Rigol:</strong> Необходим для анализа сигналов и напряжений на плате. Помогает выявить нестабильность в работе контроллеров питания, проверить целостность шин данных и питания, обнаружить шумы, которые могут влиять на работу PMIC.</li>
+<li><strong>Паяльная станция JBC (Испания):</strong> Эталон для микро-пайки. Её точность температурного контроля и малый размер жал позволяют производить работы с мельчайшими компонентами (такими как PMIC) без риска перегрева соседних участков платы. Использование некачественного паяльного оборудования может привести к необратимым повреждениям материнской платы.</li>
+<li><strong>Паяльная станция Quick 861DW:</strong> Используется для работы с более крупными компонентами и BGA-чипами, обеспечивая равномерный нагрев и безопасный демонтаж/монтаж.</li>
+<li><strong>Высококачественные флюсы Martin/Amtech:</strong> Применяются для обеспечения чистой пайки без остаточных загрязнений, которые могут вызвать коррозию платы в будущем. Это гарантирует долговечность ремонта.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без этого технического арсенала ремонт перегрева сводится к догадкам или замене компонентов "наугад", что не только не решает проблему, но и может создать новые. Например, простая замена батареи без устранения первопричины (неисправный PMIC) лишь временно снимет симптом.</p></p>
+<h3>Инженерный стандарт Админ.Ко — ваш надежный выбор</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>При обращении в сервисный центр Админ.Ко вы получаете:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>0р Диагностика:</strong> Мы проведем полную проверку устройства и точно определим причину перегрева без предоплаты.</li>
+<li><strong>Запчасти в наличии:</strong> Большинство необходимых комплектующих для Xiaomi 12T (оригинальных или высококачественных аналогов) есть на нашем складе, что сокращает срок ремонта.</li>
+<li><strong>Гарантия 1 год по договору:</strong> На все выполненные работы и установленные запчасти предоставляется официальная гарантия, закрепленная в договоре.</li>
+<li><strong>Сохранность данных:</strong> Мы гарантируем неприкосновенность вашей личной информации на устройстве. Ремонт производится без доступа к данным.</li>
+<li><strong>Честная цена:</strong> Стоимость ремонта формируется строго по результатам диагностики и не меняется в процессе. Вы платите только за реальную работу.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Мы находимся в центре Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если ваш Xiaomi 12T начал греться при зарядке, не откладывайте визит к специалистам. Мы находимся в центре Кемерово, <strong>ул. Дзержинского 2Б</strong>. Ориентиры: рядом СРК Арена и ТЦ Я. Мы работаем официально, предоставляя полный пакет документов на услуги.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

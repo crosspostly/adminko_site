@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Замена HDD на SSD в Кемерово | Ускорь ноутбук, если он тормозит! | Админ.Ко</title>
+    <meta name="description" content="Ноутбук медленно работает? Профессиональная замена HDD на SSD в Кемерово решит проблему тормозов! Ускорьте загрузку, работу программ и системы с гарантией. Звоните!">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Замена HDD на SSD в Кемерово | Ускорь ноутбук, если он тормозит!</h1>
+            <meta name="published_at" content="2026-03-22T15:05:06.353Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Ваш ноутбук замедлился? Узнаем, почему и как SSD может помочь</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Медленная работа ноутбука — одна из самых частых проблем, с которой сталкиваются пользователи. Долгий запуск системы, «зависания» при открытии программ, медленная загрузка файлов — все это признаки того, что ваш ноутбук работает не на полную мощность. В большинстве случаев причиной является устаревший или изношенный жесткий диск (HDD).</p></p>
+<h3>Экспертный разбор: почему HDD устарел и как SSD меняет ситуацию</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Традиционные жесткие диски (HDD) используют механические движущиеся части: вращающиеся магнитные пластины и считывающие головки. Со временем эти компоненты изнашиваются, фрагментируются, а скорость доступа к данным снижается. Это приводит к значительному замедлению всей системы, независимо от мощности процессора или объема оперативной памяти.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В отличие от HDD, твердотельные накопители (SSD) основаны на флэш-памяти и не имеют движущихся частей. Это обеспечивает принципиально другие характеристики:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Скорость:</b> SSD-накопители обеспечивают многократно более высокую скорость чтения и записи данных по сравнению с HDD. Это означает моментальную загрузку операционной системы, быстрое открытие приложений и мгновенную передачу файлов.</li>
+<li><b>Надежность:</b> Отсутствие механических компонентов делает SSD более устойчивыми к ударам и вибрациям, что критически важно для портативных устройств.</li>
+<li><b>Энергоэффективность:</b> SSD потребляют меньше энергии, что увеличивает время автономной работы ноутбука и снижает его нагрев.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы проводим комплексную диагностику для точного определения причины замедления работы вашего ноутбука. С помощью специализированного программного обеспечения и тестовых стендов мы подтверждаем, что именно HDD является «бутылочным горлышком», а не другие компоненты. Мы используем только проверенные SSD-накопители от ведущих производителей, обеспечивая их полную совместимость и стабильную работу. Процесс замены включает безопасное клонирование вашей операционной системы и данных, исключая их потерю, и инженеры тщательно устанавливают новый накопитель, используя профессиональный инструмент, чтобы гарантировать надежное соединение и защиту платы.</p></p>
+<h3>Инженерный стандарт Админ.Ко: надежность и честность</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Диагностика 0 рублей:</b> Мы не берем плату за определение неисправности.</li>
+<li><b>Запчасти в наличии:</b> Большинство SSD-накопителей всегда есть на складе, что ускоряет ремонт.</li>
+<li><b>Гарантия 1 год по договору:</b> Официальная гарантия на все выполненные работы и установленные компоненты.</li>
+<li><b>Сохранность данных:</b> Мы гарантируем полную сохранность вашей информации при миграции на новый SSD.</li>
+<li><b>Честная цена:</b> Прозрачное ценообразование без скрытых платежей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Локальный призыв: ваш путь к быстрому ноутбуку в Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не терпите медленную работу. Если ваш ноутбук замедлился, пришло время для профессионального апгрейда. Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально, предоставляя сервис, которому можно доверять.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Ноутбук тормозит? Ускоряем работу заменой HDD на SSD в Кемерово!</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> От 2990 руб. (включая работу по установке, перенос данных или чистую ОС, и новый SSD объемом 240ГБ). Итоговая стоимость может варьироваться в зависимости от выбранного вами объема SSD и сложности работ.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: От 1 до 3 часов. В большинстве случаев ваш ноутбук будет готов в день обращения. Точное время зависит от объема данных для переноса и необходимости установки новой операционной системы.</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Бесплатно и быстро (15-20 минут). Мы проведем экспресс-диагностику, чтобы точно определить причину замедления и подобрать оптимальный вариант SSD, исходя из ваших потребностей и бюджета.</p></div>
+
+        </div>
+            <section><p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Ваш ноутбук начал "тормозить"? Загрузка Windows занимает минуты, а открытие программ превращается в испытание терпения? В большинстве случаев причина кроется в устаревшем жестком диске (HDD). Мы, в Админ.Ко, предлагаем не просто замену, а комплексное решение для радикального повышения производительности вашего устройства.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h2>SSD против HDD: Разбираемся в технологиях и неоспоримых преимуществах</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Жесткий диск (HDD) — это электромеханическое устройство, хранящее данные на вращающихся магнитных пластинах. Для чтения и записи информации используется подвижная головка, что и является его главным недостатком. Механический принцип работы приводит к низкой скорости передачи данных, уязвимости к ударам и шуму. Со временем HDD фрагментируется, и скорость работы еще больше падает.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Твердотельный накопитель (SSD) — это современное решение, основанное на флэш-памяти NAND. Отсутствие движущихся частей делает его бесшумным, гораздо более устойчивым к физическим воздействиям и, главное, несоизмеримо быстрым. Скорость чтения и записи данных у SSD в 5-10 раз выше, чем у HDD, что напрямую влияет на скорость загрузки операционной системы, запуска программ и работы с файлами.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>Почему важно доверить замену профессионалам?</b></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Простая установка нового SSD — это лишь часть процесса. Важно правильно перенести операционную систему и пользовательские данные со старого HDD на новый, сохранив при этом активацию Windows и все установленные программы. Неквалифицированная замена может привести к потере данных, ошибкам в работе ОС или некорректной работе нового накопителя.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">В лаборатории Админ.Ко мы используем специализированные стенды и программное обеспечение для клонирования дисков, обеспечивая полную сохранность вашей информации и работоспособность системы. Наши инженеры тщательно подбирают SSD, оптимально подходящий по интерфейсу (SATA, NVMe) и объему для вашего ноутбука, учитывая его технические характеристики.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Даже в случае, если ваш старый HDD поврежден и данные недоступны, мы располагаем высокоточным оборудованием. Например, для работы с поврежденными платами контроллеров HDD, требующими деликатного подхода, мы используем прецизионные паяльные станции JBC (Испания), исключающие перегрев чувствительных компонентов. Это гарантирует максимальные шансы на восстановление и перенос ваших данных, что выходит за рамки обычной установки диска.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">После установки SSD проводится полное тестирование системы, чтобы убедиться в стабильности работы и отсутствии конфликтов. Мы не просто меняем деталь, мы оптимизируем ваш ноутбук.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Технический секрет инженера:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Многие думают, что главная причина медлительности ноутбука — это старый процессор или мало оперативной памяти. Но настоящий "тормоз" в 90% случаев — это ваш старый жесткий диск (HDD). Представьте его как узкое горлышко бутылки, через которое данные пытаются просочиться. Скорость чтения/записи данных с HDD в разы, а то и в десятки раз ниже, чем у SSD.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Это влияет абсолютно на все: от скорости загрузки Windows до открытия программ и даже обычной работы в браузере. Вся система постоянно ждет, пока данные прогрузятся с диска.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Так вот главный секрет инженера: для заметного, ощутимого ускорения, которое вдохнет в ваш ноутбук новую жизнь, не нужно покупать новый. Просто замените HDD на твердотельный накопитель SSD. Вы увидите, как ноутбук "оживает": мгновенная загрузка, программы открываются почти сразу, система перестает "зависать" на ровном месте. Это не просто улучшение, это трансформация. И что важно: это одно из самых эффективных и доступных по цене решений.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><H2>Замена HDD на SSD в ноутбуке в Кемерово: быстрая установка, сохранение данных, гарантия 1 год</H2></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваш ноутбук стал медленно загружаться, программы запускаются с задержкой, а система «подвисает» при выполнении базовых задач? В большинстве случаев причиной является устаревший жесткий диск (HDD). Замена его на твердотельный накопитель (SSD) — это не просто апгрейд, а полноценное возрождение вашего устройства. Специалисты Админ.Ко в Кемерово предлагают профессиональное решение этой проблемы.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><H3>Ключевая информация: Замена HDD на SSD</H3></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Проблема:</b> Медленная работа ноутбука, долгая загрузка системы, задержки в приложениях.</li>
+<li><b>Срок выполнения:</b> От 2 часов (включая перенос данных и настройку).</li>
+<li><b>Цена:</b> От 1500 руб. (без учета стоимости SSD накопителя).</li>
+<li><b>Диагностика:</b> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><H3>Экспертный разбор: Почему SSD, а не HDD?</H3></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Традиционные жесткие диски (HDD) используют вращающиеся магнитные пластины и считывающие головки. Это механические устройства, их производительность ограничена физическими законами. Скорость доступа к данным и чтения/записи у HDD значительно ниже, чем у SSD. Твердотельные накопители (SSD) основаны на флеш-памяти и не имеют подвижных частей. Это обеспечивает мгновенный доступ к данным, высокую скорость работы и устойчивость к механическим воздействиям.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Самостоятельная замена HDD на SSD кажется простым решением, но сопряжена с рисками:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Потеря данных:</b> Неправильный перенос операционной системы и пользовательских файлов может привести к полной потере информации.</li>
+<li><b>Проблемы совместимости:</b> Не все SSD одинаковы. Выбор неподходящего накопителя может вызвать нестабильность работы или несовместимость с материнской платой.</li>
+<li><b>Ошибки установки:</b> Неправильное подключение или монтаж может повредить SSD или другие компоненты ноутбука.</li>
+<li><b>Отсутствие оптимизации:</b> После замены SSD необходимо провести оптимизацию операционной системы для работы с новым типом накопителя (например, отключение дефрагментации), чтобы обеспечить максимальную производительность и срок службы.</li>
+<li><b>Сложности с активацией Windows:</b> При переносе системы могут возникнуть проблемы с лицензией Windows, требующие переактивации или переустановки.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В лаборатории Админ.Ко мы используем специализированное программное обеспечение для клонирования дисков, такое как Acronis True Image или Macrium Reflect, что гарантирует точный и безопасный перенос вашей операционной системы и всех данных без потерь. Мы подбираем оптимальный SSD накопитель под вашу модель ноутбука и бюджет, учитывая интерфейс (SATA, NVMe) и необходимый объем. Перед началом работ проводится комплексная диагностика устройства. Иногда медленная работа обусловлена не только HDD, но и другими факторами (перегрев, ошибки в ПО). Наше оборудование, включая тепловизоры и осциллографы Rigol, позволяет выявить и устранить любые скрытые проблемы, чтобы ваш ноутбук работал идеально.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Использование оригинальных термопрокладок и качественных корпусных элементов, а также профессиональная укладка кабелей — это наш стандарт, обеспечивающий долговечность и стабильность работы после апгрейда.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><H3>Инженерный стандарт Админ.Ко</H3></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Диагностика 0 рублей:</b> Мы бесплатно выявим точную причину медленной работы вашего ноутбука.</li>
+<li><b>Запчасти в наличии:</b> Широкий ассортимент SSD накопителей (SATA, NVMe) от ведущих производителей на складе, что сокращает время ремонта.</li>
+<li><b>Гарантия 1 год по договору:</b> На все выполненные работы и установленные компоненты предоставляется официальная гарантия, закрепленная договором.</li>
+<li><b>Сохранность данных:</b> При переносе данных мы гарантируем полную конфиденциальность и целостность вашей информации.</li>
+<li><b>Честная цена:</b> Прозрачная система ценообразования без скрытых платежей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><H3>Приезжайте в Админ.Ко в Кемерово</H3></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не откладывайте решение проблемы с медленным ноутбуком. Мы находимся в центре Кемерово по адресу: <b>ул. Дзержинского 2Б</b>. Наш сервисный центр легко найти – мы расположены рядом с СРК Арена и ТЦ Я. Работаем официально, предоставляя полный пакет документов. Доверьте апгрейд профессионалам и наслаждайтесь скоростью вашего обновленного ноутбука.</p></p>
+</section>
+            <section class="mt-12"><p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><code></p>
+<h2>Замена HDD на SSD в ноутбуке в Кемерово: Как вдохнуть новую жизнь в старый компьютер</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваш ноутбук стал медленно загружаться, программы открываются с задержкой, а привычные задачи вызывают фризы? Скорее всего, причина в устаревшем жестком диске (HDD). Замена его на твердотельный накопитель (SSD) – это самый эффективный и бюджетный способ вернуть устройству былую скорость и продлить срок его службы. Мы знаем, как сделать это профессионально.</p></p>
+<h3><span style="color: #ff0000;">Кратко о главном (Blitz-Answer)</span></h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Проблема:</b> Ноутбук медленно загружается, программы долго открываются, постоянные "зависания", низкая общая производительность.</li>
+<li><b>Срок:</b> От 1 часа (при наличии необходимого SSD и отсутствии дополнительных проблем).</li>
+<li><b>Цена:</b> От 1500 руб. (без учета стоимости SSD, который подбирается индивидуально).</li>
+<li><b>Диагностика:</b> 0 руб. Даже если вы откажетесь от ремонта.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Экспертный разбор: Почему ваш ноутбук тормозит и как его ускорить</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Основная причина замедления работы многих ноутбуков – механический жесткий диск (HDD). Его принцип работы основан на вращающихся магнитных пластинах и считывающих головках. Физические ограничения приводят к низкой скорости чтения/записи данных, большим задержкам (latency) и уязвимости к механическим воздействиям. Со временем, по мере заполнения и фрагментации данных, производительность HDD падает еще сильнее, превращая работу с ноутбуком в испытание.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Твердотельные накопители (SSD) лишены этих недостатков. Они используют флэш-память, что обеспечивает мгновенный доступ к данным, скорости чтения/записи в разы превосходящие HDD, полное отсутствие шума и вибраций, а также значительно меньшее энергопотребление. Переход на SSD означает: загрузку операционной системы за считанные секунды, моментальный запуск приложений, быструю работу с большими файлами и общую отзывчивость системы, сравнимую с новым устройством.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы не просто меняем диск. Мы проводим комплексный апгрейд. Использование осциллографа Rigol позволяет нам досконально проверить стабильность питающих линий материнской платы. Это критически важно, чтобы новый SSD работал без сбоев и не подвергал риску всю систему. С помощью тепловизора мы контролируем температурный режим как до, так и после установки SSD, убеждаясь, что система охлаждения работает эффективно и новый накопитель не страдает от перегрева. Это обеспечивает долговечность и стабильность работы вашего ноутбука после апгрейда.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Хотя для замены SSD не требуется микро-пайка, наше оснащение, включающее паяльные станции JBC и Quick 861DW, а также программаторы JCID, демонстрирует уровень нашей лаборатории. Это гарантия, что даже при кажущейся простоте задачи, работа выполняется с максимальной точностью и вниманием к деталям, исключая скрытые проблемы и обеспечивая полноценную миграцию вашей операционной системы и данных без переустановки.</p></p>
+<h3>Инженерный стандарт Админ.Ко: Ваши гарантии качества</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>0р диагностика:</b> Мы определим неисправность бесплатно, даже если вы решите не проводить ремонт.</li>
+<li><b>Запчасти в наличии:</b> Большинство популярных SSD и комплектующих всегда есть на нашем складе, сокращая время ожидания.</li>
+<li><b>Гарантия 1 год по договору:</b> На все выполненные работы и установленные компоненты. Официально и прозрачно.</li>
+<li><b>Сохранность данных:</b> Мы гарантируем бережное обращение с вашей информацией и полную конфиденциальность.</li>
+<li><b>Честная цена:</b> Только обоснованные цены, без скрытых платежей и навязанных услуг.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Админ.Ко в Кемерово: Ваш путь к производительности</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом с нами — СРК Арена и ТЦ Я. Работаем официально, предоставляя честные услуги по ремонту и модернизации вашей техники. Не терпите медленную работу — дайте своему ноутбуку новую жизнь уже сегодня.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></code></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

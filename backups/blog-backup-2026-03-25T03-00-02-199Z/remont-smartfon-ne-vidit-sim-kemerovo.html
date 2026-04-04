@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ремонт: Смартфон не видит SIM-карту в Кемерово | Диагностика и замена слота/модема | Админ.Ко</title>
+    <meta name="description" content="Смартфон перестал видеть SIM-карту в Кемерово? Проведем точную диагностику и профессиональный ремонт слота SIM-карты или модема вашего телефона. Быстро восстановим связь с гарантией!">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Ремонт: Смартфон не видит SIM-карту в Кемерово | Диагностика и замена слота/модема</h1>
+            <meta name="published_at" content="2026-03-24T03:01:49.432Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><h2>Начальная диагностика: Первые шаги по устранению проблем с SIM-картой в Кемерово</h2></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Когда ваш смартфон перестает видеть SIM-карту, это может быть вызвано как простыми программными сбоями, так и серьезными аппаратными неисправностями. Прежде чем обращаться в сервис, можно выполнить несколько базовых проверок, которые помогут локализовать проблему или подтвердить необходимость профессионального вмешательства.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><h2>Первичные действия пользователя:</h2></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Перезагрузка устройства:</b> Простой сброс системы часто устраняет временные программные ошибки, из-за которых модем может не инициализироваться корректно.</li>
+<li><b>Проверка SIM-карты:</b>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Убедитесь, что SIM-карта правильно вставлена в лоток.</li>
+<li>Осмотрите SIM-карту на предмет физических повреждений, царапин или загрязнений на контактах. Аккуратно протрите контакты сухой тканью.</li>
+<li>Попробуйте вставить вашу SIM-карту в другой, заведомо исправный смартфон. Если SIM-карта не определяется и там, проблема в самой карте или операторе связи.</li>
+<li>Попробуйте вставить другую, заведомо исправную SIM-карту в ваш смартфон. Если она также не определяется, неисправность, скорее всего, находится в вашем устройстве.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li><b>Проверка настроек сети:</b> Убедитесь, что режим сети установлен на "Автоматический" или соответствует типу вашей SIM-карты (2G/3G/4G/5G).</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если после выполнения этих шагов ваш смартфон в Кемерово все еще не видит SIM-карту, это указывает на более глубокую проблему, требующую квалифицированной диагностики. Причины могут крыться в неисправности SIM-лотка, повреждении контактов на системной плате, выходе из строя модемного модуля (baseband) или даже в программных сбоях прошивки, влияющих на работу радиомодуля.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В «Админ.Ко» мы начинаем с бесплатной первичной диагностики. Это позволяет точно определить источник неисправности: от механических повреждений SIM-слота до сложных дефектов на материнской плате, связанных с модемом. Мы не приступим к ремонту без точного понимания проблемы и согласования всех действий с вами.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Смартфон не видит SIM-карту в Кемерово: Диагностика и ремонт слота/модема</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Бесплатно, 15-30 минут. Определим точную причину: программный сбой, неисправность SIM-слота или модема.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок ремонта: От 1 часа (для простых случаев) до 1-3 рабочих дней (при сложном ремонте модема/платы).</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> От 800 рублей (программный ремонт) до 6500+ рублей (сложный компонентный ремонт модема). Точная стоимость будет известна после диагностики.</p></div>
+
+        </div>
+            <section><h2>Локализация неисправности: Как определить причину – SIM-слот, модем или программное обеспечение?</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Когда смартфон не видит SIM-карту, проблема редко бывает очевидной. Это не всегда сломанный слот, и уж тем более не всегда прошивка. Админ.Ко использует последовательную, многоуровневую диагностику, чтобы точно определить источник неисправности и избежать дорогостоящих или неэффективных ремонтов.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><h3>1. Диагностика SIM-слота</h3></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Первичная проверка начинается с физического осмотра. Изношенные или погнутые контакты, загрязнение, следы жидкости – все это может препятствовать корректному взаимодействию с SIM-картой. Мы используем специализированные микроскопы для оценки состояния контактов. Электрическая целостность слота проверяется с помощью мультиметра: замеряются напряжения и сопротивления на всех линиях, идущих от слота к материнской плате.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В случае повреждения, замена SIM-слота требует высокой точности. Станция для пайки JBC (Испания) позволяет демонтировать старый компонент и установить новый без перегрева окружающей платы. Это критично, поскольку рядом расположены чувствительные элементы, повреждение которых может привести к гораздо более серьезным поломкам.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><h3>2. Анализ работы модема (Baseband)</h3></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если слот исправен, подозрение падает на модемный процессор (Baseband) или его обвязку. Это один из самых сложных узлов смартфона, отвечающий за всю радиочасть. Неисправности модема могут быть вызваны падениями, попаданием жидкости или дефектами питания.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Осциллограф Rigol:</strong> Модем нуждается в стабильных линиях питания и точных тактовых импульсах. С помощью профессионального осциллографа Rigol мы измеряем целостность всех линий питания, сигналов данных и тактовых частот, которые поступают на модемный процессор. Отсутствие или искажение любого из этих сигналов указывает на проблемы с модулятором, стабилизаторами напряжения или контроллерами питания, что невозможно определить без высокоточного анализа.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Тепловизор:</strong> При возникновении коротких замыканий или утечек тока в цепях модема, отдельные компоненты могут нагреваться. Тепловизор позволяет мгновенно локализовать такие "горячие точки" на плате, указывая на конкретный неисправный чип или конденсатор, без необходимости отпаивать и проверять компоненты поочередно.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>JBC и флюсы Martin/Amtech:</strong> В случае необходимости реболлинга (перекатки шаров) модемного процессора или замены компонентов его обвязки, Админ.Ко использует паяльные станции JBC для деликатной и точной работы. Применение высококачественных флюсов Martin/Amtech гарантирует чистоту контактных площадок и предотвращает окисление и последующее гниение платы, что является частой причиной повторных отказов после неквалифицированного ремонта.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><h3>3. Исключение программных сбоев</h3></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Программные ошибки, хотя и реже, могут имитировать проблемы с SIM-картой. Это могут быть повреждения прошивки модема, системные сбои, которые препятствуют инициализации SIM. Наши инженеры используют специализированное программное обеспечение для анализа логов системы и модема. В некоторых случаях может потребоваться чистая перепрошивка устройства или обновление микропрограммы модема. Использование программаторов, таких как JCID, позволяет работать с системными данными, исключая ошибки, связанные с идентификаторами и калибровками, которые могут возникнуть при неквалифицированных операциях с прошивкой.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Только комплексная диагностика, подкрепленная инженерной базой и специализированным оборудованием, позволяет точно определить и устранить причину неисправности, обеспечивая долгосрочную работу вашего устройства.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Самый частый подвох, когда смартфон в Кемерово "вдруг" перестает видеть SIM-карту, и при этом слот выглядит целым, а SIM-карта рабочая: ищите неявные дефекты пайки. Дело не в явно погнутых контактах лотка SIM, а в микротрещинах под самим SIM-коннектором на системной плате или даже под микросхемой базового диапазона (Baseband/Modem). Эти дефекты могут быть невидимы глазу, проявляться после легкого удара, падения или даже от температурных перепадов. Если после легкого надавливания на область SIM-слота или очень кратковременного, осторожного прогрева феном SIM временно определяется, это почти стопроцентный признак именно такого скрытого дефекта пайки. Простая чистка или замена внешнего слота тут не поможет – требуется глубокая диагностика, восстановление дорожек или реболл/замена микросхемы модема, что уже является сложным микропаяльным ремонтом.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Ремонт смартфона не видит SIM-карту в Кемерово: Профессиональная диагностика и восстановление связи</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Ваш смартфон перестал видеть SIM-карту? Это критическая проблема, лишающая устройство основной функции.</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Проблема:</strong> Смартфон не видит SIM-карту (нет сети, не определяет оператора, ошибка SIM).</li>
+<li><strong>Срок ремонта:</strong> От 3 часов (для замены слота), от 1 дня (для ремонта модема).</li>
+<li><strong>Цена:</strong> От 2000 руб. (замена слота), от 5000 руб. (ремонт модема).</li>
+<li><strong>Диагностика:</strong> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Экспертный разбор: Почему смартфон не видит SIM-карту и как это исправить?</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Проблема, когда смартфон не определяет SIM-карту, может быть вызвана несколькими факторами: механическое повреждение SIM-слота, программный сбой, либо, что чаще, неисправность модемной части или радиотракта на материнской плате. Без точной диагностики попытки самостоятельного ремонта или обращение к неквалифицированным специалистам могут привести к необратимым повреждениям.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В лаборатории Админ.Ко диагностика начинается с детального осмотра SIM-слота под микроскопом и проверки контактов. Если слот исправен, используются специализированные инструменты:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Осциллограф Rigol:</strong> Необходим для анализа сигналов на линиях передачи данных между SIM-слотом и модемом. Позволяет выявить обрывы, короткие замыкания или некорректные уровни сигналов.</li>
+<li><strong>Тепловизор:</strong> Помогает локализовать перегретые компоненты на материнской плате, что часто указывает на проблемы с модемной частью или цепями питания.</li>
+<li><strong>JBC (Испания) и Quick 861DW:</strong> При необходимости замены SIM-слота или микросхем модема, эти станции обеспечивают прецизионную пайку. JBC позволяет работать с компонентами минимального размера без перегрева чувствительных участков платы, а Quick 861DW обеспечивает точный контроль температуры воздушного потока для безопасного демонтажа BGA-микросхем.</li>
+<li><strong>Флюсы Martin/Amtech:</strong> Использование качественных флюсов предотвращает коррозию платы после пайки, обеспечивая долгосрочную надежность ремонта. Некачественные флюсы оставляют агрессивные остатки, которые со временем разрушают пайку и дорожки.</li>
+<li><strong>Программаторы JCID:</strong> В некоторых случаях, особенно для устройств Apple, используются для работы с данными, связанными с модемом, и для исключения программных конфликтов, которые могут имитировать аппаратные неисправности.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Отсутствие данного оборудования и опыта приводит к некорректной пайке, повреждению соседних элементов, деформации платы и, как следствие, к полному выходу устройства из строя или повторным поломкам. Мы не "греем" плату на глаз – мы проводим целевой ремонт.</p></p>
+<h3>Инженерный стандарт Админ.Ко: Гарантия качества вашего ремонта</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Выбирая сервисный центр Админ.Ко, вы получаете не просто ремонт, а комплексный подход к восстановлению вашего устройства:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Диагностика 0 руб.:</strong> Мы бесплатно определим точную причину неисправности и стоимость ремонта.</li>
+<li><strong>Запчасти в наличии:</strong> Большинство необходимых компонентов, включая слоты SIM и модемные микросхемы, всегда на нашем складе, что сокращает время ремонта.</li>
+<li><strong>Гарантия 1 год по договору:</strong> На все выполненные работы и установленные запчасти предоставляется официальная гарантия, подтвержденная договором.</li>
+<li><strong>Сохранность данных:</strong> Мы гарантируем полную конфиденциальность и сохранность всех ваших данных в процессе ремонта.</li>
+<li><strong>Честная цена:</strong> Вы платите только за реальную работу и качественные комплектующие, без скрытых платежей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Админ.Ко: Ваш надежный сервисный центр в Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если ваш смартфон не видит SIM-карту и вам нужен профессиональный, быстрый и надежный ремонт, обращайтесь в Админ.Ко. Мы находимся в центре Кемерово, по адресу <strong>ул. Дзержинского 2Б</strong>. Наш сервисный центр легко найти – мы расположены рядом с СРК Арена и ТЦ Я. Мы работаем официально, предоставляя полный пакет документов и гарантий на все виды услуг.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не рискуйте своим устройством, доверьте его экспертам Админ.Ко.</p></p>
+</section>
+            <section class="mt-12"><h2>Профилактика и рекомендации: Как избежать повторных проблем с обнаружением SIM-карты</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>После профессионального ремонта смартфона, устранившего проблему с обнаружением SIM-карты, важно соблюдать ряд рекомендаций для предотвращения повторного возникновения неисправности. Эти меры направлены на минимизацию рисков как механического повреждения, так и программных сбоев.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Аккуратное обращение со слотом SIM-карты:</b> При установке или извлечении SIM-карты используйте комплектный инструмент и избегайте чрезмерного усилия. Лоток должен вставляться ровно, без перекосов. Применение неподходящих предметов может деформировать контакты слота, что неизбежно приведет к повторному отсутствию связи.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Использование оригинальных SIM-карт:</b> Убедитесь, что ваша SIM-карта соответствует стандартному размеру и не имеет механических повреждений (царапин, изгибов). Самостоятельно обрезанные или старые, деформированные SIM-карты могут повредить контакты в слоте, требуя повторного ремонта.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Защита от влаги и пыли:</b> Попадание жидкости или микрочастиц пыли в SIM-слот является одной из основных причин коррозии контактов и коротких замыканий. Регулярно очищайте устройство и избегайте использования его во влажной или сильно запыленной среде без соответствующей защиты.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Своевременное обновление программного обеспечения:</b> Производители смартфонов регулярно выпускают обновления, которые устраняют программные ошибки, включая те, что могут влиять на стабильность работы модемной части. Установка актуальных версий операционной системы помогает поддерживать оптимальное функционирование всех компонентов устройства.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Избегание механических воздействий:</b> Падения и сильные удары могут привести к отслоению или повреждению паяных соединений модемной части или самого SIM-слота на системной плате. Подобные дефекты требуют сложного микропаячного ремонта с применением станции JBC, что подчеркивает необходимость бережного отношения к устройству.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Нет звука на ТВ Sony в Кемерово? Диагностика и ремонт аудио. | Админ.Ко</title>
+    <meta name="description" content="Пропал звук на вашем ТВ Sony в Кемерово? Мы проведем точную диагностику и профессиональный ремонт аудиосистемы. Вернем звучание вашему телевизору!">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Нет звука на ТВ Sony в Кемерово? Диагностика и ремонт аудио.</h1>
+            <meta name="published_at" content="2026-03-22T14:16:28.615Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Глава 1: Нет звука на ТВ Sony: Обзор проблемы и первые предположения</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Проблема отсутствия звука на телевизорах Sony – одна из наиболее частых причин обращения в сервисные центры. Пользователи сталкиваются с полным молчанием устройства, хрипами или прерывистым звуком, что существенно снижает функциональность современного мультимедийного центра. Первые действия, как правило, включают стандартные проверки: регулировка громкости, смена источника сигнала, переподключение кабелей HDMI или оптического аудиовыхода, а также перезагрузка самого ТВ.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Однако, если базовые пользовательские манипуляции не приводят к восстановлению аудио, это с высокой вероятностью указывает на более глубокую, аппаратную или программную неисправность, требующую квалифицированной диагностики. С инженерной точки зрения, отсутствие звука может быть обусловлено несколькими ключевыми факторами, затрагивающими различные модули телевизора и требующими системного подхода.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Основные предположения при диагностике подобной неисправности включают:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Сбой программного обеспечения (ПО):</strong> Нарушение целостности прошивки телевизора, ошибки в работе аудиокодеков или некорректная работа драйверов звуковой подсистемы могут полностью блокировать аудиовыход.</li>
+<li><strong>Неисправность основной платы (Main Board):</strong> Этот модуль является "мозгом" телевизора. На нем расположены аудиопроцессоры, цепи питания звуковых чипов, контроллеры интерфейсов. Выход из строя любого из этих компонентов ведет к отсутствию или искажению звука.</li>
+<li><strong>Поломка усилителя звука (Audio Amplifier):</strong> Микросхема усилителя отвечает за подачу усиленного сигнала на встроенные динамики. Перегрев, короткое замыкание во вторичных цепях или скачки напряжения могут вывести этот компонент из строя.</li>
+<li><strong>Проблемы с динамиками:</strong> Физические повреждения самих динамиков – обрыв обмотки, разрушение диффузора, окисление или отсоединение контактов – также являются распространенной причиной отсутствия звука.</li>
+<li><strong>Дефекты блока питания:</strong> Нестабильное или недостаточное напряжение, подаваемое на аудиоцепи, может проявляться как полное отсутствие звука, так и его периодическое пропадание или сильное искажение.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Каждая из этих потенциальных проблем требует специализированного инструментария и глубоких знаний схемотехники для точной локализации и последующего качественного устранения. Попытки самостоятельного ремонта без должного опыта и оборудования часто приводят к усугублению первоначальной неисправности и значительному удорожанию последующего профессионального восстановления.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Диагностика от 500 руб. (эта сумма вычитается из общей стоимости ремонта). Итоговая стоимость ремонта зависит от сложности поломки и стоимости необходимых запчастей.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: Диагностика 1-2 рабочих дня. Ремонт от 1 до 5 рабочих дней (при наличии запчастей). При заказе редких комплектующих срок может быть увеличен.</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Обязательна для точного определения причины отсутствия звука и расчета финальной стоимости ремонта. Включает комплексную проверку аудиосистемы ТВ Sony. Если после диагностики вы отказываетесь от ремонта, оплачивается только стоимость диагностики.</p></div>
+
+        </div>
+            <section><h2>Глава 2: Самостоятельная диагностика: Пошаговые действия для владельцев Sony в Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Отсутствие звука на телевизоре Sony может быть как следствием простых настроек, так и индикатором аппаратных сбоев. Владельцы ТВ Sony в Кемерово могут провести первичную диагностику, прежде чем обращаться в специализированный сервисный центр. Цель данных шагов — локализация проблемы для более эффективного ремонта.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>1. Проверка базовых аудиопараметров</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Уровень громкости и функция Mute:</strong> Убедитесь, что громкость не установлена на ноль и функция Mute не активирована ни на пульте ДУ телевизора, ни на пульте подключенных внешних устройств (например, ТВ-приставки, ресивера).</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Подключение наушников:</strong> Проверьте наличие подключенных к телевизору наушников. В большинстве моделей Sony при подключении наушников звук через встроенные динамики отключается автоматически.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Режим "Только изображение":</strong> Некоторые модели Sony имеют режим, отключающий звук. Проверьте настройки изображения/звука на предмет активации подобной функции.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>2. Диагностика источников сигнала</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Тестирование различных входов:</strong> Переключите телевизор на другой HDMI-вход, проверьте звук при использовании встроенных Smart TV приложений (например, YouTube, IVI) или при просмотре эфирного/кабельного телевидения. Если звук присутствует на одном источнике, но отсутствует на другом, проблема, вероятно, связана с конкретным внешним устройством или его кабельным подключением.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Проверка физических соединений:</strong> Убедитесь в плотности и корректности подключения всех аудио- и видеокабелей (HDMI, оптический, RCA) как к телевизору, так и к внешним источникам сигнала. Ослабленный контакт может прервать передачу аудиосигнала.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>3. Конфигурация аудиовыхода телевизора</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Настройки звука в меню ТВ:</strong> Войдите в меню настроек звука вашего телевизора Sony. Проверьте, какой аудиовыход выбран по умолчанию: "Динамики телевизора", "Внешняя аудиосистема" или "Оптический выход". Если вы не используете внешнюю акустику, активируйте "Динамики телевизора".</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Параметры цифрового аудиовыхода:</strong> При использовании оптического кабеля для передачи звука на внешнюю аудиосистему, проверьте настройки формата цифрового аудиовыхода (PCM, Auto, Bitstream). Несовпадение форматов может привести к отсутствию звука.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>4. Программный сброс</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Полная перезагрузка:</strong> Отключите телевизор от электросети на 5-10 минут. Это позволит сбросить временные ошибки программного обеспечения или зависания.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Сброс до заводских настроек:</strong> В случае, если предыдущие шаги не принесли результата, как крайняя мера, можно выполнить сброс телевизора к заводским настройкам. Важно помнить, что эта процедура удалит все пользовательские настройки, аккаунты и установленные приложения. Используйте ее только после сохранения важных данных, если это применимо.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Если после выполнения всех рекомендованных шагов звук на вашем телевизоре Sony в Кемерово не восстановился, или проблема носит нестабильный характер, это указывает на вероятную аппаратную неисправность. Подобные дефекты могут включать выход из строя аудиопроцессора, усилителя мощности, деградацию динамиков или компоненты системной платы.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Для точной диагностики и профессионального ремонта аудиосистем телевизоров Sony, требующего специализированного оборудования и опыта, обращайтесь в Админ.Ко.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Технический секрет инженера:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Часто, когда ТВ Sony молчит, а все кабели вроде бы на месте, причина не в поломке динамиков или усилителя, а в *приоритете вывода звука*. Современные телевизоры Sony активно управляют аудиопотоками, особенно через HDMI ARC/eARC и оптический выход (Digital Audio Out).</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Если телевизор "думает", что к нему подключена звуковая панель или AV-ресивер (даже если он выключен или временно отсоединен), он может *отключить свои внутренние динамики*, ожидая, что звук будет выводиться наружу. Это происходит из-за активированных функций, вроде HDMI-CEC (Control for HDMI) или BRAVIA Sync, которые призваны упрощать управление, но иногда вызывают сбои.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Поэтому, прежде чем разбирать ТВ, инженер первым делом глубоко зайдет в меню настроек звука: проверит опции "Вывод звука" или "Аудиовыход", убедится, что HDMI-CEC отключен или настроен корректно, и явно выберет вариант "Динамики ТВ" (TV Speakers) в качестве основного источника. Иногда достаточно просто временно отключить все HDMI-устройства и перезагрузить ТВ, чтобы сбросить логику приоритетов. Это "невидимая" проблема, которая часто маскируется под аппаратный сбой, но решается изменением в меню.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Ремонт ТВ Sony без звука в Кемерово: Профессиональная диагностика и восстановление аудиосистемы</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваш телевизор Sony неожиданно перестал воспроизводить звук? Это распространенная проблема, которая может быть вызвана рядом факторов – от программных сбоев до серьезных аппаратных неисправностей. В <span style="font-weight: bold;">Админ.Ко</span> мы специализируемся на точной диагностике и эффективном ремонте аудиосистем телевизоров Sony, возвращая вашему устройству полноценное звучание.</p></p>
+<h3>Основные симптомы и решения:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Проблема: Телевизор Sony включается, есть изображение, но отсутствует звук.</li>
+<li>Срок: От 1 рабочего дня (зависит от сложности ремонта и наличия специфических компонентов).</li>
+<li>Цена: От 1500 руб. (окончательная стоимость после диагностики, без учета запчастей).</li>
+<li>Диагностика: 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Экспертный разбор: Почему пропадает звук и как мы это исправляем</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Отсутствие звука на ТВ Sony редко является простой проблемой, которую можно решить перезагрузкой. Чаще всего это указывает на неисправности на уровне компонентов, требующие вмешательства квалифицированного инженера.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Типичные причины потери звука:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Повреждение аудиопроцессора или усилителя на материнской плате.</li>
+<li>Неисправность блока питания, приводящая к некорректной работе аудиоцепей.</li>
+<li>Дефект динамиков или их соединений.</li>
+<li>Сбой в прошивке или программном обеспечении, влияющий на аудиоконтроллеры.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В <span style="font-weight: bold;">Админ.Ко</span> для точной локализации неисправности мы используем специализированное оборудование. <span style="font-weight: bold;">Осциллограф Rigol</span> позволяет нам анализировать целостность аудиосигналов на различных этапах, выявляя обрывы или искажения. <span style="font-weight: bold;">Тепловизор</span> помогает обнаружить перегретые компоненты, такие как вышедшие из строя аудиоусилители или микросхемы питания. Для работы с микросхемами BGA и SMD-компонентами мы применяем профессиональные паяльные станции <span style="font-weight: bold;">JBC</span> и <span style="font-weight: bold;">Quick 861DW</span>, что обеспечивает точное и безопасное выпаивание/впаивание элементов без повреждения многослойной платы. После микропайки мы используем только качественные флюсы <span style="font-weight: bold;">Martin/Amtech</span>, которые предотвращают коррозию платы и гарантируют долговечность ремонта.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Попытки самостоятельного ремонта или обращение к "мастерам на дому" без должного оборудования часто приводят к усугублению проблемы, например, к повреждению соседних компонентов, нарушению целостности платы или некорректной замене деталей, что делает последующий профессиональный ремонт дороже или вовсе невозможным.</p></p>
+<h3>Инженерный стандарт Админ.Ко: Гарантия качества вашего ремонта</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><span style="font-weight: bold;">Бесплатная диагностика:</span> Мы точно определим причину неисправности без скрытых платежей.</li>
+<li><span style="font-weight: bold;">Запчасти в наличии:</span> Для популярных моделей и общих компонентов поддерживаем складской запас, что сокращает сроки ремонта.</li>
+<li><span style="font-weight: bold;">Гарантия по договору 1 год:</span> Все работы и установленные компоненты подтверждаются официальной гарантией.</li>
+<li><span style="font-weight: bold;">Сохранность данных:</span> Мы гарантируем бережное обращение с вашим устройством и конфиденциальность.</li>
+<li><span style="font-weight: bold;">Честная цена:</span> Прозрачное ценообразование без накруток и навязанных услуг.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Локальный призыв: Ваш ТВ Sony ждет квалифицированной помощи в Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не откладывайте ремонт и не позволяйте отсутствию звука портить впечатления от просмотра. Мы находимся в центре Кемерово по адресу: <span style="font-weight: bold;">улица Дзержинского 2Б</span>. Рядом с нами расположены СРК Арена и ТЦ Я, что делает нас легко доступными. <span style="font-weight: bold;">Админ.Ко</span> – это официально зарегистрированный сервисный центр, обеспечивающий высокий стандарт качества и надежности.</p></p>
+</section>
+            <section class="mt-12"><h2>Глава 4: Профилактика и дальнейшие шаги: Как сохранить идеальный звук вашего ТВ Sony</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>После восстановления аудиосистемы вашего телевизора Sony ключевым аспектом является предотвращение повторных неисправностей и поддержание оптимального качества звука. Строгое соблюдение правил эксплуатации и своевременная профилактика существенно продлевают срок службы всех аудиокомпонентов.</p></p>
+<h3>Основные рекомендации по профилактике аудиосистем ТВ Sony:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Контроль окружающей среды:</strong> Избегайте размещения телевизора в условиях повышенной влажности, прямого солнечного света или значительных температурных колебаний. Пыль — основной источник проблем для электроники, поскольку она накапливается на платах и препятствует эффективному теплоотводу, что может привести к перегреву аудиочипов и других компонентов. Регулярная и бережная очистка вентиляционных отверстий и задней панели от пыли с использованием сухой мягкой ткани или сжатого воздуха является обязательной.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Стабильность электропитания:</strong> Резкие скачки напряжения — распространенная причина выхода из строя чувствительной электронной аппаратуры. Применяйте стабилизаторы напряжения или высококачественные сетевые фильтры для надежной защиты вашего ТВ Sony от неконтролируемых изменений в электросети.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Аккуратное обращение с разъемами:</strong> При подключении или отключении внешних аудиоустройств (саундбаров, AV-ресиверов) исключите чрезмерное усилие. Повреждение аудиоразъемов, таких как HDMI ARC, Optical S/PDIF или 3.5mm jack, может стать причиной частичной или полной потери звука.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Регулярные обновления программного обеспечения:</strong> Систематически проверяйте наличие актуальных версий прошивки для вашего телевизора Sony. Производители регулярно выпускают обновления, улучшающие стабильность работы устройства, включая оптимизацию аудиодрайверов и общую функциональность.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Оптимальный уровень громкости:</strong> Длительная эксплуатация на максимальных уровнях громкости создает избыточную нагрузку на встроенные динамики и усилитель телевизора. Поддерживайте комфортный уровень громкости для минимизации риска преждевременного износа аудиокомпонентов.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Дальнейшие шаги и долгосрочное поддержание качества звука:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Тестирование после ремонта:</strong> После выполненного ремонта убедитесь в полном восстановлении всех функций, а также в чистоте и отсутствии искажений при воспроизведении звука. Проверьте работоспособность всех аудиовходов и выходов, если они были задействованы в ремонте.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Периодическая проверка настроек звука:</strong> Регулярно просматривайте меню настроек звука вашего ТВ Sony. Убедитесь, что выбран корректный аудиовыход (внутренние динамики или внешняя система), а настройки эквалайзера и звуковых эффектов соответствуют воспроизводимому контенту и акустике помещения.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Профессиональная диагностика при появлении первых признаков:</strong> Не затягивайте с обращением к специалистам при обнаружении даже незначительных изменений в качестве звука – таких как появление посторонних шумов, прерываний или снижение громкости. Своевременная диагностика позволяет локализовать и устранить проблему на ранней стадии, когда ремонт менее затратен и сложен. В <b>Админ.Ко</b> на Дзержинского 2Б мы предлагаем <b>бесплатную диагностику</b>, что позволяет оперативно установить причину неисправности без финансовых вложений клиента.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Использование внешней аудиосистемы:</strong> Для достижения максимального качества звука рассмотрите подключение внешней акустической системы (саундбара или полноценного домашнего кинотеатра). Это не только значительно улучшит звучание, но и снизит эксплуатационную нагрузку на встроенные аудиокомпоненты телевизора.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Соблюдение изложенных рекомендаций позволит существенно продлить срок бесперебойной работы аудиосистемы вашего ТВ Sony и гарантировать наслаждение чистым и качественным звуком на протяжении многих лет.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Видеонаблюдение для магазина в Кемерово: IP-камеры или аналог? Как выбрать систему | Админ.Ко</title>
+    <meta name="description" content="Выбираете систему видеонаблюдения для своего магазина в Кемерово? Сравните IP-камеры и аналоговые решения. Узнайте их преимущества, недостатки, стоимость и получите советы по выбору оптимальной системы для безопасности вашего бизнеса.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Видеонаблюдение для магазина в Кемерово: IP-камеры или аналог? Как выбрать систему</h1>
+            <meta name="published_at" content="2026-03-22T15:50:10.474Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Глава 1: Зачем магазину в Кемерово видеонаблюдение? Обзор основных типов систем</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В условиях современного бизнеса в Кемерово, система видеонаблюдения — это не просто дополнительная опция, а фундаментальный инструмент для обеспечения безопасности, контроля и оптимизации процессов. Эффективно спроектированная и установленная система позволяет не только предотвращать потери, но и принимать обоснованные управленческие решения.</p></p>
+<h2>Основные преимущества видеонаблюдения для бизнеса в Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Установка системы видеонаблюдения в магазине приносит ряд неоспоримых выгод:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Предотвращение краж и снижение потерь:</strong> Видимые камеры значительно снижают привлекательность объекта для потенциальных злоумышленников, будь то внешние воры или недобросовестные сотрудники.</li>
+<li><strong>Контроль за персоналом:</strong> Системы позволяют отслеживать дисциплину, качество обслуживания клиентов, соблюдение регламентов и разрешение конфликтных ситуаций внутри коллектива.</li>
+<li><strong>Разрешение спорных ситуаций:</strong> Записи с камер служат объективным доказательством при разборе конфликтов с покупателями, инцидентов на территории магазина или при страховых случаях.</li>
+<li><strong>Мониторинг бизнес-процессов:</strong> Анализ видеоданных может помочь оптимизировать расстановку товаров, улучшить маршруты покупателей и оценить эффективность рекламных кампаний.</li>
+<li><strong>Удаленный доступ и управление:</strong> Современные системы позволяют владельцам и управляющим дистанционно контролировать работу магазина в любое время и из любой точки.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Выбор системы: IP-камеры против аналоговых</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>При планировании видеонаблюдения перед владельцем магазина в Кемерово встает вопрос выбора между двумя основными типами систем: аналоговыми и IP (сетевыми). Каждый из них имеет свои технические особенности, преимущества и недостатки.</p></p>
+<h3>Аналоговые системы (AHD/TVI/CVI)</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Традиционные аналоговые системы видеонаблюдения используют коаксиальный кабель для передачи видеосигнала. Современные аналоговые технологии, такие как AHD, TVI и CVI, значительно улучшили качество изображения по сравнению с устаревшими стандартами, предлагая разрешения до 8 Мп.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Преимущества:</strong>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Более низкая первоначальная стоимость оборудования для базовых систем.</li>
+<li>Простота монтажа и настройки для небольших объектов.</li>
+<li>Возможность использования существующей коаксиальной кабельной инфраструктуры.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li><strong>Недостатки:</strong>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Ограничения по длине кабеля без потери качества сигнала.</li>
+<li>Меньшая гибкость в масштабировании и интеграции с другими системами.</li>
+<li>Отсутствие интеллектуальных функций (распознавание лиц, подсчет посетителей) по умолчанию.</li>
+<li>Требуется отдельный кабель для питания камер.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>IP-системы (сетевые)</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>IP-видеонаблюдение представляет собой цифровые камеры, которые подключаются к локальной сети или интернету. Передача данных осуществляется по стандартным сетевым протоколам, что открывает широкие возможности для функциональности и масштабирования.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Преимущества:</strong>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Высокое разрешение изображения (от Full HD до 4K и выше), обеспечивающее высокую детализацию.</li>
+<li>Гибкость и масштабируемость: легко добавлять камеры, интегрировать с другими системами безопасности.</li>
+<li>Широкий набор интеллектуальных функций: видеоаналитика (детектор движения, распознавание лиц, подсчет людей, определение оставленных предметов).</li>
+<li>Удаленный доступ и управление через интернет с любого устройства.</li>
+<li>Использование технологии PoE (Power over Ethernet), позволяющей передавать питание и данные по одному кабелю Ethernet, упрощая монтаж.</li>
+<li>Возможность использования беспроводных соединений для некоторых моделей камер.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li><strong>Недостатки:</strong>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Более высокая первоначальная стоимость оборудования.</li>
+<li>Требования к сетевой инфраструктуре и квалификации специалистов для настройки.</li>
+<li>Потенциальная нагрузка на сеть при большом количестве камер высокого разрешения.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Выбор между IP и аналоговыми системами видеонаблюдения для магазина в Кемерово должен основываться на детальном анализе потребностей, бюджета и планов развития. Для обеспечения надежности и максимальной эффективности системы требуется профессиональный подход к проектированию и монтажу.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> От 25 000 рублей за базовую аналоговую систему до 200 000+ рублей за профессиональное IP-решение "под ключ", зависит от количества и типа камер, функционала.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: Подбор и проектирование системы занимает от 1 до 3 рабочих дней. Монтаж и настройка для магазина обычно укладывается в 1-5 дней.</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Бесплатный выезд специалиста по Кемерово и области для оценки объекта, выявления потребностей и подбора оптимального решения.</p></div>
+
+        </div>
+            <section><html>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><body></p>
+<h2>Установка IP-камер для магазина в Кемерово: полный контроль и безопасность вашего бизнеса</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Устаревшее видеонаблюдение? Отсутствие надежного контроля за имуществом? Хотите видеть, что происходит в вашем магазине, из любой точки мира? Админ.Ко в Кемерово предлагает профессиональные решения по установке IP-камер, которые обеспечат вам спокойствие и полную безопасность.</strong></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3><span style="color: #e04a4a;">Blitz-Answer:</span> Современное видеонаблюдение для вашего бизнеса</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Проблема:</strong> Нет видеонаблюдения, устаревшая аналоговая система, нужен удаленный доступ и аналитика.</li>
+<li><strong>Срок:</strong> Расчет и проектирование от 1 дня, монтаж системы от 1 дня (зависит от сложности объекта).</li>
+<li><strong>Цена:</strong> От 15 000 руб. за базовую систему IP-видеонаблюдения с установкой. Точный расчет — после аудита объекта.</li>
+<li><strong>Аудит объекта и консультация:</strong> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3><span style="color: #e04a4a;">Экспертный разбор:</span> Почему IP-камеры – это стандарт для бизнеса, и как обеспечить качество</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Владельцы магазинов сталкиваются с целым рядом вызовов: от предотвращения краж и контроля за персоналом до сбора данных о потоке клиентов. В этом контексте IP-камеры стали не просто средством наблюдения, а мощным инструментом управления и аналитики. Отличия от устаревших аналоговых систем колоссальны. IP-камеры передают цифровой сигнал по сети, обеспечивая несравненно более высокое разрешение (от Full HD до 4K и выше), детализацию изображения и широкие возможности для интеграции.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Однако, чтобы система работала безупречно, недостаточно просто купить камеры. Требуется глубокое понимание сетевой архитектуры, принципов сжатия видеоданных, безопасности передачи информации и тонкостей настройки каждого компонента.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Ключевые аспекты профессиональной установки IP-видеонаблюдения:</strong></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Проектирование сети и кабельной инфраструктуры:</strong> Основа любой IP-системы – это надежная сеть. Мы используем профессиональные инструменты для диагностики и тестирования кабельных линий (например, специализированные сетевые анализаторы) для исключения потерь пакетов и обеспечения стабильной пропускной способности. Неправильно проложенный или некачественный кабель станет причиной "зависаний" картинки, артефактов и даже полного отказа системы.</li>
+<li><strong>Выбор и размещение камер:</strong> Мы подбираем камеры с оптимальными характеристиками (разрешение, угол обзора, ИК-подсветка, вандалозащищенность) исходя из специфики каждой зоны магазина. Наши инженеры учитывают освещенность, потенциальные слепые зоны и требования к детализации изображения.</li>
+<li><strong>Настройка сетевого видеорегистратора (NVR) и программного обеспечения:</strong> NVR – это "мозг" системы. Мы не просто устанавливаем его, но и настраиваем параметры записи (по движению, по расписанию), обеспечиваем надежное хранение данных, настраиваем удаленный доступ через защищенные протоколы. Использование фирменного ПО позволяет реализовать такие функции, как детекция лиц, пересечение линий, подсчет посетителей, что невозможно без глубоких знаний системы.</li>
+<li><strong>Кибербезопасность:</strong> Подключение IP-камер к интернету без должной защиты – это открытая дверь для злоумышленников. Мы настраиваем надежные пароли, шифрование трафика, изолируем сеть видеонаблюдения от основной сети магазина, используем VPN для удаленного доступа, чтобы защитить ваши данные и избежать несанкционированного доступа.</li>
+<li><strong>Интеграция с другими системами:</strong> Наши специалисты могут интегрировать видеонаблюдение с системами контроля доступа (СКУД), охранной сигнализацией или POS-терминалами для создания комплексного решения безопасности.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Без профессионального подхода к каждому из этих этапов вы рискуете получить неэффективную, уязвимую и ненадежную систему, которая не сможет выполнять свои функции в критический момент. Мы не просто монтируем, мы строим полноценную систему безопасности с учетом всех технических нюансов и потенциальных угроз.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3><span style="color: #e04a4a;">Инженерный стандарт Админ.Ко:</span> Надежность и прозрачность для вашего бизнеса</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Выбирая Админ.Ко для установки IP-камер, вы получаете не только оборудование, но и всесторонний сервис, построенный на принципах прозрачности и профессионализма:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Бесплатный аудит и консультация:</strong> Мы приедем к вам, оценим объект и предложим оптимальное решение без каких-либо обязательств с вашей стороны.</li>
+<li><strong>Оборудование в наличии:</strong> Большинство необходимых компонентов и камер всегда на нашем складе, что гарантирует оперативное выполнение работ.</li>
+<li><strong>Гарантия 1 год по договору:</strong> На все выполненные работы и установленное оборудование предоставляется официальная гарантия, закрепленная в договоре.</li>
+<li><strong>Сохранность данных и конфиденциальность:</strong> Мы гарантируем полную конфиденциальность ваших видеоданных и настроек системы.</li>
+<li><strong>Честная цена:</strong> Вы всегда знаете, за что платите. Никаких скрытых платежей, только обоснованная стоимость за качественные услуги и оборудование.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3><span style="color: #e04a4a;">Локальный призыв:</span> Ваша безопасность начинается здесь, в Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Чтобы обсудить проект видеонаблюдения для вашего магазина и получить бесплатный аудит, просто свяжитесь с нами. Админ.Ко – ваш надежный партнер в обеспечении безопасности бизнеса. Работаем официально, предоставляя полный пакет документов.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></body></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></html></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Вот технический секрет инженера для магазина в Кемерово:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"Большинство владельцев магазинов, выбирая систему видеонаблюдения, ориентируются на общее покрытие площади и количество мегапикселей. Однако настоящий технический секрет для эффективности системы, особенно в условиях Кемерово, где важна каждая деталь при разборе инцидентов, лежит в другом: *не экономьте на отдельных, высокодетализированных камерах для зоны кассы и основного входа/выхода*.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Ваша цель в этих критических точках — не просто 'увидеть' человека, а получить возможность *стопроцентно идентифицировать* лицо клиента или продавца, *четко различить детали* банкнот, банковских карт, или содержимое мелкой тары в руках. Для этого выбирайте камеры с *фиксированным фокусным расстоянием (обычно 4-6 мм)*, которое специально подобрано для обеспечения максимальной детализации именно на расстоянии 1-2 метров от объектива до точки транзакции или входа, даже если угол обзора такой камеры будет уже, чем у широкоугольной. Широкоугольные камеры хороши для общего обзора зала, но бесполезны для идентификации деталей на кассе. И как вишенка на торте: убедитесь, что камера на кассе оснащена *качественным встроенным микрофоном* или имеет вход для внешнего — звук часто является решающим доказательством при спорных ситуациях и конфликтах, которых, увы, в торговле хватает."</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2 id="glava3">Глава 3: Аналоговые и HD-камеры (AHD/TVI/CVI): надежность, доступность и когда они предпочтительнее</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В сфере видеонаблюдения аналоговые системы прошли значительную эволюцию. От классических CVBS-камер с ограниченным разрешением мы пришли к современным HD-форматам – AHD, TVI и CVI, которые предлагают разрешение до 8 Мп (4K) по стандартному коаксиальному кабелю. Эти технологии представляют собой мост между традиционной надежностью аналога и потребностью в высокой детализации, характерной для IP-систем.</p></p>
+<h3>Ключевые преимущества HD-видеонаблюдения (AHD/TVI/CVI)</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Выбор аналоговых и HD-камер часто обусловлен конкретными потребностями объекта и бюджетом. Для магазина в Кемерово эти системы могут предложить оптимальное сочетание цены и качества:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Надежность передачи сигнала:</strong> В отличие от IP-систем, зависящих от сетевой инфраструктуры и потенциально уязвимых к сетевым перегрузкам или DDoS-атакам, HD-аналог передает видеосигнал напрямую по коаксиальному кабелю. Это обеспечивает стабильность и минимальные задержки, критичные для систем безопасности.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Экономическая эффективность:</strong> Стоимость оборудования для AHD/TVI/CVI систем, как правило, ниже, чем для сопоставимых по разрешению IP-аналогов. Это делает их привлекательным выбором для небольших и средних объектов с ограниченным бюджетом.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Простота модернизации:</strong> Если в вашем магазине уже установлена старая аналоговая система, переход на HD-форматы значительно упрощается. Существующая коаксиальная кабельная инфраструктура может быть использована повторно, что существенно снижает затраты и время на монтаж. Это означает, что вам не придется прокладывать новые UTP-кабели и настраивать сложную сетевую архитектуру.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Дальность передачи сигнала:</strong> HD-аналог способен передавать видеосигнал высокого разрешения на расстояние до 500 метров без использования дополнительных усилителей, что превосходит стандартные ограничения Ethernet без применения дорогостоящих коммутаторов или оптоволоконных решений.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Отсутствие сетевых уязвимостей:</strong> Прямая передача сигнала минимизирует риски, связанные с кибербезопасностью, поскольку система менее подвержена взлому извне через IP-сеть.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Когда аналог и HD-аналог предпочтительнее для вашего бизнеса в Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы рекомендуем рассмотреть эти системы в следующих случаях:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Ограниченный бюджет:</strong> Если стоимость является решающим фактором, HD-аналоговые системы предлагают лучшее соотношение цены и качества по сравнению с IP-решениями.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Наличие существующей инфраструктуры:</strong> При модернизации устаревшей системы видеонаблюдения в вашем магазине, HD-аналог позволит использовать уже проложенные коаксиальные кабели, сократив затраты на монтаж до 70%.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Небольшие и средние объекты:</strong> Для магазинов, складов, офисов, где не требуется сложная интеграция с другими IT-системами или расширенные аналитические функции, аналоговые и HD-аналоговые решения обеспечивают достаточный уровень безопасности.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Приоритет надежности и простоты:</strong> Если для вас важна максимально стабильная работа без зависимости от сетевых настроек и минимальные требования к обслуживанию.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Инженерный подход Админ.Ко к HD-видеонаблюдению</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Даже с кажущейся простотой HD-аналоговых систем, качество их работы напрямую зависит от профессионализма установки. Наша команда обеспечивает:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Калибровка и тестирование:</strong> Используем специализированное оборудование для проверки целостности коаксиального кабеля и стабильности сигнала, исключая помехи и ухудшение качества изображения. Это особенно важно для обеспечения заявленного разрешения и дальности.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Выбор совместимого оборудования:</strong> Подбираем HD-видеорегистраторы (DVR) с поддержкой всех популярных форматов (AHD, TVI, CVI) и гарантируем их стабильную работу с камерами.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Профессиональный монтаж:</strong> От правильной разделки кабеля и обжима BNC-разъемов до надежного крепления камер и организации электропитания – каждый этап выполняется по стандартам, предотвращающим обрывы связи и короткие замыкания. Мы используем только проверенные расходные материалы и инструменты для обеспечения долговечности системы.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+</section>
+            <section class="mt-12"><h2>Глава 4: Как выбрать систему видеонаблюдения для магазина в Кемерово: сравнение, критерии и рекомендации</h2>
+<h3>Защита вашего бизнеса начинается с правильного выбора видеонаблюдения</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваш магазин в Кемерово нуждается в надежной системе безопасности? Админ.Ко предлагает профессиональные решения по проектированию, поставке и монтажу систем видеонаблюдения, адаптированных под специфику вашего бизнеса.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Услуга</b>: Проектирование, поставка и монтаж систем видеонаблюдения (IP и аналог).</li>
+<li><b>Срок монтажа</b>: От 1 рабочего дня (зависит от масштаба и сложности объекта).</li>
+<li><b>Стоимость</b>: Индивидуальный расчет после выезда инженера.</li>
+<li><b>Консультация и оценка объекта</b>: 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>IP-камеры против аналоговых: технические различия и возможности</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Выбор между IP и аналоговыми системами видеонаблюдения — ключевое решение, определяющее эффективность вашей системы безопасности. Давайте рассмотрим их с инженерной точки зрения, чтобы вы могли принять информированное решение для своего магазина в Кемерово.</p></p>
+<h4>Аналоговые системы (HD-CVI/TVI/AHD)</h4>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Современные аналоговые системы, такие как HD-CVI, HD-TVI и AHD, предлагают значительно улучшенное качество по сравнению с устаревшим стандартом CVBS. Они передают сигнал по коаксиальному кабелю, что упрощает модернизацию существующих аналоговых систем. Однако, несмотря на прогресс, у них есть свои ограничения.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Разрешение</b>: Как правило, до 5 Мп, чаще всего 2-4 Мп. Детализация изображения достаточна для общего обзора, но может быть недостаточной для идентификации мелких деталей на больших расстояниях.</li>
+<li><b>Передача данных</b>: Используется коаксиальный кабель. Это может быть преимуществом при модернизации, но ограничивает гибкость прокладки и масштабируемость системы.</li>
+<li><b>Масштабируемость</b>: Ограничена количеством каналов видеорегистратора (DVR). Расширение системы требует добавления новых DVR или замены существующего.</li>
+<li><b>Интеллектуальные функции</b>: Базовые функции (обнаружение движения, пересечение линии) могут быть встроены в DVR, но продвинутая видеоаналитика (распознавание лиц, подсчет посетителей) требует дополнительных внешних модулей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h4>IP-системы видеонаблюдения</h4>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>IP-системы представляют собой сетевое решение, где каждая камера является отдельным сетевым устройством со своим IP-адресом. Это обеспечивает гораздо большую гибкость, масштабируемость и функциональность.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Разрешение</b>: От 2 Мп до 12 Мп и выше. Высокое разрешение позволяет захватывать мельчайшие детали, что критически важно для идентификации лиц или товаров в магазине.</li>
+<li><b>Передача данных</b>: Осуществляется по сетевому кабелю (витая пара, стандартно Cat.5e/Cat.6), Wi-Fi или оптоволокну. Широко используется технология PoE (Power over Ethernet), которая позволяет передавать питание и данные по одному кабелю, существенно упрощая монтаж.</li>
+<li><b>Масштабируемость</b>: Практически неограничена. Система может быть расширена путем добавления новых камер и сетевых видеорегистраторов (NVR) или серверов без необходимости полной перестройки инфраструктуры.</li>
+<li><b>Интеллектуальные функции</b>: IP-камеры и NVR часто имеют встроенные модули видеоаналитики: распознавание лиц, подсчет посетителей, создание тепловых карт, обнаружение оставленных предметов, детектор праздношатания и многое другое. Эти функции незаменимы для повышения безопасности и оптимизации бизнес-процессов магазина.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Критерии выбора системы для вашего магазина в Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Принимая решение о выборе системы видеонаблюдения для вашего магазина, оцените следующие параметры:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Бюджет</b>: IP-системы обычно имеют более высокую начальную стоимость оборудования, но предлагают больше функций и лучшую масштабируемость. Аналоговые системы могут быть дешевле при первичной установке.</li>
+<li><b>Требуемое качество изображения</b>: Если необходима высокая детализация для идентификации мелких объектов или лиц, IP-системы с их высоким разрешением будут предпочтительнее.</li>
+<li><b>Масштабируемость</b>: Если вы планируете расширение бизнеса или увеличение количества камер в будущем, IP-система обеспечит значительно большую гибкость.</li>
+<li><b>Интеллектуальные функции</b>: Если вам нужна аналитика для оптимизации работы магазина (подсчет посетителей, отслеживание очередей) или расширенные функции безопасности, IP-системы — ваш выбор.</li>
+<li><b>Инфраструктура</b>: Наличие существующей кабельной сети может повлиять на выбор. Модернизация старой аналоговой системы на HD-аналог может быть дешевле, чем полная прокладка новой сетевой инфраструктуры для IP.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без профессионального подхода к выбору оборудования (NVR/DVR с соответствующим объемом HDD, специализированные диски для видеонаблюдения, качественные PoE-коммутаторы, кабели категории 5e/6, грамотная настройка сетевых протоколов и программного обеспечения) ваша система видеонаблюдения может стать источником проблем, а не надежным решением безопасности. Мы используем только проверенные компоненты от ведущих производителей (Hikvision, Dahua, RVi, Trassir) и профессиональные инструменты для монтажа и тестирования сетей, чтобы гарантировать стабильность и долговечность работы вашей системы.</p></p>
+<h3>Почему Админ.Ко — ваш надежный партнер по видеонаблюдению в Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>0 руб. выезд инженера</b>: Мы бесплатно приедем на ваш объект в Кемерово, оценим его особенности и предложим оптимальное решение по видеонаблюдению.</li>
+<li><b>Оборудование в наличии/быстрая поставка</b>: Мы работаем с ведущими поставщиками, обеспечивая наличие популярных моделей камер, NVR/DVR и комплектующих на складе или их оперативную поставку.</li>
+<li><b>Гарантия 1 год по договору</b>: Мы уверены в качестве наших услуг и оборудования, поэтому предоставляем годовую гарантию на все монтажные работы и поставляемое оборудование.</li>
+<li><b>Сохранность и конфиденциальность данных</b>: Мы гарантируем надежное хранение ваших записей и строго соблюдаем требования Федерального закона №152-ФЗ "О персональных данных".</li>
+<li><b>Честная цена и прозрачная смета</b>: Вы всегда получаете детальный расчет стоимости работ и оборудования без скрытых платежей, что позволяет четко планировать бюджет.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Готовы обсудить вашу систему видеонаблюдения?</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Админ.Ко находится в центре Кемерово по адресу: <b>ул. Дзержинского 2Б</b>. Мы рядом со СРК Арена и ТЦ Я. Работаем официально, предоставляя полный пакет документов для юридических лиц и индивидуальных предпринимателей.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Позвоните нам или приезжайте для бесплатной консультации. Мы подберем оптимальное и эффективное решение для безопасности вашего магазина, которое будет работать на вас долгие годы.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

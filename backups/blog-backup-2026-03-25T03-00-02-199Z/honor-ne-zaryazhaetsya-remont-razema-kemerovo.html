@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honor не заряжается в Кемерово? Ремонт разъема зарядки | Админ.Ко | Админ.Ко</title>
+    <meta name="description" content="Honor перестал заряжаться или медленно набирает заряд в Кемерово? Узнайте признаки поломки и когда пора делать ремонт разъема зарядки в Админ.Ко.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Honor не заряжается в Кемерово? Ремонт разъема зарядки | Админ.Ко</h1>
+            <meta name="published_at" content="2026-03-22T15:48:44.977Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Ремонт разъема зарядки Honor в Кемерово: восстановим питание за 2 часа с гарантией до 12 месяцев</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Ваш Honor перестал заряжаться?</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Проблема:</strong> Телефон Honor не заряжается, заряжается нестабильно или не определяется компьютером.</li>
+<li><strong>Срок:</strong> Восстановление зарядки от 2 часов (при наличии запчасти).</li>
+<li><strong>Цена:</strong> От 1500 руб.</li>
+<li><strong>Диагностика:</strong> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Почему ваш Honor перестал заряжаться? Общие причины и первые шаги.</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Когда ваш смартфон Honor перестает реагировать на подключение зарядного устройства, это сигнал о серьезной проблеме, требующей точной диагностики. В большинстве случаев неисправность кроется в разъеме питания, но иногда причина может быть глубже.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Типичные причины отсутствия зарядки:</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Механические повреждения разъема:</strong> Это самая распространенная проблема. Износ контактов, попадание пыли, грязи, волокон или повреждение вследствие неаккуратного подключения кабеля приводит к нестабильному контакту или полному его отсутствию. Использование некачественных кабелей или несоблюдение симметрии при подключении только усугубляет износ.</li>
+<li><strong>Попадание жидкости:</strong> Влага вызывает коррозию контактов разъема или элементов цепи питания на системной плате, что может полностью блокировать процесс зарядки. Иногда коррозия затрагивает и другие компоненты, вызывая короткие замыкания.</li>
+<li><strong>Неисправность контроллера питания (PMIC):</strong> Этот специализированный чип на материнской плате отвечает за корректное распределение энергии и управление процессом зарядки. Его выход из строя, часто по причине скачков напряжения или падений, требует сложной диагностики и микропайки.</li>
+<li><strong>Проблемы с аккумулятором:</strong> Реже, но все же бывает, что батарея полностью выходит из строя и не принимает заряд. Однако это обычно проявляется как "быстро разряжается" или "не включается", а не как "не заряжается вообще".</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Почему непрофессиональный ремонт опасен?</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Самостоятельные попытки очистки разъема острыми предметами часто приводят к окончательному повреждению контактов или короткому замыканию на плате. Обращение в мастерскую без должного оборудования и квалификации может обернуться еще большими проблемами. Некачественная пайка на неподходящем оборудовании может перегреть плату, что приведет к отслоению дорожек, повреждению микросхем или выходу из строя соседних компонентов. Дешевые флюсы оставляют после себя агрессивные остатки, которые со временем вызывают коррозию и приводят к повторным, более серьезным поломкам.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Экспертная диагностика и ремонт в Админ.Ко:</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы используем специализированное оборудование для точной диагностики и надежного ремонта:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Осциллограф Rigol:</strong> Позволяет нам анализировать сигналы на цепях питания, выявлять пульсации, точно определить место обрыва или короткого замыкания, а также выявить неисправность контроллера питания.</li>
+<li><strong>Тепловизор:</strong> Помогает оперативно определить зоны перегрева на плате, указывая на короткие замыкания или неисправные компоненты, которые могут мешать корректной зарядке.</li>
+<li><strong>Паяльные станции JBC (Испания):</strong> Применяются для прецизионной микро-пайки. Их точный контроль температуры исключает перегрев платы и повреждение чувствительных компонентов во время замены разъема или микросхем контроллера питания.</li>
+<li><strong>Инфракрасные станции Quick 861DW:</strong> Используются для безопасного демонтажа и монтажа BGA-компонентов, таких как контроллер питания, с соблюдением температурных профилей, минимизируя риск повреждения платы.</li>
+<li><strong>Флюсы Martin/Amtech:</strong> Мы используем только профессиональные флюсы, которые обеспечивают идеальное соединение без агрессивных остатков, гарантируя долговечность ремонта и отсутствие коррозии на плате после воздействия.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>При подозрении на неисправность контроллера питания, мы проводим его тщательную диагностику и при необходимости замену, восстанавливая полную функциональность зарядки вашего Honor без ошибок.</p></p>
+<h2>Инженерный стандарт Админ.Ко: Гарантия качества</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Каждый ремонт в нашем сервисном центре проводится в соответствии со строгими инженерными стандартами. Мы стремимся не просто устранить неисправность, а обеспечить долгосрочную и надежную работу вашего устройства.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>0 руб. диагностика:</strong> Мы проведем полную и точную диагностику вашего Honor абсолютно бесплатно, даже если вы откажетесь от ремонта.</li>
+<li><strong>Запчасти в наличии:</strong> Наиболее востребованные компоненты, включая разъемы питания для популярных моделей Honor, всегда есть на нашем складе, что значительно сокращает сроки ремонта.</li>
+<li><strong>Гарантия 1 год по договору:</strong> На все выполненные работы и установленные компоненты предоставляется официальная гарантия сроком до 12 месяцев, закрепленная договором.</li>
+<li><strong>Сохранность данных:</strong> Мы гарантируем полную конфиденциальность и сохранность всех ваших личных данных на устройстве во время ремонта. Наши инженеры работают бережно и профессионально.</li>
+<li><strong>Честная цена:</strong> Вы всегда знаете конечную стоимость ремонта до его начала. Никаких скрытых платежей и накруток. Мы предоставляем прозрачный прайс на все услуги.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Мы ждем вас в центре Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не откладывайте решение проблемы с зарядкой вашего Honor. Чем раньше вы обратитесь к специалистам, тем быстрее и дешевле будет ремонт, а риск возникновения дополнительных неисправностей минимизируется.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы находимся в самом центре Кемерово, <strong>по адресу ул. Дзержинского 2Б</strong>. Нас легко найти: мы расположены рядом с СРК Арена и ТЦ Я. Админ.Ко — это официально зарегистрированная компания, которая дорожит своей репутацией и гарантирует качество каждой услуги.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">У вас не заряжается Honor? Приходите в Админ.Ко!</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Бесплатно. Определим точную причину (разъем, батарея, контроллер).</p></div>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> От 1800 руб. Точная стоимость после диагностики.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: От 1 часа. Зависит от модели и наличия запчастей.</p>
+
+        </div>
+            <section><h2>Диагностика проблемы: Как понять, что виноват разъем зарядки?</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Проблемы с зарядкой Honor могут проявляться по-разному, и не всегда виноват сам разъем. Однако существует ряд признаков, по которым можно заподозрить именно его неисправность:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Нестабильная зарядка:</strong> Телефон заряжается периодически, с перебоями, или зарядка начинается только после того, как кабель будет «пойман» в определенном положении.</li>
+<li><strong>Физические повреждения:</strong> Разъем расшатан, деформирован, видны следы окисления, грязи или попадания жидкости внутри. Кабель USB не фиксируется плотно.</li>
+<li><strong>Отсутствие реакции:</strong> При подключении зарядного устройства нет индикации заряда, телефон не включается, даже если аккумулятор полностью разряжен.</li>
+<li><strong>Перегрев в области разъема:</strong> Редкий, но тревожный симптом, указывающий на возможное короткое замыкание.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Важно понимать, что аналогичные симптомы могут быть вызваны и другими неисправностями: вышедшим из строя аккумулятором, повреждением контроллера питания на системной плате, некачественным зарядным устройством или кабелем. Самостоятельная попытка определить точную причину, особенно если проблема не связана с внешними повреждениями разъема, часто приводит к ошибочным выводам и может усугубить ситуацию.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко для точной диагностики используется специализированное оборудование. Это позволяет нам не только визуально оценить состояние разъема, но и проверить целостность сигнальных линий, а также исключить внутренние повреждения платы или неисправность контроллера питания. Только после полноценной диагностики можно принять обоснованное решение о ремонте и гарантировать его качество.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Инженерный секрет от Админ.Ко:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Когда ваш Honor перестает заряжаться, и вы уже попробовали несколько заведомо исправных кабелей и блоков питания, не спешите паниковать. Главный "секрет" в том, чтобы отличить банальную проблему с аксессуарами от реальной необходимости ремонта разъема.</p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>"Технический секрет инженера":</strong></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Если зарядка вашего Honor происходит только под определенным углом, кабель зарядного устройства ощущается расшатанным в разъеме, не фиксируется плотно или "люфтит", а при малейшем касании контакт пропадает и индикатор зарядки гаснет – <strong>это ваш сигнал</strong>. Такие симптомы практически на 100% указывают на физический износ, повреждение контактов или загрязнение самого разъема зарядки.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Дальнейшее использование такого "больного" гнезда не только раздражает, но и может привести к более серьезным и дорогостоящим поломкам – от перегрева и повреждения аккумулятора из-за нестабильного тока до выхода из строя контроллера питания на материнской плате.</p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Когда пора делать ремонт в Админ.Ко?</strong></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Именно в тот момент, когда вы убедились, что дело не в кабеле или заряднике (просто попробуйте несколько разных), а наблюдаете описанные выше "симптомы расшатанности" или нестабильной работы. Не ждите, пока разъем полностью откажет или начнет искрить. Чем раньше вы обратитесь, тем проще, быстрее и дешевле будет ремонт. Мы профессионально заменим разъем на качественный элемент, восстановив стабильную и безопасную зарядку вашего Honor.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Признаки серьезной поломки и когда ремонт разъема неизбежен</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Проблемы с зарядкой Honor не всегда ограничиваются использованием неоригинального кабеля. Существуют явные признаки, указывающие на необходимость профессионального ремонта разъема зарядки, чтобы избежать более дорогостоящих поломок материнской платы или контроллера питания.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>К основным сигналам, требующим немедленного обращения в сервисный центр, относятся:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Нестабильная зарядка:</strong> Телефон заряжается только под определенным углом или прерывисто, индикатор зарядки постоянно включается и выключается. Это часто указывает на механическое повреждение контактов или микротрещины в пайке разъема к плате.</li>
+<li><strong>Полное отсутствие зарядки:</strong> Устройство не реагирует на подключение к зарядному устройству, даже если кабель и адаптер гарантированно исправны. Причина может быть как в деформации пинов внутри разъема, так и в отслоении всего разъема от контактных площадок на материнской плате.</li>
+<li><strong>Перегрев в области разъема:</strong> Если во время попытки зарядки вы чувствуете локальный нагрев в районе порта USB, это серьезный признак возможного короткого замыкания. Дальнейшее использование может привести к повреждению контроллера питания или других компонентов материнской платы.</li>
+<li><strong>Физические повреждения разъема:</strong> Видимые деформации, изгибы контактов, коррозия, попадание жидкости или посторонних предметов в порт. Эти повреждения напрямую влияют на проводимость и стабильность соединения.</li>
+<li><strong>Зарядка только в выключенном состоянии:</strong> Телефон заряжается, если выключен, но не заряжается или заряжается очень медленно во включенном состоянии. Это может быть связано с частичным повреждением линий данных или питания в разъеме, которые недостаточно стабильны для работы в активном режиме.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Игнорирование этих признаков приводит к прогрессированию поломки. Попытки самостоятельно "починить" разъем скрепкой или другими подручными средствами практически всегда усугубляют ситуацию, вызывая замыкания и повреждение соседних компонентов. Для точной диагностики и качественного ремонта требуется специализированное оборудование, такое как микроскопы для оценки состояния контактов, прецизионные паяльные станции JBC для деликатной микро-пайки без перегрева платы и флюсы Martin/Amtech, обеспечивающие надежное соединение без риска коррозии в будущем.</p></p>
+</section>
+            <section class="mt-12"><h2>Ремонт разъема зарядки Honor в Кемерово: восстановим питание за 2 часа с гарантией</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваш смартфон Honor перестал заряжаться, медленно набирает заряд или кабель постоянно отходит, требуя найти "правильное" положение? Скорее всего, причина кроется в неисправности разъема зарядки. Это одна из наиболее распространенных проблем, возникающая из-за естественного износа, механических повреждений или попадания влаги. В сервисном центре Админ.Ко мы проводим точную диагностику и оперативно устраняем эту неисправность.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Проблема:</b> Не заряжается, не определяется кабель, разболтан или поврежден разъем.</li>
+<li><b>Срок:</b> От 2 часов.</li>
+<li><b>Цена:</b> От 1800 руб.</li>
+<li><b>Диагностика:</b> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Экспертный разбор: Профессиональный ремонт разъема Honor и необходимое оборудование</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Разъем зарядки (USB Type-C или micro-USB) на Honor — это сложный компонент, который обеспечивает не только подачу питания, но и передачу данных. Его внутренняя структура состоит из множества миниатюрных контактов и дорожек, повреждение которых нарушает стабильную работу устройства. Попытки самостоятельного ремонта или обращение в мастерские без должной квалификации и оборудования часто приводят к необратимым повреждениям материнской платы, что делает последующий ремонт намного дороже или вовсе невозможным.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы применяем только профессиональное оборудование для безопасной и гарантированной замены разъема:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Паяльная станция JBC (Испания):</b> Мы используем оборудование JBC, лидера в микро-пайке. Это позволяет выполнять замену разъема с максимальной точностью, контролируя температуру и избегая перегрева чувствительных компонентов на плате Honor. Это гарантирует целостность соседних микросхем и долговечность паяных соединений.</li>
+<li><b>Термовоздушная станция Quick 861DW:</b> С ее помощью демонтаж старого и установка нового разъема производится с оптимальным профилем нагрева и потока воздуха. Такой подход предотвращает отслоение дорожек и повреждение слоев многослойной печатной платы, что критично для современных смартфонов.</li>
+<li><b>Осциллограф Rigol:</b> Если диагностика показывает, что проблема глубже, чем просто физическое повреждение разъема, осциллограф позволяет провести глубокий анализ цепей питания и линий данных. Это помогает выявить скрытые неисправности, например, с контроллером питания, и обеспечить комплексный ремонт.</li>
+<li><b>Флюсы Martin/Amtech:</b> При пайке мы используем только высококачественные флюсы Martin и Amtech. Они обеспечивают безупречное смачивание припоя, минимизируют окисление и формируют чистые, прочные паяные соединения, которые защищены от коррозии и не вызовут повторных проблем в будущем.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Использование данного технического стека — это гарантия того, что ремонт будет выполнен по всем стандартам, предотвращая риски и обеспечивая стабильную работу вашего Honor после сервиса.</p></p>
+<h2>Инженерный стандарт Админ.Ко: Преимущества, которые вы получаете</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Выбирая Админ.Ко для ремонта вашего Honor, вы делаете выбор в пользу прозрачности, надежности и высокого качества:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Диагностика 0 руб:</b> Полная и точная проверка вашего устройства абсолютно бесплатна, даже если вы примете решение отказаться от ремонта.</li>
+<li><b>Запчасти в наличии:</b> Мы держим на складе большинство необходимых компонентов, включая разъемы зарядки для популярных моделей Honor, что значительно сокращает время выполнения ремонта.</li>
+<li><b>Гарантия 1 год по договору:</b> На все выполненные работы и установленные детали предоставляется официальная гарантия, закрепленная юридическим договором, что подтверждает нашу ответственность.</li>
+<li><b>Сохранность данных:</b> Мы гарантируем полную неприкосновенность ваших личных данных и конфиденциальность информации на устройстве.</li>
+<li><b>Честная цена:</b> Стоимость ремонта оговаривается до начала работ и остается фиксированной, без каких-либо скрытых доплат.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Админ.Ко в Кемерово: Ваш надежный сервисный центр</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не позволяйте неисправности разъема зарядки Honor ограничивать вас. Приезжайте в наш сервисный центр Админ.Ко, расположенный в самом сердце Кемерово по адресу: <b>улица Дзержинского 2Б</b>. Мы находимся в шаговой доступности от СРК Арена и ТЦ Я, что делает наше расположение максимально удобным. Админ.Ко работает официально, предоставляя каждому клиенту полный пакет документов и безупречный уровень сервиса. Доверьте ремонт вашего Honor профессионалам и получите полностью функциональное устройство с гарантией качества.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

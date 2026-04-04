@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Замена экрана iPhone 15 в Кемерово: Срочный ремонт от Admin.Ко | Админ.Ко</title>
+    <meta name="description" content="Разбили экран iPhone 15 в Кемерово? Админ.Ко предлагает срочную замену экрана с гарантией. Используем качественные запчасти, выполняем ремонт оперативно и профессионально.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Замена экрана iPhone 15 в Кемерово: Срочный ремонт от Admin.Ко</h1>
+            <meta name="published_at" content="2026-03-22T15:24:35.961Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Замена экрана iPhone 15 в Кемерово: Восстановление Face ID и True Tone за 3 часа</h2>
+<h3>Разбитый экран iPhone 15: Срочное решение</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Проблема:</b> Разбитый экран, некорректная работа сенсора, ошибки Face ID и True Tone.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Срок ремонта:</b> От 3 часов.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Стоимость:</b> От 15 000 руб. (включая оригинальный модуль и перенос данных).</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Диагностика:</b> 0 руб.</p></p>
+<h2>Экспертный подход к замене экрана iPhone 15</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Разбитый экран iPhone 15 – это не только эстетическая проблема, но и угроза функциональности устройства. Современные дисплеи Apple глубоко интегрированы с аппаратной частью, включая Face ID, True Tone и датчики освещенности. Непрофессиональный ремонт или использование некачественных запчастей гарантированно приведет к потере этих критически важных функций, появлению системных уведомлений об "неизвестной детали" и, как следствие, снижению стоимости и удобства использования вашего смартфона.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы используем только оригинальные или сертифицированные модули дисплея и специализированное оборудование для восстановления полной функциональности вашего iPhone 15. Наша лаборатория оснащена:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Программаторами JCID:</b> Это ключевой инструмент для корректного переноса калибровочных данных Face ID и True Tone со старого дисплея на новый. Без этого шага iPhone будет выдавать ошибки и эти функции будут недоступны. Программатор позволяет "связать" новый дисплей с материнской платой устройства, как это делает производитель.</li>
+<li><b>Паяльной станцией JBC (Испания):</b> Для работы с микрокомпонентами и тончайшими шлейфами, которые могут требовать перепайки при повреждениях. JBC обеспечивает точный контроль температуры, исключая перегрев и повреждение платы, что критически важно для сохранения работоспособности чувствительных элементов.</li>
+<li><b>Флюсами Martin/Amtech:</b> При необходимости пайки мы используем только высококачественные флюсы, которые не оставляют агрессивных остатков и не вызывают коррозию платы со временем, в отличие от дешевых аналогов.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Каждый этап ремонта выполняется инженерами, прошедшими специализированное обучение, что гарантирует сохранение всех заводских параметров и функций вашего iPhone 15. Мы не просто меняем деталь, мы восстанавливаем устройство до его первоначального состояния.</p></p>
+<h2>Инженерный стандарт Админ.Ко: Ваши преимущества</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Диагностика 0 рублей:</b> Мы не берем плату за поиск неисправности, даже если вы откажетесь от ремонта.</li>
+<li><b>Запчасти в наличии:</b> Основные комплектующие, включая оригинальные дисплеи для iPhone 15, всегда на нашем складе, что сокращает время ремонта.</li>
+<li><b>Гарантия 1 год по договору:</b> Мы уверены в качестве своей работы и предоставляем расширенную гарантию, зафиксированную официальным договором.</li>
+<li><b>Сохранность данных:</b> При ремонте дисплея ваши данные остаются в полной безопасности. Мы не вмешиваемся в ПО и не запрашиваем пароли.</li>
+<li><b>Честная цена:</b> Мы предлагаем прозрачную систему ценообразования без скрытых платежей, используя только качественные комплектующие.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Обратитесь к профессионалам в Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы находимся в центре Кемерово, <b>ул. Дзержинского 2Б</b>. Рядом с нами расположены СРК «Арена» и ТЦ «Я». Админ.Ко работает официально, предоставляя полный пакет документов и гарантий.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не рискуйте функциональностью и стоимостью вашего iPhone 15, доверяя его сомнительным сервисам. Выбирайте надежность и экспертизу Админ.Ко.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Замена экрана iPhone 15 в Админ.Ко Кемерово:</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> От 25 000 руб., зависит от типа модуля (оригинал/аналог) и наличия на складе.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: От 30 минут до 1 часа, при наличии запчасти.</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Быстрая и бесплатная перед началом ремонта. Уточните точную стоимость по телефону или при визите.</p></div>
+
+        </div>
+            <section><h2>Замена экрана iPhone 15 в Кемерово: срочный ремонт с сохранением Face ID и True Tone</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Разбит экран вашего iPhone 15? Трещины, отсутствие изображения или некорректная работа сенсора требуют немедленного и профессионального вмешательства. Сервисный центр Админ.Ко в Кемерово предлагает экспертную замену дисплейного модуля iPhone 15, гарантируя восстановление полной функциональности вашего устройства.</p></p>
+<h2>Blitz-Answer: Быстрое решение вашей проблемы</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Проблема:</strong> Разбитый дисплей, неработающий сенсор, отсутствие изображения на iPhone 15.</li>
+<li><strong>Срок ремонта:</strong> От 2 часов (при наличии комплектующих на складе).</li>
+<li><strong>Цена:</strong> От 18 000 руб. (конечная стоимость зависит от типа дисплейного модуля и сложности повреждений).</li>
+<li><strong>Диагностика:</strong> 0 руб. (даже в случае отказа от ремонта).</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Экспертный разбор: Качество ремонта iPhone 15 – залог сохранения всех функций</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Дисплей iPhone 15 — это высокотехнологичный компонент, включающий в себя не только OLED-панель, но и сложный комплекс датчиков, отвечающих за Face ID, True Tone и автоматическую яркость. Непрофессиональная замена экрана без специализированного оборудования и опыта приводит к необратимой потере этих критически важных функций, системным ошибкам и снижению стоимости устройства.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы используем специализированную аппаратуру, обеспечивающую инженерный стандарт ремонта:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Программаторы JCID:</strong> Ключевой инструмент для корректного переноса информации о дисплее со старого модуля на новый. Это позволяет сохранить функционал True Tone (автоматическая подстройка цветовой температуры под окружающее освещение) и избежать появления уведомлений о "неоригинальной" детали в iOS, а самое главное — гарантирует полноценную работу Face ID без сбоев.</li>
+<li><strong>Паяльные станции JBC (Испания) и Quick 861DW:</strong> Наши станции для микро-пайки обеспечивают точнейший температурный контроль, исключая перегрев и повреждение материнской платы iPhone 15. Это критически важно при работе с миниатюрными компонентами и гибкими шлейфами, если требуется восстановление или пересадка элементов с оригинального модуля.</li>
+<li><strong>Тепловизор и осциллограф Rigol:</strong> Используются для глубокой пред- и постремонтной диагностики, позволяя выявить скрытые дефекты, проверить стабильность питания и функционирование всех систем после замены.</li>
+<li><strong>Флюсы Martin/Amtech:</strong> Мы применяем только профессиональные флюсы, которые не оставляют агрессивных остатков и не вызывают коррозию платы в долгосрочной перспективе, в отличие от дешевых аналогов.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без применения вышеуказанного оборудования и соблюдения технологических стандартов замена экрана iPhone 15 превращается в риск потерять функционал, за который вы цените свой смартфон.</p></p>
+<h2>Инженерный стандарт Админ.Ко: Ваши гарантии</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы строим доверительные отношения с клиентами, предлагая прозрачные условия и безупречное качество:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Бесплатная диагностика:</strong> Полная проверка устройства перед началом работ. Вы не платите за нее, даже если решите отказаться от ремонта.</li>
+<li><strong>Запчасти в наличии:</strong> Ключевые комплектующие, включая дисплейные модули для iPhone 15, всегда на нашем складе, что значительно сокращает сроки ожидания ремонта.</li>
+<li><strong>Гарантия 1 год по договору:</strong> На все выполненные работы и установленные компоненты предоставляется официальная гарантия, закрепленная юридическим договором.</li>
+<li><strong>Сохранность данных:</strong> Мы гарантируем неприкосновенность ваших личных данных и строгую конфиденциальность в процессе ремонта.</li>
+<li><strong>Честная цена:</strong> Полная стоимость ремонта озвучивается после диагностики и остается неизменной. Никаких скрытых платежей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Админ.Ко в Кемерово: Ваш надежный сервисный центр на Дзержинского 2Б</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы находимся в самом центре Кемерово по адресу: <strong>ул. Дзержинского 2Б</strong>. Нас легко найти рядом с СРК Арена и ТЦ Я. Админ.Ко работает официально, предоставляя весь пакет документов и обеспечивая прозрачные условия сотрудничества. Доверьте ремонт вашего iPhone 15 экспертам.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Наш главный технический секрет при замене экрана iPhone 15, о котором часто забывают даже опытные умельцы: это не просто установка нового дисплея, но и тщательное восстановление заводской влагозащиты и правильный перенос всех периферийных модулей. Многие фокусируются только на самом экране, но для нас критически важно не просто вернуть изображение, а сохранить полную функциональность и долговечность устройства. Мы используем оригинальные проклейки и специально обученные техники для переноса датчиков освещенности, приближения и, самое главное, модуля Face ID с вашего старого экрана на новый, чтобы ваш iPhone 15 оставался таким же надежным, как новый, и сохранил все свои возможности без компромиссов. Иначе — риск попадания влаги и нерабочий Face ID.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Замена экрана iPhone 15 в Кемерово: Срочный ремонт за 2 часа с гарантией 12 месяцев</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Ваш iPhone 15 получил повреждения и экран требует замены? В Админ.Ко мы специализируемся на профессиональном и срочном ремонте Apple устройств, используя оборудование экспертного класса.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Основные неисправности и условия ремонта</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Проблема:</b> Разбит дисплей, трещины на стекле, отсутствует изображение, полосы, не реагирует сенсор.</li>
+<li><b>Срок:</b> От 2 часов (при наличии запчастей).</li>
+<li><b>Цена:</b> От 18500 руб. (включая стоимость детали).</li>
+<li><b>Диагностика:</b> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Экспертный разбор: Почему ремонт экрана iPhone 15 требует специализированной лаборатории</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Замена дисплейного модуля на iPhone 15 — это высокоточная процедура, выходящая за рамки простой механической установки. Современные iPhone интегрируют в дисплейный модуль критически важные компоненты, включая датчик внешней освещенности и, главное, данные, необходимые для корректной работы Face ID и функции True Tone. Некорректный перенос этих данных или повреждение шлейфов приводит к системным ошибкам и потере функциональности.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">В Админ.Ко мы используем комплекс специализированного оборудования для гарантии безупречного результата:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Программаторы JCID:</b> Необходимы для точного переноса данных True Tone и Face ID со старого дисплея на новый. Без этой процедуры iPhone будет постоянно выводить уведомления о «неоригинальной» детали, а Face ID и автоматическая регулировка цветовой температуры экрана могут перестать работать.</li>
+<li><b>Паяльные станции JBC (Испания):</b> Обеспечивают сверхточный контроль температуры при пайке и отсоединении мелких компонентов. Это критически важно при работе с деликатными шлейфами и микросхемами, предотвращая перегрев платы и повреждение соседних элементов.</li>
+<li><b>Промышленный фен Quick 861DW:</b> Используется для безопасного и равномерного нагрева периметра корпуса при демонтаже дисплея, минимизируя риск повреждения защитных уплотнителей и деформации рамки.</li>
+<li><b>Тепловизор:</b> Применяется для предварительной диагностики и контроля равномерности нагрева, если есть подозрения на сопутствующие проблемы с платой, вызванные ударом.</li>
+<li><b>Осциллографы Rigol:</b> Используются для глубокой диагностики микросхем и контроля сигналов на материнской плате. Это позволяет выявить скрытые неисправности, не связанные напрямую с дисплеем, но которые могли возникнуть при падении, обеспечивая комплексный ремонт и предотвращая будущие проблемы.</li>
+<li><b>Флюсы Martin/Amtech:</b> При перепайке или восстановлении мелких контактов мы применяем только высококачественные флюсы, которые не вызывают коррозию и не оставляют токопроводящих остатков, гарантируя долговечность соединений.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Кустарный ремонт без должного оборудования и глубоких технических знаний неизбежно приводит к деградации функций устройства, появлению системных ошибок и необходимости последующего, более сложного и дорогостоящего ремонта. В Админ.Ко эти риски исключены за счет строгого соблюдения технологических стандартов и применения профессионального инструментария.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Инженерный стандарт Админ.Ко: Ваши гарантии</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Выбирая Админ.Ко для ремонта iPhone 15, вы получаете не просто услугу, а комплексный сервис, соответствующий высоким инженерным стандартам:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>0 рублей за диагностику:</b> Мы проведем полную и тщательную диагностику вашего iPhone 15 абсолютно бесплатно, независимо от вашего решения по ремонту.</li>
+<li><b>Запчасти в наличии:</b> Большинство необходимых компонентов, включая оригинальные дисплейные модули для iPhone 15, всегда доступны на нашем складе, что значительно сокращает время ожидания ремонта.</li>
+<li><b>Гарантия 1 год по договору:</b> Мы абсолютно уверены в качестве наших работ и устанавливаемых деталей, поэтому предоставляем годовую гарантию, официально закрепленную в договоре.</li>
+<li><b>Сохранность данных:</b> В процессе замены дисплея ваши персональные данные остаются неприкосновенными. Мы не форматируем устройства и не получаем доступ к вашей личной информации.</li>
+<li><b>Честная цена:</b> Стоимость ремонта прозрачна, фиксируется до начала работ и не меняется. Никаких скрытых платежей или непредвиденных наценок.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Мы находимся в центре Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Для профессиональной замены экрана вашего iPhone 15 обращайтесь в Админ.Ко по адресу: <b>ул. Дзержинского 2Б</b>. Мы удобно расположены в центре Кемерово, рядом с СРК Арена и ТЦ Я. Наша деятельность полностью официальна, с предоставлением всех необходимых документов и чеков.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+</section>
+            <section class="mt-12"><h1>Замена экрана iPhone 15 в Кемерово: срочный ремонт с сохранением True Tone и гарантия 1 год</h1>
+<h2>Почему клиенты в Кемерово выбирают Админ.Ко для ремонта iPhone 15</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Проблема:</b> Разбитый экран, отсутствие изображения, некорректная работа сенсора.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Срок ремонта:</b> От 2 часов.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Стоимость:</b> От 9500 руб.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Диагностика:</b> 0 руб.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Замена дисплейного модуля на iPhone 15 — сложная процедура, требующая не только опыта, но и специализированного оборудования. Современные экраны Apple тесно связаны с материнской платой и процессором, особенно в части функций <b>True Tone</b> и <b>Face ID</b>.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>При использовании неоригинальных комплектующих или некорректной установке, вы рискуете потерять функциональность True Tone, а также столкнуться с постоянным системным уведомлением о неоригинальном дисплее. Хуже того, могут возникнуть проблемы с Face ID, который является критически важным элементом безопасности.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы применяем программатор <b>JCID</b>, который позволяет считать калибровочные данные с вашего оригинального дисплея и корректно перенести их на новый. Это гарантирует сохранение всех заводских функций, включая True Tone и Face ID, без появления системных ошибок. Без такого оборудования качественный ремонт iPhone 15 невозможен.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для прецизионного демонтажа разбитого модуля и последующей сборки, мы используем профессиональную термовоздушную станцию <b>Quick 861DW</b>, что минимизирует риски повреждения корпуса и обеспечивает герметичность. В случае необходимости точечной пайки на плате, мы используем станции <b>JBC (Испания)</b>, обеспечивающие точный нагрев без перегрева чувствительных компонентов. Для работы с флюсами мы доверяем только проверенным брендам, таким как <b>Martin/Amtech</b>, чтобы исключить последующую коррозию платы.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Наша лаборатория оснащена современными диагностическими инструментами, включая <b>тепловизоры</b> и <b>осциллографы Rigol</b>, позволяющими выявить скрытые дефекты и убедиться в полной работоспособности устройства после ремонта.</p></p>
+<h3>Наш инженерный стандарт — гарантия вашего спокойствия:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><p><b>Диагностика 0 руб:</b> Точное определение неисправности без скрытых платежей.</p></li>
+<li><p><b>Запчасти в наличии:</b> Основные комплектующие для iPhone 15 всегда на нашем складе, что значительно ускоряет процесс ремонта.</p></li>
+<li><p><b>Гарантия 1 год по договору:</b> Мы документально подтверждаем высокое качество выполненных работ.</p></li>
+<li><p><b>Сохранность данных:</b> Мы уделяем первостепенное внимание защите вашей конфиденциальной информации.</p></li>
+<li><p><b>Честная цена:</b> Прозрачный прайс-лист и фиксированная стоимость ремонта без неприятных сюрпризов.</p></li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Приглашаем в наш сервисный центр:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Сервисный центр Админ.Ко находится в центре Кемерово по адресу: <b>ул. Дзержинского 2Б</b>. Мы расположены рядом с СРК Арена и ТЦ Я, работаем официально и ждем вас для качественного ремонта вашего iPhone 15.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

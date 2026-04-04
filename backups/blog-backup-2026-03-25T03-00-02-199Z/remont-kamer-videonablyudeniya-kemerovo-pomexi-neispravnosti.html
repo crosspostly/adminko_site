@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ремонт камер видеонаблюдения в Кемерово | Устранение помех и неисправностей | Админ.Ко</title>
+    <meta name="description" content="Ремонт камер видеонаблюдения в Кемерово. Устранение помех, сбоев, любых неисправностей. Профессиональная диагностика и восстановление систем безопасности.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Ремонт камер видеонаблюдения в Кемерово | Устранение помех и неисправностей</h1>
+            <meta name="published_at" content="2026-03-22T14:01:58.498Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Введение: Значение видеонаблюдения и распространенные неисправности камер в Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Системы видеонаблюдения стали неотъемлемой частью обеспечения безопасности как для бизнеса, так и для частных владений в Кемерово. От малых предприятий до крупных промышленных объектов и жилых комплексов, камеры предоставляют критически важные данные для мониторинга, предотвращения инцидентов и расследований. Доступность технологий сделала видеонаблюдение повсеместным, однако сложность оборудования и условия эксплуатации часто приводят к неисправностям, требующим профессионального вмешательства.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Распространенные неисправности камер видеонаблюдения могут значительно снизить эффективность всей системы, оставляя объекты без надлежащего контроля. Среди наиболее частых проблем, с которыми сталкиваются жители и организации Кемерово, выделяются следующие:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Отсутствие изображения или его периодические пропадания:</b> Часто связано с проблемами питания, повреждением кабелей, неисправностью сетевого оборудования или самого сенсора камеры.</li>
+<li><b>Помехи на изображении (шумы, рябь, полосы):</b> Могут быть вызваны электромагнитными наводками, некачественным источником питания, деградацией видеосигнала или выходом из строя внутренних компонентов камеры.</li>
+<li><b>Неисправность ИК-подсветки:</b> Приводит к неэффективной работе камеры в условиях низкой освещенности или полной темноте, что критично для ночного наблюдения.</li>
+<li><b>Проблемы с питанием:</b> Камера не включается или работает нестабильно из-за неисправности блока питания, контроллера питания на плате или короткого замыкания.</li>
+<li><b>Механические повреждения:</b> От ударов, вандализма или воздействия окружающей среды (пыль, влага), что приводит к повреждению корпуса, оптики или внутренних плат.</li>
+<li><b>Ошибки программного обеспечения/прошивки:</b> Могут вызывать сбои в работе, невозможность подключения к сети или неправильное функционирование отдельных модулей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Устранение этих неисправностей требует не только глубоких знаний в области электроники и сетевых технологий, но и специализированного оборудования. Использование профессиональных инструментов, таких как станции для микропайки JBC (Испания) для работы с миниатюрными компонентами без перегрева платы, осциллографы Rigol для точной диагностики целостности видеосигналов и линий данных, тепловизоры для обнаружения скрытых перегревов и коротких замыканий, а также специализированные программаторы для восстановления прошивки, является критически важным. Без такого арсенала ремонт сводится к простой замене узлов, что не всегда эффективно и часто экономически нецелесообразно. Только комплексный инженерный подход гарантирует долгосрочное и качественное восстановление работоспособности систем видеонаблюдения.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Blitz-Answer: Ремонт камер видеонаблюдения в Кемерово</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Бесплатная, если ремонт выполняется у нас. Срок от 30 минут до 2 часов на объекте. Цель: точное определение причины помех/неисправности и расчет стоимости ремонта.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок ремонта: От 1 часа (для простых настроек, устранения помех) до 3-5 рабочих дней (при необходимости замены деталей, при наличии их на складе). При заказе редких комплектующих срок оговаривается индивидуально.</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> От 800-1500 руб. (мелкий ремонт, устранение помех, настройка). Окончательная стоимость формируется после диагностики и включает стоимость работ и необходимых запчастей. Выезд специалиста оплачивается отдельно, если по результатам диагностики клиент отказывается от ремонта (стоимость от 500-800 руб.).</p></div>
+
+        </div>
+            <section><h2>Диагностика и классификация проблем: От зернистости до полного отсутствия изображения</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Эффективный ремонт систем видеонаблюдения начинается с точной и всесторонней диагностики. Ошибочное определение причины неисправности ведет к неэффективным тратам и повторным поломкам. В Админ.Ко мы применяем методичный подход к классификации проблем, используя специализированное оборудование для выявления истинных корней неисправности, а не только ее симптомов.</p></p>
+<h3>Типичные проблемы качества изображения и их диагностика</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Качество изображения в системах видеонаблюдения может страдать от множества факторов. Классификация этих проблем позволяет целенаправленно применять диагностические инструменты:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Зернистость и шум:</strong> Часто проявляются в условиях низкой освещенности, но могут также указывать на деградацию светочувствительного сенсора или проблемы с обработкой сигнала. Для точной оценки мы используем специализированные тестовые стенды, имитирующие различные условия освещения, и анализируем выходной сигнал.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Помехи и артефакты:</strong> Вертикальные или горизонтальные полосы, рябь, искажения цвета могут быть вызваны электромагнитными наводками, проблемами с заземлением, дефектными кабелями или неисправностями в блоке питания камеры или регистратора. <strong>Осциллограф Rigol</strong> позволяет нам анализировать форму видеосигнала и напряжения питания, выявляя даже незначительные пульсации и шумы, невидимые невооруженным глазом.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Размытость или нечеткость изображения:</strong> Может быть результатом расфокусировки объектива, механического повреждения оптики или неисправности автофокуса. Иногда проблема кроется в деградации крепления линзы. Мы проводим тщательный визуальный осмотр и тестирование механизма фокусировки.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Искажение или отсутствие цвета:</strong> Часто свидетельствует о проблемах с балансом белого, повреждении сенсора изображения или неисправности цепей обработки цвета на плате камеры. Наша диагностика включает проверку калибровки и тестирование отдельных компонентов.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Полное отсутствие изображения:</strong> Самая критичная проблема, которая может быть вызвана отсутствием питания, обрывом кабеля передачи данных, выходом из строя сенсора, процессора обработки изображения или системной платы камеры. В таких случаях мы начинаем с проверки питания мультиметром, затем используем <strong>тепловизор</strong> для обнаружения перегретых компонентов на печатной плате камеры, что может указывать на короткое замыкание или выход из строя микросхемы. Если проблема не в питании, следующим шагом идет покомпонентная диагностика платы.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Инженерный подход Админ.Ко к диагностике</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко, Кемерово, мы не полагаемся на предположения. Наш подход основан на:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Комплексном оборудовании:</strong> Применение <strong>осциллографа Rigol</strong> для анализа целостности сигнала, <strong>тепловизора</strong> для выявления термических аномалий, специализированных тестеров и программного обеспечения для IP-камер обеспечивает беспрецедентную точность в определении неисправностей. Это позволяет нам локализовать проблему с точностью до компонента, будь то неисправный конденсатор, поврежденная дорожка на плате или деградировавший сенсор.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Глубоком анализе:</strong> Мы не просто констатируем факт отсутствия изображения, а выясняем, почему именно это произошло – будь то обрыв линии питания, дефектный преобразователь напряжения на плате или вышедший из строя процессор. Это гарантирует, что ремонт будет направлен на устранение первопричины, а не только на временное снятие симптомов.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Честной диагностике:</strong> Как и для всех наших услуг, диагностика камер видеонаблюдения в Админ.Ко абсолютно бесплатна, независимо от сложности. Мы предоставляем полную смету и сроки после выявления всех проблем, гарантируя прозрачность и отсутствие скрытых платежей. Это часть нашего инженерного стандарта и доказательство нашей уверенности в уровне квалификации.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Точная диагностика – это фундамент качественного ремонта. Выбрав Админ.Ко на Дзержинского 2Б, вы получаете гарантию того, что ваша камера видеонаблюдения будет отремонтирована эффективно и надежно, с использованием передовых методов и оборудования.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Мой главный технический секрет для устранения самых хмурых и труднодиагностируемых помех (волнообразные линии, дрожание, искажение цвета) в системах видеонаблюдения – это неукоснительная и систематическая борьба с земляными петлями. Многие инженеры начинают с проверки кабелей или замены камер, но часто корень зла кроется в разности потенциалов земли между компонентами системы – камерой, регистратором, монитором и их источниками питания. Эти незаметные токи создают наводки, которые проявляются как различные помехи на изображении, особенно усиливаясь в промышленных условиях Кемерово или при длинных трассах кабеля.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Секрет в том, чтобы не просто «проверить заземление», а ГАЛЬВАНИЧЕСКИ РАЗВЯЗАТЬ или привести к ЕДИНОЙ ТОЧКЕ ЗАЗЕМЛЕНИЯ все участники цепи. Я всегда начинаю с отсоединения всех дополнительных устройств, питающихся от той же сети или подключенных к тому же регистратору, оставляя только минимально необходимую конфигурацию. Если помеха исчезла, по очереди подключаю каждый компонент обратно, пока проблема не проявится снова – это укажет на виновника. В 80% случаев это решается установкой качественных изоляторов земляной петли (ground loop isolators) на видеосигнале или использованием блоков питания с гальванической развязкой для камеры. Не забывайте, что даже металлическая оплетка кабеля или корпус камеры, закрепленной на общей металлоконструкции, могут стать частью нежелательной земляной петли. Это не просто ремонт, это искусство диагностики, позволяющее сэкономить время и ресурсы, а главное — добиться идеально чистого изображения.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Ремонт камер видеонаблюдения в Кемерово: Устранение помех и неисправностей</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Мы находимся в центре Кемерово, ул. Дзержинского 2Б.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><span style="font-weight: bold;">Проблема:</span> Помехи на изображении, камера не включается, не записывает, дефекты видеопотока.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><span style="font-weight: bold;">Срок ремонта:</span> От 1 дня.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><span style="font-weight: bold;">Цена:</span> От 800 руб.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><span style="font-weight: bold;">Диагностика:</span> 0 руб.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Пошаговое устранение типовых помех и неисправностей камер видеонаблюдения</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Камеры видеонаблюдения – это сложные оптоэлектронные системы, подверженные влиянию множества факторов, от качества питания до электромагнитных помех. Неисправности проявляются в виде искажений изображения, полного отсутствия сигнала или отказа записи. В Админ.Ко мы применяем методичный инженерный подход для точной локализации и устранения дефектов.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h4>Типовые помехи и методы их диагностики</h4>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Помехи на изображении чаще всего обусловлены проблемами с питанием, кабельной инфраструктурой или электромагнитными наводками.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><span style="font-weight: bold;">"Рябь" и "снег" на изображении:</span> Это часто указывает на нестабильность напряжения или деградацию сигнала. Используя <span style="font-weight: bold;">осциллограф Rigol</span>, наши инженеры измеряют пульсации на линии питания и проверяют целостность видеосигнала. Малейшие отклонения от стандарта могут привести к значительному ухудшению качества изображения.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><span style="font-weight: bold;">Полосы и искажения цвета:</span> Могут быть вызваны наводками от силовых кабелей, неисправными блоками питания или проблемами с сигнальной цепью. <span style="font-weight: bold;">Тепловизор</span> позволяет быстро выявить локальные перегревы компонентов на платах камер или блоков питания, что является индикатором скорого отказа или уже существующей неисправности.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><span style="font-weight: bold;">Отсутствие изображения или камера не включается:</span> Это может быть следствием выхода из строя платы питания камеры, датчика изображения, процессора или обрыва внутренних соединений. Комплексная диагностика включает проверку всех узлов:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><span style="font-weight: bold;">Проверка питания:</span> С помощью мультиметра и осциллографа проверяется напряжение на входе и выходе стабилизаторов, а также на ключевых точках платы.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><span style="font-weight: bold;">Диагностика сенсора и оптики:</span> Визуальный осмотр, проверка целостности шлейфов и корректности работы ИК-подсветки. Неисправные ИК-светодиоды, выявленные тепловизором, заменяются прецизионными паяльными станциями <span style="font-weight: bold;">JBC</span> и <span style="font-weight: bold;">Quick 861DW</span>, что исключает перегрев соседних элементов и повреждение платы.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><span style="font-weight: bold;">Ремонт печатной платы:</span> В случае коротких замыканий, обрывов дорожек или неисправности SMD-компонентов, применяются высокоточные паяльные станции <span style="font-weight: bold;">JBC</span> для микро-пайки. Мы используем только профессиональные флюсы <span style="font-weight: bold;">Martin/Amtech</span>, которые гарантируют отсутствие коррозии и долговечность паяных соединений.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><span style="font-weight: bold;">Камера не записывает или не подключается к регистратору:</span> Проблема может быть в сетевом модуле, некорректной прошивке или аппаратной части, отвечающей за передачу данных. Наши инженеры проводят тестирование сетевых интерфейсов, проверяют конфигурацию, и, при необходимости, восстанавливают или обновляют прошивку с использованием специализированного оборудования.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h4>Инженерный стандарт Админ.Ко – ваш надежный выбор</h4>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Обращаясь в Админ.Ко, вы получаете не просто ремонт, а комплексный сервис, соответствующий высоким инженерным стандартам:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><span style="font-weight: bold;">Диагностика 0 руб.:</span> Мы точно определим причину неисправности, прежде чем приступить к работе.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><span style="font-weight: bold;">Запчасти в наличии:</span> Широкий ассортимент комплектующих для различных моделей камер позволяет оперативно выполнять ремонт.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><span style="font-weight: bold;">Гарантия 1 год по договору:</span> Подтверждение нашей уверенности в качестве оказываемых услуг.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><span style="font-weight: bold;">Сохранность данных:</span> Мы гарантируем конфиденциальность и целостность всех ваших данных, если ремонт касается регистратора или карты памяти.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><span style="font-weight: bold;">Честная цена:</span> Прозрачное ценообразование без скрытых платежей. Вы платите только за реальный результат.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h4>Приезжайте в Админ.Ко для надежного ремонта камер видеонаблюдения</h4>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Не позволяйте неисправным камерам ставить под угрозу безопасность вашего объекта. Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом с нами расположены СРК Арена и ТЦ Я. Мы работаем официально и предоставляем полный пакет документов. Доверьте ремонт профессионалам, чтобы ваша система видеонаблюдения работала без сбоев.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+</section>
+            <section class="mt-12"><h2>Ремонт камер видеонаблюдения в Кемерово: Устранение помех и неисправностей</h2>
+<h3>Blitz-Answer: Быстрый и надежный ремонт систем видеонаблюдения</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Ваша система видеонаблюдения дает сбои? Мы оперативно устраним любые проблемы.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Проблема:</b> Помехи на изображении, отсутствие записи, неисправность камеры, сбой регистратора.</li>
+<li><b>Срок:</b> От 1 дня (зависит от сложности ремонта и типа неисправности).</li>
+<li><b>Цена:</b> От 1500 руб. (базовая диагностика и мелкий ремонт).</li>
+<li><b>Диагностика:</b> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Экспертный разбор: Почему помехи и неисправности требуют профессионального подхода</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Системы видеонаблюдения — это сложный комплекс оборудования, от которого зависит безопасность объекта. Распространенные проблемы, такие как помехи на изображении, отсутствие записи или полная неработоспособность, могут быть вызваны множеством факторов: от некорректной проводки и сбоев питания до неисправности сенсора камеры или программных ошибок регистратора.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Для точной диагностики и устранения этих проблем требуется не только глубокие знания электроники и сетевых технологий, но и специализированное оборудование. Например, для выявления помех в сигнале на линии или нестабильности питания мы используем высокоточные осциллографы, такие как Rigol, что позволяет локализовать проблему с точностью до миллисельт.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">В случае необходимости компонентного ремонта плат камер или видеорегистраторов, работа выполняется на паяльных станциях JBC (Испания) и Quick 861DW. Это оборудование обеспечивает точный контроль температуры и минимальное тепловое воздействие на окружающие компоненты, исключая перегрев платы и продлевая срок службы отремонтированного устройства. Использование профессиональных флюсов Martin/Amtech гарантирует долговечность пайки и предотвращает последующее окисление или коррозию. Без такого подхода ремонт часто становится временным решением, ведущим к повторным поломкам. Наши инженеры также обладают экспертизой в области сетевых протоколов и конфигурирования, что критически важно для IP-систем видеонаблюдения.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Инженерный стандарт Админ.Ко: Гарантия качества и надежности</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Выбирая Админ.Ко для ремонта вашей системы видеонаблюдения, вы получаете не просто сервис, а партнерство с командой экспертов:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>0 рублей за диагностику:</b> Мы проведем комплексную проверку вашей системы бесплатно, точно определив причину неисправности.</li>
+<li><b>Запчасти в наличии:</b> Большинство необходимых комплектующих для ремонта распространенных моделей всегда есть на нашем складе, что сокращает сроки выполнения работ.</li>
+<li><b>Гарантия 1 год по договору:</b> Мы уверены в качестве наших услуг и предоставляем расширенную гарантию на все выполненные работы и установленные компоненты.</li>
+<li><b>Сохранность данных:</b> При ремонте регистраторов мы предпринимаем все меры для сохранения ваших видеоархивов и настроек.</li>
+<li><b>Честная цена:</b> Полная прозрачность формирования стоимости ремонта без скрытых платежей и навязанных услуг.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Локальный призыв: Приезжайте в Админ.Ко в Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Не рискуйте безопасностью вашего объекта, доверяйте ремонт систем видеонаблюдения профессионалам. Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально, предоставляя полный пакет документов.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

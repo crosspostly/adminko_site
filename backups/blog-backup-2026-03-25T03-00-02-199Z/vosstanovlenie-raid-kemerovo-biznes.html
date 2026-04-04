@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Восстановление RAID в Кемерово: Надежность и Конфиденциальность для Бизнеса | Админ.Ко</title>
+    <meta name="description" content="Потеряли данные с RAID-массива в Кемерово? Профессиональное и конфиденциальное восстановление информации любой сложности для вашего бизнеса. Гарантия надежности.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Восстановление RAID в Кемерово: Надежность и Конфиденциальность для Бизнеса</h1>
+            <meta name="published_at" content="2026-03-22T13:51:26.713Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Глава 1: Критичность Данных Бизнеса и Специфика Проблем RAID-массивов в Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для любого современного бизнеса данные — это не просто информация, это его кровеносная система. Нарушение доступа к клиентским базам, бухгалтерским отчетам, проектной документации или серверам с базами данных ERP/CRM систем может привести к колоссальным убыткам, простою в работе и, в худшем случае, к полной остановке деятельности компании. RAID-массивы создаются для обеспечения отказоустойчивости и повышения производительности, но даже они не застрахованы от сбоев.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Кемерово, как и везде, предприятия сталкиваются с критическими ситуациями, когда RAID-массив выходит из строя. Это может быть вызвано:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Выходом из строя нескольких дисков одновременно, превышающим возможности отказоустойчивости массива.</li>
+<li>Повреждением или полным отказом RAID-контроллера.</li>
+<li>Логическим повреждением файловой системы или данных из-за программных сбоев, вирусов или ошибок оператора.</li>
+<li>Проблемами с питанием, приводящими к деградации дисков или контроллера.</li>
+<li>Механическими повреждениями жестких дисков в составе массива.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Восстановление данных с RAID-массивов — это одна из самых сложных и ответственных задач в сфере восстановления информации. Она требует не только глубоких знаний архитектуры различных типов RAID (RAID 0, 1, 5, 6, 10 и т.д.), но и специализированного оборудования, а также строгого соблюдения протоколов работы с конфиденциальной информацией.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Непрофессиональные попытки восстановления, использование бытовых программ или обращение к "умельцам" с неясной репутацией чаще всего приводят к безвозвратной потере данных и многократному усложнению процесса для профессионалов. Каждый шаг при работе с поврежденным RAID должен быть выверен. Мы используем передовое оборудование для диагностики и восстановления, которое позволяет локализовать проблему с высокой точностью и обеспечить максимальный шанс на успешное извлечение информации.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Наш арсенал включает:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Микропаяльные станции JBC (Испания) и Quick 861DW</strong>: Для прецизионной пайки и ремонта поврежденных контроллеров RAID-массивов или плат электроники отдельных жестких дисков, без риска перегрева или повреждения соседних компонентов.</li>
+<li><strong>Тепловизор</strong>: Позволяет быстро и точно диагностировать перегрев элементов на платах, выявляя скрытые дефекты и потенциальные точки отказа до того, как они приведут к необратимым последствиям.</li>
+<li><strong>Осциллограф Rigol</strong>: Незаменим для анализа электрических сигналов, проверки целостности шин данных и диагностики сложных аппаратных неисправностей на уровне схемотехники.</li>
+<li><strong>Специализированные программаторы (включая такие как JCID для чипов определенного типа)</strong>: Используются для работы с прошивками жестких дисков и контроллеров, что критически важно при их повреждении.</li>
+<li><strong>Флюсы Martin/Amtech</strong>: Гарантируют высочайшее качество пайки, отсутствие коррозии и долговечность ремонта, что принципиально для сохранности восстановленных узлов.</li>
+<li><strong>Профессиональный программно-аппаратный комплекс для восстановления данных</strong>: Обеспечивает работу с поврежденными файловыми системами и дисками, извлекая данные даже в самых сложных случаях.</li>
+<li><strong>Лаборатория с чистой зоной</strong>: Для безопасного вскрытия гермоблоков жестких дисков без риска попадания пыли и дальнейших повреждений.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Админ.Ко гарантирует инженерный стандарт работы с каждым RAID-массивом:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Бесплатная диагностика</strong>: Мы проводим полную диагностику вашего RAID-массива бесплатно, чтобы вы точно знали объем работ и стоимость восстановления.</li>
+<li><strong>Запчасти и донорские диски в наличии</strong>: Обширный склад донорских комплектующих и запчастей позволяет оперативно приступать к работе, минимизируя время простоя вашего бизнеса.</li>
+<li><strong>Гарантия 1 год по договору</strong>: На все выполненные работы предоставляется официальная гарантия, подтвержденная договором, что является залогом нашего профессионализма и вашей уверенности.</li>
+<li><strong>Полная сохранность данных и конфиденциальность</strong>: Все работы проводятся с соблюдением строжайших протоколов безопасности и конфиденциальности. Ваши данные останутся только вашими.</li>
+<li><strong>Честная и прозрачная цена</strong>: Мы предоставляем детализированную смету, исключая скрытые платежи и неожиданные расходы.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не рискуйте жизненно важными данными вашего бизнеса. Обращайтесь к профессионалам, способным обеспечить надежное и безопасное восстановление. Мы находимся в центре Кемерово, по адресу: <strong>улица Дзержинского 2Б</strong>. Наш офис легко найти рядом с СРК Арена и ТЦ Я. Мы работаем официально, предоставляя полный пакет документов.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Бесплатна. Полная оценка повреждений RAID-массива и прогноз возможности восстановления данных. Займет от 1 до 24 часов в зависимости от сложности случая. Конфиденциальность данных гарантирована на всех этапах.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок восстановления: От 1 до 7 рабочих дней для большинства RAID-массивов. Зависит от типа RAID, количества дисков, степени повреждений и объема данных. Возможно срочное восстановление (приоритетный режим) за дополнительную плату.</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> От 15 000 рублей за простые случаи (например, RAID 0/1 с минимальными повреждениями) до 80 000+ рублей за сложные массивы (RAID 5/6 с несколькими отказавшими дисками или серьезными повреждениями). Точная стоимость определяется после диагностики. Оплата только за успешно восстановленные данные.</p></div>
+
+        </div>
+            <section><h2>Глава 2: Технологии и Вызовы Восстановления RAID: Почему Нужен Экспертный Подход</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Восстановление данных с RAID-массивов представляет собой задачу, качественно отличающуюся от работы с одиночным накопителем. Простое повреждение одного диска в массиве, сбой контроллера или некорректная пересборка могут привести к полной потере доступа к критически важной информации бизнеса. Админ.Ко в Кемерово обладает всем необходимым для решения таких задач на экспертном уровне.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Основная сложность заключается в том, что данные распределены по нескольким накопителям согласно определенному алгоритму (RAID 0, 1, 5, 6, 10 и другие). Неправильное определение типа RAID, порядка дисков, размера блока данных (strip size) или смещения (offset) делает восстановление невозможным. Попытки самостоятельно "собрать" массив или использование непрофессионального ПО не только не дадут результата, но и могут безвозвратно повредить данные, делая последующее профессиональное восстановление значительно сложнее или вовсе невозможным.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В нашей лаборатории используются специализированные программно-аппаратные комплексы, такие как <strong>PC-3000 Express/Ultimate</strong>, для низкоуровневой работы с накопителями. Это позволяет:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Безопасно снимать посекторные копии с поврежденных дисков, обходя проблемы нестабильного чтения или поврежденных секторов, что критически важно для предотвращения дальнейшей деградации накопителя.</li>
+<li>Восстанавливать работоспособность дисков с программными и микропрограммными сбоями, которые могут имитировать полный выход диска из строя, блокируя доступ к данным.</li>
+<li>Эмулировать работу контроллера RAID и собирать виртуальный массив для извлечения данных, даже если сам контроллер вышел из строя или конфигурация массива была утеряна.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без этого специализированного оборудования и глубоких знаний архитектуры RAID-систем, процесс восстановления превращается в "угадывание", что недопустимо для конфиденциальных и бизнес-критичных данных. Применение тепловизора позволяет выявить скрытые перегревы на платах управления дисков, а осциллограф Rigol используется для точной диагностики электронных компонентов, что незаменимо при ремонте самих накопителей, входящих в массив, на компонентном уровне. Мы используем только профессиональные флюсы Martin/Amtech, исключающие коррозию после пайки, что гарантирует долговечность восстановленных компонентов, если физический ремонт диска необходим.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Цель Админ.Ко – не просто вернуть данные, а сделать это безопасно, полностью и с соблюдением всех стандартов. Это обеспечивает не только успех восстановления, но и сохранность ваших данных в будущем.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Наш технический секрет надежности и конфиденциальности прост: прежде чем приступить к восстановлению, мы создаем полную, побитную копию каждого диска вашей RAID-системы. Это значит, что все операции по реконструкции проводятся не с оригиналами, а с их точными цифровыми клонами. Таким образом, исходные данные вашего бизнеса остаются абсолютно нетронутыми и в полной безопасности, гарантируя максимальную конфиденциальность и минимизируя любые риски в процессе восстановления.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Глава 3: Обеспечение Конфиденциальности и Безопасности Данных при Восстановлении RAID для Бизнеса</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для бизнеса данные – это не просто информация, это стратегический актив, репутация и основа операционной деятельности. Потеря или компрометация конфиденциальных данных, будь то клиентские базы, финансовые отчеты или интеллектуальная собственность, может иметь катастрофические последствия. Именно поэтому при восстановлении данных с RAID-массивов обеспечение строгой конфиденциальности и безопасности становится критически важным.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В «Админ.Ко» мы осознаем эту ответственность. Процесс восстановления RAID-массивов, содержащих чувствительную корпоративную информацию, осуществляется в условиях максимальной изоляции и контроля. Наш инженерный стандарт включает не только техническую безупречность восстановления, но и неукоснительное соблюдение протоколов безопасности на каждом этапе.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Как мы гарантируем конфиденциальность ваших данных:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Изолированные рабочие процессы:</strong> Все работы с RAID-массивами, особенно критически важными для бизнеса, проводятся на изолированных аппаратных комплексах без доступа к внешним сетям. Это исключает риски утечки информации через сетевые уязвимости.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Договор NDA:</strong> Мы заключаем официальный договор о неразглашении конфиденциальной информации (NDA) с каждым корпоративным клиентом. Это юридическая гарантия, подтверждающая нашу ответственность за сохранность ваших данных.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Контроль доступа:</strong> Доступ к оборудованию и носителям с восстановленными данными строго ограничен. Только профильные инженеры, непосредственно задействованные в процессе, имеют разрешение на работу с ними.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Целостность данных:</strong> Помимо восстановления, мы проводим верификацию целостности восстановленных данных, чтобы убедиться, что ни один файл не был поврежден или изменен в процессе. Это включает проверку контрольных сумм и выборочную проверку файлов.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Протоколы удаления:</strong> После успешной передачи восстановленных данных клиенту и подтверждения их корректности, все временные копии и рабочие файлы, созданные в процессе восстановления, гарантированно и безвозвратно удаляются с наших серверов и рабочих станций в соответствии с промышленными стандартами.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Выбирая «Админ.Ко» для восстановления данных с RAID в Кемерово, вы получаете не только высочайшую инженерную экспертизу, но и партнера, который полностью разделяет вашу озабоченность сохранностью и конфиденциальностью корпоративной информации. Мы не просто восстанавливаем данные; мы восстанавливаем вашу уверенность в безопасности вашего бизнеса.</p></p>
+</section>
+            <section class="mt-12"><h2>Глава 4: Надежное Восстановление RAID в Кемерово: Гарантии и Преимущества для Вашей Компании</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для любого бизнеса потеря данных с RAID-массива является критическим инцидентом, способным парализовать работу и привести к значительным финансовым потерям. В Админ.Ко мы специализируемся на профессиональном восстановлении данных с различных конфигураций RAID, включая RAID 0, RAID 1, RAID 5, RAID 6 и RAID 10. Наш подход основан на глубоком инженерном анализе и использовании передовых методик, что гарантирует максимальный процент успешного восстановления и полную конфиденциальность всей вашей корпоративной информации.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Восстановление RAID — это комплексная задача, требующая не только специализированного программного обеспечения, но и экспертного понимания архитектуры массива, специфики работы контроллеров и потенциальных проблем на физическом уровне отдельных накопителей. Наши инженеры применяют лабораторные методы для точной диагностики каждого компонента массива, выявления причин сбоя и последующей программной или аппаратной реконструкции данных. Мы проводим побитовый анализ структуры данных, восстанавливая логическую последовательность, что исключает риск дальнейшего повреждения, часто возникающего при непрофессиональных попытках восстановления.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Админ.Ко неукоснительно соблюдает высокие стандарты обслуживания и инженерной этики, что особенно важно при работе с конфиденциальными бизнес-данными. Наш инженерный стандарт включает:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Диагностика 0 рублей: Мы проводим точное определение причин сбоя RAID и оцениваем перспективы восстановления без каких-либо первоначальных затрат.</li>
+<li>Запчасти и донорские диски в наличии: Для случаев, требующих физического восстановления поврежденных накопителей, мы используем компоненты из собственного фонда, что значительно ускоряет процесс.</li>
+<li>Гарантия 1 год по договору: Мы предоставляем официальную гарантию на качество выполненных работ и целостность восстановленных данных, закрепленную юридически.</li>
+<li>Полная сохранность данных: Все работы производятся только с образами дисков, минимизируя риск повреждения исходных носителей, при строжайшем соблюдении конфиденциальности информации.</li>
+<li>Честная цена: Мы предлагаем прозрачное ценообразование, которое формируется исходя из реальной сложности восстановления и объема данных, без скрытых платежей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работая официально, Админ.Ко предоставляет надежное и профессиональное решение для восстановления вашей критически важной информации.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

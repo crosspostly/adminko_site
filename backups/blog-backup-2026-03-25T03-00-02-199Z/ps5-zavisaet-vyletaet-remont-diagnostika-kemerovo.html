@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PS5 зависает, вылетает в играх? Ремонт и диагностика в Кемерово | Админ.Ко</title>
+    <meta name="description" content="Ваша PS5 зависает или вылетает в играх? Профессиональная диагностика и ремонт PlayStation 5 в Кемерово. Устраним перегрев, ошибки ПО и железа. Быстро, с гарантией.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">PS5 зависает, вылетает в играх? Ремонт и диагностика в Кемерово</h1>
+            <meta name="published_at" content="2026-03-22T14:22:55.785Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Глава 1: PS5 зависает или вылетает? Понимание проблемы и её последствия</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Когда игровая консоль PlayStation 5 начинает зависать или принудительно выключаться во время игры, это не просто временный сбой, а критический индикатор серьезных аппаратных проблем. Данные симптомы свидетельствуют о потере стабильности работы ключевых компонентов, что, при игнорировании, может привести к необратимым повреждениям и полному выходу устройства из строя.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Основные технические причины, вызывающие зависания и вылеты PS5, включают:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Перегрев системы:</strong> Недостаточная эффективность системы охлаждения приводит к критическому повышению температуры центрального процессора (APU) и памяти. Это может быть вызвано загрязнением радиаторов пылью, деградацией термоинтерфейса (заводской жидкий металл или термопаста) или неисправностью вентилятора. При достижении пороговых температур консоль активирует защитный механизм, сбрасывая частоты или принудительно выключаясь.</li>
+<li><strong>Деградация пайки APU:</strong> Интенсивные циклы нагрева и остывания со временем могут привести к микротрещинам в шариковых выводах (BGA-пайке) под APU. Это вызывает нестабильный контакт и, как следствие, ошибки в обработке данных и системные сбои.</li>
+<li><strong>Неисправности подсистемы питания:</strong> Колебания напряжения или недостаточная подача тока от модуля VRM (Voltage Regulator Module) или других элементов цепи питания могут привести к нестабильной работе APU и оперативной памяти, вызывая зависания и перезагрузки. Диагностика требует специализированного оборудования, такого как осциллограф Rigol.</li>
+<li><strong>Проблемы с накопителем (SSD):</strong> Реже, но сбои в работе встроенного SSD-накопителя или его контроллера могут приводить к ошибкам чтения/записи данных, вызывая зависания в играх, активно использующих дисковую подсистему.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Последствия таких проблем выходят за рамки простого дискомфорта. Постоянный перегрев сокращает срок службы всех компонентов, а нестабильная подача питания может необратимо повредить микросхемы. Без глубокой и точной диагностики с использованием профессионального оборудования, такого как тепловизор для определения горячих точек или JBC для безопасной работы с микросхемами, попытки ремонта могут усугубить ситуацию, превратив локальную неисправность в комплексную и дорогостоящую проблему.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> От 2500 руб. (точная после диагностики)</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: От 1 дня (зависит от сложности)</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Бесплатно</p></div>
+
+        </div>
+            <section><p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><h2>Глава 2: Распространенные причины сбоев PS5 и предварительная самодиагностика</h2></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Сбои в работе PlayStation 5, проявляющиеся как зависания, вылеты из игр или самопроизвольные отключения, могут быть обусловлены как программными, так и аппаратными неисправностями. Точное понимание потенциальных причин критически важно для эффективной диагностики и ремонта.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><h3>Типовые источники нестабильной работы PS5:</h3></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><p><b>Перегрев APU (Accelerated Processing Unit):</b> Центральный и графический процессор PS5, объединенные в APU, генерируют значительное количество тепла. Засорение системы охлаждения пылью, высохшая термопаста или неисправность вентилятора препятствуют эффективному отводу тепла. Это приводит к активации механизмов троттлинга (снижения тактовой частоты) для защиты компонентов, что проявляется в падении производительности, зависаниях и аварийных завершениях работы.</p></li>
+<li><p><b>Программные конфликты и повреждение системных файлов:</b> Некорректные обновления операционной системы, сбои при установке игр или приложений, а также повреждение системных файлов на SSD могут вызывать критические ошибки, приводящие к вылетам или «синим экранам смерти» (Blue Screen of Death).</p></li>
+<li><p><b>Неисправности внутреннего SSD-накопителя:</b> Поврежденные секторы или логические ошибки на встроенном твердотельном накопителе могут привести к сбоям при чтении данных игры или системы, что вызывает зависания, долгие загрузки или невозможность запустить приложения. В редких случаях возможен полный выход SSD из строя.</p></li>
+<li><p><b>Деградация блока питания:</b> Нестабильное напряжение на выходе из внутреннего блока питания или выход из строя его компонентов могут приводить к недостаточному питанию ключевых узлов консоли. Это проявляется в случайных отключениях, невозможности включения или нестабильной работе под нагрузкой.</p></li>
+<li><p><b>Аппаратные дефекты материнской платы:</b> Более серьезные неисправности включают в себя отслоение BGA-пайки APU, дефекты оперативной памяти (GDDR6) или сбои в работе контроллеров и обвязки материнской платы. Такие проблемы требуют специализированной диагностики на компонентном уровне.</p></li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><h3>Предварительная самодиагностика для пользователя:</h3></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Перед обращением в сервисный центр Админ.Ко вы можете выполнить следующие шаги для первичной оценки ситуации:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><p><b>Контроль вентиляции:</b> Убедитесь, что консоль расположена в месте с достаточным притоком и оттоком воздуха. Проверьте, не заблокированы ли вентиляционные отверстия пылью или посторонними предметами. При необходимости аккуратно очистите внешние решетки мягкой щеткой или пылесосом на низкой мощности.</p></li>
+<li><p><b>Обновление системного программного обеспечения:</b> Зайдите в «Настройки» &gt; «Система» &gt; «Системное программное обеспечение» &gt; «Обновление и настройки системного программного обеспечения» и убедитесь, что установлена последняя версия прошивки.</p></li>
+<li><p><b>Реконструкция базы данных:</b> Переведите PS5 в безопасный режим (удерживайте кнопку питания до второго звукового сигнала), затем выберите опцию «Реконструировать базу данных». Эта операция оптимизирует файловую систему, не удаляя пользовательские данные.</p></li>
+<li><p><b>Восстановление настроек по умолчанию:</b> В безопасном режиме также доступна опция «Восстановить настройки по умолчанию». Это сбросит системные настройки до заводских, что может устранить программные конфликты без потери игр и сохранений.</p></li>
+<li><p><b>Тестирование на различных приложениях:</b> Если сбои проявляются только в одной конкретной игре, проблема может быть связана с повреждением ее файлов. Попробуйте переустановить проблемную игру.</p></li>
+<li><p><b>Отключение периферийных устройств:</b> Временно отключите все подключенные внешние USB-накопители, гарнитуры или другие аксессуары, чтобы исключить их влияние на стабильность системы.</p></li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если после выполнения этих базовых процедур проблема сохраняется, это указывает на необходимость профессиональной аппаратной или глубокой программной диагностики. Специалисты Админ.Ко в Кемерово обладают необходимым инструментарием и опытом для точного выявления и устранения комплексных неисправностей PS5.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Технический секрет инженера "Админ.Ко":</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Многие владельцы PS5, сталкиваясь с зависаниями и вылетами, в первую очередь думают о программных сбоях или банальной пыли. Но вот вам секрет, который мы, инженеры, видим каждый день: часто истинная причина кроется в деградации заводского термоинтерфейса – термопасты и термопрокладок.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Даже если ваша консоль выглядит чистой снаружи и вентиляторы исправно крутятся, со временем (обычно 2-3 года активного использования) заводская термопаста высыхает и теряет свои теплопроводящие свойства. То же самое происходит с термопрокладками. Это приводит к тому, что чипы PS5 (CPU и GPU) начинают перегреваться, даже не достигая критических температур, которые бы активировали защиту и выключили консоль.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Вместо этого система включает "троттлинг" – принудительное снижение производительности, чтобы хоть как-то охладиться. Это и проявляется в виде резкого падения FPS, фризов, артефактов и, в конечном итоге, полных вылетов из игр. Консоль просто не может поддерживать стабильную работу при заданной нагрузке из-за неэффективного теплоотвода.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Именно поэтому простая чистка от пыли часто не дает должного эффекта. Только полная разборка, профессиональная очистка радиаторов изнутри, а главное – замена старого, высохшего термоинтерфейса на высококачественные аналоги позволяет полностью восстановить штатное охлаждение и вернуть PS5 ее первоначальную производительность и стабильность. Это одна из самых частых и эффективных процедур в нашей практике для решения таких проблем.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Ваш инженер из Админ.Ко в Кемерово.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Глава 3: Профессиональная диагностика и ремонт PS5 в «Админ.Ко» (Кемерово)</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если ваша PlayStation 5 зависает или вылетает в играх, это сигнал о серьезной технической проблеме, требующей экспертного вмешательства. В «Админ.Ко» мы предлагаем:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Проблема:</strong> PS5 зависает, вылетает из игр.</li>
+<li><strong>Срок ремонта:</strong> От 1 дня.</li>
+<li><strong>Стоимость ремонта:</strong> От 3500 руб.</li>
+<li><strong>Диагностика:</strong> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Зависания и вылеты в играх на PlayStation 5 часто указывают на перегрев APU (процессора/видеочипа), проблемы с системой питания или деградацию пайки BGA-чипов. Без специализированного оборудования точная локализация неисправности и качественный ремонт невозможны.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Наш подход начинается с аппаратной диагностики. Мы используем тепловизор для выявления зон локального перегрева под нагрузкой, что позволяет точно определить проблемные компоненты до разборки. С помощью осциллографа Rigol проводится анализ стабильности питающих напряжений на всех ключевых линиях платы, включая APU и память, исключая скрытые дефекты блока питания или контроллеров.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В случае необходимости реболлинга или замены APU, мы применяем паяльные станции JBC (Испания), обеспечивающие точный контроль температуры и минимизацию термического стресса для многослойных плат PS5. Горячий воздух подается станцией Quick 861DW, что критично для равномерного прогрева больших BGA-компонентов. Применение качественных флюсов Martin/Amtech гарантирует долговечность паяных соединений и защиту платы от коррозии, в отличие от агрессивных безымянных аналогов.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Попытки ремонта без такого оборудования, будь то непрофессиональная чистка или некачественная пайка, могут привести к необратимому повреждению материнской платы или временному решению, за которым последует скорый повторный отказ. Мы гарантируем, что каждый этап ремонта соответствует заводским стандартам.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Выбирая «Админ.Ко» для ремонта вашей PlayStation 5, вы получаете:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Диагностика 0 руб:</strong> Полная проверка устройства без каких-либо обязательств.</li>
+<li><strong>Запчасти в наличии:</strong> Большинство необходимых компонентов для PS5 уже на нашем складе, сокращая сроки ремонта.</li>
+<li><strong>Гарантия 1 год по договору:</strong> Официальное подтверждение качества выполненных работ и установленных запчастей.</li>
+<li><strong>Сохранность данных:</strong> Мы гарантируем, что все ваши сохранения и учетные записи останутся нетронутыми.</li>
+<li><strong>Честная цена:</strong> Только обоснованные затраты без скрытых платежей, подтвержденные актом выполненных работ.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не рискуйте своей PS5. Приносите ее на профессиональную диагностику и ремонт по адресу: г. Кемерово, ул. Дзержинского 2Б. Мы находимся в самом центре города, рядом с СРК Арена и ТЦ Я. «Админ.Ко» — это официальный сервисный центр, работающий по всем стандартам.</p></p>
+</section>
+            <section class="mt-12"><h2&gt;Глава 4: Преимущества «Админ.Ко» и советы по профилактике неисправностей вашей консоли&lt;/h2&gt;
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p&gt;Выбирая сервисный центр для ремонта вашей PlayStation 5, критически важно быть уверенным в качестве выполняемых работ и прозрачности процесса. «Админ.Ко» придерживается строгих инженерных стандартов, гарантируя, что каждая консоль будет функционировать как новая.&lt;/p&gt;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p&gt;Наши преимущества:&lt;/p&gt;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul&gt;</p>
+<li&gt;&lt;strong&gt;Диагностика 0 руб.&lt;/strong&gt; Мы проводим комплексную проверку вашей PS5 абсолютно бесплатно, даже если вы решите не проводить ремонт. Это позволяет точно определить неисправность без скрытых платежей.&lt;/li&gt;
+<li&gt;&lt;strong&gt;Запчасти в наличии.&lt;/strong&gt; Наш склад в Кемерово регулярно пополняется оригинальными комплектующими и аналогами высокого качества. Это сокращает время ремонта до минимума, позволяя вернуть консоль в кратчайшие сроки.&lt;/li&gt;
+<li&gt;&lt;strong&gt;Гарантия 1 год по договору.&lt;/strong&gt; Все выполненные работы и установленные запчасти сопровождаются официальной гарантией сроком на 12 месяцев. Это подтверждает нашу уверенность в качестве и долговечности ремонта.&lt;/li&gt;
+<li&gt;&lt;strong&gt;Сохранность данных.&lt;/strong&gt; Мы прекрасно понимаем ценность ваших игровых сохранений и профилей. Все ремонтные работы проводятся с максимальной осторожностью, исключая риск потери данных с накопителя вашей консоли.&lt;/li&gt;
+<li&gt;&lt;strong&gt;Честная цена.&lt;/strong&gt; Стоимость ремонта всегда оговаривается после диагностики и не меняется в процессе. Вы получаете прозрачное ценообразование без неприятных сюрпризов.&lt;/li&gt;
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">&lt;/ul&gt;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p&gt;Помимо профессионального ремонта, мы рекомендуем соблюдать простые правила эксплуатации, чтобы минимизировать риски возникновения неисправностей, таких как зависания и вылеты в играх:&lt;/p&gt;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul&gt;</p>
+<li&gt;&lt;strong&gt;Регулярная чистка от пыли.&lt;/strong&gt; Перегрев является основной причиной нестабильной работы PS5. Раз в 12-18 месяцев проводите профилактическую чистку системы охлаждения от пыли и замену термопасты/термопрокладок. Это можно сделать в «Админ.Ко».&lt;/li&gt;
+<li&gt;&lt;strong&gt;Обеспечение достаточной вентиляции.&lt;/strong&gt; Размещайте консоль на открытых поверхностях, избегая замкнутых пространств, тумбочек без притока воздуха. Не закрывайте вентиляционные отверстия.&lt;/li&gt;
+<li&gt;&lt;strong&gt;Использование стабильного электропитания.&lt;/strong&gt; Подключайте PS5 через сетевой фильтр или ИБП, чтобы избежать повреждений от перепадов напряжения в сети.&lt;/li&gt;
+<li&gt;&lt;strong&gt;Своевременные обновления ПО.&lt;/strong&gt; Устанавливайте системные обновления для консоли и игр. Часто они содержат исправления, повышающие стабильность работы.&lt;/li&gt;
+<li&gt;&lt;strong&gt;Бережное обращение.&lt;/strong&gt; Избегайте механических ударов, падений и попадания жидкости на консоль. Это может привести к серьезным внутренним повреждениям.&lt;/li&gt;
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">&lt;/ul&gt;</p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

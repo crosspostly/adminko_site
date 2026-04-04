@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Восстановление данных с SSD в Кемерово | Admin.Co - Спасаем цифровую память | Админ.Ко</title>
+    <meta name="description" content="Admin.Co в Кемерово: экспертное восстановление данных с SSD-дисков. Вернем утерянные файлы после сбоев, форматирования, поломок. Быстро, надежно, конфиденциально. Спасем вашу цифровую память!">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Восстановление данных с SSD в Кемерово | Admin.Co - Спасаем цифровую память</h1>
+            <meta name="published_at" content="2026-03-22T14:15:00.072Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Восстановление данных с SSD в Кемерово: Admin.Co - Спасаем вашу цифровую память</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Blitz-Answer</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Проблема:</b> Потеря данных с SSD (не определяется, файлы недоступны, повреждение файловой системы).</li>
+<li><b>Срок:</b> От 1 до 7 рабочих дней (зависит от сложности проблемы).</li>
+<li><b>Цена:</b> От 3000 руб. (за базовые случаи).</li>
+<li><b>Диагностика:</b> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Экспертный разбор: Почему восстановление данных с SSD требует специализированного подхода?</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Твердотельные накопители (SSD) значительно отличаются от традиционных жестких дисков (HDD) по принципу хранения данных. Если ваш SSD перестал определяться, файлы исчезли или вы получили сообщение об ошибке, стандартные методы восстановления данных, включая программные утилиты, будут неэффективны и могут даже усугубить ситуацию. Это связано с архитектурой SSD: контроллер, управляющий работой накопителя, выполняет такие функции, как выравнивание износа (wear leveling), сборка мусора (garbage collection) и TRIM-операции.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">При повреждении контроллера, прошивки или внутренних ошибок NAND-памяти доступ к данным напрямую блокируется. В Админ.Ко мы используем уникальные аппаратные комплексы, такие как <b>PC-3000 SSD</b> и <b>Z3000</b>. Это позволяет нам:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Работать с SSD на низкоуровневом уровне, обходя неисправный контроллер.</li>
+<li>Получать прямой доступ к микросхемам NAND-памяти.</li>
+<li>Реконструировать сложную логическую структуру данных, созданную контроллером SSD, вручную.</li>
+<li>Восстанавливать поврежденные служебные модули прошивки.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Без такого оборудования и глубоких знаний структуры SSD, попытки восстановления данных чаще всего приводят к безвозвратной потере информации. Наши инженеры обладают опытом и инструментарием для работы с накопителями различных производителей и типов контроллеров, что критически важно для успешного восстановления вашей цифровой памяти.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Инженерный стандарт Админ.Ко</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>0 рублей за диагностику:</b> Мы проведем полную проверку вашего SSD и оценим стоимость восстановления без скрытых платежей.</li>
+<li><b>Запчасти и оборудование в наличии:</b> Для восстановления данных мы используем передовые специализированные комплексы, которые позволяют работать с большинством типов SSD.</li>
+<li><b>Гарантия на услуги по договору:</b> Все наши работы выполняются официально с предоставлением гарантии на результат (восстановленные данные).</li>
+<li><b>Полная сохранность данных:</b> Мы гарантируем конфиденциальность и целостность ваших данных в процессе восстановления.</li>
+<li><b>Честная цена:</b> Стоимость услуг обсуждается до начала работ и фиксируется.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Админ.Ко в Кемерово: Ваш надежный партнер по восстановлению данных</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Если вы столкнулись с потерей данных с SSD, не рискуйте ценной информацией, обращаясь к неквалифицированным специалистам. Мы находимся в центре Кемерово по адресу: <b>ул. Дзержинского 2Б</b>. Наш сервисный центр легко найти – рядом расположены СРК Арена и ТЦ Я. Мы работаем официально, предоставляя полный пакет документов. Доверьте восстановление вашей цифровой памяти профессионалам Админ.Ко.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Бесплатно. Проводится от 1 часа до 1 рабочего дня для определения причины сбоя и возможности восстановления.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: Зависит от сложности повреждений. Стандартное восстановление: 1-5 рабочих дней. Срочные случаи (по запросу): от 12 до 48 часов.</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> От 4500 руб. (за логические сбои) до 25000+ руб. (за сложные физические повреждения контроллера/памяти). Точная стоимость определяется строго после проведения диагностики.</p></div>
+
+        </div>
+            <section><h2>Причины потери данных с SSD и сложности восстановления: Почему нужен профессиональный подход</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Потеря данных с твердотельных накопителей (SSD) – распространенная проблема, требующая глубоких инженерных знаний и специализированного оборудования для успешного восстановления. В отличие от традиционных HDD, архитектура SSD значительно сложнее, и причины отказа могут быть как логическими, так и физическими, часто взаимосвязанными.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Основные причины потери данных с SSD:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Логические ошибки:</strong> Сюда относятся случайное удаление файлов, форматирование диска, повреждение файловой системы (FAT, NTFS, APFS, Ext4), сбой операционной системы или заражение вредоносным ПО. В этих случаях данные физически могут оставаться на чипах памяти, но к ним потерян доступ.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Аппаратные сбои контроллера:</strong> Контроллер SSD – это его "мозг", управляющий распределением данных по чипам NAND. Выход из строя контроллера из-за скачков напряжения, перегрева или заводского брака делает накопитель недоступным. Требуется сложная диагностика и, зачастую, работа с микросхемами NAND напрямую.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Повреждение чипов NAND памяти:</strong> Износ ячеек памяти (ограниченный ресурс перезаписи), производственные дефекты или физические повреждения (удар, падение) могут привести к нечитаемости отдельных блоков или целых чипов. Восстановление в таких случаях требует выпаивания чипов и чтения данных на специализированном оборудовании.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Повреждение прошивки (firmware):</strong> Сбои в работе прошивки SSD могут сделать накопитель невидимым для системы или привести к "зависанию" на этапе инициализации. Восстановление требует доступа к служебной области SSD и модификации микрокода, что возможно только с помощью специализированных комплексов.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Электрические повреждения:</strong> Сгорание компонентов на печатной плате SSD (контроллер питания, стабилизаторы, конденсаторы) из-за перепадов напряжения. Такой ремонт требует точной пайки и замены компонентов.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Сложность восстановления данных с SSD заключается в уникальной архитектуре каждого производителя и модели, а также в использовании алгоритмов выравнивания износа (wear-leveling) и сборки мусора (garbage collection), которые постоянно перемещают данные по чипам. Без понимания этих алгоритмов и без доступа к служебной информации контроллера, попытки восстановления могут привести к безвозвратной потере данных.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Именно поэтому для успешного восстановления данных с SSD необходима профессиональная лаборатория. В Админ.Ко мы используем специализированное оборудование для диагностики, ремонта на компонентном уровне и работы с прошивками:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Осциллограф Rigol</strong> и <strong>тепловизор</strong>: для точной диагностики электрических неисправностей, проверки питания и выявления перегретых компонентов на плате SSD. Это позволяет локализовать дефект с точностью до миллиметра.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Паяльные станции <strong>JBC (Испания)</strong> и термовоздушная станция <strong>Quick 861DW</strong>: обеспечивают прецизионную микро-пайку компонентов на плате SSD без риска перегрева и повреждения соседних элементов. Это критически важно при работе с BGA-корпусами контроллеров и чипов памяти.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Специализированные программаторы, включая JCID</strong>: позволяют проводить низкоуровневые операции с прошивками накопителей, корректировать служебные области и адаптировать компоненты, что необходимо при работе с поврежденными контроллерами или некорректно работающей прошивкой SSD.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Высококачественные флюсы <strong>Martin/Amtech</strong>: предотвращают окисление и обеспечивают надежное соединение, исключая последующие коррозийные процессы на плате после ремонта.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Без использования данного оборудования и глубоких знаний архитектуры SSD, попытки восстановления данных в кустарных условиях или с помощью непрофессиональных программных средств часто приводят к окончательной и необратимой потере информации.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h2>Инженерный стандарт Админ.Ко</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">В Админ.Ко мы придерживаемся строгих стандартов качества, чтобы гарантировать максимальный процент успешного восстановления ваших данных:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Диагностика 0 руб.:</strong> Мы проводим полную аппаратную и программную диагностику вашего SSD абсолютно бесплатно, даже если вы решите отказаться от ремонта. Вы точно знаете объем и стоимость работ до начала.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Запчасти в наличии:</strong> Наш склад регулярно пополняется донорскими платами и компонентами, что значительно сокращает сроки восстановления и ремонта SSD.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Гарантия 1 год по договору:</strong> На все выполненные работы и замененные компоненты мы предоставляем официальную гарантию сроком 12 месяцев. Работаем полностью прозрачно и официально.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Сохранность данных:</strong> Наша главная цель — восстановить ваши данные. Все работы производятся в контролируемых условиях, с соблюдением конфиденциальности и без риска перезаписи информации.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Честная цена:</strong> Мы предлагаем объективную стоимость услуг, сформированную на основе реальной сложности работ и цен на компоненты, без скрытых платежей.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Админ.Ко: Ваш надежный партнер по восстановлению данных в Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Если ваш SSD вышел из строя и вы потеряли доступ к важным файлам, не пытайтесь решить проблему самостоятельно. Обратитесь к профессионалам. Мы находимся в самом центре Кемерово по адресу <strong>ул. Дзержинского 2Б</strong>. Наша лаборатория расположена рядом с СРК Арена и ТЦ Я, что делает наш сервисный центр легкодоступным. Работаем официально, предоставляя полный пакет документов. Доверьте свою цифровую память Админ.Ко.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Мой главный технический секрет как инженера Admin.Co, спасающего данные с SSD в Кемерово, заключается не просто в наличии дорогостоящего оборудования или чистой магии. Это глубокое, почти интуитивное понимание уникальной "логики" каждого контроллера SSD.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">В отличие от старых жестких дисков, где данные лежат предсказуемо, SSD-накопители постоянно перемешивают информацию по своим флеш-чипам, используя сложные алгоритмы выравнивания износа (wear leveling) и сборки мусора (garbage collection). Каждый производитель, каждая модель контроллера делает это по-своему, как своя собственная, неповторимая система шифрования.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Истинное мастерство восстановления данных с SSD — это способность "читать" эту логику контроллера даже когда он мертв. Расшифровать его внутреннюю карту, понять, как именно он распределял блоки данных по множеству NAND-чипов, какие блоки были служебными, а какие — драгоценной пользовательской информацией. Это кропотливая работа по сборке гигантской головоломки без инструкции, где каждый фрагмент — это биты и байты вашей памяти.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Вот почему попытки "просто выпаять чипы и прочитать" чаще всего приводят к бесполезному набору данных. Мой секрет — это опыт и знания, позволяющие понять замысел инженеров-разработчиков SSD, восстановить логическую карту контроллера и собрать воедино разрозненные кусочки вашей цифровой жизни. Это ключ к тому, чтобы спасти то, что многие считают безвозвратно утерянным.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Восстановление данных с SSD в Кемерово: Admin.Co - Спасаем вашу цифровую память</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Ваш SSD накопитель перестал определяться? Случайно удалили важные файлы? Потеря данных — это всегда стресс, но часто поправимый. Admin.Co в Кемерово предлагает профессиональное восстановление данных с SSD, возвращая доступ к вашей цифровой информации.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Blitz-Answer: Восстановление данных с SSD в Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Проблема:</strong> SSD не определяется, удалены файлы, повреждена файловая система, контроллер вышел из строя.</li>
+<li><strong>Срок:</strong> От 1 дня (в зависимости от сложности повреждения).</li>
+<li><strong>Цена:</strong> От 3000 руб (после диагностики).</li>
+<li><strong>Диагностика:</strong> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Экспертный разбор: Почему SSD теряют данные и как их восстановить?</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Твердотельные накопители (SSD) отличаются высокой скоростью и надежностью, но, как и любая техника, подвержены сбоям. Причины потери данных могут быть разнообразны: логические ошибки файловой системы, сбой прошивки контроллера, износ ячеек памяти (NAND-чипов), физическое повреждение платы или самого контроллера.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Восстановление данных с SSD — это сложный процесс, требующий глубоких знаний архитектуры накопителей и специализированного оборудования. В отличие от жестких дисков, SSD не имеют движущихся частей, но их внутреннее устройство с несколькими NAND-чипами и контроллером, распределяющим данные (wear-leveling), делает восстановление при повреждении контроллера крайне трудной задачей для непрофессионалов.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Попытки самостоятельного восстановления или обращение в сервисы без необходимой квалификации и оборудования часто приводят к необратимой потере данных. Неправильное подключение, использование непроверенного ПО или попытки пайки без должного контроля могут навсегда уничтожить информацию.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">В лаборатории Admin.Co мы используем профессиональные методы. Если проблема в контроллере или физических повреждениях, задействуется высокоточное паяльное оборудование JBC (Испания) и станция Quick 861DW для микро-пайки без перегрева чувствительных компонентов SSD. Диагностика с осциллографом Rigol и тепловизором позволяет точно определить место неисправности и избежать повреждений, а флюсы Martin/Amtech гарантируют, что плата не будет гнить после ремонтных работ. Эти инструменты, в сочетании с нашим опытом, позволяют нам работать на компонентном уровне, извлекая данные даже из серьезно поврежденных накопителей.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Инженерный стандарт Admin.Co: 5 причин доверить нам ваши данные</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Бесплатная комплексная диагностика:</strong> Мы проведем полную проверку вашего SSD и точно определим проблему, а также стоимость восстановления ДО начала работ.</li>
+<li><strong>Специализированное оборудование:</strong> Наша лаборатория оснащена программно-аппаратными комплексами для работы с SSD и прецизионным паяльным оборудованием (JBC, Quick 861DW) для восстановления на компонентном уровне.</li>
+<li><strong>Полная конфиденциальность данных:</strong> Ваши данные — это ваша собственность. Мы гарантируем строгую конфиденциальность и соблюдение всех протоколов безопасности на каждом этапе восстановления.</li>
+<li><strong>Высокий процент успеха:</strong> Многолетний опыт наших инженеров и применение передовых технологий позволяют нам успешно восстанавливать данные даже в самых сложных случаях, когда другие сервисы оказываются бессильны.</li>
+<li><strong>Честная и прозрачная стоимость:</strong> После диагностики вы получите фиксированную цену за услугу, которая не изменится в процессе работы. Никаких скрытых платежей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Локальный призыв: Ваш путь к восстановленным данным в Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Не рискуйте вашими ценными данными. Обратитесь к экспертам. Мы находимся в центре Кемерово, по адресу ул. Дзержинского 2Б. Это удобное расположение рядом с СРК Арена и ТЦ Я. Admin.Co работает официально, предоставляя надежные и проверенные услуги по восстановлению данных. Приезжайте, и мы спасем вашу цифровую память.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+</section>
+            <section class="mt-12"><h2>Восстановление данных с SSD в Кемерово: Спасаем вашу цифровую память с гарантией и конфиденциальностью</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Ваш SSD-накопитель перестал определяться, или вы потеряли доступ к важным файлам? В Админ.Ко мы специализируемся на профессиональном восстановлении данных с твердотельных накопителей, предлагая прозрачные условия и гарантированную конфиденциальность для жителей Кемерово.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>Проблема:</b> SSD не определяется / Важные данные недоступны</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>Срок:</b> От 1 дня</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>Цена:</b> От 3000 руб</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>Диагностика:</b> 0 руб</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Экспертный разбор проблемы: почему восстановление данных с SSD требует специализированного подхода</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Твердотельные накопители (SSD) представляют собой сложные устройства, кардинально отличающиеся от традиционных жестких дисков. Их архитектура включает высокопроизводительный контроллер, микросхемы NAND-памяти и сложную логику управления, такую как TRIM и выравнивание износа (wear leveling). Эти технологии, хоть и обеспечивают высокую скорость и долговечность, при выходе SSD из строя делают процесс восстановления данных крайне нетривиальной задачей.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Стандартные программные методы, которые могут быть эффективны для логических сбоев на HDD, в случае с SSD оказываются не только бесполезны, но и потенциально губительны. Непрофессиональные попытки восстановления могут привести к перезаписи данных, необратимой блокировке контроллера или физическому повреждению микросхем памяти, что делает последующее профессиональное вмешательство невозможным. Причины потери данных на SSD варьируются от логических ошибок файловой системы и повреждения транслятора контроллера до аппаратных неисправностей электроники (контроллера, питания) или деградации NAND-памяти.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">В Админ.Ко для восстановления данных с SSD используется специализированное оборудование, способное работать напрямую с микросхемами NAND-памяти в обход неисправного контроллера или манипулировать прошивкой для доступа к данным. Наша лаборатория оснащена профессиональными паяльными станциями JBC (Испания) для высокоточной микро-пайки без перегрева платы, а также осциллографами Rigol для детальной диагностики электронных компонентов. Это позволяет нам не только устранять аппаратные неисправности на плате SSD, которые препятствуют доступу к данным, но и применять специализированные программно-аппаратные комплексы для реконструкции файловой системы из сырых дампов NAND, обходя сложности с выравниванием износа и ECC-кодами.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Именно такой комплексный подход, сочетающий глубокие знания архитектуры SSD, высокоточное диагностическое и паяльное оборудование, а также специализированные решения для работы с памятью, гарантирует максимальные шансы на успешное извлечение вашей критически важной информации.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h2>Почему выбирают Admin.Co в Кемерово: Гарантии, конфиденциальность и шаг к спасению ваших данных</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>0 руб. диагностика:</b> Мы проводим полную и тщательную диагностику вашего SSD-накопителя абсолютно бесплатно. Это позволяет точно определить характер и причину сбоя, оценить реальный объем и вероятность восстановления данных, а также сформировать окончательную и прозрачную стоимость работ. Вы оплачиваете услуги только по факту успешного восстановления.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>Специализированное оборудование:</b> Наша лаборатория в Кемерово оборудована всем необходимым для работы с SSD любой сложности. Это не только упомянутые ранее профессиональные паяльные станции JBC и осциллографы Rigol для работы с электроникой, но и специализированные программно-аппаратные комплексы для прямого чтения NAND-памяти и эмуляции контроллеров. Мы используем только высококачественные флюсы (Martin/Amtech), предотвращающие коррозию и обеспечивающие долговечность восстановленных соединений.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>Гарантия 1 год по договору:</b> Мы уверены в качестве предоставляемых услуг. На все выполненные работы по восстановлению данных и сопутствующему ремонту предоставляется официальная гарантия 12 месяцев по договору. Это подтверждает наш профессионализм и ответственность за каждый клиентский кейс.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>Сохранность и конфиденциальность данных:</b> Для Админ.Ко это наивысший приоритет. Все работы производятся в условиях строжайшей конфиденциальности, с подписанием договора о неразглашении. Мы работаем исключительно с копиями ваших данных, а оригинальный носитель возвращается вам в неизменном виде. После успешного восстановления данные передаются на ваш новый носитель или защищенный внешний диск и гарантированно удаляются из наших систем.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>Честная цена:</b> Стоимость восстановления данных определяется после бесплатной диагностики и зависит исключительно от сложности случая (объема повреждений, типа контроллера, объема памяти и необходимости замены компонентов). Мы всегда озвучиваем полную и окончательную стоимость до начала работ, без каких-либо скрытых платежей и непредвиденных накруток.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Мы находимся в центре Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Если вам требуется профессиональное восстановление данных с SSD, обращайтесь к нам по адресу: ул. Дзержинского 2Б. Мы расположены в легкодоступном месте, рядом с СРК Арена и ТЦ Я. Админ.Ко работает официально, предоставляя полный пакет документов и все необходимые гарантии.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

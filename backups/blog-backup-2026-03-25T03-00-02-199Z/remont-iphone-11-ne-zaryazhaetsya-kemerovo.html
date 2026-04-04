@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone 11 не заряжается? Ремонт в Кемерово | Сервис на Дзержинского 2Б | Админ.Ко</title>
+    <meta name="description" content="Ваш iPhone 11 перестал заряжаться? Профессиональный ремонт iPhone 11 в Кемерово с гарантией. Быстрая диагностика и качественные запчасти в сервисном центре на Дзержинского 2Б.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">iPhone 11 не заряжается? Ремонт в Кемерово | Сервис на Дзержинского 2Б</h1>
+            <meta name="published_at" content="2026-03-22T14:37:05.129Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>iPhone 11 не заряжается? Ремонт в Кемерово — Сервисный центр на Дзержинского 2Б</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваш iPhone 11 перестал заряжаться? Мы решим эту проблему быстро и профессионально.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Проблема: iPhone 11 не заряжается или заряжается медленно.</li>
+<li>Срок ремонта: От 1 часа (для простых случаев).</li>
+<li>Стоимость: От 1500 руб.</li>
+<li>Диагностика: Бесплатно, даже при отказе от ремонта.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Почему ваш iPhone 11 перестал принимать заряд? Это одна из наиболее распространенных проблем, с которой обращаются в сервисные центры. В отличие от множества "мастерских на дому", в Админ.Ко мы проводим полноценную диагностику для точного определения причины, а не просто меняем компоненты наугад.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Основные причины, по которым iPhone 11 может не заряжаться:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Загрязнение или повреждение разъема зарядки (Lightning Port): Со временем в разъем попадает пыль, ворс, мелкий мусор, который препятствует контакту с кабелем. В худшем случае, контакты внутри разъема могут быть физически повреждены.</li>
+<li>Неисправный кабель или адаптер питания: Часто пользователи игнорируют качество аксессуаров. Использование неоригинальных или поврежденных кабелей и блоков питания может не только препятствовать зарядке, но и повредить контроллер питания в телефоне.</li>
+<li>Износ аккумуляторной батареи: При значительном износе (менее 80% емкости) батарея может перестать принимать заряд должным образом или быстро разряжаться. Система iOS также может ограничивать мощность зарядки для сохранения работоспособности.</li>
+<li>Неисправность контроллера питания (микросхема U2 Tristar): Это одна из самых сложных и частых аппаратных проблем. Микросхема U2 (Tristar) отвечает за управление питанием и обмен данными между зарядным устройством и процессором. Ее выход из строя часто происходит из-за использования некачественных зарядок, перепадов напряжения или падений.</li>
+<li>Повреждение внутренних компонентов: Реже, но возможно повреждение шлейфа разъема зарядки, компонентов на системной плате или FPC-коннектора, отвечающего за подключение аккумулятора.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для точной диагностики и устранения таких проблем в Админ.Ко используется профессиональное оборудование:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Паяльная станция JBC (Испания): Незаменима для микро-пайки при замене контроллера U2 Tristar. Благодаря прецизионному контролю температуры JBC, мы гарантируем отсутствие перегрева чувствительных компонентов платы, что критично для долговечности ремонта.</li>
+<li>Осциллограф Rigol: Позволяет инженерам Админ.Ко точно измерить сигналы на системной плате и определить, где именно происходит сбой в цепи питания, будь то контроллер U2, FPC-коннектор или другие элементы.</li>
+<li>Тепловизор: Помогает быстро локализовать короткие замыкания или перегретые компоненты на плате, которые могут быть причиной отказа зарядки.</li>
+<li>Флюсы Martin/Amtech: Мы используем только проверенные флюсы высшего качества, такие как Martin или Amtech. Это гарантирует отсутствие коррозии и окисления платы после пайки, что является залогом надежности и долговечности выполненных работ.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без такого оборудования ремонт сводится к "методу тыка" и поверхностной замене модулей, что не устраняет первопричину, влечет за собой повторные поломки и может усугубить состояние вашего устройства.</p></p>
+<h3>Инженерный стандарт Админ.Ко: Ваш iPhone 11 в надежных руках</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Выбирая Админ.Ко, вы выбираете качество и прозрачность:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Бесплатная диагностика: Мы не берем плату за определение неисправности, даже если вы решите отказаться от ремонта.</li>
+<li>Запчасти в наличии: Большинство необходимых комплектующих, включая контроллеры питания, аккумуляторы и разъемы, всегда на нашем складе, что значительно сокращает сроки ремонта.</li>
+<li>Гарантия 1 год по договору: На все выполненные работы и установленные компоненты предоставляется официальная гарантия 12 месяцев, закрепленная договором.</li>
+<li>Сохранность данных: Мы гарантируем полную конфиденциальность и сохранность ваших личных данных. Все работы проводятся без доступа к вашей информации.</li>
+<li>Честная цена: Вы всегда знаете конечную стоимость ремонта до его начала. Никаких скрытых платежей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Надежный ремонт iPhone 11 в Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если ваш iPhone 11 перестал заряжаться, не рискуйте доверять его сомнительным мастерским. Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Наш сервисный центр легко найти – мы расположены рядом со СРК Арена и ТЦ Я. Работаем официально, предоставляя полный пакет документов. Приезжайте, и мы оперативно вернем ваш iPhone к жизни.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Бесплатно, от 15 до 30 минут.</p></div>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> От 1990 руб. (точная стоимость после диагностики).</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: От 30 минут до 1-2 рабочих дней (зависит от сложности ремонта).</p>
+
+        </div>
+            <section><h2>Что можно проверить самостоятельно: простые шаги перед обращением в сервис</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Прежде чем обращаться в сервисный центр с iPhone 11, который не заряжается, вы можете провести несколько простых проверок. Это поможет исключить элементарные причины и, возможно, решить проблему без визита в мастерскую.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Проверьте кабель и адаптер:</strong> Убедитесь, что вы используете оригинальный или сертифицированный кабель и адаптер питания. Попробуйте подключить iPhone к другому зарядному устройству, которое заведомо исправно. Часто проблема кроется именно в изношенном или поврежденном кабеле.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Осмотрите порт зарядки:</strong> Внимательно осмотрите разъем Lightning на вашем iPhone 11. Часто внутри скапливается пыль, ворсинки или мелкий мусор, который препятствует полноценному контакту с кабелем. Используйте неметаллическую зубочистку или сухую зубную щетку с мягкой щетиной, чтобы аккуратно удалить загрязнения. Делайте это осторожно, чтобы не повредить контакты.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Перезагрузите iPhone:</strong> Иногда проблема может быть программной. Принудительная перезагрузка может устранить временные сбои. Для iPhone 11: быстро нажмите и отпустите кнопку увеличения громкости, затем быстро нажмите и отпустите кнопку уменьшения громкости, затем нажмите и удерживайте боковую кнопку, пока не появится логотип Apple.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Попробуйте другую розетку/источник питания:</strong> Убедитесь, что розетка или USB-порт, к которому вы подключаете зарядное устройство, функционирует исправно. Подключите iPhone к другому источнику питания, например, к компьютеру или другой розетке.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если после выполнения этих шагов ваш iPhone 11 по-прежнему не заряжается, это указывает на более серьезную аппаратную неисправность, такую как выход из строя контроллера питания, проблемы с аккумуляторной батареей или повреждение разъема зарядки. В таком случае требуется профессиональная диагностика в сервисном центре.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Когда iPhone 11 не заряжается, и после замены нижнего шлейфа (порта зарядки) проблема все еще сохраняется, многие новички впадают в ступор. Наш технический секрет: опытный инженер в первую очередь проверит состояние микросхемы U3300 – это контроллер USB Tristar (известный также как Hydra). Его неисправность, часто возникающая из-за использования некачественных зарядных устройств или перепадов напряжения, приводит к тому, что телефон не распознает подключенный кабель, медленно заряжается или вовсе не берет заряд, хотя индикатор может что-то показывать. Диагностика этого чипа и его последующая замена требует специализированного оборудования и навыков микропайки, что является признаком профессионального подхода к ремонту, а не просто "перестановки модулей". Именно в таких нюансах кроется истинная квалификация мастеров "Сервисного центра на Дзержинского 2Б" в Кемерово.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Профессиональная диагностика и ремонт iPhone 11 в Кемерово: наши методы</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Когда iPhone 11 перестает заряжаться, это указывает на ряд возможных технических проблем, требующих точной диагностики и квалифицированного вмешательства. В Админ.Ко мы не просто меняем разъемы — мы выявляем и устраняем корневую причину неисправности, обеспечивая долговечный результат.</p></p>
+<h3>Экспертный разбор проблемы «iPhone 11 не заряжается»</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Чаще всего причинами отсутствия заряда на iPhone 11 являются:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Повреждение разъема зарядки (Lightning Port).</li>
+<li>Выход из строя контроллера питания USB (Tristar или U2 IC), который управляет процессом зарядки и взаимодействием с компьютером.</li>
+<li>Проблемы с контроллером заряда (PMIC) или другими компонентами цепи питания на материнской плате.</li>
+<li>Деградация аккумулятора (хотя обычно проявляется снижением емкости, а не полным отсутствием заряда).</li>
+<li>Короткие замыкания в цепях питания.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Поверхностная диагностика или непрофессиональный ремонт могут привести к серьезным последствиям: повреждению многослойной платы, нарушению функциональности Face ID или полному выходу устройства из строя. Поэтому для iPhone 11 критически важен доступ к специализированному оборудованию.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В лаборатории Админ.Ко используются следующие методы и инструменты для диагностики и ремонта:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Диагностика с осциллографом Rigol и тепловизором:</strong> Мы начинаем с измерения напряжений и сигналов на всех контрольных точках с помощью высокоточного осциллографа Rigol. Это позволяет выявить обрывы, короткие замыкания и некорректную работу контроллеров. Тепловизор мгновенно обнаруживает аномальные зоны нагрева на плате, указывая на точное место неисправности без необходимости предварительного демонтажа.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Микро-пайка JBC (Испания):</strong> Для замены контроллера U2/Tristar или других микросхем питания мы применяем паяльные станции JBC. Их прецизионный контроль температуры позволяет выполнять пайку BGA-компонентов с минимальным термическим воздействием на многослойную плату iPhone 11, исключая деформации и повреждения соседних элементов.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Термовоздушная станция Quick 861DW:</strong> Используется для безопасного и контролируемого демонтажа сложных компонентов, обеспечивая равномерный нагрев и защиту окружающих элементов.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Программаторы JCID:</strong> После замены ключевых компонентов, таких как контроллеры, или при пересадке оригинальных микросхем, программаторы JCID необходимы для корректного переноса серийных номеров и калибровочных данных. Это гарантирует сохранение всех функций iPhone 11, включая Face ID, True Tone и работоспособность без системных ошибок.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Флюсы Martin/Amtech:</strong> Мы используем только профессиональные флюсы Martin и Amtech. Они обеспечивают чистую пайку, полностью вымываются после ремонта и не оставляют агрессивных остатков, которые могли бы привести к коррозии платы в перспективе.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Инженерный стандарт Админ.Ко: Ваши преимущества</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Выбирая Админ.Ко для ремонта iPhone 11, вы получаете:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Бесплатная диагностика:</strong> Мы точно установим причину неисправности без скрытых платежей.</li>
+<li><strong>Запчасти в наличии:</strong> Большинство необходимых компонентов для iPhone 11, включая контроллеры и разъемы, уже на нашем складе, что сокращает срок ремонта.</li>
+<li><strong>Гарантия 12 месяцев по договору:</strong> На все выполненные работы и установленные компоненты предоставляется официальная гарантия.</li>
+<li><strong>Сохранность ваших данных:</strong> Все работы проводятся с максимальной осторожностью, чтобы исключить потерю информации.</li>
+<li><strong>Честная цена:</strong> Вы платите только за реальный ремонт и качественные компоненты, без навязанных услуг.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Мы рядом: Сервисный центр Админ.Ко в Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для профессиональной диагностики и надежного ремонта вашего iPhone 11, когда он не заряжается, ждем вас по адресу: <strong>г. Кемерово, ул. Дзержинского 2Б</strong>. Мы находимся в центре города, рядом с СРК «Арена» и ТЦ «Я». Админ.Ко работает официально, предоставляя полный пакет документов на услуги.</p></p>
+</section>
+            <section class="mt-12"><p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><h1>Ремонт iPhone 11 (не заряжается) в Кемерово: восстановление контроллера питания за 1 день с гарантией 12 месяцев</h1></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><h2>Выбирайте надежность: почему Сервисный центр на Дзержинского 2Б – ваш лучший выбор</h2></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><h3>Blitz-Answer: Решение проблемы с iPhone 11, который не заряжается</h3></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Проблема:</b> iPhone 11 не заряжается, не включается.</li>
+<li><b>Срок ремонта:</b> От 2 часов.</li>
+<li><b>Ориентировочная цена:</b> От 2000 руб.</li>
+<li><b>Диагностика:</b> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><h3>Экспертный разбор: Почему iPhone 11 не заряжается и как мы это исправляем</h3></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Когда ваш iPhone 11 перестает заряжаться, это может быть вызвано несколькими причинами, требующими точной диагностики и профессионального подхода. Самые распространенные неисправности включают:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Износ или повреждение разъема зарядки (Lightning Port):</b> Постоянное использование приводит к механическому износу или попаданию влаги/мусора, что препятствует контакту с кабелем.</li>
+<li><b>Выход из строя контроллера питания (Tristar/Hydra IC):</b> Этот чип отвечает за корректное распределение питания. Повреждение происходит из-за использования неоригинальных зарядных устройств, перепадов напряжения или механических воздействий.</li>
+<li><b>Повреждение линий питания на материнской плате:</b> Микроскопические трещины или короткие замыкания в цепях питания требуют высокоточной пайки.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы используем специализированное оборудование для безошибочной локализации и устранения неисправности:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Осциллограф Rigol:</b> Позволяет измерять и анализировать сигналы на линиях питания и данных, точно определяя, где происходит обрыв или короткое замыкание. Без осциллографа диагностика превращается в "метод тыка", что недопустимо.</li>
+<li><b>Тепловизор:</b> Выявляет локальный перегрев компонентов на плате, что является индикатором короткого замыкания или неисправного чипа (например, контроллера питания Tristar), даже если он не виден невооруженным глазом.</li>
+<li><b>Паяльные станции JBC (Испания):</b> Эти станции обеспечивают сверхточную микро-пайку с контролем температуры до долей градуса. Это критично при замене контроллера питания или восстановлении дорожек, так как предотвращает перегрев и повреждение соседних компонентов или самой многослойной платы. Кустарная пайка обычным феном ведет к расслоению платы и необратимым последствиям.</li>
+<li><b>Флюсы Martin/Amtech:</b> Мы используем только профессиональные флюсы, которые не оставляют агрессивных остатков после пайки. Это гарантирует, что компоненты и плата не будут подвергаться коррозии в будущем, что продлевает срок службы вашего устройства после ремонта. Дешевые аналоги могут привести к новым поломкам через несколько месяцев.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без этого специализированного оборудования и соблюдения инженерных стандартов качественный и долговечный ремонт контроллера питания iPhone 11 практически невозможен. Любые попытки сэкономить на оборудовании приводят к некачественному ремонту, повторным поломкам и потере данных.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><h3>Инженерный стандарт Админ.Ко: Ваши гарантии качества</h3></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Выбирая Админ.Ко, вы получаете не просто ремонт, а полноценное инженерное обслуживание:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Бесплатная диагностика:</b> Мы точно определим причину неисправности без скрытых платежей.</li>
+<li><b>Запчасти в наличии:</b> Всегда имеем на складе оригинальные комплектующие или высококачественные аналоги, что сокращает срок ремонта.</li>
+<li><b>Гарантия 1 год по договору:</b> Мы уверены в качестве нашей работы и подтверждаем это документально.</li>
+<li><b>Сохранность ваших данных:</b> Все работы проводятся с максимальной осторожностью, исключая риск потери информации.</li>
+<li><b>Честная цена:</b> Вы платите только за реальную работу и запчасти, без навязанных услуг.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><h3>Локальный призыв: Мы рядом, когда это необходимо</h3></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не откладывайте решение проблемы с вашим iPhone 11. Мы находимся в центре Кемерово, ул. Дзержинского 2Б, всего в нескольких шагах от СРК Арена и ТЦ Я. Мы работаем официально, предоставляя полный пакет документов и прозрачность на каждом этапе ремонта. Приезжайте, и мы вернем ваш iPhone к жизни!</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

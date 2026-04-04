@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ремонт телевизоров в Кемерово: Не включается, нет изображения. Выезд на дом! | Админ.Ко</title>
+    <meta name="description" content="Телевизор не включается или пропало изображение? Выполняем выездной ремонт телевизоров всех марок в Кемерово. Профессиональная диагностика и быстрый ремонт прямо у вас дома. Гарантия!">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Ремонт телевизоров в Кемерово: Не включается, нет изображения. Выезд на дом!</h1>
+            <meta name="published_at" content="2026-03-22T15:21:44.100Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Глава 1: Телевизор не включается или нет изображения? Первые шаги и почему важен профессиональный подход.</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваш телевизор перестал включаться или на экране нет изображения? Это одна из самых частых неисправностей. Не стоит паниковать, но и попытки самостоятельного ремонта, как правило, лишь усугубляют проблему.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Проблема:</strong> Телевизор не включается или нет изображения.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Срок ремонта:</strong> От 1 дня.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Цена:</strong> От 1500 руб. (без учета стоимости запчастей).</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Диагностика:</strong> 0 руб.</p></p>
+<h3>Экспертный разбор проблемы: почему телевизор не работает?</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Причины, по которым телевизор отказывается включаться или не выводит изображение, могут быть разнообразны, от простых до крайне сложных. Чаще всего встречаются проблемы с:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Блоком питания (PSU):</strong> выход из строя конденсаторов, сбой контроллера питания. Телевизор может никак не реагировать на кнопку включения или мигать индикатором.</li>
+<li><strong>Материнской платой (Main Board):</strong> повреждение процессора, сбой прошивки, проблемы с компонентами BGA-монтажа. Может приводить к "зависанию" на логотипе, отсутствию звука при наличии изображения, или полному отсутствию реакции.</li>
+<li><strong>Подсветкой экрана (Backlight):</strong> перегорание LED-лент. В этом случае изображение может быть едва видно под углом или при ярком внешнем освещении, но экран остается черным.</li>
+<li><strong>Платой T-CON (Timing Controller):</strong> отвечает за формирование изображения и передачу его на матрицу. Неисправности приводят к полосам, артефактам, инверсии цветов или полному отсутствию изображения.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Эффективный и надежный ремонт требует не только опыта, но и высокоточного оборудования, которое исключает ошибки и обеспечивает долгосрочную работоспособность устройства. В Админ.Ко мы используем:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Паяльные станции JBC (Испания) и Quick 861DW:</strong> для точечной микро-пайки и работы с BGA-компонентами. Это позволяет производить демонтаж и монтаж без перегрева окружающих элементов и платы, что критически важно для многослойных печатных плат современных телевизоров.</li>
+<li><strong>Осциллограф Rigol:</strong> необходим для глубокой диагностики импульсных блоков питания, проверки сигнальных цепей на материнской плате и T-CON. С его помощью мы точно определяем места обрывов, коротких замыканий и сбоев в работе электронных компонентов.</li>
+<li><strong>Тепловизор:</strong> позволяет безконтактно обнаружить перегретые участки на плате, указывающие на скрытые дефекты или короткие замыкания, которые невозможно выявить визуально.</li>
+<li><strong>Профессиональные флюсы Martin/Amtech:</strong> мы используем только высококачественные флюсы, которые не оставляют агрессивных остатков и не вызывают коррозию платы со временем. Это гарантирует надежность пайки и долгий срок службы отремонтированного компонента, в отличие от дешевых аналогов, которые приводят к повторным поломкам.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без использования такого комплекта оборудования ремонт будет поверхностным и не гарантирует устранения первопричины. Это ведет к повторным обращениям, а зачастую и к удорожанию ремонта, когда неквалифицированное вмешательство создает новые проблемы.</p></p>
+<h3>Инженерный стандарт Админ.Ко — ваши преимущества:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>0 рублей за диагностику:</strong> мы бесплатно определим точную причину неисправности и стоимость ремонта.</li>
+<li><strong>Запчасти в наличии:</strong> большинство необходимых компонентов для популярных моделей телевизоров уже на нашем складе, что сокращает сроки ремонта.</li>
+<li><strong>Гарантия 1 год по договору:</strong> мы официально фиксируем свои обязательства, предоставляя уверенность в качестве выполненных работ.</li>
+<li><strong>Сохранность ваших данных:</strong> при ремонте материнской платы мы гарантируем сохранение настроек Smart TV и пользовательских аккаунтов.</li>
+<li><strong>Честная цена:</strong> вы платите только за реальный ремонт и замененные компоненты, без скрытых платежей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально, предоставляя полный пакет документов и прозрачность каждого этапа ремонта.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Ремонт от 800 руб.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: Выезд и ремонт часто в день обращения.</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> 300-500 руб. (БЕСПЛАТНО при согласии на ремонт).</p></div>
+
+        </div>
+            <section><h2>Глава 2: Распространенные причины поломок: от простых до серьезных. Что проверить, прежде чем вызывать мастера?</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Когда телевизор перестает включаться или показывает черный экран при наличии звука, это вызывает дискомфорт. Прежде чем обращаться в сервисный центр, можно провести ряд базовых проверок, которые в некоторых случаях позволяют решить проблему самостоятельно.</p></p>
+<h3>Что можно проверить самостоятельно?</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Электропитание и кабели.</b> Убедитесь, что вилка телевизора плотно вставлена в рабочую розетку (можно проверить другим прибором). Проверьте целостность кабеля питания. Если используется сетевой фильтр или удлинитель, попробуйте подключить телевизор напрямую к розетке. Убедитесь, что батарейки в пульте дистанционного управления не разряжены.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Источник сигнала.</b> Если телевизор включается, но нет изображения, возможно, выбран неправильный источник сигнала (HDMI1, HDMI2, AV и т.д.). Попробуйте переключить вход кнопкой &quot;Source&quot; или &quot;Input&quot; на пульте. Убедитесь, что внешние устройства (приставки, плееры) включены и правильно подключены к соответствующим портам.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>&quot;Фонариковый&quot; тест.</b> Если телевизор включается, есть звук, но экран остается черным (или очень тусклым), попробуйте посветить ярким фонариком на экран под углом. Если вы видите слабое изображение, это указывает на проблему с подсветкой экрана. В этом случае требуется профессиональный ремонт.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Перезагрузка.</b> Отключите телевизор от сети на 5-10 минут, затем снова включите. Это может сбросить временные программные сбои или ошибки прошивки.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Когда нужна помощь специалиста?</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если после выполнения всех вышеперечисленных проверок проблема не устранена, скорее всего, неисправность носит аппаратный характер и требует вмешательства квалифицированного инженера. Среди наиболее распространенных причин, требующих профессионального ремонта, выделяют:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Выход из строя блока питания.</b> Частая причина, по которой телевизор &quot;не подает признаков жизни&quot; (не включается, не горит индикатор, нет реакции).</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Неисправность материнской платы (Main Board).</b> Может проявляться как отсутствием изображения и звука, так и зависаниями, произвольными перезагрузками, отсутствием реакции на пульт или &quot;зависанием&quot; на логотипе.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Поломка платы T-CON (Timing Controller).</b> Отвечает за формирование изображения. При неисправности могут появиться полосы, артефакты, &quot;замороженная&quot; картинка или полное отсутствие изображения при наличии подсветки.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Выход из строя подсветки экрана (LED-линеек).</b> Как правило, телевизор включается, есть звук, но экран остается черным (как показано в &quot;фонариковом&quot; тесте).</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Повреждение матрицы.</b> Механические повреждения или внутренние дефекты могут привести к появлению трещин, черных пятен или полному отсутствию изображения на части или всем экране.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Диагностика и ремонт этих компонентов требуют специализированного оборудования, глубоких знаний электроники и навыков работы с высокоточными инструментами. Попытки самостоятельного ремонта без должного опыта и инструментов могут привести к усугублению неисправности и значительному увеличению стоимости последующего восстановления.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В «Админ.Ко» мы проводим комплексную диагностику телевизоров в Кемерово для точного определения причины поломки, используя профессиональное оборудование и опыт наших инженеров. Это позволяет гарантировать качественный и долговечный ремонт.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Истинный секрет опытного инженера, когда телевизор не включается или нет изображения – это не спешка с заменой дорогостоящих блоков. Это системная, пошаговая диагностика. Мы не гадаем, а точно локализуем причину: будь то нюансы в питании, дефект подсветки или программный сбой. Только такой подход гарантирует, что вы платите за *решение*, а не за эксперименты. Поэтому мы и едем к вам в Кемерово, чтобы найти именно ЭТУ причину.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Когда ваш телевизор перестает включаться или показывать изображение, задача его транспортировки в сервисный центр становится проблемой. Крупногабаритная техника, хрупкие экраны, отсутствие транспорта – все это создает дискомфорт. Именно поэтому <strong>Админ.Ко</strong> предлагает услугу выездной диагностики и ремонта телевизоров в Кемерово, чтобы облегчить вам жизнь.</p></p>
+<h2>Удобство и преимущества выездного ремонта телевизоров в Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Экономия времени и сил:</strong> Вам не придется самостоятельно отключать, упаковывать и везти крупногабаритный телевизор через весь город. Наш квалифицированный инженер приедет к вам в заранее согласованное и удобное время.</li>
+<li><strong>Быстрая первичная диагностика:</strong> Многие типовые проблемы с телевизорами можно оперативно определить и устранить прямо на месте. Это позволяет избежать длительного ожидания и сохранить привычный ритм вашей жизни.</li>
+<li><strong>Прозрачность процесса:</strong> Вы видите, как специалист проводит диагностику, объясняет причину неисправности и выполняет первые этапы ремонта. Это обеспечивает полное доверие и понимание всех шагов.</li>
+<li><strong>Минимальный дискомфорт:</strong> Ваш телевизор остается в привычной обстановке, а вы получаете решение проблемы без лишних хлопот и перевозок.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Как работает выездной ремонт телевизоров от Админ.Ко?</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Процесс организации выездного ремонта в <strong>Админ.Ко</strong> максимально прост и ориентирован на клиента:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ol></p>
+<li><strong>Ваша заявка:</strong> Вы связываетесь с нами по телефону или через форму на сайте, подробно описываете проблему с телевизором и согласовываете удобное время для визита нашего инженера.</li>
+<li><strong>Визит инженера на дом:</strong> Наш специалист приезжает к вам со всем необходимым для первичной диагностики и устранения типовых неисправностей. Инженер оснащен базовым набором инструментов, измерительным оборудованием и комплектующими для самых распространенных поломок (например, проблемы с подсветкой, блоком питания, программными сбоями или неисправностями внешних подключений).</li>
+<li><strong>Определение метода ремонта:</strong>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Ремонт на месте:</strong> Если поломка несложная и у инженера есть необходимые комплектующие, ремонт будет выполнен сразу, прямо у вас дома.</li>
+<li><strong>Доставка в СЦ для сложного ремонта:</strong> Для глубокой диагностики и сложных ремонтов, требующих специализированного лабораторного оборудования (такого как станции JBC для микро-пайки, осциллографы Rigol для детального анализа сигналов, тепловизор для точного поиска коротких замыканий), телевизор будет бережно и безопасно доставлен в наш сервисный центр. Инженер аккуратно оформит все необходимые документы и организует транспортировку.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li><strong>Гарантия и оплата:</strong> После успешного выполнения ремонта (как на дому, так и в сервисном центре), вы получаете официальную гарантию от <strong>Админ.Ко</strong> на все выполненные работы и установленные запчасти. Диагностика на дому предоставляется бесплатно при условии дальнейшего ремонта.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ol></p>
+<h2>Почему для ряда поломок необходим наш сервисный центр на Дзержинского 2Б?</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Несмотря на все удобство выездного ремонта, важно понимать, что не все проблемы с современными телевизорами можно решить за пределами специализированной лаборатории. Высокотехнологичные устройства, такие как ТВ, содержат многослойные печатные платы и миниатюрные компоненты, требующие прецизионного подхода. Для качественного и надежного устранения сложных дефектов необходим полный арсенал профессионального оборудования, доступный только в нашем сервисном центре:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Микро-пайка с JBC (Испания):</strong> Для точной и безопасной замены BGA-компонентов, восстановления поврежденных дорожек платы и работы с чувствительными элементами без риска перегрева и дальнейшего повреждения. Это уровень работы, который невозможно обеспечить в домашних условиях.</li>
+<li><strong>Диагностика осциллографом Rigol:</strong> Незаменим для глубокого анализа электрических сигналов на плате, выявления нестабильностей и скрытых неисправностей, которые невозможно обнаружить иными методами.</li>
+<li><strong>Тепловизор:</strong> Позволяет быстро и точно определить места перегрева или короткого замыкания на плате, что критически важно для эффективного поиска неисправностей без разрушающего демонтажа компонентов.</li>
+<li><strong>Специализированные программаторы:</strong> Для восстановления прошивок EMMC/NAND, работы с различными контроллерами и специфическими модулями телевизора, что требует стационарного, калиброванного оборудования.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Именно поэтому, после первичной диагностики на дому, в случае выявления серьезных неисправностей, требующих такого оборудования, наш инженер аккуратно заберет ваш телевизор для ремонта в лабораторных условиях. Мы находимся в центре Кемерово, по адресу: <strong>улица Дзержинского 2Б</strong>. Рядом с нами СРК Арена и ТЦ Я, что делает нас легкодоступными. В условиях нашей лаборатории, мы гарантируем ремонт любой сложности с применением самых передовых технологий, оригинальных или высококачественных аналоговых запчастей и соблюдением всех инженерных стандартов <strong>Админ.Ко</strong>.</p></p>
+</section>
+            <section class="mt-12"><h2>Почему выбирают Админ.Ко для ремонта телевизоров в Кемерово?</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Когда ваш телевизор перестает включаться или показывает "черный экран", выбор сервисного центра становится критичным. В Админ.Ко мы предлагаем не просто ремонт, а гарантированное решение проблемы, основанное на глубоких инженерных знаниях и передовом оборудовании. Наша цель – вернуть вашу технику к жизни с максимальной надежностью и долговечностью.</p></p>
+<h3>Инженерный стандарт Админ.Ко: гарантии качества и честности</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы понимаем, что ремонт крупной бытовой техники, такой как телевизор, требует особого подхода и доверия. Каждый этап работы в Админ.Ко построен на принципах прозрачности, точности и долговечности. Выбирая нас, вы получаете:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Бесплатная диагностика:</b> Полная и точная проверка вашего телевизора для определения неисправности и точной стоимости ремонта. Вы платите только за результат, если согласны на ремонт.</li>
+<li><b>Запчасти в наличии:</b> Мы поддерживаем широкий ассортимент оригинальных и проверенных аналоговых комплектующих для большинства моделей телевизоров. Это значительно ускоряет процесс ремонта, позволяя вернуть вашу технику в строй в кратчайшие сроки.</li>
+<li><b>Гарантия 1 год по договору:</b> На все выполненные работы и установленные компоненты предоставляется официальная гарантия, закрепленная юридически значимым договором. Мы полностью отвечаем за качество наших услуг.</li>
+<li><b>Бережное отношение к вашей технике:</b> Мы гарантируем аккуратное обращение с вашим телевизором на всех этапах ремонта, сохраняя его эстетический вид, работоспособность всех систем и ваши личные настройки.</li>
+<li><b>Честная цена:</b> Стоимость ремонта озвучивается после проведения диагностики и является фиксированной. Никаких скрытых платежей, доплат и "сюрпризов".</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Экспертный ремонт: профессиональное оборудование против типовых поломок</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Эффективный ремонт современного телевизора невозможен без специализированного оборудования. В нашей лаборатории мы используем:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Осциллограф Rigol:</b> Позволяет с высокой точностью диагностировать неисправности в цепях питания, сигналах видеопроцессора, а также выявлять скрытые дефекты в системных платах, что исключает метод "научного тыка".</li>
+<li><b>Тепловизор:</b> Используется для обнаружения перегретых компонентов и коротких замыканий на платах, позволяя точно локализовать неисправность, которая может быть незаметна при визуальном осмотре.</li>
+<li><b>Профессиональные паяльные станции JBC (Испания) и Quick 861DW:</b> Необходимы для микро-пайки SMD-компонентов и BGA-чипов на материнских платах. Это гарантирует точное соблюдение температурных режимов, предотвращая перегрев платы и обеспечивая надежность паяных соединений на долгие годы.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Использование такого оборудования гарантирует, что ремонт будет выполнен не только быстро, но и максимально качественно, исключая повторные обращения.</p></p>
+<h3>Выездной ремонт и удобство обслуживания в Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы ценим ваше время и предлагаем максимально удобные решения. Если ваш телевизор невозможно транспортировать, вы можете вызвать нашего мастера для первичной диагностики на дому в Кемерово. Это позволит определить характер неисправности и принять решение о дальнейшем ремонте – на месте или в условиях нашей лаборатории.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Наш сервисный центр Админ.Ко расположен в самом центре Кемерово, по адресу <b>улица Дзержинского 2Б</b>. Мы легко доступны и находимся рядом со СРК "Арена" и ТЦ "Я". Работаем официально, предоставляя полный пакет документов и заключая договор на все виды работ.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не позволяйте неисправному телевизору нарушать ваш комфорт. Свяжитесь с Админ.Ко, и мы предложим профессиональное и быстрое решение вашей проблемы.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

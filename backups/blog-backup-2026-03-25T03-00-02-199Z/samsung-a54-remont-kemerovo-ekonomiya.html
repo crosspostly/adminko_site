@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samsung A54: Экономия на ремонте в Кемерово | Советы Админ.Ко | Админ.Ко</title>
+    <meta name="description" content="Экономьте на ремонте Samsung A54 в Кемерово! Как выбрать сервис, купить запчасти недорого и получить качественный ремонт без переплат. Советы Админ.Ко.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Samsung A54: Экономия на ремонте в Кемерово | Советы Админ.Ко</h1>
+            <meta name="published_at" content="2026-03-22T16:16:47.493Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Ремонт Samsung A54 в Кемерово: как избежать переплат и получить гарантию</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Глава 1: Samsung A54 – распространенные поломки и стоимость ремонта в Кемерово</strong></p></p>
+<h3>Blitz-Answer (Блок конверсии)</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Проблема:</strong> Разбит экран, не заряжается, быстро разряжается.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Срок:</strong> От 1 часа (замена дисплея/аккумулятора) до 1-2 дней (сложный компонентный ремонт).</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Цена:</strong> От 1500 руб. (замена разъема питания) до 6500-8000 руб. (замена дисплейного модуля).</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Диагностика:</strong> 0 руб. (даже при отказе от ремонта).</p></p>
+<h3>Экспертный разбор (The Proof)</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Samsung A54, как и любой современный смартфон, подвержен ряду типичных поломок. Наиболее частые из них — это повреждение дисплейного модуля, выход из строя разъема зарядки и снижение емкости аккумулятора. Каждая из этих проблем требует не только квалифицированного подхода, но и использования специализированного оборудования, без которого качественный ремонт невозможен.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Повреждение дисплея:</strong> При замене разбитого экрана Samsung A54 крайне важно обеспечить правильный демонтаж и монтаж нового модуля. Использование термовоздушной паяльной станции Quick 861DW позволяет безопасно и равномерно нагреть рамку для отделения разбитого дисплея, минимизируя риск повреждения других компонентов. Неравномерный нагрев или попытки демонтажа "на холодную" часто приводят к деформации корпуса или обрыву шлейфов. После установки нового дисплея требуется точная фиксация и использование адгезивов, соответствующих заводским стандартам, чтобы обеспечить герметичность и долговечность.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Проблемы с зарядкой:</strong> Если Samsung A54 не заряжается или заряжается нестабильно, это часто указывает на неисправность разъема питания или контроллера заряда. Диагностика такой проблемы начинается с осциллографа Rigol, который позволяет точно определить характер неисправности: это механическое повреждение разъема, обрыв цепи на плате, или проблема с микросхемой. Замена разъема питания – это микро-пайка. Без профессиональной паяльной станции JBC (Испания), способной поддерживать стабильную температуру и обеспечивать точную подачу припоя, существует высокий риск перегрева платы и выхода из строя соседних компонентов. Мы используем только высококачественные флюсы Martin/Amtech, которые не оставляют агрессивных остатков и предотвращают коррозию платы в долгосрочной перспективе, в отличие от дешевых аналогов.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Быстрый разряд аккумулятора:</strong> При жалобах на автономность, помимо замены самого аккумулятора, крайне важно провести диагностику цепей питания. Тепловизор позволяет выявить скрытые точки перегрева на плате, указывающие на короткое замыкание или неисправность компонентов, потребляющих избыточный ток. Просто заменить батарею без устранения первопричины — это временное решение, которое приведет к повторной проблеме.</p></p>
+<h3>Инженерный стандарт Админ.Ко</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Бесплатная диагностика устройства, даже если вы решите не проводить ремонт.</li>
+<li>Большинство запчастей для Samsung A54 всегда в наличии на нашем складе, что сокращает сроки ремонта.</li>
+<li>Официальная гарантия на все выполненные работы и установленные компоненты сроком 12 месяцев по договору.</li>
+<li>Приоритет сохранения ваших данных: мы делаем все возможное, чтобы информация на вашем устройстве осталась нетронутой.</li>
+<li>Честная цена без скрытых платежей: стоимость ремонта озвучивается после диагностики и не меняется в процессе.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Локальный призыв (GEO CTA)</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально, предоставляя профессиональные услуги по ремонту вашей техники.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Blitz-Answer для Samsung A54 (Кемерово):</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"></p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Экономия начинается с выбора детали. Качественный совместимый экран для A54 в Кемерово обойдется от 4000-5500 руб. (включая работу). Оригинальный модуль, если найдете, будет от 8000-10000+. Замена батареи — 1500-2500 руб. Совет Админа: всегда уточняйте, какого качества ставят детали. Не экономьте на совсем дешевых китайских "ноунейм" запчастях – прослужат недолго.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Большинство типовых ремонтов (замена экрана, батареи) выполняются в Кемерово в день обращения, от 1 до 3 часов, если нужные запчасти есть в наличии. Если детали под заказ, срок может увеличиться до 3-7 рабочих дней. Совет Админа: перед визитом в сервис, позвоните и уточните наличие запчасти для вашей модели.</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"></p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Почти в 95% случаев диагностика в Кемеровских сервисах БЕСПЛАТНАЯ, даже если вы откажетесь от ремонта. Это ваш главный инструмент экономии! Совет Админа: обязательно воспользуйтесь бесплатной диагностикой. Это позволит точно понять, что сломалось, сколько это будет стоить, и избежать лишних трат на "предполагаемый" ремонт. Хороший сервис всегда сначала диагностирует, потом предлагает варианты.</p>
+
+        </div>
+            <section><p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><H2>Глава 2: Что можно сделать самому: первичная диагностика и простые решения до обращения в сервис</H2></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><P>Прежде чем обращаться в сервисный центр «Админ.Ко», владельцы Samsung A54 в Кемерово могут самостоятельно провести первичную диагностику и попробовать решить некоторые типовые проблемы. Это поможет сэкономить время и, в некоторых случаях, избежать ненужного обращения.</P></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><P>Важно помнить, что любые манипуляции должны выполняться аккуратно. При отсутствии уверенности в своих действиях или при наличии подозрений на аппаратную неисправность, лучше сразу доверить устройство специалистам.</P></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><H3>1. Устройство не включается, зависает или медленно работает:</H3></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><UL></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><STRONG>Принудительная перезагрузка:</STRONG> Если Samsung A54 не реагирует на нажатия или завис, нажмите и удерживайте кнопку уменьшения громкости и кнопку питания одновременно в течение 7-10 секунд. Это действие приводит к принудительной перезагрузке и часто устраняет программные сбои.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><STRONG>Проверка зарядного устройства:</STRONG> Убедитесь, что используете оригинальное или сертифицированное зарядное устройство и кабель, способные выдавать необходимую мощность. Попробуйте зарядить телефон от другой розетки или через USB-порт компьютера. Осмотрите порт Type-C на телефоне на предмет загрязнений (пыль, ворс), которые могут препятствовать контакту.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><STRONG>Очистка кэша:</STRONG> Регулярная очистка кэша приложений и системы может улучшить общую производительность. В «Настройках» &rarr; «Приложения» выберите конкретное приложение, перейдите в раздел «Хранилище» и нажмите «Очистить кэш». Для очистки системного кэша потребуется войти в режим восстановления (Recovery Mode), что требует определенных навыков.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></UL></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><H3>2. Проблемы с экраном (за исключением физических повреждений):</H3></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><UL></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><STRONG>Перезагрузка системы:</STRONG> Простые программные глюки, вызывающие артефакты изображения, мерцание или некорректную работу сенсора, часто устраняются стандартной перезагрузкой устройства.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><STRONG>Проверка настроек дисплея:</STRONG> Убедитесь, что яркость не установлена на минимальное значение, а режим адаптивной яркости функционирует корректно. Проверьте, не включены ли специальные режимы (например, «Комфорт для глаз»), которые могут изменять цветопередачу и быть причиной «неправильных» цветов.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></UL></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><H3>3. Быстрый разряд батареи:</H3></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><UL></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><STRONG>Анализ расхода энергии:</STRONG> В разделе «Настройки» &rarr; «Обслуживание устройства» &rarr; «Батарея» вы можете просмотреть подробную статистику энергопотребления. Выявите приложения, которые расходуют больше всего энергии, и по возможности ограничьте их фоновую активность или удалите, если они не используются.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><STRONG>Отключение неиспользуемых функций:</STRONG> Отключайте Wi-Fi, Bluetooth, GPS, NFC и мобильные данные, если они не активны. Снижение яркости экрана и активация режима энергосбережения также значительно продлевают время автономной работы.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></UL></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><H3>4. Проблемы со связью (Wi-Fi, Bluetooth):</H3></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><UL></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><STRONG>Перезапуск модулей:</STRONG> Попробуйте отключить и снова включить Wi-Fi или Bluetooth через шторку уведомлений. Если проблема не устранилась, перезагрузите телефон.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><STRONG>Сброс сетевых настроек:</STRONG> В «Настройках» &rarr; «Общие настройки» &rarr; «Сброс» выберите «Сброс сетевых настроек». Это действие удалит все сохраненные Wi-Fi сети, Bluetooth-устройства и настройки мобильных данных, но не затронет личные данные. После сброса попробуйте подключиться заново.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></UL></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><P>Эти рекомендации позволяют выполнить базовую диагностику и устранить типовые программные сбои Samsung A54. Если после выполнения указанных шагов проблема сохраняется, имеет аппаратный характер (например, треснувший экран, неисправность камеры, проблемы с зарядкой после падения) или вы не уверены в своих действиях, самостоятельное вмешательство не рекомендуется. В таких случаях необходимо обратиться в специализированную лабораторию «Админ.Ко» на Дзержинского 2Б в Кемерово. Наши инженеры проведут точную диагностику с использованием профессионального оборудования и выполнят квалифицированный ремонт.</P></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Технический секрет инженера Samsung для A54: «Принцип Трех Шагов – Не Спеши Платить!»</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Привет, Админ.Ко! Я, как инженер, который повидал не один десяток Samsung A54 после "сложного" ремонта, хочу поделиться секретом, который может сэкономить вам серьезные деньги на ремонте в Кемерово, да и в любом другом городе. Большинство пользователей, столкнувшись с проблемой, сразу бегут в сервис, не проверив очевидные вещи. А многие сервисы, увы, не прочь этим воспользоваться.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Мой главный принцип: <strong>"Всегда начинай с самого простого и наименее затратного!"</strong> Для Samsung A54 это особенно актуально, так как многие проблемы, которые выглядят как серьезная поломка, на самом деле – мелкие софтовые глюки или легкоустранимые физические неполадки.</p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Секрет инженера: «Диагностический Базовый Принцип A54»</strong></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Представьте, ваш A54 начал глючить – не включается, не заряжается, экран мерцает, звук пропал, или тачскрин плохо реагирует. Прежде чем звонить в сервисы Кемерово, выполните эти три шага:</p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Шаг 1: Программный Реаниматор – Силовой Перезапуск и Чистка Кеша</strong></p>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  <strong>Проблема:</strong> Телефон завис, не включается, тач не реагирует, появились странные артефакты на экране.</li>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  <strong>Что делать:</strong></li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">1.  <strong>Принудительная перезагрузка:</strong> Нажмите и удерживайте кнопку <strong>Уменьшения громкости + Питание</strong> одновременно около 7-10 секунд. Телефон должен принудительно перезагрузиться. Это сбрасывает временные сбои системы. Помогает при зависаниях, "черном экране", когда телефон вроде работает, но нет изображения.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">2.  <strong>Запуск в Безопасном режиме (Safe Mode):</strong> Если глючит какая-то функция (камера, звук, тачскрин) или телефон постоянно перезагружается, попробуйте загрузиться в безопасном режиме. Для этого при включении удерживайте кнопку Уменьшения громкости, пока не увидите надпись "Безопасный режим" в углу экрана. В этом режиме отключаются все сторонние приложения. Если в безопасном режиме проблема исчезла – виновато одно из установленных вами приложений, ищите его и удаляйте.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">3.  <strong>Очистка раздела кеша (Wipe Cache Partition):</strong> Это более серьезная процедура, но не удаляет ваши данные. Выключаем телефон. Затем одновременно нажимаем и удерживаем <strong>Громкость вверх + Питание</strong>. Как только появится логотип Samsung, отпускаем кнопку Питания, но продолжаем удерживать Громкость вверх, пока не появится меню Recovery. В этом меню, используя кнопки громкости для навигации, выберите "Wipe cache partition" и подтвердите кнопкой питания. Затем выберите "Reboot system now". Это очистит временные системные файлы, которые могут вызывать сбои.</p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Шаг 2: Внешний Аудит – Порты, Кабели, Зарядки</strong></p>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  <strong>Проблема:</strong> Телефон не заряжается, плохо подключается к компьютеру, слышен треск в динамиках.</li>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  <strong>Что делать:</strong></li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">1.  <strong>Осмотр порта зарядки (USB-C):</strong> Возьмите фонарик и внимательно осмотрите порт USB-C на наличие грязи, пыли, ворсинок, застрявших кусочков мусора. Это самая частая причина проблем с зарядкой! Аккуратно (подчеркиваю – <strong>аккуратно!</strong>) зубочисткой или пластиковой палочкой попробуйте извлечь мусор. Ни в коем случае не используйте металлические предметы! В 80% случаев проблема с "незарядкой" – это забитый порт.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">2.  <strong>Проверка кабеля и зарядного устройства:</strong> Всегда сначала попробуйте другой заведомо рабочий кабель и другую зарядку. Часто проблема не в телефоне, а в аксессуарах. Некачественные или изношенные кабели – бич современности.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">3.  <strong>Чистка динамиков/микрофона:</strong> Используйте мягкую зубную щетку или баллончик со сжатым воздухом, чтобы очистить сетки динамиков и отверстия микрофона от пыли и грязи. Иногда это решает проблемы с тихим звуком или плохой слышимостью собеседника.</p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Шаг 3: Верификация До Диагноза – Вопросы Сервису в Кемерово</strong></p>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  <strong>Проблема:</strong> Шаги 1 и 2 не помогли, и вам все же нужно обратиться в сервис.</li>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  <strong>Что делать (прежде чем отдать телефон):</strong></li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">1.  <strong>Четко опишите проблему:</strong> Максимально подробно расскажите, что произошло, после чего, как проявляется. Чем точнее вы опишете, тем легче инженеру будет поставить правильный диагноз.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">2.  <strong>Спросите про диагностику:</strong> Уточните, платная ли диагностика и входит ли ее стоимость в ремонт. Сколько времени она займет?</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">3.  <strong>Про детали – самое важное:</strong> Для A54, как и для большинства современных Samsung, самая дорогая часть – экран (дисплейный модуль). Если вам говорят "замена экрана", обязательно спросите:</p>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  "Это будет <strong>оригинальный</strong> дисплейный модуль Samsung или качественная <strong>копия</strong> (аналог)?"</li>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  "Какая гарантия на дисплейный модуль и на работу?"</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Оригинальные модули стоят значительно дороже, но и качество изображения, цветопередача и долговечность у них на порядок выше. Многие сервисы в Кемерово предлагают более дешевые "копии", которые могут быть заметно хуже по качеству и чаще выходят из строя. Зная это, вы можете сознательно выбрать, за что платите.</p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Почему это экономит деньги?</strong></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Потому что самый дорогой ремонт – это тот, который вам не нужен. Выполняя Шаг 1 и 2, вы можете самостоятельно устранить до 30-40% "поломок" A54, избегая даже платной диагностики. А Шаг 3 позволяет вам быть информированным клиентом, который понимает, за что он платит, и не переплачивает за необоснованные диагнозы или некачественные запчасти.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Удачи вам с вашим Samsung A54, и помните: умный подход – лучшая экономия!</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">&lt;h2&gt;Глава 3: Выбираем сервис в Кемерово: как найти надежного мастера и не переплатить за ремонт A54&lt;/h2&gt;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">&lt;p&gt;При выходе из строя смартфона Samsung A54 владелец часто сталкивается с дилеммой: выбрать дешевый ремонт у "частника" или обратиться в специализированный сервисный центр. Попытка сэкономить на ремонте, особенно такой сложной техники как A54, в долгосрочной перспективе почти всегда приводит к дополнительным расходам и потере времени. Истинная экономия — это качественный ремонт с первого раза.&lt;/p&gt;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">&lt;p&gt;Рассмотрим, почему ремонт Samsung A54 требует профессионального подхода и оборудования, и какие риски несет обращение к неквалифицированным специалистам:&lt;/p&gt;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">&lt;ul&gt;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">&lt;li&gt;&lt;strong&gt;Качество комплектующих.&lt;/strong&gt; Дешевые сервисы часто используют неоригинальные запчасти низкого качества. Например, при замене экрана Samsung A54 такой модуль может иметь плохую цветопередачу, некорректную яркость, замедленную реакцию сенсора или вовсе отказаться работать после нескольких дней. Отсутствие защиты от пыли и влаги (IP67) после такой замены делает ваш смартфон уязвимым.&lt;/li&gt;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">&lt;li&gt;&lt;strong&gt;Микро-пайка и компонентный ремонт.&lt;/strong&gt; Современные платы Samsung A54 содержат множество миниатюрных компонентов. Для ремонта на компонентном уровне (например, замена разъема зарядки USB-C или контроллера питания) требуется прецизионное оборудование. Без паяльной станции JBC (Испания) для точного контроля температуры и предотвращения перегрева платы, а также без качественных микроскопов, риск повредить соседние элементы или разрушить многослойную плату чрезвычайно высок. Диагностика без осциллографа Rigol и тепловизора для поиска коротких замыканий становится гаданием, а не ремонтом.&lt;/li&gt;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">&lt;li&gt;&lt;strong&gt;Химические материалы.&lt;/strong&gt; Использование дешевых, агрессивных флюсов вместо профессиональных Martin или Amtech при пайке приводит к коррозии контактов и разрушению изоляции компонентов платы уже через несколько месяцев. Это становится причиной новых, часто более серьезных неисправностей.&lt;/li&gt;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">&lt;li&gt;&lt;strong&gt;Сохранность данных.&lt;/strong&gt; Неквалифицированный ремонт может привести к потере данных, находящихся на устройстве. Профессиональный сервис гарантирует их сохранность, соблюдая протоколы работы с чувствительными элементами.&lt;/li&gt;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">&lt;/ul&gt;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">&lt;h3&gt;Инженерный стандарт Админ.Ко: Почему качество ремонта — это инвестиция&lt;/h3&gt;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">&lt;p&gt;Выбирая Админ.Ко для ремонта вашего Samsung A54, вы получаете не просто ремонт, а гарантированный результат, основанный на инженерном подходе:&lt;/p&gt;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">&lt;ul&gt;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">&lt;li&gt;&lt;strong&gt;Бесплатная диагностика 0 руб.&lt;/strong&gt; Мы точно определим причину неисправности, прежде чем приступить к работе.&lt;/li&gt;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">&lt;li&gt;&lt;strong&gt;Запчасти в наличии.&lt;/strong&gt; Используем оригинальные комплектующие или проверенные сертифицированные аналоги высокого качества.&lt;/li&gt;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">&lt;li&gt;&lt;strong&gt;Гарантия 1 год по договору.&lt;/strong&gt; На все выполненные работы и установленные детали предоставляется официальная гарантия, закрепленная в договоре.&lt;/li&gt;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">&lt;li&gt;&lt;strong&gt;Полная сохранность данных.&lt;/strong&gt; Ваши данные на устройстве останутся в целости и неприкосновенности.&lt;/li&gt;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">&lt;li&gt;&lt;strong&gt;Честная цена.&lt;/strong&gt; Никаких скрытых платежей. Вы всегда знаете точную стоимость ремонта заранее.&lt;/li&gt;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">&lt;/ul&gt;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">&lt;p&gt;Наш сервисный центр находится в центре Кемерово по адресу: ул. Дзержинского 2Б. Мы расположены удобно, рядом с СРК Арена и ТЦ Я. Админ.Ко работает официально, предоставляя все необходимые документы и чеки на выполненные работы. Доверьте ремонт вашего Samsung A54 профессионалам и забудьте о проблемах.&lt;/p&gt;</p>
+</section>
+            <section class="mt-12"><h2>Глава 4: Профилактика и правильный уход: как избежать повторных поломок и сэкономить в долгосрочной перспективе</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваш Samsung A54 — это не просто гаджет, а сложное инженерное устройство. Правильный уход и своевременная профилактика позволяют значительно продлить срок его службы, сохранить функциональность и избежать дорогостоящих ремонтов. Админ.Ко, как экспертная сервисная лаборатория в Кемерово, рекомендует следующие меры:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Защита экрана и корпуса:</strong> Дисплей Samsung A54, хоть и выполнен по технологии AMOLED, остается уязвимым к механическим повреждениям. Используйте качественные защитные стекла с твердостью 9H и чехлы, обеспечивающие амортизацию при падениях. Это предотвратит появление трещин и сколов, которые требуют полной замены дисплейного модуля – одной из самых дорогостоящих операций.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Бережное отношение к разъему зарядки Type-C:</strong> Разъем Type-C является одним из наиболее нагруженных элементов. Не допускайте резких движений при подключении и отключении кабеля. Избегайте использования несертифицированных кабелей, которые могут повредить контакты или вызвать перегрев. Если вы заметили, что кабель держится неплотно или зарядка прерывается, это может указывать на загрязнение разъема или его механический износ. Самостоятельная чистка должна производиться сухой неметаллической щеткой. При подозрении на внутреннее повреждение обращайтесь к специалистам для профессиональной диагностики.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Оптимизация работы аккумулятора:</strong> Литий-ионные аккумуляторы имеют ограниченное количество циклов зарядки/разрядки. Для продления срока службы батареи избегайте полного разряда до 0% и постоянной зарядки до 100%, особенно с последующим подключением к сети на длительное время. Оптимальный диапазон заряда — от 20% до 80%. Избегайте экстремальных температур: высокая жара и сильный мороз негативно влияют на химический состав аккумулятора и могут привести к его деградации или даже вздутию.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Защита от влаги и пыли:</strong> Несмотря на заявленную защиту от воды и пыли (IP67), Samsung A54 не является полностью водонепроницаемым. Погружение в воду, воздействие соленой воды или химических жидкостей может привести к коррозии внутренних компонентов и выходу из строя платы. Берегите устройство от попадания влаги и регулярного воздействия пыли, особенно в рабочих средах, где частицы могут проникать в корпус.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Программное обслуживание:</strong> Регулярно устанавливайте обновления программного обеспечения, предлагаемые производителем. Они не только улучшают безопасность, но и оптимизируют работу системы, устраняя программные ошибки, которые могут влиять на производительность и энергопотребление. Периодически очищайте кэш приложений и удаляйте ненужные файлы, чтобы поддерживать оптимальную скорость работы устройства.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Соблюдение этих простых правил поможет вам значительно сэкономить на ремонте Samsung A54 в Кемерово, избегая преждевременных поломок. Однако, если проблема все же возникла, помните, что Админ.Ко обладает всей необходимой инженерной базой для точной диагностики и качественного восстановления вашего устройства.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ноутбук не включается после обновления Windows в Кемерово | Админ.Ко | Админ.Ко</title>
+    <meta name="description" content="Ваш ноутбук не включается после обновления Windows в Кемерово? Админ.Ко — это быстрая диагностика и профессиональный ремонт. Устраняем сбои загрузки, конфликты драйверов и системные ошибки. Вернем ваш ноутбук к жизни! Звоните.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Ноутбук не включается после обновления Windows в Кемерово | Админ.Ко</h1>
+            <meta name="published_at" content="2026-03-22T17:18:15.548Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h3>Введение: Почему ноутбук не включается после обновления Windows?</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Проблема, когда ноутбук перестает загружаться после установки системных обновлений Windows, является одной из наиболее частых и технически сложных в нашей практике. Это критическая неисправность, которая может быть вызвана целым рядом причин, требующих точной и системной диагностики.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Основными техническими факторами, приводящими к отказу загрузки после обновления, являются:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Повреждение системных файлов и загрузочной записи:</b> В процессе обновления операционная система перезаписывает критически важные файлы и сектора на жестком диске или SSD. Сбой на любом этапе — будь то внезапное отключение питания, конфликт с антивирусным ПО или некорректная работа накопителя — может привести к повреждению загрузочного сектора (MBR/GPT) или ключевых системных библиотек, таких как <code>NTLDR</code> или <code>BOOTMGR</code>. Система теряет способность определить, откуда ей загружаться.</li>
+<li><b>Конфликты драйверов:</b> Новые версии Windows или отдельных компонентов могут вводить обновленные драйверы, которые оказываются несовместимыми с устаревшим или специфическим оборудованием ноутбука (видеокарты, чипсеты, контроллеры накопителей). Это приводит к возникновению "синих экранов смерти" (BSOD) на этапе инициализации системы или к полному зависанию до появления рабочего стола.</li>
+<li><b>Ошибки в реестре Windows:</b> Реестр является центральной базой данных настроек системы. Некорректное обновление может внести повреждения в ключевые ветви реестра, отвечающие за порядок загрузки операционной системы и инициализацию всех аппаратных и программных компонентов, делая систему неработоспособной.</li>
+<li><b>Проблемы с дисковой подсистемой:</b> Обновление может выявить скрытые дефекты жесткого диска или SSD, такие как поврежденные сектора или износ ячеек памяти. При попытке записи критических данных на такие сектора, процесс обновления может прерваться или зависнуть, оставляя систему в нерабочем состоянии и потенциально усугубляя проблему с накопителем.</li>
+<li><b>Некорректные настройки BIOS/UEFI:</b> В редких случаях обновление может изменить или некорректно взаимодействовать с прошивкой материнской платы (BIOS/UEFI), вызывая проблемы с режимами загрузки (UEFI/Legacy), порядком загрузочных устройств или безопасной загрузкой (Secure Boot), что препятствует старту операционной системы.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Определение точной причины такой неисправности требует не только глубоких знаний в области программного обеспечения, но и аппаратной диагностики, позволяющей исключить физические повреждения накопителя, оперативной памяти или других компонентов, спровоцированные неудачным обновлением или предшествующими ему проблемами.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Ноутбук не включается после обновления Windows? Админ.Ко в Кемерово быстро определит и устранит проблему!</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">ДИАГНОСТИКА:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Бесплатно (при последующем ремонте). Займет 15-30 минут. Выявим точную причину: сбой загрузчика, ошибки ОС, конфликт драйверов или аппаратная неисправность.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">ЦЕНА:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">От 800 руб. (например, за восстановление загрузки или корректировку ОС без переустановки). Точная стоимость будет известна после диагностики и зависит от сложности работ.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">СРОК:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Большинство проблем с ПО решаем в день обращения (от 2-3 часов). Более сложные случаи или аппаратный ремонт могут занять 1-2 дня.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Не откладывайте, звоните в Админ.Ко!</p>
+
+        </div>
+            <section><h2>Первая помощь: Базовые шаги по диагностике и реанимации</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Когда ваш ноутбук отказывается включаться после обновления Windows, это всегда является причиной для беспокойства и может указывать на широкий спектр проблем — от программных конфликтов до критических аппаратных сбоев. Прежде чем обращаться к специалистам, возможно, вы сможете предпринять несколько базовых шагов для первичной диагностики. Эти действия помогут локализовать потенциальную неисправность и, в некоторых случаях, даже временно восстановить работоспособность устройства.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>1. Полное отключение питания и сброс:</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Отсоедините зарядное устройство от ноутбука.</li>
+<li>Если аккумулятор съемный, извлеките его. Для большинства современных моделей с несъемным аккумулятором, удерживайте кнопку питания в течение 15-20 секунд, чтобы выполнить "Hard Reset" (сброс остаточного заряда компонентов).</li>
+<li>Подключите зарядное устройство обратно (без аккумулятора, если он был извлечен) и повторите попытку включения ноутбука.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>2. Исключение внешних периферийных устройств:</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Отключите от ноутбука все внешние USB-устройства, карты памяти, внешние мониторы, док-станции, принтеры и прочие периферийные устройства.</li>
+<li>Иногда некорректно работающие драйверы или неисправность внешнего оборудования могут препятствовать нормальной загрузке операционной системы.</li>
+<li>Попробуйте включить ноутбук, оставив подключенными только зарядное устройство.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>3. Попытка входа в безопасный режим или среду восстановления Windows:</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>При включении ноутбука, сразу после нажатия кнопки питания, многократно нажимайте соответствующую клавишу для доступа к меню загрузки или BIOS/UEFI (часто это F2, F10, F12, DEL или ESC, для более старых систем Windows может быть F8).</li>
+<li>Найдите опции для "Безопасного режима" (Safe Mode) или "Среды восстановления Windows" (Windows Recovery Environment).</li>
+<li>Из среды восстановления можно попробовать "Восстановление системы" до предыдущей точки, которая была создана до обновления, или "Удалить обновления" (Uninstall Updates), если обновление Windows стало причиной сбоя.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>4. Визуальная проверка индикаторов питания и кабелей:</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Убедитесь, что индикатор на зарядном устройстве светится при подключении к сети.</li>
+<li>Проверьте индикаторы питания и зарядки на самом ноутбуке. Их отсутствие или необычное поведение (мигание) может указывать на проблемы с блоком питания, разъемом питания или контроллером заряда на материнской плате.</li>
+<li>Осмотрите кабель зарядного устройства на предмет видимых повреждений.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если после выполнения всех перечисленных шагов ваш ноутбук остается неработоспособным или проблема проявляется вновь, это свидетельствует о необходимости профессиональной диагностики. Попытки самостоятельного вмешательства в аппаратную часть без специализированного оборудования и опыта могут привести к усугублению неисправности. В таких ситуациях требуется глубокая проверка состояния материнской платы, системы питания, микропрограммы BIOS/UEFI, а также тестирование компонентов, таких как оперативная память и накопители, с применением высокоточного оборудования.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Ладно, коллеги, слушайте внимательно: "Ноутбук не включается после обновления Windows" – это очень часто не аппаратная проблема и не "слетевшая" система в прямом смысле. Мой главный секрет, который спасает в 30-40% таких случаев, особенно когда экран чёрный, или ноут показывает логотип и зависает:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Виндоус, особенно после неудачного обновления или "зависания" при перезагрузке, может некорректно сохранить состояние Fast Startup или попросту зависнуть в состоянии, напоминающем глубокий сон (гибернацию). Система видит, что она "вроде как включена" и не дает стартануть заново.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Вот что нужно сделать, прежде чем лезть в BIOS, загрузочные флешки или думать о переустановке:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">1.  <strong>Полное обесточивание и сброс остаточного заряда:</strong></p>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  Выключите ноутбук, удерживая кнопку питания 10-15 секунд, пока он гарантированно не погаснет.</li>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  Отключите блок питания от ноутбука.</li>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  Если аккумулятор съёмный – выньте его. Если несъёмный – пропустите этот пункт.</li>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  <strong>Самое важное:</strong> Теперь, когда всё отключено, нажмите и <strong>удерживайте кнопку питания 20-30 секунд</strong>. Это нужно для того, чтобы разрядить все конденсаторы на материнской плате и гарантированно сбросить любое остаточное состояние (включая Fast Startup).</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">2.  <strong>Повторное включение:</strong></p>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  Подключите блок питания (аккумулятор, если вынимали).</li>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  Попробуйте включить ноутбук как обычно.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Очень часто после такого полного сброса ноутбук стартует нормально, завершает оставшиеся части обновления или загружает рабочую систему, так как он "забывает" свое предыдущее, некорректное состояние.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Дополнительный мини-секрет: если первый пункт не помог, перед повторным включением отключите все внешние периферийные устройства (USB-флешки, мышки, клавиатуры, внешние мониторы). Иногда что-то из них может конфликтовать при загрузке.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Это простой, но крайне эффективный метод, который экономит кучу времени на диагностику.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">От Админ.Ко | Кемерово</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Глубокая диагностика и восстановление: Когда дело не только в Windows</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Когда ноутбук не включается после обновления Windows, часто первое предположение — программный сбой. Однако, за видимой проблемой может скрываться аппаратная неисправность, спровоцированная или усугубленная процессом обновления. Системные обновления могут вызвать критическую нагрузку на компоненты, выявляя скрытые дефекты в системе питания, цепях инициализации или даже в самом BIOS.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы применяем многоступенчатый подход к диагностике, исключающий поверхностные выводы. Мы не ограничиваемся проверкой загрузочной записи или переустановкой Windows, потому что это не решает корневую проблему, если она аппаратная. Наша лаборатория оснащена специализированным оборудованием для точного определения неисправности:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Осциллограф Rigol</strong>: Незаменим для анализа сигналов на материнской плате. С его помощью мы точно измеряем напряжения на ключевых контрольных точках, проверяем стабильность работы шин данных и выявляем малейшие отклонения в работе цепей питания, которые могут быть причиной отсутствия инициализации. Без осциллографа диагностика цепей питания будет лишь догадками.</li>
+<li><strong>Тепловизор</strong>: Позволяет обнаружить скрытые короткие замыкания или перегрев отдельных компонентов, которые невозможно увидеть невооруженным глазом. Локализация такой неисправности критична для предотвращения дальнейшего повреждения платы.</li>
+<li><strong>Программаторы (например, для BIOS)</strong>: В случае повреждения прошивки BIOS, что нередко происходит при неудачных обновлениях, требуется профессиональное оборудование для чтения, записи и верификации микросхем BIOS. Попытка перепрошивки без верификации может привести к полной неработоспособности устройства.</li>
+<li><strong>Паяльные станции JBC (Испания) и Quick 861DW</strong>: Для работы с компонентами на уровне платы, такими как микросхемы BIOS или контроллеры питания, необходима ювелирная точность. Паяльные станции JBC с их прецизионным контролем температуры и минимальным тепловым воздействием позволяют безопасно демонтировать и устанавливать компоненты, не перегревая соседние участки платы и избегая деформации контактных площадок. Использование низкокачественного оборудования для пайки неизбежно приводит к повреждению многослойных дорожек и ухудшению надежности ремонта.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Именно глубокая, аппаратная диагностика позволяет нам точно определить, является ли "не включается после обновления" следствием программного сбоя, отказа контроллера питания, повреждения BIOS или иной аппаратной неисправности. Без применения указанного оборудования ремонт превращается в "тыканье пальцем в небо", что приводит к временным решениям или к полной неработоспособности устройства.</p></p>
+</section>
+            <section class="mt-12"><h2>Что делать, если ничего не помогло? Профилактика и помощь от "Админ.Ко" в Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если ваш ноутбук перестал включаться после обновления Windows, это распространенная и крайне неприятная проблема, требующая профессионального подхода. Самостоятельные попытки решить ее часто приводят к усугублению ситуации или полной потере данных. В «Админ.Ко» мы ежедневно сталкиваемся с подобными кейсами и предлагаем гарантированное решение.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Ваш ноутбук не включается после обновления Windows? Мы готовы помочь!</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Проблема:</strong> Ноутбук не запускается или не выводит изображение после системного обновления.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Срок ремонта:</strong> От 1 рабочего дня (после диагностики).</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Цена:</strong> От 1500 руб. (зависит от сложности неисправности).</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Диагностика:</strong> 0 руб.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Экспертный разбор проблемы: почему ноутбук не включается после обновления?</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Обновления Windows, несмотря на свою важность, могут вызвать критические сбои, которые блокируют запуск системы. Это может быть связано с повреждением загрузочных секторов, конфликтами драйверов или, что гораздо серьезнее, повреждением прошивки BIOS/UEFI. В некоторых случаях обновление может выявить или усугубить уже существующие аппаратные проблемы, например, нестабильность цепей питания или отказ чувствительных компонентов на материнской плате, которые ранее работали на пределе.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для точной локализации неисправности и ее качественного устранения требуется специализированное оборудование и глубокие инженерные знания. Мы не просто переустанавливаем систему. Мы проводим комплексную аппаратную и программную диагностику:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><p><strong>Проверка прошивки BIOS/UEFI:</strong> С помощью профессиональных программаторов, таких как <strong>TL866II Plus</strong> или <strong>RT809F</strong>, мы можем считать, проанализировать и восстановить поврежденную прошивку на программном уровне, не прибегая к дорогостоящей замене материнской платы. Это критично для корректного старта системы.</p></li>
+<li><p><strong>Диагностика цепей питания и сигналов:</strong> Используя высокоточный <strong>осциллограф Rigol</strong> и прецизионные мультиметры, мы проверяем стабильность всех напряжений и корректность прохождения управляющих сигналов на материнской плате. Нестабильное питание может быть причиной полного отсутствия старта, циклической перезагрузки или невозможности инициализации.</p></li>
+<li><p><strong>Тепловизионный анализ:</strong> С помощью <strong>тепловизора</strong> мы оперативно выявляем компоненты с аномальным нагревом или коротким замыканием, что указывает на некорректную работу микросхем, требующих точечного вмешательства.</p></li>
+<li><p><strong>Микро-пайка и BGA-ремонт:</strong> При необходимости замены или восстановления микросхем BIOS, контроллеров питания, мостов или других мелких элементов, мы используем прецизионные паяльные станции <strong>JBC (Испания)</strong> для точной пайки и профессиональную термовоздушную станцию <strong>Quick 861DW</strong> для безопасного BGA-ремонта. Это гарантирует точную работу с миниатюрными компонентами без перегрева соседних участков платы, что критически важно для долговечности ремонта. Мы используем только высококачественные флюсы <strong>Martin/Amtech</strong>, которые обеспечивают чистоту платы после пайки и исключают коррозию.</p></li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без такого уровня оснащения и квалификации, ремонт может быть некачественным, временным или привести к полной неработоспособности устройства. Мы исключаем эти риски, обеспечивая надежное восстановление функциональности.</p></p>
+<h2>Инженерный стандарт Админ.Ко – ваш выбор в Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Бесплатная диагностика: Мы бесплатно определим точную причину неисправности вашего ноутбука.</li>
+<li>Запчасти в наличии: Большинство необходимых компонентов, включая микросхемы BIOS, уже есть на нашем складе, что значительно сокращает сроки ремонта.</li>
+<li>Гарантия 1 год по договору: На все выполненные работы и установленные компоненты предоставляется официальная гарантия, подтвержденная договором.</li>
+<li>Сохранность данных: Мы уделяем первостепенное внимание защите вашей информации. Ремонт проводится таким образом, чтобы ваши личные данные оставались в безопасности.</li>
+<li>Честная цена: Вы платите только за реальный результат. Никаких скрытых платежей, полная прозрачность ценообразования.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы находимся в центре Кемерово, <strong>ул. Дзержинского 2Б</strong>. Рядом с нами расположены СРК Арена и ТЦ Я. Мы работаем официально, предоставляя качественные и надежные услуги по ремонту ноутбуков. Доверьте свой ноутбук профессионалам, чтобы он снова заработал как новый.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

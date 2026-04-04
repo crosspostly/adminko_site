@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Замена аккумулятора Dyson в Кемерово: пошаговая инструкция | Ремонт пылесосов | Админ.Ко</title>
+    <meta name="description" content="Подробная пошаговая инструкция по замене аккумулятора в пылесосе Dyson в Кемерово. Узнайте, как выполнить ремонт самостоятельно, или закажите услугу у мастеров Админ.Ко.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Замена аккумулятора Dyson в Кемерово: пошаговая инструкция | Ремонт пылесосов</h1>
+            <meta name="published_at" content="2026-03-22T16:39:30.029Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Глава 1: Зачем менять аккумулятор Dyson? Признаки износа и общая информация</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Аккумулятор — это основной источник энергии любого беспроводного пылесоса Dyson, напрямую определяющий его производительность, мощность всасывания и продолжительность автономной работы. Со временем емкость литий-ионных батарей неизбежно снижается, что приводит к значительному ухудшению функциональности устройства и общего пользовательского опыта.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Замена аккумулятора становится обязательной процедурой для полного восстановления заявленных характеристик пылесоса. Эксплуатация устройства с изношенной батареей не только снижает эффективность уборки, но и может увеличить нагрузку на электродвигатель, потенциально сокращая его ресурс и приводя к дополнительным неисправностям.</p></p>
+<h3>Признаки износа аккумулятора Dyson, требующие внимания:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Сокращение времени работы:</b> Пылесос функционирует значительно меньше указанного производителем времени после полной зарядки, особенно на высоких мощностях.</li>
+<li><b>Снижение мощности всасывания:</b> Ощутимое падение силы всасывания, особенно заметное в режиме MAX, указывает на неспособность батареи обеспечить стабильный ток.</li>
+<li><b>Непрерывное мигание индикатора заряда:</b> Аккумулятор быстро теряет заряд или не держит его вовсе, о чем сигнализирует световой индикатор.</li>
+<li><b>Внезапные отключения:</b> Пылесос самопроизвольно выключается во время работы, даже при визуальном наличии остаточного заряда. Это свидетельствует о критической деградации внутренних ячеек.</li>
+<li><b>Проблемы с зарядкой:</b> Аккумулятор не заряжается до конца, процесс зарядки длится аномально долго или начинается через раз.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Все беспроводные модели Dyson используют литий-ионные аккумуляторы, ресурс которых ограничен 300-500 циклами заряда/разряда. После этого порога емкость снижается до 80% от номинальной и ниже. Это естественный процесс, обусловленный химическими изменениями внутри элементов, что приводит к росту внутреннего сопротивления и уменьшению отдаваемой энергии. Своевременная замена аккумулятора обеспечивает длительную и бесперебойную работу вашего пылесоса.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> От 3500 руб. (включает стоимость нового аккумулятора и работу мастера). Зависит от модели Dyson и типа выбранного аккумулятора (оригинал/аналог). Точную стоимость уточняйте по вашей модели.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: Экспресс-замена от 15-30 минут (при наличии аккумулятора на складе). Стандартно, с учетом диагностики и тестирования, процесс занимает 1-2 часа.</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Бесплатная, при условии дальнейшего ремонта в нашем сервисном центре "Админ.Ко". Мы проводим комплексную проверку пылесоса, чтобы точно определить причину неисправности и исключить другие поломки.</p></div>
+
+        </div>
+            <section><h2>Глава 2: Подготовка к замене: выбор аккумулятора, инструменты и меры предосторожности</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Качественная замена аккумулятора в пылесосе Dyson начинается с тщательной подготовки. Недооценка этого этапа приводит к повторным неисправностям, сокращению срока службы нового элемента питания и потенциальному повреждению самого устройства. В условиях лаборатории «Админ.Ко» мы подходим к подготовке с инженерной точностью, исключая любые риски.</p></p>
+<h3>Выбор аккумулятора: ключевой фактор надежности</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Аккумулятор — это сердце пылесоса Dyson, и его выбор критически важен. На рынке представлено множество предложений, однако только проверенные элементы питания гарантируют стабильную работу и безопасность. Мы используем только оригинальные или сертифицированные аналоги, соответствующие спецификациям Dyson по емкости, напряжению и токоотдаче. Применение некачественных батарей сопряжено со следующими рисками:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Несоответствие параметрам:</strong> Может привести к некорректной работе контроллера заряда/разряда, перегреву или недостаточной мощности.</li>
+<li><strong>Сокращенный срок службы:</strong> Дешевые аккумуляторы быстро теряют емкость, требуя повторной замены.</li>
+<li><strong>Повреждение электроники:</strong> Нестабильное напряжение или ток могут вывести из строя плату управления пылесоса.</li>
+<li><strong>Риск возгорания:</strong> Наиболее опасный сценарий, связанный с некачественными литий-ионными элементами.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В «Админ.Ко» каждый аккумулятор проходит входной контроль качества, исключая возможность установки дефектного элемента. Мы гарантируем, что установленная батарея будет работать заявленный производителем срок.</p></p>
+<h3>Инструменты для профессиональной замены</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для демонтажа и установки нового аккумулятора Dyson требуется специфический набор инструментов. Использование подручных средств чревато повреждением крепежа, пластиковых элементов корпуса или внутренних шлейфов.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Отвертки Torx:</strong> Dyson использует винты со звездообразным шлицем (как правило, T8 или T10). Только точные биты позволяют извлечь винты без повреждения.</li>
+<li><strong>Пластиковые лопатки (Spudgers):</strong> Необходимы для аккуратного разъединения защелок корпуса, минимизируя риск царапин или поломок.</li>
+<li><strong>Мультиметр:</strong> Позволяет предварительно оценить остаточный заряд старого аккумулятора и убедиться в работоспособности нового до установки.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В нашей лаборатории применяется только профессиональный инструмент, обеспечивающий точность и безопасность всех манипуляций.</p></p>
+<h3>Меры предосторожности: основа безопасного ремонта</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Работа с электроникой и литий-ионными аккумуляторами требует строгого соблюдения правил безопасности.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Отключение питания:</strong> Первостепенной мерой является полное отключение устройства от источника питания и извлечение старого аккумулятора перед началом работ.</li>
+<li><strong>ESD-защита (электростатический разряд):</strong> Статическое электричество может вывести из строя чувствительные компоненты платы. В «Админ.Ко» все работы проводятся на антистатических ковриках с использованием заземляющих браслетов.</li>
+<li><strong>Аккуратное обращение с Li-ion батареями:</strong> Литий-ионные элементы чувствительны к механическим повреждениям, проколам и короткому замыканию. Необходимо избегать деформации, перегрева и неправильного подключения.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Админ.Ко гарантирует соблюдение всех технических регламентов и стандартов безопасности, что исключает любые риски для вашего устройства и обеспечивает его долгосрочную и стабильную работу после ремонта.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Технический секрет инженера от Админ.Ко:</strong></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">После установки нового аккумулятора в ваш Dyson, не просто начинайте пользоваться им как обычно. Для максимальной эффективности и долговечности новой батареи, а также для корректной работы индикатора заряда, ваш пылесос нуждается в так называемой "калибровке" или "обучении" нового элемента питания.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">*Что это значит?* Внутри Dyson есть интеллектуальный блок управления аккумулятором (BMS), который "помнит" характеристики старой, изношенной батареи. Чтобы BMS корректно определил параметры новой, полной емкости, выполните следующие действия:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">1.  <strong>Полная зарядка:</strong> Подключите пылесос к зарядному устройству и дождитесь полной зарядки до 100% (пока индикатор не погаснет или не покажет полную готовность).</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">2.  <strong>Полный разряд:</strong> Используйте пылесос в максимально интенсивном режиме (например, в режиме MAX), пока он полностью не выключится из-за разряда аккумулятора.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">3.  <strong>Повторная полная зарядка:</strong> Снова полностью зарядите пылесос до 100%.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Этот цикл полного разряда и последующей полной зарядки позволяет BMS "перезагрузить" свои параметры, точно оценить реальную емкость нового аккумулятора и оптимизировать его работу. Вы избежите ложных показаний уровня заряда и обеспечите заявленную производителем продолжительность работы батареи. Это маленький, но очень важный шаг, который отличает просто замену от профессионального подхода к ремонту.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Глава 3: Пошаговая инструкция по замене аккумулятора в пылесосе Dyson</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Снижение времени работы пылесоса Dyson, внезапные отключения или полная невозможность включения — типичные признаки деградации аккумуляторной батареи. Многие пользователи, столкнувшись с этой проблемой, решают заменить элемент питания самостоятельно, руководствуясь поверхностными инструкциями из интернета. Однако такой подход чреват серьезными рисками и часто приводит к дополнительным неисправностям или приобретению некачественной запчасти.</p></p>
+<h3>Опасности самостоятельной замены аккумулятора Dyson</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Казалось бы, простая задача — открутить несколько винтов и заменить батарею. Но в реальности это часто приводит к:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Повреждению креплений и корпуса пылесоса из-за неправильной разборки.</li>
+<li>Использованию дешевых аналогов с низкой емкостью, быстрым выходом из строя и, что более опасно, риском возгорания.</li>
+<li>Неправильному подключению контактов, короткому замыканию и повреждению платы управления пылесосом.</li>
+<li>Отсутствию гарантии на выполненные работы и установленные компоненты.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Админ.Ко предлагает инженерный подход к решению этой проблемы, гарантируя долговечность и безопасность вашего устройства.</p></p>
+<h3>Инженерный стандарт Админ.Ко: Пошаговая замена аккумулятора Dyson</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы не просто меняем батарею. Мы обеспечиваем комплексное решение, которое продлевает срок службы вашего Dyson:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ol></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Шаг 1: Точная Диагностика (0 рублей).</strong> Перед заменой аккумулятора мы проводим полноценную диагностику пылесоса. С помощью осциллографа Rigol мы проверяем работоспособность платы управления, контроллеров питания и мотора, исключая другие возможные неисправности, которые могут имитировать проблемы с батареей. Тепловизор помогает выявить скрытые перегревы компонентов. Эта услуга абсолютно бесплатна и позволяет избежать ненужных трат.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Шаг 2: Подбор и установка качественных компонентов.</strong> Мы используем только проверенные, сертифицированные аккумуляторы, которые поставляются с нашего собственного склада. Это гарантирует их совместимость, заявленную емкость и долгий срок службы. Все запчасти всегда в наличии, что сокращает время ремонта до минимума.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Шаг 3: Профессиональная замена с соблюдением стандартов.</strong> Наши инженеры аккуратно разбирают пылесос, используя специализированный инструмент. Замена аккумулятора производится с соблюдением всех технических норм. При необходимости (например, в случае повреждения контактных групп или элементов платы управления) мы используем паяльные станции JBC (Испания) для максимально точной и безопасной микро-пайки без перегрева чувствительных элементов платы.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Шаг 4: Тестирование под нагрузкой и калибровка.</strong> После установки нового аккумулятора пылесос проходит серию тестов на полную работоспособность, заряд и разряд, а также на соответствие заявленным характеристикам. Это гарантирует, что ваше устройство будет работать как новое.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Шаг 5: Гарантия качества и сохранность данных.</strong> Мы предоставляем официальную гарантию на все выполненные работы и установленные запчасти сроком 12 месяцев по договору. Важно отметить, что все данные и настройки вашего пылесоса остаются в целости и сохранности.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ol></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Выбирая Админ.Ко, вы получаете не просто замену аккумулятора, а полноценное восстановление работоспособности пылесоса Dyson с гарантией качества и честной ценой. Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально и всегда готовы помочь вашему устройству обрести вторую жизнь.</p></p>
+</section>
+            <section class="mt-12"><h2>Глава 4: Первое включение, проверка и советы по уходу за новым аккумулятором</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>После профессиональной замены аккумулятора в вашем пылесосе Dyson инженерами Админ.Ко, необходимо выполнить несколько шагов для его правильного ввода в эксплуатацию и обеспечения долгой службы.</p></p>
+<h3>Первое включение и проверка</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Полная зарядка</b>: Перед первым использованием подключите пылесос к зарядному устройству. Дождитесь полной зарядки аккумулятора, пока индикатор не покажет 100% или не перестанет мигать, в зависимости от модели Dyson.</li>
+<li><b>Проверка функциональности</b>: После полной зарядки включите пылесос. Проверьте работу на всех режимах мощности. Убедитесь в стабильной подаче питания и отсутствии посторонних шумов или ошибок на дисплее.</li>
+<li><b>Тест продолжительности работы</b>: При первом использовании обратите внимание на время работы пылесоса. Новый аккумулятор, установленный специалистами Админ.Ко, должен обеспечивать заявленное производителем время работы без существенных отклонений.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Советы по уходу за новым аккумулятором</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для максимального продления срока службы нового аккумулятора следуйте этим рекомендациям:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Избегайте полного разряда</b>: Литий-ионные аккумуляторы не любят глубокого разряда. Подключайте пылесос к зарядному устройству, когда уровень заряда становится низким, не дожидаясь его полного отключения.</li>
+<li><b>Регулярная подзарядка</b>: Если пылесос используется ежедневно, держите его на зарядной станции. Современные контроллеры заряда, как в Dyson, так и в качественно установленных аккумуляторах, предотвращают перезаряд.</li>
+<li><b>Хранение</b>: При длительном неиспользовании (более месяца) храните пылесос с аккумулятором, заряженным примерно на 50-60%. Полностью разряженный или полностью заряженный аккумулятор быстрее деградирует при длительном хранении.</li>
+<li><b>Температурный режим</b>: Используйте и храните пылесос при комнатной температуре. Экстремально низкие или высокие температуры негативно влияют на ресурс аккумулятора.</li>
+<li><b>Чистота фильтров</b>: Забитые фильтры заставляют двигатель работать с большей нагрузкой, что приводит к повышенному расходу энергии аккумулятора. Регулярно чистите или меняйте фильтры.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

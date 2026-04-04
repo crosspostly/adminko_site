@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Срочный ремонт телефонов в Кемерово: Экран, зарядка | Admin.Co | Админ.Ко</title>
+    <meta name="description" content="Нужен срочный ремонт телефона в Кемерово? Admin.Co быстро и качественно починит ваш смартфон: замена экрана, ремонт зарядки, аккумулятора. Диагностика.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Срочный ремонт телефонов в Кемерово: Экран, зарядка | Admin.Co</h1>
+            <meta name="published_at" content="2026-03-22T14:49:44.344Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Введение: Когда каждая минута на счету – Админ.Ко в Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Современный смартфон — это не только средство связи, но и ваш рабочий инструмент, персональный помощник и хранилище ценных данных. Его внезапный отказ — всегда критическая ситуация, требующая немедленного и квалифицированного вмешательства. В Кемерово, когда необходим срочный и безупречный ремонт телефона, Админ.Ко предлагает оперативное и профессиональное решение, исключающее компромиссы по качеству.</p></p>
+<h3>Ваш телефон будет восстановлен: ключевые факты Админ.Ко</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Проблема:</strong> От разбитого экрана и проблем с зарядкой до неисправностей Face ID и системных сбоев.</li>
+<li><strong>Срок:</strong> Восстановление работоспособности от 2 часов.</li>
+<li><strong>Цена:</strong> От 500 рублей за работы.</li>
+<li><strong>Диагностика:</strong> Всегда 0 рублей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы понимаем, что фактор времени имеет решающее значение. Поэтому каждый этап ремонта в Админ.Ко разработан для максимальной эффективности без ущерба для надежности и долговечности устройства. Наша специализированная лаборатория оснащена передовым оборудованием, что позволяет выполнять ремонт любой сложности: от замены дисплея до сложной микро-пайки. Мы используем паяльные станции JBC (Испания) для точной работы с платами без риска перегрева, а также программаторы JCID для восстановления полного функционала Face ID и True Tone, исключая системные ошибки. При пайке применяются только профессиональные флюсы Martin/Amtech, что гарантирует прочность соединений и предотвращает коррозию компонентов.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Обращаясь в Админ.Ко, вы выбираете не просто ремонт, а подтвержденный инженерный стандарт качества:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Бесплатная диагностика неисправности.</li>
+<li>Наличие большинства необходимых запчастей на складе, что значительно ускоряет ремонт.</li>
+<li>Официальная гарантия 1 год по договору.</li>
+<li>Полная сохранность ваших персональных данных.</li>
+<li>Честная и прозрачная цена без скрытых платежей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не откладывайте решение проблемы вашего устройства. Мы находимся в центре Кемерово по адресу: <strong>улица Дзержинского 2Б</strong>. Нас легко найти — мы расположены рядом со СРК Арена и ТЦ Я. Админ.Ко работает официально, предоставляя полный пакет документов и гарантируя абсолютную прозрачность всех этапов ремонта.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> От 500 руб., зависит от сложности и модели.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: От 15 минут, большинство ремонтов день в день.</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Бесплатно, от 10 минут, даже при отказе от ремонта.</p></div>
+
+        </div>
+            <section><h2>Срочный ремонт телефонов в Кемерово: от экрана до зарядки в Админ.Ко</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваш телефон перестал включаться, разбит экран или не принимает заряд? В Админ.Ко мы предлагаем полный спектр услуг по срочному ремонту смартфонов любых моделей. Наша цель — восстановить работоспособность устройства с соблюдением инженерных стандартов и обеспечить долговечность ремонта.</p></p>
+<h3><p>Блиц-ответ по ремонту телефонов:</p></h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Проблема:</strong> Разбитый экран, не включается, не заряжается, нет звука, попадание влаги, системные ошибки.</li>
+<li><strong>Срок:</strong> От 1 часа.</li>
+<li><strong>Цена:</strong> От 500 руб.</li>
+<li><strong>Диагностика:</strong> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3><p>Экспертный разбор: Технологии Админ.Ко для надежного ремонта</p></h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Каждый ремонт в Админ.Ко начинается с комплексной диагностики, позволяющей точно определить неисправность. Мы не просто меняем компоненты, а устраняем первопричину поломки, используя оборудование и методики, доступные лишь в специализированных лабораториях.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для микро-пайки и восстановления материнских плат мы используем паяльные станции <strong>JBC (Испания)</strong>. Это гарантирует точечный нагрев без перегрева чувствительных компонентов платы, что критически важно для сохранения ее целостности. Горячий воздух подается прецизионной станцией <strong>Quick 861DW</strong>, обеспечивающей контролируемую температуру и воздушный поток. Диагностика скрытых дефектов, таких как короткие замыкания, проводится с помощью тепловизора, позволяющего визуализировать распределение тепла на плате, и осциллографа <strong>Rigol</strong> для анализа сигналов.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>При замене экранов и компонентов, влияющих на функционал Apple-устройств, мы используем программаторы <strong>JCID</strong>. Это позволяет сохранить Face ID, True Tone и другие важные функции, исключая ошибки системы и сохраняя полную работоспособность вашего iPhone, iPad. Без использования программаторов, после замены экрана, Face ID или True Tone могут быть безвозвратно утеряны, а устройство будет выдавать постоянные предупреждения.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для всех паяльных работ мы применяем флюсы только от проверенных производителей, таких как <strong>Martin</strong> и <strong>Amtech</strong>. Эти материалы минимизируют коррозию платы после ремонта и продлевают срок службы восстановленного компонента. Некачественные флюсы, используемые в кустарных мастерских, со временем вызывают окисление и гниение платы, что приводит к повторным поломкам.</p></p>
+<h3><p>Инженерный стандарт Админ.Ко: Ваши преимущества</p></h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>0 руб. диагностика:</strong> Мы определим проблему бесплатно, даже если вы откажетесь от ремонта.</li>
+<li><strong>Запчасти в наличии:</strong> Большинство ходовых комплектующих всегда есть на складе, что значительно сокращает сроки ремонта.</li>
+<li><strong>Гарантия 1 год по договору:</strong> Мы отвечаем за свою работу. Все условия гарантии прописываются в официальном документе.</li>
+<li><strong>Сохранность данных:</strong> Ваши личные данные под надежной защитой. Мы не перезаливаем ПО без необходимости и гарантируем конфиденциальность.</li>
+<li><strong>Честная цена:</strong> Никаких скрытых платежей. Стоимость ремонта озвучивается после диагностики и не меняется в процессе.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3><p>Локальный призыв: Админ.Ко в центре Кемерово</p></h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если вам нужен срочный и качественный ремонт телефона в Кемерово, приезжайте к нам. Мы находимся в центре города по адресу: <strong>улица Дзержинского 2Б</strong>. Наш сервисный центр легко найти: мы расположены рядом со СРК Арена и ТЦ Я. Админ.Ко работает официально, предоставляя все необходимые документы и гарантии на выполненные работы.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Мой технический секрет в Админ.Ко прост: я никогда не чиню только то, что видно на первый взгляд.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Когда ко мне попадает телефон с разбитым экраном, я не просто ставлю новый. Я "читаю" устройство: проверяю скрытые повреждения после удара, диагностирую цепи питания, датчики.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">То же самое с неработающей зарядкой: это может быть не только порт, но и контроллер, или даже последствия старого падения.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Настоящий срочный ремонт – это не только скорость, но и глубина диагностики. Только так я могу гарантировать, что вы уходите от нас с полностью восстановленным, а не "полупочиненным" телефоном, и вам не придется возвращаться через неделю с новой проблемой. Это и есть наш подход "от экрана до зарядки".</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Почему Админ.Ко? Скорость, качество и гарантия на ваш ремонт</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы понимаем, что неисправность телефона — это не просто неудобство, а потеря связи с миром. Именно поэтому наш подход к ремонту основан на трех ключевых принципах: скорость, бескомпромиссное качество и юридически закрепленная гарантия.</p></p>
+<h3>Скорость, основанная на наличии</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы поддерживаем обширный склад запчастей для большинства моделей телефонов. Это позволяет нам выполнять до 80% ремонтов в день обращения, без необходимости ждать поставки комплектующих. Вам не придется неделями ждать, пока ваш телефон вернется в строй.</p></p>
+<h3>Бескомпромиссное качество: Инженерный стандарт Админ.Ко</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Качество ремонта начинается с точной диагностики и заканчивается прецизионной сборкой. Наша лаборатория оснащена профессиональным оборудованием, обеспечивающим результат, недостижимый для кустарных мастерских. Мы используем «тяжелую артиллерию» для подтверждения статуса лаборатории, а не просто сервисного центра:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>JBC (Испания)</b>: Паяльные станции с точным температурным контролем исключают перегрев платы при микропайке. Это критически важно для сохранения целостности и долговечности тонких многослойных плат современных смартфонов, продлевая срок службы вашего устройства.</li>
+<li><b>Quick 861DW</b>: Мощные термовоздушные станции позволяют безопасно и контролируемо демонтировать компоненты без риска повреждения соседних элементов.</li>
+<li><b>Тепловизор и осциллограф Rigol</b>: Эти инструменты используются для комплексной диагностики скрытых неисправностей, которые не проявляются сразу, но могут привести к повторным поломкам. Мы обнаруживаем проблему на этапе, когда другие сервисы могут ее пропустить.</li>
+<li><b>Программаторы JCID</b>: Для сохранения оригинальных функций Face ID, True Tone и других критически важных параметров. Это гарантирует, что после замены дисплея или других компонентов ваш телефон не будет выдавать системные ошибки и сохранит полную функциональность.</li>
+<li><b>Флюсы Martin/Amtech</b>: Применение только проверенных, бескислотных флюсов гарантирует, что плата вашего устройства не будет подвержена коррозии или другим химическим реакциям после пайки, обеспечивая надежность ремонта на долгие годы.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы не просто меняем детали — мы восстанавливаем функциональность устройства на компонентном уровне, следуя стандартам производителя и нашей собственной строгой внутренней системе контроля качества.</p></p>
+<h3>Гарантия и прозрачность: Наши обязательства</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы абсолютно уверены в качестве своей работы, поэтому предоставляем официальную гарантию 1 год на выполненные работы и установленные компоненты. Все условия фиксируются в договоре, обеспечивая вашу юридическую защиту и спокойствие.</p></p>
+<h3>Преимущества, которые вы получаете, выбирая Админ.Ко:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Диагностика 0 рублей</b>: Мы не берем плату за поиск неисправности, даже если вы решите не проводить ремонт. Вы платите только за результат.</li>
+<li><b>Запчасти в наличии</b>: Благодаря собственному складу, более 80% ремонтов выполняются в день обращения, без долгих ожиданий.</li>
+<li><b>Гарантия 1 год по договору</b>: Подтверждение нашего профессионализма и вашей защищенности официальным документом.</li>
+<li><b>Сохранность данных</b>: Приоритет в нашей работе — это не только качественный ремонт устройства, но и максимальное сохранение вашей личной информации и конфиденциальности.</li>
+<li><b>Честная цена</b>: Вы всегда знаете, за что платите. Мы предоставляем подробный расчет стоимости до начала работ, без скрытых платежей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Ваш надежный сервисный центр в Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Когда вашему телефону требуется срочный и квалифицированный ремонт, выбирайте проверенных профессионалов. Мы находимся в самом центре Кемерово по адресу: <b>улица Дзержинского 2Б</b>. Нас легко найти: мы рядом с СРК Арена и ТЦ Я. Работаем официально, обеспечивая надежность, прозрачность и неизменно высокое качество.</p></p>
+</section>
+            <section class="mt-12"><h2>Ваш путь к идеальному телефону: Как обратиться за срочным ремонтом в Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы понимаем, что неисправность телефона — это не просто неудобство, а зачастую критическая ситуация, требующая немедленного решения. Именно поэтому процесс обращения за срочным ремонтом в Кемерово максимально упрощен и ориентирован на оперативность.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Чтобы ваш смартфон вновь функционировал без нареканий, достаточно выполнить несколько простых шагов:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><p><strong>Посетите наш сервисный центр:</strong> Мы находимся по адресу ул. Дзержинского 2Б, в центре Кемерово, рядом со СРК Арена и ТЦ Я. Наш специалист встретит вас, оперативно примет устройство и зафиксирует первоначальные симптомы неисправности.</p></li>
+<li><p><strong>Пройдите бесплатную диагностику:</strong> Независимо от сложности поломки, первичная диагностика проводится абсолютно бесплатно. С использованием современного оборудования (тепловизор, осциллограф Rigol) наши инженеры точно определяют причину неисправности, что позволяет сформировать четкий план ремонта, озвучить точную стоимость и реальные сроки выполнения работ.</p></li>
+<li><p><strong>Согласуйте ремонт и ожидайте:</strong> На основе диагностики наш инженер предложит оптимальное техническое решение. Благодаря обширному складу оригинальных запчастей и высококачественных аналогов, большая часть компонентов всегда в наличии. Это значительно сокращает время ожидания, позволяя нам выполнять большинство срочных ремонтов (замена экрана, аккумулятора, ремонт разъема зарядки) в день обращения, часто в течение нескольких часов.</p></li>
+<li><p><strong>Получите готовое устройство:</strong> После выполнения ремонта ваш телефон проходит финальное тестирование. Вы получаете полностью исправное устройство с официальной гарантией 1 год, подкрепленной юридическим договором. Мы гарантируем сохранность ваших данных в процессе ремонта.</p></li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Админ.Ко на Дзержинского 2Б — это ваш надежный партнер для срочного и качественного ремонта телефонов в Кемерово. Мы не просто чиним, мы восстанавливаем функциональность вашего устройства по инженерному стандарту.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

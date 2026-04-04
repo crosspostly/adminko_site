@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ремонт видеорегистратора в Кемерово: почему система не пишет архив? Диагностика Админ.Ко | Админ.Ко</title>
+    <meta name="description" content="Ваш видеорегистратор в Кемерово перестал записывать видео или не сохраняет архив? Специалисты Админ.Ко проведут диагностику и профессиональный ремонт. Решаем проблемы с картами памяти, прошивкой, питанием и восстановим работоспособность вашей системы записи.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Ремонт видеорегистратора в Кемерово: почему система не пишет архив? Диагностика Админ.Ко</h1>
+            <meta name="published_at" content="2026-03-22T16:27:25.715Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Почему ваш видеорегистратор не пишет архив? Понимание проблемы и ее критичность</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Проблема, когда видеорегистратор перестает записывать архив, является одной из самых серьезных. Она не просто ограничивает функционал устройства, но и полностью лишает его основного назначения – фиксации событий. В большинстве случаев пользователи сталкиваются с этой неисправностью в критический момент, обнаруживая отсутствие необходимых данных. Это создает ложное чувство защищенности и может иметь серьезные юридические или финансовые последствия.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Первичная диагностика часто сводится к проверке и форматированию карты памяти, однако это лишь верхушка айсберга. Если проблема сохраняется, то причина кроется глубже, на уровне аппаратной или программной части устройства. Наши инженеры выделяют несколько ключевых технических аспектов, приводящих к этой неисправности:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>Неисправности карты памяти или контроллера:</b> Несмотря на проверку, карта может быть поддельной, иметь критический износ или быть несовместимой. Однако нередко сам контроллер памяти на материнской плате регистратора выходит из строя, не позволяя корректно записывать данные даже на исправную карту.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>Сбои в системе питания:</b> Нестабильное напряжение, подаваемое на компоненты, ответственные за запись данных (процессор, контроллер памяти, модуль NAND), может приводить к ошибкам записи, повреждению файловой системы или полной неработоспособности функции архивирования. Перепады напряжения могут вызвать повреждение микросхем питания или памяти.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>Повреждение прошивки (Firmware):</b> Системное программное обеспечение регистратора может быть повреждено из-за некорректного обновления, внезапного отключения питания или аппаратных сбоев. Поврежденная прошивка не может правильно управлять записью данных.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>Аппаратные дефекты материнской платы:</b> Это может быть выход из строя NAND-памяти устройства, деградация паяных соединений (холодная пайка) под BGA-компонентами (процессор, контроллер памяти) или выход из строя иных критически важных микросхем.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">В лаборатории Админ.Ко мы подходим к диагностике системно. Используя профессиональное оборудование, мы точно определяем корень проблемы:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>Осциллограф Rigol:</b> Позволяет провести детальный анализ линий питания и сигнальных шин на материнской плате. Мы выявляем нестабильность напряжения, "шумы" и другие аномалии, которые невозможно обнаружить обычным мультиметром. Это критично для понимания, получает ли контроллер памяти стабильное питание.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>Тепловизор:</b> Применяется для обнаружения локальных перегревов компонентов, которые могут свидетельствовать о коротком замыкании, повышенном потреблении тока или деградации микросхем, влияющих на запись данных.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>Программаторы JCID:</b> В некоторых случаях, когда проблема связана с внутренними накопителями или контроллерами, специализированные программаторы позволяют проверить их работоспособность, считав информацию или восстановив прошивку на компонентном уровне.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>Паяльная станция JBC (Испания):</b> Для микро-пайки BGA-компонентов (процессоры, контроллеры памяти) используется исключительно JBC. Её точный контроль температуры и мгновенный отклик предотвращают перегрев соседних слоев платы и обеспечивают идеальное качество пайки. Это гарантия долгосрочной стабильности восстановленных соединений. Без JBC качественная замена или реболлинг таких чипов практически невозможен, что приводит к повторным отказам.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>Флюсы Martin/Amtech:</b> При пайке мы используем только профессиональные флюсы от Martin или Amtech. В отличие от дешевых аналогов, они не оставляют агрессивных остатков, которые со временем вызывают коррозию платы и отказ устройства. Это гарантирует, что отремонтированная плата не будет "гнить" изнутри.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Самостоятельный или непрофессиональный ремонт с использованием некачественного оборудования и расходных материалов не только не устранит проблему, но и усугубит ее, сделав восстановление устройства невозможным. Только комплексный подход и использование инструментария, соответствующего стандартам микроэлектроники, позволяют гарантировать надежный и долговечный ремонт видеорегистратора.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Ремонт видеорегистратора: почему система не пишет архив?</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Рекомендации Админ.Ко</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"></p></div>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> от 700 руб.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Стоимость ремонта: рассчитывается индивидуально после диагностики, зависит от сложности неисправности и стоимости необходимых комплектующих.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок:</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> 1-3 рабочих дня.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Ремонт: от 1 до 7 рабочих дней (при наличии запчастей на складе).</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"></p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Проблема с записью архива видеорегистратором чаще всего связана со следующими факторами:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">1.  Неисправность или износ накопителя (HDD/SD-карты): Наиболее частая причина. Сбой жесткого диска, наличие битых секторов, ошибки файловой системы или некорректное форматирование.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">2.  Сбой программного обеспечения (прошивки): Критические ошибки в системном ПО регистратора могут блокировать процесс записи.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">3.  Неверные настройки записи: Отсутствие графика записи, настройки переполнения (запрет перезаписи), некорректные параметры детекции движения.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">4.  Проблемы с питанием: Недостаточное или нестабильное питание как самого регистратора, так и накопителя.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">5.  Выход из строя внутренних компонентов: Повреждение контроллера записи на материнской плате регистратора.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Наши специалисты проведут комплексную диагностику, включающую тестирование накопителя, проверку ПО, настроек системы и аппаратной части для точного выявления и устранения неисправности.</p>
+
+        </div>
+            <section><p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><H2>Админ.Ко Диагностика: От карты памяти до программных сбоев – выявляем корень проблемы</H2></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><P></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Если ваш видеорегистратор перестал записывать архив, не видит карту памяти или выдает ошибки записи, это прямой сигнал к экспертной диагностике. В Админ.Ко мы точно знаем, почему система не пишет архив, и как восстановить полную работоспособность вашего устройства.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></P></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><P></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Ваш видеорегистратор не ведет запись? Мы предлагаем эффективное решение:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><br/>Проблема: Система не пишет архив, не видит карту памяти, выдает ошибки записи.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><br/>Срок: Диагностика от 30 минут, ремонт от 1 часа (при наличии запчастей).</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><br/>Цена: От 800 руб. (программные сбои), от 2000 руб. (аппаратный ремонт).</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><br/>Диагностика: 0 руб.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></P></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><P></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Проблема с записью архива видеорегистратором редко бывает случайной. Это комплексная неисправность, которая может быть вызвана как программными сбоями, так и серьезными аппаратными дефектами. Часто причина кроется в повреждении файловой системы карты памяти из-за некорректного извлечения или отключения питания, либо в устаревшей или поврежденной прошивке устройства. Однако не менее распространены аппаратные проблемы: износ или дефект контактов слота SD-карты, нестабильность питания контроллера памяти, выход из строя NAND-чипа, или повреждение основного процессора из-за перегрева, что особенно актуально для автомобильной электроники, работающей в условиях экстремальных температур.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></P></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><P></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">В Админ.Ко для точного выявления таких неисправностей мы используем профессиональное оборудование, недоступное в обычных мастерских. Осциллограф Rigol позволяет нам анализировать стабильность линий питания и целостность сигналов передачи данных к слоту карты памяти и контроллеру. Тепловизор идентифицирует перегрев компонентов, который может быть причиной сбоев записи. Микро-пайка с использованием станции JBC (Испания) гарантирует точечное воздействие на компонент без перегрева соседних участков платы при ремонте слота SD, замене контроллеров питания или перепайке BGA-чипов. Паяльная станция Quick 861DW позволяет безопасно демонтировать крупные компоненты. Мы используем только качественные флюсы Martin/Amtech, которые исключают дальнейшее окисление и гниение платы. Без такого оснащения ремонт сводится к простой замене узлов без устранения первопричины, что ведет к повторным поломкам и потере ценных данных.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></P></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><P></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Выбирая Админ.Ко, вы получаете не просто ремонт, а полноценное инженерное решение с полным соблюдением стандартов качества:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></P></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><UL></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI>Бесплатная диагностика устройства, даже если вы откажетесь от ремонта.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI>Наличие большинства необходимых запчастей на нашем складе в Кемерово, что значительно сокращает сроки ремонта.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI>Гарантия 12 месяцев на выполненные работы и установленные компоненты, закрепленная официальным договором.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI>Полная сохранность ваших данных и конфиденциальность. Мы понимаем важность информации с видеорегистратора.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI>Честная и прозрачная стоимость ремонта, без скрытых платежей и навязанных услуг.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></UL></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><P></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Не доверяйте свой видеорегистратор случайным мастерам. Мы находимся в центре Кемерово по адресу: ул. Дзержинского 2Б, рядом с СРК Арена и ТЦ Я. Работаем официально, предоставляя профессиональные услуги с гарантией, чтобы ваш видеорегистратор всегда записывал важные моменты.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></P></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Технический Секрет Инженера: "Почему Архив Молчит, Если Место Есть? Неочевидный Корень Проблемы!"</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Привет, Админ.Ко! Если ваш видеорегистратор вдруг перестал сохранять записи, хотя индикатор HDD горит, а места на диске, казалось бы, достаточно – не спешите грешить на переполнение или очевидные настройки. Вот что действительно кроется за этой загадкой.</p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Суть технического секрета:</strong></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Часто истинная причина не в *отсутствии места*, а в *неспособности системы качественно и стабильно записывать данные* из-за скрытых проблем с самим носителем информации (HDD/SD-карта) или его питанием. Регистратор "видит" диск, но не может с ним полноценно работать под нагрузкой.</p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Подробности проблемы:</strong></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Механизм циклической записи в видеорегистраторах должен автоматически стирать самые старые файлы, освобождая место для новых. Если архив не пишется, это указывает на *ошибки записи* или *чрезмерные задержки* при взаимодействии с носителем. Регистратор сталкивается с:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">1.  <strong>Проблемными секторами на диске:</strong> Даже один "плохой" сектор может вызвать таймауты и сбои в цепочке записи, особенно при высокой скорости потока данных. Диск не полностью мертв, но его производительность и стабильность критически снижены.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">2.  <strong>Замедлением отклика диска:</strong> Со временем или из-за низкого качества, скорость чтения/записи диска может упасть ниже пороговой для непрерывной записи видеопотока.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">3.  <strong>Нестабильным или недостаточным питанием:</strong> Особенно для HDD. Стареющий блок питания регистратора может выдавать пульсации напряжения или просадки под нагрузкой, что приводит к ошибкам при записи на диск. Для SD-карт это менее критично, но также возможно.</p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Рекомендации Админ.Ко (что делать):</strong></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">1.  <strong>Глубокая Диагностика Носителя (HDD/SD-карты):</strong></p>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  <strong>Извлеките носитель</strong> и подключите его к ПК.</li>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  <strong>Для HDD:</strong> Используйте специализированное ПО (например, CrystalDiskInfo) для проверки S.M.A.R.T. параметров. Ищите любые аномалии в "Relocated Sector Count", "Current Pending Sector Count", "Uncorrectable Sector Count", а также общую оценку здоровья и производительности. Даже если статус "Хорошо", внимательно изучите показатели. Медленные сектора могут не быть критичными для ПК, но фатальны для непрерывной записи видео.</li>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  <strong>Для SD-карт:</strong> Проведите полный тест на чтение/запись (например, программой H2testw). Это выявит битые блоки и недоброкачественные карты.</li>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  <strong>Профессиональный совет:</strong> Всегда используйте для видеорегистраторов *специализированные диски для видеонаблюдения* (например, WD Purple, Seagate SkyHawk) или *промышленные/видео-класса* SD-карты. Они рассчитаны на круглосуточную запись, имеют повышенную износостойкость и улучшенную коррекцию ошибок.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">2.  <strong>Тщательная Проверка Блока Питания (PSU):</strong></p>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  Это один из самых "неочевидных" виновников! Со временем конденсаторы в блоках питания стареют, их емкость снижается, что приводит к пульсациям напряжения.</li>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  <strong>Измерьте напряжение</strong> на выходе блока питания (на разъеме) под нагрузкой. Желательно использовать мультиметр с функцией измерения пульсаций или, в идеале, осциллограф. Если напряжение проседает, "плавает" или блок сильно греется – замените его на качественный аналог с достаточной мощностью. Нестабильное питание губительно для HDD.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">3.  <strong>Обновление Прошивки Видеорегистратора:</strong></p>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  Иногда баги в самой прошивке регистратора могут вызывать некорректное взаимодействие с носителями или логикой записи. Проверьте официальный сайт производителя на наличие актуальных обновлений прошивки.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">4.  <strong>Очистка и Охлаждение:</strong></p>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  Перегрев может негативно влиять на стабильность работы HDD и электроники. Очистите регистратор от пыли, убедитесь в адекватном охлаждении.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Итак, если архив молчит, а место есть – копайте глубже. Часто проблема не в количестве свободного места, а в *качестве* и *стабильности* работы носителя и его окружения. Сэкономьте время, перейдя сразу к детальной диагностике этих критических узлов!</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Ремонт видеорегистратора в Кемерово: Восстановление записи архива за 1 день с гарантией 12 месяцев</h2>
+<h3>Blitz-Answer: Проблема с записью видеорегистратора?</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Ваш видеорегистратор перестал записывать архив или выдает ошибки записи? Приходите в Админ.Ко — мы быстро и качественно вернем его к жизни.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Проблема:</strong> Видеорегистратор не записывает архив / Ошибки чтения/записи карты / Поврежденные файлы.</li>
+<li><strong>Срок:</strong> От 1 часа (стандартные случаи).</li>
+<li><strong>Цена:</strong> От 800 руб.</li>
+<li><strong>Диагностика:</strong> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Экспертный разбор: Почему видеорегистратор не пишет архив и как Админ.Ко это решает</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Проблема, когда видеорегистратор перестает записывать видео, является одной из самых распространенных и критичных. Основная функция устройства перестает выполняться, что делает его бесполезным. Мы, в Админ.Ко, подходим к этой проблеме системно, исключая "методы тыка".</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Типичные причины потери функционала записи:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Неисправность карты памяти (SD-карты):</strong> Чаще всего это износ, подделка или некорректное форматирование. Дешевые карты не выдерживают постоянной перезаписи и быстро выходят из строя. Простая замена часто не решает проблему, так как само устройство могло повредить карту.</li>
+<li><strong>Сбои в питании:</strong> Нестабильное напряжение в бортовой сети автомобиля или износ конденсаторов питания в самом регистраторе приводят к некорректной работе контроллеров записи, повреждению файловой системы на карте и, как следствие, ошибкам записи.</li>
+<li><strong>Программные ошибки (прошивка):</strong> Сбои в операционной системе видеорегистратора, неудачные обновления или конфликты могут блокировать процесс записи.</li>
+<li><strong>Аппаратные неисправности:</strong> Выход из строя контроллера памяти, процессора, NAND-чипа или других компонентов на материнской плате, отвечающих за обработку и сохранение видеопотока.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">В Админ.Ко мы используем "тяжелую артиллерию" для точной диагностики и устранения причин:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Тестирование SD-карт:</strong> Сначала мы проводим полную диагностику вашей карты памяти на специализированном оборудовании, проверяя ее скорость чтения/записи и наличие битых секторов. Если карта неисправна, мы подберем и установим проверенную, высоконадежную модель.</li>
+<li><strong>Анализ системы питания с осциллографом Rigol:</strong> Для выявления нестабильности питающего напряжения и пульсаций, которые напрямую влияют на работу микросхем памяти и процессора, мы используем осциллограф Rigol. Это позволяет точно определить, является ли проблема следствием некачественного питания, и устранить ее заменой изношенных компонентов, таких как конденсаторы или стабилизаторы напряжения.</li>
+<li><strong>Восстановление прошивки:</strong> С помощью программаторов (например, универсальных программаторов, совместимых с флеш-памятью, используемой в видеорегистраторах) мы производим перепрошивку или восстановление заводской прошивки, исключая программные сбои.</li>
+<li><strong>Микропайка и компонентный ремонт с JBC:</strong> В случае аппаратных неисправностей (например, выход из строя контроллера NAND или других BGA-компонентов), наши инженеры используют паяльные станции JBC (Испания). Это оборудование позволяет производить микро-пайку с высочайшей точностью и контролем температуры, предотвращая перегрев и повреждение окружающих элементов платы. Использование качественных флюсов Martin/Amtech гарантирует долговечность пайки и предотвращает коррозию платы. Без такого оборудования попытки ремонта могут привести к полному выходу устройства из строя.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Некачественный ремонт в "гаражных" мастерских, без должного оборудования и экспертизы, часто приводит к необратимым повреждениям платы из-за перегрева или использования агрессивных флюсов, после которых плата попросту "гниет".</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Инженерный стандарт Админ.Ко: Ваш выбор в Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Выбирая Админ.Ко, вы получаете не просто ремонт, а гарантированный результат, основанный на строгих инженерных стандартах:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>0р Диагностика:</strong> Мы не берем плату за поиск неисправности, даже если вы откажетесь от ремонта.</li>
+<li><strong>Запчасти в наличии:</strong> Большинство ходовых компонентов всегда на нашем складе, что сокращает сроки ремонта.</li>
+<li><strong>Гарантия 1 год по договору:</strong> На все выполненные работы и установленные детали предоставляется официальная гарантия, подтвержденная договором.</li>
+<li><strong>Сохранность данных:</strong> Мы гарантируем, что в процессе ремонта данные с вашей карты памяти (если она исправна) не будут утеряны.</li>
+<li><strong>Честная цена:</strong> Вы платите только за реальную работу и качественные комплектующие, без накруток и скрытых платежей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Локальный призыв: Приезжайте в Админ.Ко в Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Не рискуйте безопасностью на дороге из-за неработающего видеорегистратора. Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Мы работаем официально и ждем вас для восстановления полной функциональности вашего устройства.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+</section>
+            <section class="mt-12"><h2>Профилактика и обслуживание: Как избежать будущих сбоев и когда обратиться к специалистам</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Эффективность работы видеорегистратора напрямую зависит от регулярного обслуживания и понимания факторов, влияющих на его работоспособность. Основные причины проблем с записью архива, помимо аппаратных неисправностей, часто кроются в недооценке качества компонентов и условий эксплуатации.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для минимизации рисков возникновения сбоев, в частности, проблем с записью, рекомендуется соблюдать следующие правила:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Выбор и обслуживание карты памяти:</b> Используйте только карты памяти класса Endurance (промышленного назначения), предназначенные для постоянной циклической записи. Регулярное (раз в 2-3 месяца) форматирование карты памяти через меню регистратора продлевает ее срок службы и предотвращает накопление ошибок файловой системы. При первых признаках медленной записи или сбоев – замените карту.</li>
+<li><b>Стабильное питание:</b> Перепады напряжения или нестабильное питание являются одной из частых причин выхода из строя как самой карты памяти, так и контроллера записи видеорегистратора. Убедитесь, что питание подается через качественный адаптер, соответствующий требованиям производителя, и что соединение надежно.</li>
+<li><b>Обновление прошивки:</b> Производители регулярно выпускают обновления прошивки, которые могут исправлять ошибки, оптимизировать работу устройства и повышать стабильность записи. Своевременно обновляйте прошивку, следуя инструкциям производителя, но будьте осторожны: некорректное обновление может "окирпичить" устройство.</li>
+<li><b>Защита от перегрева:</b> Размещение видеорегистратора в условиях прямого солнечного света или в плохо вентилируемом месте приводит к перегреву, что негативно сказывается на стабильности работы всех электронных компонентов, включая процессор обработки видео и контроллер памяти. Обеспечьте адекватное охлаждение.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Обращаться к специалистам Админ.Ко необходимо, если после выполнения базовых профилактических мер проблема с записью архива сохраняется, или если вы наблюдаете следующие симптомы:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Регистратор не обнаруживает карту памяти, хотя она исправна.</li>
+<li>Система выдает ошибку записи или сообщает о повреждении файлов.</li>
+<li>Устройство не включается или самопроизвольно отключается.</li>
+<li>Имеются явные физические повреждения (удар, попадание влаги).</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В этих случаях требуется профессиональная диагностика с использованием специализированного оборудования (осциллограф, программаторы) для точного определения неисправности контроллера записи, цепей питания или других ключевых элементов. Самостоятельный ремонт видеорегистраторов, особенно на уровне пайки BGA-компонентов, без соответствующего опыта и оборудования приводит к необратимым повреждениям платы.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

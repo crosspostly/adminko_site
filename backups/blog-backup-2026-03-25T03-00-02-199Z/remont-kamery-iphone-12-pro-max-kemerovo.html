@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ремонт Камеры iPhone 12 Pro Max в Кемерово | Восстановление Фокуса и Качества Фото | Админ.Ко</title>
+    <meta name="description" content="Профессиональный ремонт камеры iPhone 12 Pro Max в Кемерово. Исправим проблемы с автофокусом, размытостью, искажениями и восстановим оригинальное качество ваших фото и видео. Диагностика бесплатно.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Ремонт Камеры iPhone 12 Pro Max в Кемерово | Восстановление Фокуса и Качества Фото</h1>
+            <meta name="published_at" content="2026-03-22T14:11:34.937Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Глава 1: Камера iPhone 12 Pro Max – Центр Внимания: Почему Возникают Проблемы с Фокусом и Качеством Фото в Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Ремонт Камеры iPhone 12 Pro Max в Кемерово: Решение Проблем с Фокусом и Качеством Фото с Гарантией</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Ваша камера iPhone 12 Pro Max перестала фокусироваться, выдает черный экран или делает мутные снимки?</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">В «Админ.Ко» мы знаем, как вернуть ей идеальное качество.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Блок конверсии</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Проблема:</strong> Камера iPhone 12 Pro Max не фокусируется, фотографии мутные, черный экран, артефакты на снимках.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Срок ремонта:</strong> От 3 часов (при наличии запчастей).</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Цена:</strong> От 4500 руб.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Диагностика:</strong> 0 руб.</p></p>
+<h3>Экспертный разбор: Почему камера iPhone 12 Pro Max теряет фокус и качество?</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Камера iPhone 12 Pro Max — это сложная система из нескольких объективов, оптической стабилизации изображения (OIS) и LiDAR-сканера.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Проблемы с фокусом и качеством фото могут быть вызваны механическим повреждением при падении, попаданием жидкости, программным сбоем или выходом из строя электронных компонентов на материнской плате.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Попытки самостоятельного ремонта или обращение в непрофильные сервисы часто приводят к усугублению проблемы, появлению системных ошибок и даже полной потерей работоспособности камеры или других модулей.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">В «Админ.Ко» мы подходим к ремонту камеры iPhone 12 Pro Max системно.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">На первом этапе проводится углубленная диагностика:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Тепловизор:</strong> Позволяет выявить скрытые короткие замыкания или перегрев компонентов на материнской плате, которые могут влиять на питание или работу камеры.</li>
+<li><strong>Осциллограф Rigol:</strong> Необходим для проверки сигнальных линий и питающих напряжений, подаваемых на камерный модуль, что позволяет точно определить, является ли проблема аппаратной (в самой камере) или связана с материнской платой.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Если диагностика показывает, что неисправен сам модуль камеры, мы выполняем его замену.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Важно понимать, что на iPhone 12 Pro Max простая замена камеры без дополнительных манипуляций приводит к появлению уведомления «Важное сообщение о камере» и потенциальной потере части функционала, например, неправильной работе портретного режима или фокусировки.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Для предотвращения подобных проблем мы используем профессиональные программаторы:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Программаторы JCID:</strong> С их помощью мы переносим калибровочные данные со старого модуля камеры на новый. Это критически важно для корректной работы всех функций камеры, сохранения True Tone и избежания системных предупреждений, а также обеспечения полной совместимости с Face ID, который тесно связан с системой фронтальной камеры и датчиков.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Если же проблема лежит глубже, на уровне материнской платы (например, неисправен контроллер питания камеры или повреждены дорожки), в работу вступают наши микропаяльные станции:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>JBC (Испания):</strong> Благодаря их прецизионной точности и контролю температуры, мы можем выполнять микро-пайку компонентов на плате без риска перегрева соседних элементов. Это позволяет восстановить поврежденные цепи питания или передачи данных для камеры.</li>
+<li><strong>Quick 861DW:</strong> Применяется для работы с BGA-компонентами (шариковыми выводами), обеспечивая точный демонтаж и монтаж микросхем, влияющих на функционал камеры.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Для обеспечения долговечности паяных соединений мы используем только высококачественные флюсы <strong>Martin/Amtech</strong>, которые предотвращают коррозию платы в будущем.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Без использования специализированного оборудования, такого как JCID, JBC, Quick, тепловизор и осциллограф, ремонт камеры iPhone 12 Pro Max не может быть качественным и полным.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Часто такие «ремонты» приводят к временному эффекту или создают новые, более серьезные неисправности.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Инженерный стандарт Админ.Ко: Ваши преимущества</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>0 руб. диагностика:</strong> Мы точно определим причину неисправности вашей камеры бесплатно.</li>
+<li><strong>Запчасти в наличии:</strong> Большинство комплектующих для iPhone 12 Pro Max всегда на нашем складе, что ускоряет ремонт.</li>
+<li><strong>Гарантия 1 год по договору:</strong> Мы уверены в качестве наших работ и запчастей, что подтверждаем официальной гарантией.</li>
+<li><strong>Сохранность данных:</strong> Все работы проводятся с максимальной осторожностью, гарантируя полную конфиденциальность и сохранность ваших личных данных.</li>
+<li><strong>Честная цена:</strong> Вы платите только за реальный результат, без скрытых платежей и накруток.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Гео-призыв к действию: Ваша камера заслуживает профессионалов в Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Не рискуйте качеством ваших воспоминаний и функциональностью своего iPhone 12 Pro Max.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Мы находимся в центре Кемерово, ул. Дзержинского 2Б.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Рядом СРК Арена и ТЦ Я.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Работаем официально, предоставляя полный пакет документов и гарантию на все выполненные работы.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Доверьте ремонт камеры iPhone 12 Pro Max специалистам Админ.Ко.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Blitz-Answer для "Ремонт Камеры iPhone 12 Pro Max в Кемерово: Фокус и Качество Фото":</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> От 7000 руб. (замена основного модуля, уточняется после диагностики).</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: От 1 часа (при наличии запчасти). До 1-2 дней при заказе детали.</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Всегда бесплатно, от 15 минут, для точного определения причины поломки.</p></div>
+
+        </div>
+            <section><h2>Глава 2: Диагностика Неисправностей и Важность Профессионального Ремонта Камеры iPhone 12 Pro Max</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Камера iPhone 12 Pro Max является одним из ключевых компонентов устройства, обеспечивая флагманское качество фото- и видеосъемки. Выход ее из строя существенно снижает функциональность смартфона. Проблемы с камерой могут проявляться по-разному, от полного отсутствия изображения до нарушения работы автофокуса и стабилизации.</p></p>
+<h3>Типичные неисправности камеры iPhone 12 Pro Max</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><p><b>Черный экран при запуске камеры:</b> Часто указывает на физическое повреждение модуля камеры, повреждение шлейфа или проблемы с питанием на материнской плате.</p></li>
+<li><p><b>Не работает автофокус или оптическая стабилизация:</b> Может быть вызвано механическим повреждением модуля, попаданием пыли или влаги в оптический блок, а также неисправностью управляющего контроллера.</p></li>
+<li><p><b>Размытые снимки или пятна на изображениях:</b> Вероятное загрязнение линзы изнутри, повреждение одной из линз или дефект матрицы.</p></li>
+<li><p><b>Ошибки при переключении между модулями (широкоугольная, сверхширокоугольная, телефото):</b> Свидетельствует о проблемах связи между материнской платой и конкретным модулем камеры, либо о неисправности самого модуля.</p></li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Большинство этих проблем требуют не только замены модуля, но и тщательной диагностики связанных систем. Попытки самостоятельного ремонта или обращение к мастерам без должного оборудования часто приводят к усугублению неисправности, повреждению соседних компонентов и потере важных функций.</p></p>
+<h3>Комплексная диагностика: почему это критично</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для точного определения причины неисправности камеры iPhone 12 Pro Max необходима аппаратная диагностика. Без специализированного оборудования невозможно отличить дефект самого модуля от проблем с питанием, шиной данных или контроллером на материнской плате.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><p><b>Осциллограф Rigol:</b> Используется для анализа сигналов на шлейфах камеры и компонентах материнской платы. Он позволяет выявить нестабильность питающих напряжений, нарушения целостности линий данных или отсутствие управляющих импульсов, что критично для корректной работы сложного модуля камеры.</p></li>
+<li><p><b>Тепловизор:</b> Применяется для обнаружения локальных перегревов на материнской плате, которые могут указывать на короткое замыкание или неисправность контроллера питания камеры. Это позволяет точно локализовать проблему без демонтажа множества компонентов.</p></li>
+<li><p><b>Специализированные программаторы и тестеры:</b> Позволяют проверить целостность шлейфов, а также произвести первичную проверку работоспособности модуля до его установки в устройство, исключая заводской брак запчасти.</p></li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Неполная или неточная диагностика ведет к некорректному ремонту, когда заменяется рабочий компонент, а истинная причина неисправности остается не устраненной, приводя к повторным поломкам.</p></p>
+<h3>Профессиональный ремонт: гарантия качества и функциональности</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ремонт камеры iPhone 12 Pro Max, особенно на уровне материнской платы, требует высочайшей точности и использования профессионального оборудования. При необходимости замены модуля камеры, важно использовать качественные компоненты, а также выполнить работу с соблюдением всех технологических норм Apple.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><p><b>Паяльное оборудование JBC (Испания):</b> Применяется для микро-пайки компонентов на материнской плате, если проблема кроется в контроллере или элементах обвязки камеры. Точный контроль температуры и направленный поток воздуха минимизируют риск перегрева соседних элементов и обеспечивают надежное соединение.</p></li>
+<li><p><b>Термовоздушные станции Quick 861DW:</b> Необходимы для демонтажа и монтажа сложных BGA-компонентов на плате. Их стабильность температуры и точность потока воздуха исключают деформацию текстолита и повреждение дорожек.</p></li>
+<li><p><b>Качественные расходные материалы (Martin/Amtech):</b> Использование флюсов этих брендов обеспечивает чистую пайку без остатков, которые в дальнейшем могут вызвать коррозию или короткое замыкание платы.</p></li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Только комплексный подход, включающий высокоточную диагностику и профессиональный ремонт с применением специализированного оборудования и качественных расходных материалов, может гарантировать полное восстановление работоспособности камеры iPhone 12 Pro Max и сохранение его первоначальных характеристик.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Истинный секрет идеального фокуса и кристальной резкости снимков на iPhone 12 Pro Max после замены камеры кроется не только в качестве самого модуля, но и в неочевидном нюансе: <strong>педантичной проверке работы оптической стабилизации изображения (OIS) и безупречной чистоте.</strong></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Даже малейшая неточность при установке нового модуля камеры или микроскопический изгиб его гибкого шлейфа может нарушить калибровку OIS. В итоге, камера будет 'ловить' фокус с задержкой или давать чуть смазанные снимки, особенно при движении или в условиях недостаточного освещения, даже если сам модуль абсолютно новый.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">И, конечно, золотое правило: ни одной пылинки! Микрочастица, попавшая под линзу или на матрицу во время сборки, гарантированно испортит качество фото, создавая темные пятна или "шум" на изображении, которые не исправить никаким программным улучшением. Профессионал всегда уделяет этим "мелочам" максимум внимания.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Глава 3: Как Выбрать Надежный Сервисный Центр в Кемерово для Ремонта Камеры и Что Ожидать от Процесса</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ремонт камеры iPhone 12 Pro Max — это не просто замена модуля. Это сложная процедура, требующая глубоких знаний схемотехники Apple, ювелирной точности и специализированного оборудования. Выбор надежного сервисного центра в Кемерово определяет не только качество восстановленного изображения, но и долговечность самого устройства после ремонта.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>При выборе сервиса обращайте внимание на следующие критические аспекты:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Диагностическое оборудование и квалификация инженеров:</strong> Камера iPhone 12 Pro Max интегрирована в сложную экосистему смартфона. Проблема с фокусом или качеством фото может быть вызвана не только дефектом самого модуля, но и сбоями в цепях питания, контроллерах на материнской плате или даже программными ошибками. В «Админ.Ко» мы используем профессиональные инструменты, такие как <strong>осциллограф Rigol</strong> для анализа сигналов на шинах данных и питания камеры, а также <strong>тепловизор</strong> для выявления скрытых коротких замыканий или перегрева компонентов, что позволяет точно локализовать неисправность. Без такого оборудования существует риск неправильной диагностики и, как следствие, неэффективного или даже вредного ремонта.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Качество комплектующих и расходных материалов:</strong> Использование некачественных аналогов камеры может привести к искажению цветов, потере фокусировки или отсутствию оптической стабилизации. В «Админ.Ко» мы устанавливаем только проверенные компоненты, соответствующие оригинальным стандартам. При необходимости микропайки на материнской плате для восстановления цепей питания камеры, мы применяем паяльные станции <strong>JBC (Испания)</strong>, обеспечивающие прецизионный нагрев без риска повреждения соседних элементов. Для пайки используются только высококачественные флюсы <strong>Martin/Amtech</strong>, которые гарантируют чистоту соединения и предотвращают коррозию платы в будущем.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Гарантия и прозрачность:</strong> Надежный сервисный центр предоставляет четкую гарантию на выполненные работы и установленные запчасти, зафиксированную в официальном договоре. В «Админ.Ко» мы предоставляем <strong>гарантию 12 месяцев по договору</strong> на все работы, включая ремонт камеры. Наши инженеры проводят <strong>бесплатную диагностику</strong> и всегда согласовывают <strong>честную цену</strong> до начала ремонта, исключая скрытые платежи.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Сохранность данных и конфиденциальность:</strong> Ремонт iPhone не должен угрожать вашим личным данным. В «Админ.Ко» мы гарантируем <strong>сохранность ваших данных</strong>. Все работы проводятся с соблюдением строгих протоколов безопасности.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Наличие запчастей:</strong> Задержки в ремонте часто связаны с ожиданием комплектующих. У нас <strong>запчасти в наличии</strong> для большинства популярных моделей, включая iPhone 12 Pro Max, что значительно сокращает сроки ремонта.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Что ожидать от процесса ремонта камеры в «Админ.Ко»?</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваш iPhone 12 Pro Max пройдет через несколько ключевых этапов, обеспечивающих максимальное качество и надежность:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ol></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Первичная диагностика:</strong> Инженер проведет внешний осмотр и аппаратную диагностику с использованием специализированного оборудования. Эта процедура полностью <strong>бесплатна</strong>.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Точное выявление неисправности:</strong> Используя <strong>осциллограф Rigol</strong> и <strong>тепловизор</strong>, мы определим, является ли проблема аппаратной (модуль камеры, контроллер на плате) или программной.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Согласование стоимости и сроков:</strong> После диагностики вам будет предложена <strong>честная цена</strong> и реальные сроки ремонта, которые обычно составляют <strong>от 2 часов</strong> при наличии необходимого модуля.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Квалифицированный ремонт:</strong> С использованием профессиональных инструментов, таких как станции <strong>JBC</strong> для микропайки (при необходимости ремонта материнской платы), и при соблюдении антистатических мер, инженер выполнит замену или ремонт камеры. Мы гарантируем, что <strong>сохранность ваших данных</strong> не будет нарушена.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Постремонтное тестирование:</strong> После установки нового компонента или завершения ремонтных работ, проводится серия тестов всех функций камеры (фокус, стабилизация, различные режимы, фронтальная камера), чтобы убедиться в полном восстановлении работоспособности.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Выдача устройства и гарантия:</strong> Вы получите полностью исправный iPhone 12 Pro Max с <strong>гарантией 12 месяцев по договору</strong> на выполненные работы.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ol></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально.</p></p>
+</section>
+            <section class="mt-12"><h2>Глава 4: Гарантия Качества После Ремонта: Возвращение Идеального Фокуса и Насыщенных Снимков на iPhone 12 Pro Max</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Замена или ремонт камеры iPhone 12 Pro Max в Админ.Ко — это не просто устранение неисправности, а полное восстановление функциональности до заводских стандартов. Мы понимаем, что камера — одна из ключевых функций вашего смартфона, и её идеальная работа после ремонта является нашим приоритетом.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Процесс восстановления камеры требует предельной точности и контроля. При любых манипуляциях с чувствительными компонентами платы и шлейфов мы используем паяльные станции JBC (Испания). Их прецизионный контроль температуры позволяет проводить микро-пайку с минимальным тепловым воздействием, исключая риск перегрева платы и повреждения соседних элементов. Это критически важно для долговечности ремонта, поскольку скрытые термические повреждения могут проявиться со временем.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Каждая установленная камера проходит серию пост-ремонтных тестов. Мы проверяем автофокус, стабилизацию изображения, корректность работы всех модулей (широкоугольный, сверхширокоугольный, телеобъектив), а также цветопередачу и отсутствие артефактов. Только после подтверждения полного соответствия стандартам Apple, устройство считается готовым к выдаче.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Наш инженерный стандарт гарантирует:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Бесплатная диагностика:</b> Точное определение причины неисправности камеры исключает ненужные ремонты и гарантирует правильное решение.</li>
+<li><b>Запчасти в наличии:</b> Мы используем только проверенные компоненты, которые всегда есть на нашем складе, что сокращает время ожидания и обеспечивает качество замены.</li>
+<li><b>Гарантия 1 год по договору:</b> На все выполненные работы и установленные компоненты предоставляется официальная гарантия, подтверждающая нашу уверенность в качестве.</li>
+<li><b>Сохранность данных:</b> Мы предпринимаем все меры для защиты вашей конфиденциальной информации и сохранности данных на устройстве во время ремонта.</li>
+<li><b>Честная цена:</b> Прозрачное ценообразование без скрытых платежей за высококлассный ремонт, который вернет вашей камере идеальное состояние.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально, чтобы ваш iPhone 12 Pro Max снова снимал, как новый.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO-оптимизация сайтов в Кемерово: Полное руководство по продвижению | Админ.Ко</title>
+    <meta name="description" content="Изучите полное руководство по SEO-оптимизации и эффективному продвижению сайтов в Кемерово. Откройте для себя стратегии внутренней и внешней оптимизации, сбора семантики, технического SEO и аналитики для роста трафика и позиций в поисковой выдаче.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">SEO-оптимизация сайтов в Кемерово: Полное руководство по продвижению</h1>
+            <meta name="published_at" content="2026-03-22T15:27:23.487Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Глава 1: Основы SEO и принципы работы поисковых систем</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Оптимизация для поисковых систем (SEO – Search Engine Optimization) представляет собой комплекс мер, направленных на повышение видимости веб-сайта в органической выдаче поисковых систем, таких как Google и Яндекс. Основная цель SEO — привлечение целевого трафика на сайт без прямых затрат на рекламу, за счет соответствия критериям релевантности и авторитетности, установленным алгоритмами поисковиков.</p></p>
+<h2>Зачем необходимо SEO?</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для любого бизнеса, представленного в интернете, SEO является фундаментом долгосрочного успеха. Это не просто инструмент для получения трафика, но стратегический элемент, обеспечивающий:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Увеличение органического трафика:</strong> Привлечение пользователей, активно ищущих товары или услуги, предлагаемые сайтом.</li>
+<li><strong>Повышение авторитетности и доверия:</strong> Сайты, занимающие высокие позиции в выдаче, воспринимаются пользователями как более надежные и экспертные.</li>
+<li><strong>Экономическая эффективность:</strong> Органический трафик, в отличие от платной рекламы, не требует постоянных инвестиций за каждый клик.</li>
+<li><strong>Долгосрочный результат:</strong> Правильно выстроенная SEO-стратегия приносит стабильный поток посетителей на протяжении длительного времени.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Принципы работы поисковых систем</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Поисковые системы функционируют по сложному, но логичному алгоритму, который можно разделить на три основные фазы:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Сканирование (Crawling):</strong> Поисковые роботы (краулеры) постоянно исследуют интернет, переходя по ссылкам с одних страниц на другие, обнаруживая новый контент и обновляя информацию о существующем. Этот процесс позволяет поисковикам формировать обширную базу данных веб-страниц.</li>
+<li><strong>Индексирование (Indexing):</strong> Обнаруженный контент анализируется, классифицируется и добавляется в индекс — гигантскую базу данных, в которой хранится информация обо всех просканированных страницах. В ходе индексации поисковая система извлекает ключевые слова, анализирует структуру страницы, типы контента (текст, изображения, видео) и другие метаданные.</li>
+<li><strong>Ранжирование (Ranking):</strong> Когда пользователь вводит запрос, поисковая система обращается к своему индексу. Используя сотни факторов ранжирования, алгоритмы определяют, какие страницы наиболее релевантны и авторитетны для данного запроса, и выводят их в определенном порядке. Цель ранжирования — предоставить пользователю максимально точный и полезный ответ на его запрос.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Ключевые факторы ранжирования</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>На позицию сайта в поисковой выдаче влияет множество факторов, которые можно условно разделить на несколько групп:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Релевантность контента:</strong> Соответствие содержания страницы запросу пользователя. Включает использование ключевых слов, качество и полноту информации, уникальность текста, мультимедийные элементы.</li>
+<li><strong>Техническая оптимизация:</strong> Наличие удобной структуры сайта, быстрая загрузка страниц, мобильная адаптация, отсутствие технических ошибок (битые ссылки, дублированный контент), корректная настройка robots.txt и sitemap.xml.</li>
+<li><strong>Авторитетность и внешние ссылки:</strong> Количество и качество ссылок с других авторитетных сайтов, указывающих на ваш ресурс. Такие ссылки воспринимаются поисковыми системами как "голоса доверия", повышая авторитет страницы.</li>
+<li><strong>Пользовательский опыт (UX):</strong> Поведение пользователей на сайте. Время пребывания, показатель отказов, глубина просмотра, кликабельность (CTR) в поисковой выдаче. Удобный и интуитивно понятный интерфейс способствует лучшему вовлечению и улучшает поведенческие факторы.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Понимание этих основ является отправной точкой для разработки эффективной стратегии SEO и успешного продвижения любого веб-ресурса.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Индивидуально, от 30 000 руб./мес. (зависит от объема работ и конкуренции).</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: Первые изменения: 1-3 месяца. Стабильный рост: от 6 месяцев.</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Полный SEO-аудит сайта (от 3-5 дней). Позволяет сформировать индивидуальную стратегию и точный бюджет.</p></div>
+
+        </div>
+            <section><h2>Глава 2: Внутренняя оптимизация сайта (On-Page SEO)</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Внутренняя оптимизация сайта, или On-Page SEO, является фундаментом успешного продвижения в поисковых системах. Это набор действий, выполняемых непосредственно на страницах вашего веб-ресурса, чтобы сделать их более привлекательными и понятными как для поисковых роботов, так и для конечных пользователей. Цель On-Page SEO – максимально полно и точно соответствовать поисковым запросам целевой аудитории, повышая релевантность и авторитетность каждой страницы.</p></p>
+<h3>Ключевые элементы On-Page SEO</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Эффективная внутренняя оптимизация охватывает несколько критически важных аспектов:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Оптимизация заголовков (Title Tags):</strong> Заголовок страницы (тег &lt;title&gt;) – это первое, что видят пользователи в выдаче поисковых систем. Он должен быть уникальным, содержать основное ключевое слово и точно отражать содержание страницы. Оптимальная длина – около 50-60 символов.</li>
+<li><strong>Оптимизация мета-описаний (Meta Descriptions):</strong> Мета-описание (тег &lt;meta name="description"&gt;) не влияет напрямую на ранжирование, но служит мощным инструментом для увеличения CTR (Click-Through Rate). Оно должно быть информативным, привлекательным и содержать призыв к действию, а также ключевые слова. Оптимальная длина – до 150-160 символов.</li>
+<li><strong>Структура заголовков контента (Header Tags: H1-H6):</strong> Заголовок H1 должен быть уникальным для каждой страницы и содержать ее основное ключевое слово. Он используется для обозначения главной темы страницы. Заголовки H2-H6 служат для структурирования текста, делая его легкочитаемым и логичным для пользователей и поисковых систем. Они должны содержать второстепенные и LSI-ключевые слова.</li>
+<li><strong>Оптимизация контента:</strong> Качественный, уникальный и экспертный контент – ядро On-Page SEO. Он должен полностью раскрывать тему, отвечать на вопросы пользователей и быть актуальным. Ключевые слова должны быть органично интегрированы в текст, без переспама. Важно использовать синонимы, LSI-слова и тематические фразы для повышения релевантности.</li>
+<li><strong>Оптимизация изображений:</strong> Изображения должны быть сжаты для быстрой загрузки. Важно заполнять атрибуты alt (альтернативный текст), который описывает изображение и может включать ключевые слова. Имена файлов изображений также должны быть описательными.</li>
+<li><strong>Оптимизация URL-адресов:</strong> URL-адреса должны быть короткими, понятными и читаемыми для человека (ЧПУ – человекопонятные URL). Они должны содержать ключевые слова и отражать иерархию сайта. Использование дефисов для разделения слов предпочтительнее нижних подчеркиваний.</li>
+<li><strong>Внутренняя перелинковка:</strong> Создание логичной структуры внутренних ссылок помогает поисковым роботам лучше индексировать сайт, распределяет "вес" страниц и улучшает навигацию для пользователей. Ссылки должны вести на релевантные страницы, используя анкоры с ключевыми словами.</li>
+<li><strong>Скорость загрузки страницы:</strong> Быстрая загрузка – критический фактор ранжирования и важный аспект пользовательского опыта. Оптимизация изображений, использование кэширования, сжатие кода и выбор надежного хостинга значительно влияют на скорость.</li>
+<li><strong>Адаптивность (Mobile-First Indexing):</strong> Сайт должен корректно отображаться и быть полностью функциональным на всех типах устройств (смартфоны, планшеты). Поисковые системы отдают предпочтение мобильным версиям сайтов при индексации и ранжировании.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Значение On-Page SEO</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Игнорирование внутренней оптимизации приводит к тому, что даже самый качественный контент может остаться незамеченным. Правильно выполненное On-Page SEO значительно увеличивает шансы страницы занять высокие позиции в поисковой выдаче, привлечь целевой трафик и улучшить поведенческие факторы. Это прямая инвестиция в видимость и эффективность вашего веб-ресурса.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Вот технический секрет инженера для "SEO-оптимизация: полное руководство по продвижению сайтов":</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"Забудьте о 'секретных формулах' и сиюминутных тактиках. Настоящий технический секрет SEO-инженера — это системное проектирование ценности. Ваш сайт — это не просто набор страниц, а сложная, высокопроизводительная система, созданная для того, чтобы *безупречно* решать конкретную проблему пользователя, предоставить ему необходимую информацию или выполнить желаемое действие.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Поисковые системы, по своей сути, — это алгоритмические машины, которые стремятся *максимально эффективно* соединить пользователя с *наилучшим* решением его задачи. Их алгоритмы постоянно совершенствуются, чтобы имитировать человеческое понимание качества, релевантности и доверия.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Поэтому, вместо того чтобы гоняться за меняющимися правилами или пытаться 'обмануть' робота, сфокусируйтесь на том, чтобы спроектировать ваш ресурс как *идеальную машину для удовлетворения пользовательских потребностей*:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">1.  <strong>Функциональная Безупречность:</strong> Обеспечьте идеальную техническую основу — сверхбыстрая загрузка, бесшовная навигация, абсолютная доступность на любых устройствах, безупречная индексация. Это базовые 'инженерные допуски', без которых любая другая 'оптимизация' бессмысленна.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">2.  <strong>Архитектура Информации:</strong> Разработайте логичную, интуитивно понятную и исчерпывающую структуру данных, которая предвосхищает вопросы пользователя и ведет его по кратчайшему пути к решению. Думайте о сайте как о базе знаний, где каждая единица информации имеет свое точное место и назначение.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">3.  <strong>Оптимизация Процессов:</strong> Каждый элемент контента, каждая функция сайта должны быть спроектированы для выполнения конкретной задачи пользователя максимально эффективно. Это означает не просто 'ключевые слова', а полное понимание *пользовательского интента* и предоставление *самого лучшего ответа* или *решения* для этого интента.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">4.  <strong>Долговечность и Адаптивность:</strong> Создавайте контент и структуру, которые не устареют через месяц, а будут актуальны годами. Ваша система должна быть способна к масштабированию и адаптации к меняющимся потребностям пользователей и эволюции поисковых алгоритмов без капитальной перестройки.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">В конечном итоге, вы оптимизируете не для робота, а для *человека*, который ищет ответ. Робот лишь *оценивает*, насколько хорошо вы это делаете. Безупречно спроектированный, ценный и функционально совершенный ресурс всегда будет в выигрыше, потому что он удовлетворяет фундаментальную потребность поиска – найти лучшее."</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Глава 3: Внешняя и техническая оптимизация (Off-Page и Technical SEO)</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Оптимизация поисковых систем — это многогранный процесс, который выходит далеко за рамки контента на вашем сайте. В этой главе мы углубимся в две критически важные составляющие, которые формируют авторитет и техническую основу вашего ресурса: внешнюю (Off-Page) и техническую (Technical) оптимизацию.</p></p>
+<h2>Внешняя оптимизация (Off-Page SEO)</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Внешняя оптимизация, или Off-Page SEO, включает в себя все действия, предпринимаемые за пределами вашего сайта для повышения его рейтинга в поисковой выдаче. Основная цель — наращивание авторитета и доверия к вашему ресурсу через упоминания и ссылки с других сайтов.</p></p>
+<h3>Построение ссылочного профиля (Link Building)</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Самым значимым элементом Off-Page SEO является построение качественного ссылочного профиля. Обратные ссылки (backlinks) — это, по сути, "голоса доверия" от других ресурсов. Чем авторитетнее и релевантнее донорская площадка, тем ценнее такая ссылка для вашего сайта.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Качество важнее количества:</b> Одна ссылка с высокоавторитетного и тематического ресурса ценнее десятка ссылок с некачественных или спамных сайтов.</li>
+<li><b>Анкорный текст:</b> Текст ссылки (анкор) должен быть естественным и релевантным целевой странице. Избегайте переоптимизации.</li>
+<li><b>Разнообразие источников:</b> Стремитесь к разнообразию доноров — от тематических блогов и новостных порталов до форумов и отраслевых каталогов.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Стратегии получения качественных ссылок</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Существует множество этичных (white-hat) стратегий для наращивания ссылочной массы:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Гостевой постинг (Guest Posting):</b> Написание статей для других блогов в вашей нише с включением ссылки на ваш сайт.</li>
+<li><b>Восстановление битых ссылок (Broken Link Building):</b> Поиск неработающих ссылок на авторитетных сайтах, предложение им заменить их на ссылку на ваш релевантный контент.</li>
+<li><b>Создание ценного контента:</b> Контент, который естественным образом привлекает ссылки (инфографика, исследования, уникальные руководства).</li>
+<li><b>Упоминания бренда (Brand Mentions):</b> Мониторинг упоминаний вашего бренда в сети и превращение их в ссылки, где это уместно.</li>
+<li><b>PR-активности:</b> Публикации в СМИ и пресс-релизы, которые могут содержать ссылки на ваш ресурс.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Социальные сигналы и упоминания</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Активность в социальных сетях, лайки, репосты и комментарии, хотя и не являются прямым фактором ранжирования, могут косвенно влиять на SEO. Они повышают видимость контента, привлекают трафик и способствуют естественному получению ссылок.</p></p>
+<h3>Локальное SEO</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для бизнесов с физическим присутствием критически важна оптимизация для локального поиска:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Google Мой Бизнес:</b> Создание и оптимизация профиля компании (NAP: Name, Address, Phone).</li>
+<li><b>Отзывы:</b> Поощрение клиентов оставлять отзывы на различных платформах.</li>
+<li><b>Локальные цитаты:</b> Упоминания вашего бизнеса (с адресом и телефоном) в местных каталогах и справочниках.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Техническая оптимизация (Technical SEO)</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Техническая оптимизация гарантирует, что поисковые роботы могут эффективно сканировать, индексировать и понимать ваш сайт, а пользователи получают наилучший опыт взаимодействия.</p></p>
+<h3>Индексирование и сканирование</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Файл robots.txt:</b> Управляет доступом поисковых роботов к определенным разделам вашего сайта. Используется для исключения страниц, которые не должны попадать в индекс.</li>
+<li><b>Карта сайта (Sitemap.xml):</b> Предоставляет поисковым системам список всех важных страниц вашего сайта, облегчая их обнаружение.</li>
+<li><b>Мета-тег robots:</b> Дает инструкции на уровне конкретной страницы (например, <code>&lt;meta name="robots" content="noindex, follow"&gt;</code>).</li>
+<li><b>Канонические ссылки (Canonical Tags):</b> Указывают поисковым системам на основную версию страницы при наличии дублированного контента, предотвращая проблемы с индексацией.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Скорость загрузки сайта</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Скорость — один из ключевых факторов ранжирования и критически важен для пользовательского опыта. Используйте Google PageSpeed Insights и другие инструменты для анализа и оптимизации.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Core Web Vitals:</b> Набор метрик, оценивающих скорость загрузки, интерактивность и визуальную стабильность страницы (LCP, FID, CLS).</li>
+<li><b>Оптимизация изображений:</b> Сжатие, использование современных форматов (WebP), указание атрибутов <code>width</code> и <code>height</code>.</li>
+<li><b>Кэширование:</b> Использование кэширования браузера и серверного кэширования для ускорения повторных загрузок.</li>
+<li><b>CDN (Content Delivery Network):</b> Распределенные сети серверов, которые доставляют контент пользователям с ближайшего сервера.</li>
+<li><b>Минимизация CSS и JavaScript:</b> Удаление ненужных символов и пробелов из файлов.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Мобильная адаптивность</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Сайт должен корректно отображаться и быть удобным для использования на любых устройствах, особенно на мобильных. Google использует Mobile-first indexing, что делает мобильную версию приоритетной.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Адаптивный дизайн (Responsive Design):</b> Лучший подход, при котором контент автоматически подстраивается под размер экрана.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Структурированные данные (Schema Markup)</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Разметка Schema.org помогает поисковым системам лучше понимать контент вашей страницы, что может привести к показу расширенных сниппетов (rich snippets) в результатах поиска.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Примеры:</b> Разметка для товаров, рецептов, мероприятий, отзывов, статей, хлебных крошек.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>HTTPS</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Использование протокола HTTPS (защищенное соединение) является обязательным требованием для всех современных сайтов. Это фактор ранжирования и важный элемент безопасности.</p></p>
+<h3>Структура URL-адресов</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>URL должны быть читаемыми, краткими и содержать ключевые слова. Избегайте длинных, запутанных URL с большим количеством параметров.</p></p>
+<h3>Работа с дублированным контентом</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Дублированный контент может сбивать с толку поисковые системы. Используйте канонические теги, 301-е редиректы и robots.txt для управления этим.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Комплексный подход к внешней и технической оптимизации создает прочную основу для успешного продвижения вашего сайта, позволяя поисковым системам и пользователям находить и ценить ваш контент.</p></p>
+</section>
+            <section class="mt-12"><h2>Глава 4: Аналитика, стратегия и будущее поискового продвижения</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для эффективного поискового продвижения недостаточно просто внедрить технические доработки и оптимизировать контент. Ключевым элементом успеха является глубокая аналитика, которая позволяет оценить текущее положение, скорректировать стратегию и предвидеть будущие изменения. Без постоянного мониторинга и анализа данных любая SEO-стратегия рискует стать неактуальной и неэффективной.</p></p>
+<h3>Основы SEO-аналитики: инструменты и метрики</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Аналитика в SEO — это процесс сбора, обработки и интерпретации данных для оценки эффективности продвижения и выявления точек роста. Правильно подобранные инструменты и понимание ключевых метрик позволяют принимать обоснованные решения.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Google Search Console (GSC):</strong> Незаменимый инструмент для веб-мастеров. Он предоставляет данные о поисковых запросах, по которым показывается сайт, кликах, показах, средней позиции, а также информацию об индексировании страниц, ошибках сканирования и проблемах с безопасностью. GSC позволяет отслеживать производительность сайта в поиске и выявлять технические недочеты.</li>
+<li><strong>Google Analytics (GA):</strong> Мощная платформа для анализа поведения пользователей на сайте. С помощью GA можно отслеживать источники трафика, количество посещений, время на сайте, показатель отказов, конверсии и многое другое. Интеграция GA с GSC дает полную картину: как пользователи попадают на сайт и что они делают, оказавшись на нем.</li>
+<li><strong>Яндекс.Метрика:</strong> Аналог Google Analytics для Рунета, предоставляющий аналогичные функции, но с акцентом на аудиторию Яндекса. Уникальные функции, такие как Вебвизор (запись действий пользователей) и Карта скроллинга, позволяют детально изучить поведение посетителей.</li>
+<li><strong>Инструменты для анализа ключевых слов и конкурентов:</strong> К ним относятся Serpstat, Ahrefs, Semrush, Key Collector. Они помогают в подборе ключевых запросов, анализе обратных ссылок конкурентов, мониторинге позиций и выявлении новых возможностей для роста.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ключевые метрики для отслеживания:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Трафик из органического поиска:</strong> Общее количество посещений сайта из поисковых систем.</li>
+<li><strong>Позиции по ключевым запросам:</strong> Место сайта в поисковой выдаче по целевым запросам.</li>
+<li><strong>Показатель отказов:</strong> Процент посетителей, покинувших сайт после просмотра одной страницы. Высокий показатель может указывать на нерелевантность контента или проблемы с удобством использования.</li>
+<li><strong>Время на сайте и глубина просмотра:</strong> Показывают вовлеченность пользователей.</li>
+<li><strong>Конверсии:</strong> Достижение целевых действий (покупка, заявка, подписка).</li>
+<li><strong>Количество и качество обратных ссылок:</strong> Влияют на авторитет сайта.</li>
+<li><strong>Скорость загрузки страниц:</strong> Важный фактор ранжирования и удобства для пользователя.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Разработка и корректировка SEO-стратегии на основе данных</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Стратегия SEO не может быть статичной; она требует постоянной адаптации и корректировки, основанной на аналитических данных. Цикл выглядит следующим образом:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ol></p>
+<li><strong>Анализ текущего состояния:</strong> Использование вышеперечисленных инструментов для выявления сильных и слабых сторон сайта, возможностей и угроз.</li>
+<li><strong>Постановка целей:</strong> На основе анализа определяются конкретные, измеримые, достижимые, релевантные и ограниченные по времени цели (SMART). Например: "Увеличить органический трафик на 20% за 6 месяцев" или "Повысить конверсию из поиска на 5%".</li>
+<li><strong>Разработка тактики:</strong> Формирование конкретных шагов для достижения целей. Это может включать оптимизацию контента, наращивание ссылочной массы, улучшение технической составляющей, работу над UX/UI.</li>
+<li><strong>Внедрение изменений:</strong> Реализация запланированных мероприятий.</li>
+<li><strong>Мониторинг и оценка:</strong> Постоянное отслеживание изменений в метриках и позициях.</li>
+<li><strong>Корректировка стратегии:</strong> На основе полученных данных происходит пересмотр и уточнение тактики или даже самих целей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ol></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Пример корректировки: если анализ показывает низкую среднюю позицию по важным коммерческим запросам, стратегия может быть скорректирована в сторону глубокой оптимизации этих страниц, создания более качественного контента и привлечения целевых ссылок. Если пользователи быстро покидают страницы блога, возможно, необходимо улучшить структуру текста, добавить мультимедиа или проработать внутреннюю перелинковку.</p></p>
+<h3>Будущее поискового продвижения: тренды и вызовы</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мир SEO постоянно меняется, и успешные специалисты должны не только следовать текущим трендам, но и предвидеть будущие изменения. Некоторые ключевые направления:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Искусственный интеллект и машинное обучение:</strong> Поисковые системы все активнее используют ИИ для понимания запросов пользователей и оценки качества контента (например, алгоритм RankBrain, MUM от Google). Это означает, что контент должен быть не просто оптимизирован под ключевые слова, но и максимально полно и точно отвечать на намерение пользователя.</li>
+<li><strong>Голосовой поиск и мультимодальный поиск:</strong> Рост популярности голосовых помощников меняет характер поисковых запросов. Они становятся более разговорными, длинными и естественными. В будущем ожидается развитие мультимодального поиска, где запросы могут включать текст, изображение и даже видео. Оптимизация под такие запросы потребует создания контента, отвечающего на прямые вопросы и имеющего четкую структуру.</li>
+<li><strong>E-A-T (Expertise, Authoritativeness, Trustworthiness) и YMYL (Your Money Your Life):</strong> Для тем, связанных со здоровьем, финансами и безопасностью (YMYL), поисковые системы предъявляют повышенные требования к экспертности, авторитетности и надежности контента. В будущем принципы E-A-T будут распространяться на все большее число ниш, подчеркивая важность качественного, достоверного и подтвержденного контента, созданного экспертами.</li>
+<li><strong>User Experience (UX) и Core Web Vitals:</strong> Удобство использования сайта становится критически важным фактором ранжирования. Google активно продвигает метрики Core Web Vitals (скорость загрузки, интерактивность, визуальная стабильность), которые напрямую влияют на пользовательский опыт. Оптимизация сайта под мобильные устройства, интуитивно понятная навигация и высокая скорость загрузки — это не просто преимущество, а необходимость.</li>
+<li><strong>Локальное SEO:</strong> Для многих бизнесов локальное SEO будет продолжать играть ключевую роль. Оптимизация под "Google Мой бизнес", получение положительных отзывов и упоминаний в местных источниках становятся еще более значимыми.</li>
+<li><strong>Контент, ориентированный на пользователя:</strong> Поисковые системы все лучше понимают "пользовательское намерение". Создание контента, который не просто содержит ключевые слова, а глубоко удовлетворяет потребность пользователя, решает его проблему и предоставляет ценную информацию, будет в приоритете. Это означает уход от "SEO-текстов" к качественной, полезной информации.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Будущее SEO — это не только техническая оптимизация, но и комплексный подход к созданию ценного продукта для пользователя, подкрепленный глубоким пониманием аналитики и способностью адаптироваться к постоянно меняющимся алгоритмам поисковых систем.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

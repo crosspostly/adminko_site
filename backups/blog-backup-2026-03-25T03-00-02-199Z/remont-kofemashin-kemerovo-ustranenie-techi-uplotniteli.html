@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ремонт кофемашин в Кемерово: Устранение течи, замена уплотнителей | Админ.Ко | Админ.Ко</title>
+    <meta name="description" content="Профессиональный ремонт протекающих кофемашин в Кемерово. Быстро устраним течь, заменим изношенные уплотнители с гарантией. Бесплатная диагностика. Звоните в Админ.Ко!">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Ремонт кофемашин в Кемерово: Устранение течи, замена уплотнителей | Админ.Ко</h1>
+            <meta name="published_at" content="2026-03-22T15:45:53.250Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Ремонт кофемашин в Кемерово: устранение течи и замена уплотнителей с гарантией 12 месяцев</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваша кофемашина начала подтекать, оставляя лужи воды или кофе на столе? Это распространенная проблема, которая требует немедленного профессионального вмешательства, чтобы избежать более серьезных поломок и сохранить качество напитка. В Админ.Ко мы оперативно и надежно устраняем течи в кофемашинах всех марок.</p></p>
+<h3>Blitz-Answer: Решение проблемы с протекающей кофемашиной</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><p><b>Проблема:</b> Кофемашина течет, оставляет лужи под корпусом, не подает воду или снижает давление.</p></li>
+<li><p><b>Срок ремонта:</b> От 2 часов (после точной диагностики и при наличии запчастей).</p></li>
+<li><p><b>Ориентировочная цена:</b> От 1500 руб. (зависит от сложности поломки и стоимости необходимых комплектующих).</p></li>
+<li><p><b>Диагностика:</b> 0 руб. (даже при отказе от ремонта).</p></li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Экспертный разбор: Почему течет кофемашина и как мы это исправляем</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Протечка кофемашины — это не просто неудобство, а сигнал о неисправности одного или нескольких компонентов системы. Игнорирование проблемы ведет к коррозии внутренних элементов, замыканиям электроники и полному выходу устройства из строя. Основные причины возникновения течей включают:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><p><b>Износ уплотнительных колец и прокладок:</b> Со временем резиновые элементы теряют эластичность, трескаются и перестают герметизировать соединения в бойлере, заварочном блоке или системе подачи воды.</p></li>
+<li><p><b>Повреждение патрубков и шлангов:</b> Пластиковые или резиновые трубки могут лопнуть, треснуть от перепадов температур, высокого давления или механического воздействия.</p></li>
+<li><p><b>Неисправность клапанов или насоса:</b> Засоры, износ или выход из строя этих элементов приводят к некорректному давлению в системе и, как следствие, к протечкам.</p></li>
+<li><p><b>Нарушение герметичности бойлера или заварочного блока:</b> Более серьезные повреждения, требующие профессионального вмешательства.</p></li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Самостоятельная попытка ремонта, как правило, лишь усугубляет ситуацию. Без специализированных знаний и оборудования легко повредить хрупкие детали, неправильно собрать гидравлическую систему, что приведет к новым протечкам или полному выходу устройства из строя. Использование кустарных или некачественных запчастей гарантирует повторную поломку в ближайшем будущем.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы подходим к ремонту системно. Наша лаборатория оснащена профессиональным оборудованием для точной диагностики и качественного ремонта:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><p><b>Тепловизор:</b> Позволяет выявить скрытые утечки и места перегрева внутри корпуса, указывающие на проблемы с давлением или засоры в системе циркуляции воды.</p></li>
+<li><p><b>Осциллограф Rigol:</b> Используется для анализа работы насоса, клапанов и датчиков давления. Это критически важно для выявления причин неконтролируемого потока воды или сбоев в электронике, которые могут быть вызваны попаданием влаги.</p></li>
+<li><p>При наличии электронных неисправностей, вызванных попаданием влаги, используются паяльные станции <b>JBC</b> (Испания) для микро-пайки без перегрева платы и <b>Quick 861DW</b> для работы с SMD-компонентами. При этом применяются высококачественные флюсы <b>Martin/Amtech</b>, гарантирующие чистоту и долговечность паяных соединений.</p></li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы используем только оригинальные или сертифицированные аналоги уплотнителей, патрубков и клапанов, что гарантирует восстановление полной герметичности и долгосрочную работоспособность вашей кофемашины.</p></p>
+<h3>Инженерный стандарт Админ.Ко: Ваши преимущества</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><p><b>Бесплатная диагностика:</b> Мы точно определим причину поломки до начала работ, вы не платите за поиск неисправности.</p></li>
+<li><p><b>Запчасти в наличии:</b> Основные комплектующие для большинства популярных моделей всегда на складе, что значительно сокращает время ремонта.</p></li>
+<li><p><b>Гарантия 1 год по договору:</b> Мы уверены в качестве своей работы и подтверждаем это официальным документом.</p></li>
+<li><p><b>Сохранность данных:</b> При работе с устройствами мы гарантируем абсолютную неприкосновенность любой вашей информации (применимо к устройствам, хранящим данные).</p></li>
+<li><p><b>Честная цена:</b> Стоимость ремонта озвучивается после диагностики и остается неизменной в процессе выполнения работ.</p></li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Локальный призыв: Приезжайте в Админ.Ко в Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не позволяйте протекающей кофемашине испортить ваш день. Мы находимся в центре Кемерово, по адресу: <b>улица Дзержинского 2Б</b>. Наш сервисный центр легко найти – мы расположены рядом со СРК Арена и ТЦ Я. Мы работаем официально, предоставляя полный пакет документов на выполненные работы и установленные запчасти. Доверьте ремонт профессионалам Админ.Ко и наслаждайтесь идеальным кофе без проблем!</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Ремонт протекающей кофемашины в Админ.Ко:</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Бесплатно (при дальнейшем ремонте у нас).</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: От 1 рабочего дня (часто в день обращения).</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> От 900 руб. (плюс стоимость необходимых запчастей).</p></div>
+
+        </div>
+            <section><p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><H2>Выявление источника течи: Диагностика протекающей кофемашины</H2></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><P>Протекающая кофемашина — это не просто неудобство, но и индикатор серьезной внутренней неисправности, которая, если ее игнорировать, может привести к полному выходу устройства из строя или даже к короткому замыканию. Главная задача инженера Админ.Ко на этом этапе — точно локализовать источник течи, что зачастую сложнее, чем кажется.</P></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><P>Видимая вода на столе не всегда указывает на место утечки. Вода может стекать по внутренним компонентам, собираясь в одной точке. Дилетантский подход здесь недопустим, поскольку замена одного уплотнителя "наугад" не устранит корневую проблему и может привести к повторной поломке или появлению новых утечек.</P></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><P>В Админ.Ко мы используем системный, инженерный подход к диагностике:</P></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><UL></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><P><STRONG>Визуальный осмотр и тестирование под давлением:</STRONG> Мы начинаем с тщательного визуального осмотра, а затем подключаем кофемашину к специализированному стенду, позволяющему подавать воду под контролируемым давлением, имитируя режим работы. Это критически важно для выявления микротрещин в пластиковых элементах, патрубках или ослабленных соединений, которые проявляются только при рабочем давлении. Без этого этапа определить скрытую течь практически невозможно.</P></LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><P><STRONG>Локализация типовых мест утечек:</STRONG> Опыт наших инженеров и знание конструкции различных моделей кофемашин позволяют целенаправленно проверять наиболее уязвимые зоны:</P></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><UL></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><P>Уплотнители заварного блока, водяного бака, бойлера и нагревательных элементов.</P></LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><P>Соединения трубок и патрубков, их естественный износ или повреждения.</P></LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><P>Корпус помпы (насоса) и его уплотнения.</P></LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><P>Бойлер (термоблок) — на предмет микротрещин или деформаций.</P></LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><P>Электромагнитные клапаны и их уплотнения.</P></LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></UL></LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><P><STRONG>Использование специализированного инструмента:</STRONG> Для аккуратной и безопасной разборки мы применяем специализированные наборы инструментов, исключающие повреждение пластиковых защелок, корпусных элементов и крепежа. Это гарантирует, что в процессе диагностики не возникнет новых неисправностей.</P></LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></UL></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><P>Почему без профессиональной диагностики ремонт будет некачественным? Без точного выявления всех источников течи, замена лишь одного видимого уплотнителя дает временный эффект. Спустя короткое время проблема вернется, или вода начнет просачиваться из другого, не выявленного места. Кустарный ремонт без должного оборудования и опыта может привести к повреждению внутренних компонентов, некорректной сборке, и как следствие, к более дорогостоящему ремонту или полному выходу кофемашины из строя.</P></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Инженерный секрет от Админ.Ко по ремонту кофемашин:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Когда ваша кофемашина начинает протекать, интуиция подсказывает, что проблема в том месте, где вы видите воду. Но настоящий инженер знает: вода – коварная субстанция. Она всегда ищет самый легкий путь вниз, и очень часто место, откуда капает, находится далеко от реального источника утечки.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Наш секрет в том, что мы никогда не начинаем ремонт с замены первого попавшегося уплотнителя в видимой точке. Мы всегда проводим комплексную диагностику под давлением, буквально "прослеживая" путь воды, чтобы найти истинного виновника. Это может быть изношенный уплотнитель на значительно более высоком уровне, микротрещина в трубке, которую невозможно увидеть без разборки, или даже засорение, приводящее к избыточному давлению в незащищенном месте.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Только такой методичный подход позволяет нам не просто "замазать" симптом, а полностью устранить причину течи, заменив все проблемные уплотнители и компоненты. Это гарантирует, что ваша кофемашина будет работать надежно, а не начнет течь снова через пару недель. Доверяйте профессионалам, которые видят дальше очевидного.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Ремонт протекающей кофемашины в Кемерово: Профессиональное устранение течи и замена уплотнителей — Админ.Ко</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваша кофемашина начала протекать, оставляя лужи на столе или под устройством? Это не просто неудобство, а прямой сигнал о необходимости немедленного вмешательства. Откладывать ремонт опасно: пролив жидкости может привести к повреждению электроники, короткому замыканию и полному выходу дорогостоящей техники из строя. В Сервисном Центре «Админ.Ко» мы предлагаем экспертное и гарантированное решение проблемы течи.</p></p>
+<h3>Основные неисправности и наше решение:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Проблема:</strong> Кофемашина протекает, образуются лужи воды или кофе под корпусом.</li>
+<li><strong>Срок ремонта:</strong> От 1 рабочего дня (зависит от сложности доступа и наличия специфических уплотнителей).</li>
+<li><strong>Ориентировочная цена:</strong> От 1500 руб. (включая работу по устранению стандартных течей).</li>
+<li><strong>Диагностика:</strong> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Экспертный разбор: Почему кофемашина протекает и как это устраняем мы</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Причины течи кофемашины могут быть разнообразны: от естественного износа уплотнительных колец, сальников и соединений под воздействием высоких температур и давления, до механических повреждений трубок, бойлера или некорректной декальцинации. Со временем резиновые элементы теряют свою эластичность, трескаются, а пластиковые детали могут деформироваться, нарушая герметичность системы.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В «Админ.Ко» мы подходим к ремонту протекающей кофемашины с инженерной точностью, а не методом «наугад». Наша ремонтная лаборатория оснащена специализированным оборудованием, которое позволяет не только устранить текущую проблему, но и предотвратить будущие:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Тепловизор:</strong> Позволяет обнаружить скрытые места утечек внутри корпуса, а также зоны перегрева, которые могут указывать на повреждение или износ внутренних компонентов, невидимые при поверхностном осмотре.</li>
+<li><strong>Специализированные манометры и насосы:</strong> Мы проводим проверку системы под рабочим давлением, имитируя процесс приготовления кофе, чтобы точно локализовать даже самые микроскопические утечки и проверить герметичность всех соединений после ремонта.</li>
+<li><strong>JBC (Испания) и Quick 861DW:</strong> Если влага успела повредить электронные платы управления или датчики, наши высокоточные паяльные станции JBC и Quick 861DW позволяют выполнить микро-пайку с ювелирной точностью. Это исключает перегрев чувствительных компонентов и восстанавливает их функциональность без риска дальнейших поломок.</li>
+<li><strong>Качественные расходные материалы:</strong> Мы используем только сертифицированные, пищевые уплотнители и прокладки, а также профессиональные флюсы Martin/Amtech при необходимости пайки. Это гарантирует долговечность ремонта, отсутствие коррозии и полную безопасность для вашего здоровья, поскольку эти материалы не взаимодействуют с напитками.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без подобного оборудования и глубокой технической экспертизы ремонт кофемашины сводится к неэффективной замене деталей методом проб и ошибок, что не гарантирует полного устранения проблемы и может привести к новым поломкам. Мы обеспечиваем, что ваша кофемашина после нашего сервиса будет работать как новая, без течей и с полным сохранением функционала.</p></p>
+<h3>Инженерный стандарт «Админ.Ко»:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Диагностика 0 руб.:</strong> Мы проводим полную диагностику бесплатно, вы платите только за реальный ремонт.</li>
+<li><strong>Запчасти в наличии:</strong> Крупный склад запчастей позволяет иметь большинство необходимых уплотнителей и комплектующих для различных моделей кофемашин, что значительно ускоряет процесс ремонта.</li>
+<li><strong>Гарантия 1 год по договору:</strong> На все выполненные работы и установленные запчасти предоставляется официальная гарантия, закрепленная договором.</li>
+<li><strong>Бережное отношение к вашей технике:</strong> Мы гарантируем сохранность внешнего вида и всех функциональных возможностей вашей кофемашины.</li>
+<li><strong>Честная цена:</strong> Прозрачное ценообразование без скрытых платежей. Вы всегда знаете, за что платите.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Не откладывайте ремонт – приходите к профессионалам!</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>«Админ.Ко» находится в самом центре Кемерово, по адресу: <strong>ул. Дзержинского 2Б</strong>. Нас легко найти — рядом расположены СРК Арена и ТЦ Я. Мы работаем официально, предоставляя полный пакет документов и гарантий на все виды ремонта. Доверьте свою кофемашину опытным инженерам и наслаждайтесь идеальным кофе без протечек каждый день!</p></p>
+</section>
+            <section class="mt-12"><h2>Ремонт протекающей кофемашины в Кемерово: Устранение течи и замена уплотнителей за 1 день с гарантией 12 месяцев</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваша кофемашина стала протекать, оставляя лужи на столешнице? Это не только неудобно, но и опасно для электроники. Не откладывайте ремонт. Мы предлагаем комплексное решение для устранения течи.</p></p>
+<h3>Блиц-ответ по ремонту кофемашины:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Проблема:</b> Кофемашина протекает, вода под корпусом или из-под рожка.</li>
+<li><b>Срок:</b> От 1 дня.</li>
+<li><b>Цена:</b> От 1500 руб.</li>
+<li><b>Диагностика:</b> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Экспертный разбор: Почему кофемашина протекает и как мы это исправляем</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Протечки в кофемашине — это распространенная проблема, которая может быть вызвана множеством факторов: от естественного износа уплотнителей до серьезных поломок внутренних компонентов. Без точной диагностики попытки самостоятельного ремонта или обращение к неквалифицированным мастерам часто приводят к усугублению проблемы, дорогостоящему ремонту или даже выходу устройства из строя.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы подходим к ремонту протекающих кофемашин с инженерной точностью. Наши специалисты используют комплексное оборудование для выявления истинной причины неисправности:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Тепловизор:</b> Позволяет выявить скрытые места утечек, температурные аномалии и перегрев компонентов, который может указывать на повреждение или закупорку системы.</li>
+<li><b>Осциллограф Rigol:</b> Применяется для диагностики электронных плат управления, датчиков давления и температуры. Неправильные показания датчиков или сбои в управляющих сигналах могут приводить к неконтролируемому наполнению системы водой и, как следствие, к протечкам.</li>
+<li><b>JBC (Испания):</b> Если проблема кроется в электронном модуле управления, например, из-за попадания влаги или вышедших из строя микросхем, мы используем станции JBC для микро-пайки. Это позволяет восстановить плату без перегрева и повреждения соседних компонентов, что критически важно для долговечности ремонта.</li>
+<li><b>Специализированные программаторы:</b> Для некоторых моделей кофемашин требуются калибровка или обновление прошивки управляющих блоков. Мы используем специализированные программаторы, чтобы восстановить заводские настройки и обеспечить корректную работу всех систем, включая систему подачи воды.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без такого уровня диагностики и оборудования ремонт сводится к "методу тыка": просто заменяется видимая деталь, а истинная причина протечки остается нерешенной. Это приводит к повторным поломкам, трате вашего времени и денег. Мы не меняем детали наугад — мы выявляем и устраняем корень проблемы, используя только качественные расходные материалы, такие как флюсы Martin/Amtech, которые гарантируют отсутствие коррозии после пайки и продлевают срок службы устройства.</p></p>
+<h3>Инженерный стандарт Админ.Ко:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>0 рублей за диагностику:</b> Мы бесплатно определим причину поломки.</li>
+<li><b>Запчасти в наличии:</b> Большинство необходимых уплотнителей, трубок и компонентов на складе, что ускоряет ремонт.</li>
+<li><b>Гарантия 1 год по договору:</b> На все выполненные работы и установленные детали.</li>
+<li><b>Сохранность всех компонентов:</b> Мы гарантируем бережное обращение с вашей кофемашиной и чистоту всех систем после ремонта.</li>
+<li><b>Честная цена:</b> Только за фактически выполненные работы и установленные детали, без скрытых платежей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Наш адрес в Кемерово:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом с нами СРК Арена и ТЦ Я, что делает нашу мастерскую легкодоступной. Работаем официально, предоставляя полный пакет документов.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

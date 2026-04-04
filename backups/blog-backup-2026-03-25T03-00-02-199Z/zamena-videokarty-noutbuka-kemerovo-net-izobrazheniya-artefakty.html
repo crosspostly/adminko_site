@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Замена видеокарты ноутбука в Кемерово: Нет изображения, артефакты | Ремонт | Админ.Ко</title>
+    <meta name="description" content="Ноутбук не выводит изображение или на экране появились артефакты? Профессиональная замена видеокарты в Кемерово решит эти проблемы. Выполним быструю диагностику и качественный ремонт, чтобы ваш экран снова радовал четкой картинкой. Избавьтесь от черного экрана и графических искажений!">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Замена видеокарты ноутбука в Кемерово: Нет изображения, артефакты | Ремонт</h1>
+            <meta name="published_at" content="2026-03-22T14:07:29.336Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Замена видеокарты ноутбука в Кемерово: нет изображения и артефакты, гарантия 12 месяцев</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваш ноутбук перестал выводить изображение или на экране появились полосы и "квадраты"? Это классические симптомы неисправности дискретной видеокарты. В Админ.Ко мы специализируемся на сложном компонентном ремонте материнских плат и видеокарт, возвращая к жизни даже самые "безнадежные" устройства.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Быстрые факты по ремонту видеокарты ноутбука:</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Проблема:</strong> Нет изображения, полосы, артефакты на экране.</li>
+<li><strong>Срок:</strong> От 1 дня (при наличии донорской видеокарты или новой на складе).</li>
+<li><strong>Цена:</strong> От 4500 руб. (зависит от модели видеокарты и сложности работ).</li>
+<li><strong>Диагностика:</strong> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Экспертный разбор: Почему умирают видеокарты и как мы это чиним</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Неисправность видеокарты (GPU) – одна из самых сложных и распространенных поломок в ноутбуках. Часто это результат перегрева, износа пайки под чипом (так называемый BGA-монтаж) или производственного дефекта. Симптомы могут варьироваться от полного отсутствия изображения до появления искажений, цветных полос, "артефактов" на экране или внезапных "синих экранов смерти" при нагрузке.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для качественного ремонта или замены видеочипа требуется не только опыт, но и специализированное оборудование. В лаборатории Админ.Ко мы используем:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Паяльная станция Quick 861DW:</strong> Позволяет точно и контролируемо демонтировать и устанавливать BGA-чипы. Ее высокая мощность и стабильность потока воздуха критически важны для предотвращения перегрева платы и повреждения соседних компонентов.</li>
+<li><strong>Микропаяльная станция JBC (Испания):</strong> Используется для тонкой работы с обвязкой чипа, восстановления контактных площадок и удаления остатков старого припоя. JBC обеспечивает сверхточный контроль температуры, исключая риск тепловых повреждений.</li>
+<li><strong>Тепловизор:</strong> Позволяет в реальном времени контролировать равномерность нагрева платы при пайке, а также диагностировать скрытые перегревы и короткие замыкания в цепях питания видеокарты.</li>
+<li><strong>Осциллограф Rigol:</strong> Необходим для детальной диагностики цепей питания GPU, проверки сигналов шины данных и подтверждения корректной работы нового чипа после установки.</li>
+<li><strong>Профессиональные флюсы Martin/Amtech:</strong> Мы используем только проверенные, высококачественные флюсы. В отличие от дешевых аналогов, они не оставляют агрессивных остатков, которые со временем вызывают коррозию платы и повторный выход из строя. Это гарантирует долговечность и стабильность ремонта.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без этого оборудования ремонт видеокарты сводится к "прогреву" чипа бытовым феном, что лишь временно восстанавливает контакт и гарантирует скорый, а часто и окончательный выход из строя устройства. Такой "ремонт" может привести к деформации платы, отвалу других компонентов и полной непригодности ноутбука к дальнейшему восстановлению.</p></p>
+<h3>Инженерный стандарт Админ.Ко: Почему нам доверяют</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Выбирая Админ.Ко, вы получаете:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>0 руб. диагностика:</strong> Мы не берем плату за поиск неисправности.</li>
+<li><strong>Запчасти в наличии:</strong> Большинство ходовых видеочипов и компонентов уже на нашем складе, что сокращает сроки ремонта.</li>
+<li><strong>Гарантия 1 год по договору:</strong> На все выполненные работы и установленные компоненты предоставляется официальная гарантия.</li>
+<li><strong>Сохранность данных:</strong> Мы гарантируем, что ваши данные останутся неприкосновенными и в полной сохранности.</li>
+<li><strong>Честная цена:</strong> Только обоснованные цены за реальный инженерный труд и комплектующие высокого качества.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Мы находимся в центре Кемерово!</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не рискуйте своим ноутбуком, доверьте его профессионалам. Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально, предоставляя полный пакет документов на услуги и гарантию.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Вот Blitz-Answer по замене видеокарты на ноутбуке в Кемерово:</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"></p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Бесплатно.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: 1-2 рабочих дня.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Позволит точно определить неисправность (отвал видеочипа, дефект видеопамяти или другая проблема материнской платы) и подобрать оптимальное решение.</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"></p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">От 5000 до 12000 рублей.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Включает в себя стоимость нового видеочипа (BGA) или компонентов и работу по его замене/ремонту материнской платы.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Точная цена после диагностики.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок ремонта:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">От 2 до 5 рабочих дней (после согласования стоимости).</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Зависит от наличия нужного чипа и сложности работ.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Приходите к нам на бесплатную диагностику в Кемерово!</p>
+
+        </div>
+            <section><h2>Глава 2: Диагностика проблемы: Возможно ли заменить видеокарту на вашем ноутбуке?</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Когда на экране вашего ноутбука появляются артефакты, полосы или изображение полностью отсутствует при работающем устройстве, это, как правило, указывает на проблему с графическим процессором (GPU) или видеопамятью. Однако точная диагностика критически важна, поскольку "замена видеокарты" в ноутбуке — это не всегда прямая и простая операция, как в настольном ПК.</p></p>
+<h3>Природа неисправностей GPU: от пайки до чипа</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В подавляющем большинстве случаев источником проблем с графикой является не столько выход из строя самого кристалла GPU, сколько нарушение пайки под ним (BGA-пайка) или деградация чипов видеопамяти. Постоянные циклы нагрева и охлаждения приводят к появлению микротрещин в шариковых выводах припоя, что нарушает электрический контакт. Без должной диагностики попытка "заменить" видеокарту может привести к неэффективному или краткосрочному ремонту.</p></p>
+<h3>Экспертная диагностика в Админ.Ко: Только факты и приборы</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы используем специализированное оборудование для точного определения характера неисправности и выработки оптимального решения:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Осциллограф Rigol:</strong> Необходим для измерения и анализа всех силовых линий, питающих графический процессор и видеопамять. Нестабильные напряжения, пульсации или их полное отсутствие на критически важных точках платы мгновенно указывают на проблему в цепях питания GPU или на замыкание внутри самого чипа.</li>
+<li><strong>Тепловизор:</strong> Позволяет визуализировать тепловое распределение на плате. Перегрев или, наоборот, отсутствие нагрева в области GPU или VRAM при подаче питания является четким индикатором проблем. Это помогает локализовать неисправный компонент без догадок.</li>
+<li><strong>Стенд для диагностики внешних видеокарт (для MXM):</strong> Хотя большинство ноутбуков имеют интегрированный GPU, некоторые модели оснащены сменными MXM-модулями. Наши стенды позволяют протестировать такую видеокарту отдельно от ноутбука, исключая влияние других компонентов.</li>
+<li><strong>Схемы и BoardView:</strong> Доступ к полной технической документации является основой для точной диагностики и понимания архитектуры платы.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без такого инструментария диагностика сводится к "методу тыка", что недопустимо для профессионального ремонта.</p></p>
+<h3>Возможность замены или ремонт? Технологический подход</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>После точной диагностики мы определяем стратегию:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Реболлинг GPU (восстановление пайки):</strong> Если чип GPU исправен, но нарушен контакт, мы проводим процедуру реболлинга. Это включает демонтаж чипа на инфракрасной паяльной станции <strong>Quick 861DW</strong> с точным соблюдением температурного профиля, очистку контактных площадок, нанесение нового бессвинцового припоя (реболлинг) и установку чипа обратно. Для мелких компонентов вокруг GPU используется станция <strong>JBC</strong>, предотвращающая перегрев соседних элементов. Мы используем только профессиональные флюсы <strong>Martin/Amtech</strong>, которые обеспечивают надежную пайку без риска коррозии платы в будущем.</li>
+<li><strong>Замена GPU или VRAM:</strong> В случаях, когда сам кристалл GPU или чипы видеопамяти деградировали или имеют внутренние неисправности, требуется их полная замена. Это более сложная операция, требующая подбора идентичного компонента (часто с донорской платы), и последующей его установки с использованием тех же прецизионных методов и оборудования, что и для реболлинга.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Прямая "замена видеокарты" в ноутбуке, как правило, возможна только в моделях с MXM-модулем, что является исключением. В большинстве случаев речь идет о компонентном ремонте на материнской плате, требующем высокого уровня квалификации и специализированного оборудования.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы не обещаем "быструю замену" без понимания сути проблемы. Мы проводим глубокую диагностику, чтобы предложить вам наиболее надежное и долговечное решение, подкрепленное нашей гарантией.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Мой секрет, когда к тебе приносят ноут с мертвой дискретной видеокартой (нет изображения, артефакты) и просят "заменить": НЕ спеши сразу хвататься за паяльник для реболла или искать новую чипсет. В 90% случаев, если процессор имеет встроенную графику (Intel HD, AMD APU), твоя главная задача – не *заменить* дохлый чип, а *вывести его из цепи*. Через BIOS-мод, удаление пары резисторов или даже мелкого дросселя, можно заставить систему работать исключительно на встроенной графике. Это в разы дешевле для клиента, быстрее для тебя, и, главное, НАДЕЖНЕЕ, потому что ты не ставишь потенциально проблемный рефурб-чип и не мучаешь плату лишний раз. Ты даешь машине вторую жизнь как "рабочей лошадке", а не как "игровому монстру". Объясни клиенту честно – и он будет доволен.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Глава 3: Процесс замены видеокарты: Технические сложности и подводные камни (для MXM-модулей)</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Замена MXM-модуля видеокарты — это не просто механическая установка. Это комплексный процесс, требующий глубоких знаний архитектуры ноутбука и специализированного оборудования для обеспечения стабильности и долговечности ремонта.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Рассмотрим ключевые этапы и потенциальные риски, которые необходимо учитывать при замене MXM-модуля:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><p><strong>Точная диагностика.</strong> Прежде чем приступить к замене, критически важно убедиться, что источником проблемы является именно MXM-модуль. Симптомы "нет изображения" или "артефакты" могут также указывать на неисправности чипсета, модулей оперативной памяти, цепей питания материнской платы или даже самого дисплея. В лаборатории Админ.Ко мы применяем:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><p><strong>Осциллограф Rigol</strong> для анализа целостности сигналов на шинах данных и цепях питания, выявления пульсаций и некорректных значений.</p></li>
+<li><p><strong>Тепловизор</strong> для точной локализации компонентов с аномальным нагревом, что позволяет определить вышедший из строя элемент до демонтажа.</p></li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без такой глубокой диагностики существует высокий риск замены исправного MXM-модуля, что не решит проблему и повлечет необоснованные расходы.</p></li></p>
+<li><p><strong>Аккуратный демонтаж и монтаж.</strong> MXM-модули крепятся к материнской плате через стандартизированный разъем и систему охлаждения. Неправильный демонтаж может привести к повреждению крепежных элементов, самого разъема на материнской плате или, что критично, к деформации PCB (печатной платы) ноутбука. Новый MXM-модуль должен быть установлен идеально ровно, с соблюдением всех стандартов затяжки винтов и правильным нанесением термоинтерфейсов. Для микро-пайки (если требуются восстановительные работы на плате рядом с разъемом MXM или на самом модуле) мы используем паяльные станции <strong>JBC (Испания)</strong>, обеспечивающие прецизионный контроль температуры и минимизирующие риск перегрева чувствительных компонентов.</p></li>
+<li><p><strong>Качественные термоинтерфейсы и система охлаждения.</strong> Долговечность новой видеокарты напрямую зависит от эффективности системы охлаждения. Использование дешевой или неправильно подобранной термопасты и термопрокладок неизбежно приведет к быстрому перегреву GPU и повторному выходу модуля из строя. Мы применяем только профессиональные термоинтерфейсы (например, Arctic MX-4 или аналоги) и проводим полную очистку и тестирование всей системы охлаждения, включая проверку оборотов кулера и состояния радиатора. Это исключает риск теплового повреждения в будущем.</p></li>
+<li><p><strong>Контроль качества пайки и чистоты.</strong> Даже если MXM-модуль просто вставляется в слот, его контакты должны быть идеально чистыми. Если же необходимо выполнить пайку компонентов на самом модуле (например, замена чипов памяти на MXM-модуле) или на разъеме на материнской плате, мы используем только высококачественные флюсы, такие как <strong>Martin или Amtech</strong>. Эти флюсы не оставляют после себя агрессивных остатков, которые могли бы вызвать коррозию платы со временем, в отличие от бюджетных аналогов, которые часто приводят к скрытым дефектам.</p></li>
+<li><p><strong>Послеремонтное тестирование под нагрузкой.</strong> После установки нового MXM-модуля ноутбук проходит многочасовое тестирование. Это включает стресс-тесты видеопамяти и GPU, проверку температурных режимов в различных сценариях нагрузки и общую стабильность работы системы. Только после успешного прохождения всех этапов и подтверждения полной работоспособности устройство возвращается клиенту, что подтверждается нашей 12-месячной гарантией по договору.</p></li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Игнорирование любого из перечисленных пунктов — это прямая дорога к некачественному ремонту, который приведет к повторной поломке и дополнительным расходам. В Админ.Ко мы находимся по адресу: г. Кемерово, ул. Дзержинского 2Б, и гарантируем соблюдение всех инженерных стандартов, используя только профессиональное оборудование и расходные материалы.</p></p>
+</section>
+            <section class="mt-12"><h2>Глава 4: Профессиональный ремонт в Кемерово: Куда обратиться и чего ожидать (и когда замена нецелесообразна)</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Проблемы с изображением на ноутбуке – отсутствие картинки, мерцание, появление артефактов или "синего экрана" – часто указывают на выход из строя дискретной видеокарты. Это одна из наиболее сложных поломок, требующая не только высокой квалификации инженера, но и специализированного оборудования.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Эффективный и долгосрочный ремонт видеокарты – это ее полная замена, а не временный "прогрев" или реболлинг, который лишь откладывает неизбежное. Процесс замены BGA-чипа видеокарты на материнской плате ноутбука требует абсолютной точности и контроля температурных режимов. Без профессиональной паяльной станции, такой как <span style="font-weight: bold;">Quick 861DW</span>, невозможно равномерно снять старый чип и установить новый без риска повреждения соседних компонентов или самой многослойной платы. Эта станция обеспечивает строго контролируемый термопрофиль, исключая локальный перегрев.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для диагностики причин сбоя и верификации качества установки критически важны <span style="font-weight: bold;">тепловизор</span> и <span style="font-weight: bold;">осциллограф Rigol</span>. Тепловизор позволяет обнаруживать зоны перегрева до и после ремонта, а осциллограф – проверять стабильность питания и целостность сигналов на линиях PCI-E, что невозможно сделать "на глаз". Использование высококачественных флюсов, таких как <span style="font-weight: bold;">Martin или Amtech</span>, гарантирует отсутствие коррозии и долгий срок службы паяных соединений, в отличие от дешевых аналогов, оставляющих агрессивный налет.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В «Админ.Ко» мы придерживаемся строгих инженерных стандартов при ремонте ноутбуков:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Диагностика – 0 рублей. Полное обследование проблемы без скрытых платежей.</li>
+<li>Запчасти в наличии. Мы поддерживаем склад наиболее востребованных чипов и компонентов, сокращая сроки ремонта.</li>
+<li>Гарантия 1 год по договору. Все работы и установленные компоненты сопровождаются официальной гарантией, закрепленной договором.</li>
+<li>Сохранность данных. Мы гарантируем неприкосновенность вашей информации. Все работы проводятся с отключенным накопителем, если это не мешает диагностике.</li>
+<li>Честная цена. Вы всегда знаете точную стоимость ремонта до начала работ.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Важно понимать, что замена видеокарты целесообразна не всегда. Если ноутбук морально устарел, имеет множество других скрытых дефектов или стоимость нового чипа и работы превышает рыночную стоимость аналогичного устройства, мы честно предупредим об этом и предложим оптимальные варианты решения проблемы.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если ваш ноутбук показывает артефакты или не выводит изображение, не рискуйте доверяться сомнительным сервисам. Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально, предоставляя полный пакет документов.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

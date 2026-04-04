@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Синий экран смерти (BSOD) ноутбука в Кемерово: Диагностика и ремонт без переустановки Windows | Админ.Ко</title>
+    <meta name="description" content="Экспертная статья от ведущего инженера 'АДМИН.КО' (Кемерово, Дзержинского 2Б) о причинах BSOD, глубокой диагностике и профессиональном ремонте ноутбуков с использованием современного оборудования, без потери данных и переустановки ОС. Узнайте, как сохранить вашу систему и данные.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.7">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Синий экран смерти (BSOD) ноутбука в Кемерово: Диагностика и ремонт без переустановки Windows","description":"Экспертная статья от ведущего инженера 'АДМИН.КО' (Кемерово, Дзержинского 2Б) о причинах BSOD, глубокой диагностике и профессиональном ремонте ноутбуков с использованием современного оборудования, без потери данных и переустановки ОС. Узнайте, как сохранить вашу систему и данные.","datePublished":"2026-03-27T09:57:16.920Z","author":{"@type":"Person","name":"Инженер Админ.Ко"}}</script>
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+
+
+<main class="flex-grow max-w-5xl mx-auto px-4 py-12 md:py-24 w-full">
+    <article class="bg-white dark:bg-gray-800 p-8 md:p-16 rounded-[3rem] shadow-xl border border-gray-100 dark:border-gray-700">
+        <header class="mb-16">
+            <div class="text-primary font-black uppercase tracking-widest text-xs mb-6 italic">Инженерный разбор v7.0 • Кемерово</div>
+            <h1 class="text-4xl md:text-7xl font-black mb-8 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Синий экран смерти (BSOD) ноутбука в Кемерово: Диагностика и ремонт без переустановки Windows</h1>
+        </header>
+
+        <div class="prose prose-xl dark:prose-invert max-w-none">
+            <!-- TAKEAWAYS -->
+            <div class="bg-gray-50 dark:bg-gray-900/50 p-8 rounded-[2.5rem] border border-gray-100 dark:border-gray-700 mb-12">
+                <h4 class="text-xl font-black m-0 mb-6 uppercase italic tracking-tighter flex items-center gap-2 text-primary">
+                    <span class="material-symbols-outlined">analytics</span> Суть за 30 секунд
+                </h4>
+                <ul class="m-0 space-y-2 text-lg">
+                    <li><b>BSOD не всегда требует переустановки Windows; часто это следствие аппаратных неисправностей, которые требуют глубокой диагностики.</b></li><li><b>В лаборатории «АДМИН.КО» (Кемерово, Дзержинского 2Б) используется профессиональное оборудование (Rigol, JBC, Quick 861DW, JCID) для точной диагностики и компонентного ремонта.</b></li><li><b>Проблемы с цепями питания (VRM) могут имитировать софтовые ошибки BSOD, что делает осциллограф Rigol незаменимым инструментом для выявления истинной причины.</b></li><li><b>Ремонт в «АДМИН.КО» направлен на сохранение вашей операционной системы, всех данных и установленного программного обеспечения, экономя ваше время и средства.</b></li><li><b>Выбор экспертного сервиса с передовым оборудованием критичен для качественного и долгосрочного устранения причин синего экрана смерти.</b></li>
+                </ul>
+            </div>
+
+            <!-- CONTENT -->
+            <h2>Синий экран смерти (BSOD) ноутбука в Кемерово: Диагностика и ремонт без переустановки Windows</h2>
+<p>
+    Синий экран смерти (BSOD) на ноутбуке — это не приговор к потере данных или переустановке операционной системы. <b>В лаборатории «АДМИН.КО» (Кемерово, Дзержинского 2Б) мы специализируемся на глубокой диагностике и устранении корневых причин BSOD, сохраняя вашу Windows, данные и программное обеспечение.</b>
+</p>
+
+<h3>Оглавление</h3>
+<ul>
+    <li>Симптомы и причины BSOD</li>
+    <li>Техпроцесс: Как мы ремонтируем</li>
+    <li>Инженерный секрет</li>
+    <li>Почему «АДМИН.КО» на Дзержинского 2Б — ваш выбор в Кемерово</li>
+    <li>Стоимость услуг</li>
+    <li>Часто задаваемые вопросы (FAQ)</li>
+</ul>
+
+<h3 id="section-1">Глава 1: Симптомы и причины</h3>
+<p>
+    Появление синего экрана — сигнал о критическом сбое. Важно понимать, что он может быть вызван как программными, так и аппаратными неисправностями. Зачастую, код ошибки, отображаемый на BSOD, является лишь следствием, а не истинной причиной.
+</p>
+<h4>Распространенные коды ошибок BSOD:</h4>
+<ul>
+    <li><b>KERNEL_SECURITY_CHECK_FAILURE</b>: Частые указания на проблемы с драйверами, повреждение системных файлов или памятью.</li>
+    <li><b>PAGE_FAULT_IN_NONPAGED_AREA</b>: Часто связан с неисправностью оперативной памяти, ошибками файловой системы или некорректными драйверами устройств.</li>
+    <li><b>CRITICAL_PROCESS_DIED</b>: Указывает на критический сбой системного процесса, часто вследствие повреждения ядра ОС, аппаратных проблем с накопителем или памятью.</li>
+    <li><b>UNMOUNTABLE_BOOT_VOLUME</b>: Проблема с загрузочным диском, его файловой системой или контроллером.</li>
+    <li><b>DRIVER_IRQL_NOT_LESS_OR_EQUAL</b>: Практически всегда указывает на конфликт или некорректную работу драйвера какого-либо устройства.</li>
+</ul>
+<h4>Причины возникновения BSOD:</h4>
+<ul>
+    <li><b>Программные</b>:
+        <ul>
+            <li><b>Поврежденные или несовместимые драйверы</b>: Особенно после обновлений или установки нового оборудования.</li>
+            <li><b>Повреждение системных файлов Windows</b>: В результате некорректного выключения, вирусов, ошибок диска.</li>
+            <li><b>Вредоносное программное обеспечение</b>: Вирусы и трояны могут внедряться в системные процессы, вызывая сбои.</li>
+            <li><b>Конфликты программного обеспечения</b>: Редко, но возможно.</li>
+        </ul>
+    </li>
+    <li><b>Аппаратные</b>:
+        <ul>
+            <li><b>Оперативная память (ОЗУ)</b>: Дефектные модули, несовместимость, некорректные тайминги или напряжения.</li>
+            <li><b>Накопитель (SSD/HDD)</b>: Сбой контроллера, "битые" секторы, износ. Влияет на чтение/запись системных файлов.</li>
+            <li><b>Перегрев компонентов</b>: Запыленная система охлаждения, высохшая термопаста, неисправность вентилятора. Перегрев CPU, GPU, чипсета приводит к троттлингу и нестабильности.</li>
+            <li><b>Материнская плата</b>: Повреждение цепей питания (VRM), выход из строя южного/северного моста, мультиконтроллера, деградация BGA-пайки чипов.</li>
+            <li><b>Видеокарта (GPU)</b>: Дефекты видеочипа или видеопамяти, особенно характерно для дискретных видеокарт.</li>
+            <li><b>Неисправный блок питания/аккумулятор</b>: Нестабильное напряжение может вызывать сбои под нагрузкой.</li>
+        </ul>
+    </li>
+</ul>
+
+<h3 id="section-2">Глава 2: Техпроцесс: Как мы ремонтируем под микроскопом</h3>
+<p>
+    Устранение BSOD без переустановки Windows требует глубокого понимания архитектуры системы и точного инструментария. Наш техпроцесс состоит из многоступенчатой диагностики и прецизионного ремонта.
+</p>
+<h4>Этапы диагностики:</h4>
+<ul>
+    <li><b>Первичная программная диагностика</b>: Анализ дампов памяти (minidump), системных журналов (Event Viewer), стресс-тесты CPU, GPU, RAM, SSD/HDD с использованием специализированного ПО. Цель — сузить круг подозреваемых.</li>
+    <li><b>Визуальный осмотр</b>: Под микроскопом исследуются компоненты материнской платы на предмет вздутых конденсаторов, следов залития, механических повреждений, обгоревших элементов.</li>
+    <li><b>Аппаратная диагностика с использованием профессионального оборудования</b>:
+        <ul>
+            <li><b>Осциллограф Rigol</b>: Незаменимый инструмент для измерения и анализа электрических сигналов. С его помощью мы контролируем стабильность напряжений на цепях питания CPU VCORE, RAM, чипсета, проверяем пульсации, целостность сигналов на шинах SPI, I2C, USB. Это позволяет выявить скрытые проблемы с питанием, которые проявляются только под нагрузкой.</li>
+            <li><b>Пост-карты и программаторы</b>: Используются для диагностики этапов загрузки (POST-коды) и проверки микросхем BIOS/UEFI.</li>
+            <li><b>Тестеры оперативной памяти и накопителей</b>: Глубокая проверка каждого модуля RAM и состояния SSD/HDD на наличие скрытых дефектов или износа.</li>
+        </ul>
+    </li>
+</ul>
+<h4>Этапы ремонта:</h4>
+<ul>
+    <li><b>Программный ремонт</b>: Если причина в ПО, мы восстанавливаем поврежденные системные файлы, переустанавливаем или откатываем драйверы, устраняем конфликты программного обеспечения, удаляем вредоносные программы без затрагивания пользовательских данных.</li>
+    <li><b>Аппаратный ремонт</b>:
+        <ul>
+            <li><b>Паяльные станции JBC</b>: Используются для высокоточной замены мелких SMD-компонентов (резисторы, конденсаторы, диоды, контроллеры) на материнской плате, требующих деликатной работы.</li>
+            <li><b>Термовоздушная паяльная станция Quick 861DW</b>: Применяется для демонтажа и монтажа BGA-чипов (северный/южный мост, видеочип, процессор на некоторых моделях). Обеспечивает точный температурный профиль, минимизируя риск повреждения платы и чипов.</li>
+            <li><b>Программатор JCID</b>: Необходим для перепрошивки BIOS/UEFI, EC-контроллеров (мультиконтроллера), NVRAM. Это позволяет восстановить заводские настройки, исправить ошибки загрузки, разблокировать скрытые функции или восстановить работоспособность после неудачных обновлений прошивки.</li>
+            <li><b>Замена неисправных компонентов</b>: Установка новых модулей ОЗУ, SSD/HDD, замена чипов ШИМ-контроллеров, мультиконтроллеров, дефектных BGA-чипов.</li>
+            <li><b>Обслуживание системы охлаждения</b>: Полная чистка от пыли, замена термопасты и термопрокладок на CPU, GPU, чипсете. Это критично для предотвращения перегрева и последующих сбоев.</li>
+        </ul>
+    </li>
+</ul>
+
+<h3 id="section-3">Глава 3: Инженерный секрет</h3>
+<p>
+    <b>Инженерный секрет:</b> Мы часто сталкиваемся с тем, что BSOD с ошибкой, указывающей на конкретный драйвер или модуль памяти, на самом деле скрывает проблему <b>деградации цепей питания процессора (VRM) или чипсета</b>. Под нагрузкой эти цепи перестают обеспечивать стабильное напряжение, что приводит к кратковременным просадкам и сбоям в работе чувствительных компонентов. Система регистрирует это как ошибку ПО или ОЗУ. Без анализа электрических сигналов осциллографом Rigol и тестирования под нагрузкой, истинная аппаратная причина остается незамеченной, а ремонт сводится к бесполезной переустановке Windows.
+</p>
+
+<h3 id="section-4">Глава 4: Почему в Кемерово нужно идти именно на Дзержинского 2Б</h3>
+<p>
+    Выбор сервисного центра для ремонта ноутбука с BSOD в Кемерово — это не просто поиск ближайшей мастерской. Это поиск экспертизы, оборудования и гарантии результата. Лаборатория «АДМИН.КО» на Дзержинского 2Б предлагает:
+</p>
+<ul>
+    <li><b>Глубокая экспертиза</b>: Наши ведущие инженеры обладают многолетним опытом и высокой квалификацией в диагностике и ремонте сложных аппаратных и программных неисправностей. Мы не занимаемся "методом тыка".</li>
+    <li><b>Передовое оборудование</b>: В нашем арсенале только профессиональное оборудование: осциллографы Rigol, паяльные станции JBC и Quick 861DW, программаторы JCID. Это позволяет нам проводить диагностику на компонентном уровне и выполнять ремонт ювелирной точности.</li>
+    <li><b>Ремонт без переустановки Windows</b>: Наша главная цель — сохранить вашу операционную систему, все установленные программы и, что самое важное, ваши данные. Мы понимаем ценность вашего времени и информации.</li>
+    <li><b>Точная диагностика</b>: Благодаря специализированному оборудованию, мы выявляем неисправности, которые остаются незамеченными в обычных сервисах, где ремонт ограничивается заменой крупных блоков или банальной переустановкой ОС.</li>
+    <li><b>Гарантия на работы</b>: Мы уверены в качестве наших услуг и предоставляем полноценную гарантию на выполненные работы и установленные компоненты.</li>
+</ul>
+
+<h3 id="section-5">Стоимость услуг</h3>
+<div class="overflow-x-auto my-12"><table class="w-full text-left border-collapse">
+    <thead>
+        <tr>
+            <th class="p-4 bg-gray-50 dark:bg-gray-900 font-bold uppercase text-xs">Услуга</th>
+            <th class="p-4 bg-gray-50 dark:bg-gray-900 font-bold uppercase text-xs">Стоимость (от)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="p-4 border-b border-gray-50 dark:border-gray-700">Диагностика BSOD (с последующим ремонтом)*</td>
+            <td class="p-4 border-b border-gray-50 dark:border-gray-700">0 руб.</td>
+        </tr>
+        <tr>
+            <td class="p-4 border-b border-gray-50 dark:border-gray-700">Диагностика BSOD (без последующего ремонта)</td>
+            <td class="p-4 border-b border-gray-50 dark:border-gray-700">500 руб.</td>
+        </tr>
+        <tr>
+            <td class="p-4 border-b border-gray-50 dark:border-gray-700">Восстановление системных файлов / Драйверов</td>
+            <td class="p-4 border-b border-gray-50 dark:border-gray-700">800 руб.</td>
+        </tr>
+        <tr>
+            <td class="p-4 border-b border-gray-50 dark:border-gray-700">Замена модуля ОЗУ</td>
+            <td class="p-4 border-b border-gray-50 dark:border-gray-700">500 руб. + стоимость ОЗУ</td>
+        </tr>
+        <tr>
+            <td class="p-4 border-b border-gray-50 dark:border-gray-700">Ремонт материнской платы (цепи питания, контроллеры)</td>
+            <td class="p-4 border-b border-gray-50 dark:border-gray-700">от 2500 руб.</td>
+        </tr>
+        <tr>
+            <td class="p-4 border-b border-gray-50 dark:border-gray-700">Ремонт материнской платы (BGA-чипы, мосты)</td>
+            <td class="p-4 border-b border-gray-50 dark:border-gray-700">от 4500 руб.</td>
+        </tr>
+        <tr>
+            <td class="p-4 border-b border-gray-50 dark:border-gray-700">Прошивка BIOS / EC-контроллера</td>
+            <td class="p-4 border-b border-gray-50 dark:border-gray-700">1500 руб.</td>
+        </tr>
+        <tr>
+            <td class="p-4 border-b border-gray-50 dark:border-gray-700">Чистка системы охлаждения с заменой термопасты</td>
+            <td class="p-4 border-b border-gray-50 dark:border-gray-700">1000 руб.</td>
+        </tr>
+    </tbody>
+</table></div>
+<p>*<i>Стоимость диагностики вычитается из общей стоимости ремонта при его проведении.</i></p>
+
+<h3 id="section-6">Часто задаваемые вопросы (FAQ)</h3>
+<ul>
+    <li>
+        <b>В1: Сколько времени занимает диагностика BSOD?</b><br>
+        <p><b>О1:</b> Первичная диагностика обычно занимает от 1 до 3 рабочих дней. Сложные случаи, требующие глубокого анализа и тестирования под нагрузкой, могут занять до 5 рабочих дней. Мы всегда сообщаем вам о ходе работ.</p>
+    </li>
+    <li>
+        <b>В2: Могу ли я потерять свои данные при ремонте BSOD?</b><br>
+        <p><b>О2:</b> Наша методика ремонта направлена именно на сохранение ваших данных. Мы всегда делаем всё возможное, чтобы избежать потери информации. В случае крайней необходимости или при работе с накопителем, мы заранее обговариваем возможность резервного копирования.</p>
+    </li>
+    <li>
+        <b>В3: Есть ли гарантия на выполненные работы?</b><br>
+        <p><b>О3:</b> Да, мы предоставляем гарантию на все выполненные работы и замененные компоненты. Срок гарантии зависит от типа ремонта и используемых запчастей, и всегда оговаривается при оформлении заказа.</p>
+    </li>
+    <li>
+        <b>В4: Почему нельзя просто переустановить Windows, если появился BSOD?</b><br>
+        <p><b>О4:</b> Переустановка Windows решает проблемы только в случае чисто программных сбоев. Если причина BSOD аппаратная (например, неисправная память, проблемы с питанием или чипом), переустановка не только не поможет, но и приведет к потере ваших данных и программ, а BSOD вскоре появится снова. Мы устраняем именно корневую причину.</p>
+    </li>
+    <li>
+        <b>В5: Вы работаете с ноутбуками любых производителей?</b><br>
+        <p><b>О5:</b> Да, наши инженеры имеют опыт работы с ноутбуками всех ведущих производителей: Acer, Asus, Dell, HP, Lenovo, MSI, Samsung, Toshiba и другие. Архитектура материнских плат и принцип работы компонентов во многом схожи, а наше оборудование позволяет работать с любой платформой.</p>
+    </li>
+</ul>
+
+            <!-- CTA -->
+            <div class="mt-20 p-10 md:p-16 bg-primary rounded-[4rem] text-center text-white relative overflow-hidden">
+                <h2 class="text-3xl md:text-5xl font-black mb-6 uppercase italic">Нужен качественный ремонт?</h2>
+                <p class="text-xl mb-10 opacity-90">Кемерово, Дзержинского 2Б. Оборудование JBC и Rigol. Гарантия 1 год.</p>
+                <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-2xl font-black text-xl hover:scale-105 transition-all shadow-2xl uppercase">Бесплатная консультация</button>
+            </div>
+
+            <div class="mt-16 pt-8 border-t border-gray-100 dark:border-gray-800 text-center">
+                <a href="../computers.html" class="text-primary font-black uppercase text-xs tracking-widest hover:underline italic">→ Ремонт компьютеров в Кемерово</a>
+            </div>
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

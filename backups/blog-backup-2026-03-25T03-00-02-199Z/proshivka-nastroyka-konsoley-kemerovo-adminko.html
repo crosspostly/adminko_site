@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профессиональная прошивка и настройка консолей в Кемерово | Админ.Ко | Админ.Ко</title>
+    <meta name="description" content="Профессиональная прошивка и тонкая настройка игровых консолей в Кемерово от Админ.Ко. Модификация PlayStation, Xbox, Nintendo для максимальной производительности и новых возможностей. Безопасно и с гарантией.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Профессиональная прошивка и настройка консолей в Кемерово | Админ.Ко</h1>
+            <meta name="published_at" content="2026-03-22T14:44:26.493Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Откройте Мир Возможностей: Что Такое Прошивка и Зачем Она Нужна?</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Прошивка игровой консоли — это не просто обновление программного обеспечения, а глубокое вмешательство в системный код, определяющий работу устройства. По сути, прошивка является операционной системой вашей консоли, управляющей всем: от загрузки игр до взаимодействия с аппаратными компонентами. Изменение или "прошивка" консоли открывает доступ к возможностям, недоступным в стандартной конфигурации. Это может включать запуск неофициального программного обеспечения (homebrew), эмуляторов старых игр, обход региональных ограничений или создание резервных копий ваших игровых дисков.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Однако процесс прошивки — это высокорисковая операция, требующая глубоких технических знаний и специализированного оборудования. Неправильная прошивка, использование несовместимого программного обеспечения или ошибки в процессе могут привести к необратимому повреждению консоли, известному как "брик" (от англ. brick — кирпич), когда устройство превращается в нефункционирующий кусок пластика и металла. Защитные механизмы современных консолей постоянно совершенствуются, делая процесс прошивки всё более сложным и опасным для самостоятельного выполнения.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В «Админ.Ко» мы подходим к прошивке консолей с инженерной точностью. Наша лаборатория оснащена специализированными программаторами и диагностическими комплексами, разработанными для работы с конкретными архитектурами игровых систем – Nintendo Switch, Sony PlayStation, Microsoft Xbox. Мы используем методы, минимизирующие риски повреждения аппаратной части и обеспечивающие стабильную работу устройства после модификации. Процесс включает не только установку альтернативной прошивки, но и тщательную проверку всех функций консоли, чтобы гарантировать её полноценное функционирование. Доверие профессионалам исключает потерю данных, некорректную работу системы и дорогостоящий ремонт после неудачных самостоятельных экспериментов.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> От 2500 рублей. Окончательная стоимость формируется после диагностики и согласования всех работ.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: От 1 часа до 1-2 рабочих дней, в зависимости от модели консоли и сложности задачи.</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Бесплатна и обязательна для точной оценки состояния консоли и объема предстоящих работ. Занимает 15-30 минут.</p></div>
+
+        </div>
+            <section><p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><h2>Прошивка Nintendo Switch, PlayStation, Xbox в Кемерово: модификация консолей без риска</h2></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><h3>Blitz-Answer: Профессиональная модификация консолей</h3></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Проблема:</b> Необходима прошивка, модификация или настройка игровой консоли (Nintendo Switch, PlayStation, Xbox).</li>
+<li><b>Срок:</b> От 1 дня.</li>
+<li><b>Цена:</b> От 3000 руб.</li>
+<li><b>Диагностика:</b> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><h3>Экспертный разбор: Прошивка и модификация консолей на Дзержинского 2Б</h3></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Модификация игровых консолей – это не просто установка стороннего ПО. Для Nintendo Switch, например, часто требуется монтаж высокоточных чипов-моддеров, таких как HWFLY или PicoFly. Эта процедура предполагает работу с микроскопическими компонентами на многослойной плате, что невозможно выполнить без специализированного оборудования и опыта. Ошибки здесь чреваты необратимым повреждением консоли — так называемым «бриком», превращающим устройство в бесполезный «кирпич».</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы используем высокоточное оборудование для всех видов работ:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Паяльные станции JBC (Испания):</b> Обеспечивают сверхточный температурный контроль и локальный нагрев, что критически важно при пайке контактов размером меньше миллиметра на чипах Nintendo Switch. Это исключает перегрев соседних компонентов и повреждение платы.</li>
+<li><b>Программаторы NAND/NOR/eMMC:</b> Для работы с памятью PlayStation и Xbox, позволяя безопасно устанавливать кастомные прошивки (CFW) и даунгрейды без риска потери данных или блокировки консоли.</li>
+<li><b>Тепловизор:</b> Используется для контроля теплового режима в процессе диагностики и после установки модификаций, чтобы убедиться в отсутствии скрытых перегревов.</li>
+<li><b>Осциллограф Rigol:</b> Позволяет контролировать сигналы на плате, проверяя корректность установки чипов и их взаимодействие с системой, что является гарантией стабильной работы консоли после модификации.</li>
+<li><b>Флюсы Martin/Amtech:</b> Используются для безупречной пайки, не оставляют агрессивных остатков, которые со временем могут вызвать коррозию платы, обеспечивая долговечность выполненных работ.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Самостоятельные попытки прошивки или обращение к «мастерам с паяльником» без должного оснащения приводят к повреждению контроллеров питания, обрывам дорожек и неработоспособности устройства. Мы обеспечиваем полную функциональность консоли после модификации, включая работу всех модулей – от Wi-Fi до Bluetooth.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><h3>Инженерный стандарт Админ.Ко: Ваши гарантии</h3></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Диагностика 0 руб.:</b> Мы точно определим фронт работ и стоимость до начала ремонта.</li>
+<li><b>Запчасти в наличии:</b> Основные компоненты и чипы для модификаций есть на складе, что ускоряет процесс.</li>
+<li><b>Гарантия 1 год по договору:</b> Все работы и установленные компоненты подтверждаются официальной гарантией.</li>
+<li><b>Сохранность данных:</b> Мы гарантируем неприкосновенность ваших игровых прогрессов и личных файлов.</li>
+<li><b>Честная цена:</b> Только обоснованная стоимость услуг без скрытых платежей и накруток.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><h3>Локальный призыв (GEO CTA): Мы находимся в центре Кемерово</h3></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваша консоль заслуживает профессионального подхода. Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально, предоставляя полный пакет документов и гарантий на все выполненные работы. Привозите вашу Nintendo Switch, PlayStation или Xbox для надежной и безопасной модификации.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Истинный секрет успеха в прошивке и настройке консолей заключается не просто в наличии правильных файлов прошивки и драйверов, а в строгой последовательности их применения и, самое главное, *понимании* иерархии зависимостей между компонентами.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Многие системные конфликты, нестабильность и "необъяснимые" ошибки возникают из-за установки драйверов или критически важных системных компонентов до того, как базовая прошивка полностью инициализирована, стабилизирована и оптимизирована под конкретную аппаратную ревизию. Или же из-за применения комплексных настроек, которые предполагают уже существующую, но еще не готовую программную среду.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Настоящий инженер Админ.Ко всегда действует по принципу "сначала фундамент, потом несущие конструкции, потом стены, и только потом – отделка". Это означает:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">1.  <strong>Чистая базовая прошивка:</strong> Устанавливается и проходит полный цикл первичной инициализации без каких-либо модификаций.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">2.  <strong>Полная ее стабилизация:</strong> Система загружается, проверяется ее базовая работоспособность, часто выполняются служебные операции вроде пересчета кешей или первой загрузки профиля.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">3.  <strong>Системные драйверы в определенном порядке:</strong> Строго по иерархии: сначала драйверы чипсета (обеспечивают взаимодействие всех базовых компонентов), затем графики, потом сетевых адаптеров, контроллеров ввода-вывода и так далее. Каждый драйвер устанавливается, и система *стабилизируется* перед установкой следующего.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">4.  <strong>Прикладное ПО и тонкие пользовательские настройки:</strong> Только после того, как "железо" и его базовое программное обеспечение работают как часы, можно переходить к игровым библиотекам, специальным утилитам и индивидуальным параметрам пользователя.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Игнорирование этого принципа — прямой путь к невидимым, но критическим проблемам, которые проявляются со временем в виде микрофризов, необъяснимых вылетов или снижения производительности. Правильная последовательность — залог долгосрочной стабильности и максимальной производительности, которую способен выдать каждый бит "железа" вашей консоли.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Профессиональный Подход Админ.Ко: Безопасность, Гарантии и Техническая Поддержка</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Наш подход к прошивке и настройке игровых консолей основан на принципах инженерной точности и полной ответственности. Мы понимаем ценность вашей игровой библиотеки и пользовательских данных, поэтому каждый этап работы строго регламентирован для обеспечения максимальной безопасности вашей системы и сохранности всей информации.</p></p>
+<h3>Безопасность данных и стабильность работы</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Одной из главных задач при модификации программного обеспечения консоли является сохранение всех пользовательских данных. В Админ.Ко мы используем только проверенные методы и специализированное программное обеспечение, что исключает риск потери сохранений, аккаунтов или некорректной работы системы после прошивки. Весь процесс выполняется с учетом особенностей архитектуры конкретной модели консоли, гарантируя ее стабильную и надежную работу в дальнейшем.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы тщательно отслеживаем актуальные версии прошивок и методы их установки, чтобы минимизировать любые риски. Наша цель — не просто выполнить прошивку, а предоставить вам консоль, готовую к бесперебойной эксплуатации с расширенным функционалом, без ошибок и скрытых проблем.</p></p>
+<h3>Наши гарантии и ответственность</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В отличие от кустарных решений, Админ.Ко предоставляет официальную гарантию на все выполненные работы по прошивке и настройке консолей. Это не просто слова, а юридически обязывающий договор, который обеспечивает вам:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Гарантию 12 месяцев на стабильность работы прошивки и корректность установки всех необходимых компонентов.</li>
+<li>Прозрачность ценообразования: вы всегда знаете конечную стоимость услуги без скрытых платежей.</li>
+<li>Повторное обращение в случае непредвиденных проблем, связанных с выполненными нами работами, в течение гарантийного срока.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Инженерный стандарт Админ.Ко: ваш надежный выбор</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Работая с Админ.Ко, вы выбираете комплексный профессиональный подход, который включает:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Бесплатная диагностика:</b> Оценка текущего состояния вашей консоли и определение оптимального метода прошивки без скрытых платежей.</li>
+<li><b>Наличие необходимых инструментов:</b> Мы располагаем всем спектром лицензионного программного обеспечения и аппаратных комплексов для работы с различными моделями консолей, обеспечивая точность и безопасность процесса.</li>
+<li><b>Сохранность ваших данных:</b> Приоритет номер один – ваше спокойствие за игровые достижения, профили и личные настройки. Мы гарантируем, что вся информация останется нетронутой.</li>
+<li><b>Честная и фиксированная цена:</b> Стоимость озвучивается до начала работ и не меняется, никаких скрытых доплат.</li>
+<li><b>Официальная гарантия 1 год по договору:</b> Мы уверены в качестве своих услуг и подтверждаем это документально, предоставляя вам долгосрочную защиту.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Выбирая Админ.Ко, вы выбираете надежность, безопасность и уверенность в долгой и беспроблемной работе вашей игровой консоли после профессионального вмешательства.</p></p>
+</section>
+            <section class="mt-12"><h2 id="chapter-title">Преобразите Вашу Игровую Консоль: Как Заказать Услугу и Начать Использовать Потенциал по Максимуму</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Игровые консоли – это мощные мультимедийные платформы, потенциал которых зачастую не раскрыт полностью производителем. Прошивка и тонкая настройка могут значительно расширить функциональность вашей приставки, открыв доступ к новым возможностям, однако этот процесс требует глубоких технических знаний и специализированного оборудования.</p></p>
+<h3>Экспертный подход Админ.Ко к прошивке и настройке консолей</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Модификация прошивки игровой консоли – это не просто установка стороннего ПО. Каждая модель, будь то PlayStation, Xbox или Nintendo, имеет уникальную архитектуру, специфические версии системного ПО и сложные механизмы защиты. Неправильные действия или использование некачественных инструментов могут привести к необратимому повреждению консоли, превратив ее в «кирпич».</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы применяем методичный, инженерный подход к прошивке и настройке. Наши специалисты обладают глубокими знаниями специфики каждой консоли, от программных уязвимостей до аппаратных особенностей чипов памяти и контроллеров. Мы используем только проверенные программные решения и специализированное оборудование, предназначенное для работы с конкретными моделями и версиями прошивок. Это позволяет нам выполнять операции по модификации безопасно, исключая риски повреждения загрузчика или системных файлов.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Наш процесс включает детальную диагностику текущего состояния консоли, тщательный подбор совместимого программного обеспечения и тестирование всех функций после прошивки. Мы не рискуем стабильностью вашей системы ради сиюминутной выгоды. Вместо этого мы обеспечиваем долгосрочную, бесперебойную работу вашей консоли с расширенным функционалом, сохраняя ее ресурс и надежность.</p></p>
+<h3>Ваши преимущества с Админ.Ко: Инженерный стандарт качества</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>0р диагностика:</strong> Мы проведем полную проверку вашей консоли, чтобы точно определить объем работ и убедиться в отсутствии скрытых проблем перед началом модификации. Это гарантирует безопасность и эффективность процесса.</li>
+<li><strong>Гарантия 1 год по договору:</strong> На все выполненные работы по прошивке и настройке предоставляется официальная гарантия. Это ваше подтверждение качества и надежности наших услуг.</li>
+<li><strong>Сохранность данных:</strong> Мы используем протоколы, направленные на минимизацию рисков потери ваших игровых прогрессов, профилей и учетных записей в процессе работы.</li>
+<li><strong>Честная цена:</strong> Стоимость услуг обсуждается и фиксируется до начала работ. Никаких скрытых платежей или неожиданных наценок – вы всегда знаете, за что платите.</li>
+<li><strong>Опыт и специализированное ПО/оборудование:</strong> Наши инженеры обладают обширным опытом и доступом к актуальным специализированным программным и аппаратным комплексам, необходимым для безопасной и качественной модификации прошивок любых игровых консолей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Начните использовать потенциал вашей консоли сегодня</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Чтобы заказать услугу и раскрыть весь потенциал вашей игровой консоли, вам достаточно просто принести ее в наш сервисный центр. Наши инженеры ответят на все ваши вопросы и предложат оптимальное решение.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы находимся в центре Кемерово, по адресу ул. Дзержинского 2Б. Наш сервисный центр легко найти – мы расположены рядом с СРК Арена и ТЦ Я. Админ.Ко работает официально, предоставляя полный пакет документов и гарантий на все виды услуг.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

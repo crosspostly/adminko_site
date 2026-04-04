@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кофемашина не варит кофе? Ремонт помпы и чистка от накипи в Кемерово | Админ.Ко</title>
+    <meta name="description" content="Ваша кофемашина перестала заваривать кофе, не качает воду или нет давления? Профессиональный ремонт помпы и комплексная чистка от накипи (декальцинация) вашей кофемашины в Кемерово. Быстрая диагностика, качественный сервис и гарантия.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Кофемашина не варит кофе? Ремонт помпы и чистка от накипи в Кемерово</h1>
+            <meta name="published_at" content="2026-03-22T15:26:08.858Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Ремонт кофемашины в Кемерово: восстановление подачи воды, ремонт помпы и профессиональная чистка от накипи.</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваша кофемашина не варит кофе? Отсутствует подача воды или напор слишком слабый? В Админ.Ко мы решаем эти проблемы быстро и с гарантией.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Проблема:</b> Кофемашина не подает воду, не варит кофе.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Срок:</b> От 1 дня.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Цена:</b> От 1500 руб.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Диагностика:</b> 0 руб.</p></p>
+<h2>Кофемашина не варит кофе: причины и первичная диагностика</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Когда кофемашина перестает подавать воду, это указывает на системную неисправность, требующую квалифицированной диагностики. Причина может крыться как в механических засорах, так и в более сложных электронных сбоях. Наиболее частые факторы включают:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Засорение гидросистемы:</b> Отложения накипи, остатки кофе и масла блокируют трубки, бойлер или термоблок, препятствуя прохождению воды.</li>
+<li><b>Неисправность помпы (насоса):</b> Помпа не создает достаточного давления для прокачки воды или полностью вышла из строя.</li>
+<li><b>Сбои в электронике:</b> Плата управления не подает команду на включение помпы или нагревательных элементов, или неисправны датчики потока/давления.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В нашем сервисном центре диагностика начинается с комплексного анализа. Для определения точной причины "неварки" кофе мы используем специализированное оборудование.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>При подозрении на засоры проводится визуальный осмотр и проверка давления в системе. Профессиональная чистка от накипи и кофейных масел выполняется с использованием сертифицированных средств, которые эффективно удаляют отложения без повреждения внутренних компонентов.</li>
+<li>Если проблема в помпе, мы проверяем ее электропитание и измеряем создаваемое давление. При необходимости выполняется замена помпы на новую, оригинальную или высококачественную аналоговую.</li>
+<li>В случаях, когда механические причины исключены, диагностика переходит на уровень электроники.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Экспертная диагностика и ремонт платы управления</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для выявления скрытых электронных неисправностей мы применяем:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Осциллограф Rigol:</b> Позволяет анализировать сигналы на плате управления, выявлять некорректную работу датчиков и управляющих цепей помпы или нагревателя.</li>
+<li><b>Тепловизор:</b> Обнаруживает перегретые компоненты на плате, что может свидетельствовать о коротком замыкании или деградации элемента.</li>
+<li><b>JBC (Испания):</b> Для прецизионной микро-пайки при восстановлении поврежденных дорожек или замене микросхем на плате управления. Оборудование JBC гарантирует локальный нагрев и исключает перегрев соседних элементов, что критично для сложной электроники.</li>
+<li><b>Quick 861DW:</b> Использование станции горячего воздуха Quick 861DW обеспечивает безопасный и точный демонтаж/монтаж SMD-компонентов и BGA-чипов, минимизируя риск повреждения платы.</li>
+<li><b>Флюсы Martin/Amtech:</b> Мы используем только профессиональные флюсы ведущих брендов Martin и Amtech. Это предотвращает окисление и коррозию платы после ремонта, обеспечивая долговечность соединения.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без использования такого оборудования глубокая диагностика и качественный ремонт электроники невозможны, что часто приводит к повторным поломкам или полному выходу устройства из строя после непрофессионального вмешательства.</p></p>
+<h3>Инженерный стандарт Админ.Ко — Ваш выбор надежности:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Диагностика 0 рублей:</b> Вы платите только за результат.</li>
+<li><b>Запчасти в наличии:</b> Большинство необходимых компонентов для ремонта кофемашин находятся на нашем складе, сокращая сроки ожидания.</li>
+<li><b>Гарантия 1 год по договору:</b> Мы уверены в качестве наших услуг и материалов.</li>
+<li><b>Сохранность данных:</b> При ремонте электронных устройств гарантируем сохранность всех пользовательских данных.</li>
+<li><b>Честная цена:</b> Прозрачная стоимость услуг без скрытых платежей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для качественного восстановления вашей кофемашины обращайтесь в Админ.Ко. Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Бесплатно (при последующем ремонте)</p></div>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> От 1200 руб. (за чистку от накипи) до 2500 руб. (за ремонт помпы), без учета стоимости запчастей.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: От 1 до 3 рабочих дней.</p>
+
+        </div>
+            <section><h2>Ремонт помпы кофемашины в Кемерово: восстановим подачу воды с гарантией</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваша кофемашина перестала наливать кофе, издает странные звуки или подает воду под низким давлением? Вероятнее всего, проблема в помпе — сердце гидравлической системы. Не откладывайте ремонт, чтобы избежать более серьезных поломок.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Быстрое решение от Админ.Ко:</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Проблема:</strong> Кофемашина не подает воду, слабый напор, посторонние шумы при работе.</li>
+<li><strong>Срок ремонта:</strong> От 2 часов.</li>
+<li><strong>Цена ремонта:</strong> От 1500 руб.</li>
+<li><strong>Диагностика:</strong> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Проблемы с помпой: диагностика, ремонт и замена</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Помпа в кофемашине — это ключевой элемент, отвечающий за создание необходимого давления для пролива воды через кофейную таблетку. Выход из строя помпы может проявляться по-разному: от полного отсутствия подачи воды до снижения напора и нехарактерных шумов. Основные причины поломок:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Естественный износ механических частей.</li>
+<li>Образование накипи внутри помпы и гидравлической системы из-за использования неочищенной воды.</li>
+<li>Перепады напряжения, влияющие на электромотор помпы.</li>
+<li>Засорение фильтров и патрубков, создающее избыточную нагрузку на помпу.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Почему профессиональная диагностика необходима?</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Самостоятельная попытка ремонта помпы без специализированного оборудования часто приводит к дополнительным повреждениям и увеличению стоимости последующего восстановления. В лаборатории Админ.Ко мы используем высокоточное оборудование для точной диагностики:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Профессиональные манометры и расходомеры:</strong> Для точного измерения давления и скорости потока воды, что позволяет определить степень износа помпы или наличие внутренних засоров.</li>
+<li><strong>Мультиметры и осциллографы Rigol:</strong> Необходимы для проверки электрических цепей помпы, выявления обрывов, коротких замыканий или некорректной работы управляющей электроники. Если проблема кроется в плате управления, а не в самой помпе, то для компонентного ремонта мы применяем станции JBC, гарантирующие микро-пайку без перегрева платы.</li>
+<li><strong>Тепловизоры:</strong> Позволяют выявить локальные перегревы на платах управления или в электродвигателе помпы, указывая на потенциальные неисправности.</li>
+<li><strong>Специализированные чистящие растворы и оборудование:</strong> Для безопасного и эффективного удаления накипи из гидравлической системы и внутренних компонентов помпы. Мы используем профессиональные флюсы типа Martin/Amtech, которые обеспечивают долговечность соединений и предотвращают коррозию платы после ремонта.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без такой комплексной диагностики и профессионального подхода ремонт помпы будет поверхностным, а проблема вернется вновь, возможно, уже с более серьезными последствиями для вашей кофемашины.</p></p>
+<h2>Инженерный стандарт Админ.Ко: Гарантия качества</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Выбирая Админ.Ко для ремонта вашей кофемашины, вы получаете:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Бесплатная диагностика:</strong> Мы определим точную причину поломки без скрытых платежей.</li>
+<li><strong>Запчасти в наличии:</strong> Большинство необходимых комплектующих для популярных моделей кофемашин всегда на нашем складе, что сокращает сроки ремонта. Мы используем оригинальные запчасти или качественные аналоги.</li>
+<li><strong>Гарантия 1 год по договору:</strong> На все выполненные работы и установленные компоненты предоставляется официальная гарантия, подтвержденная договором.</li>
+<li><strong>Честная цена:</strong> Стоимость ремонта согласуется с вами до начала работ и не меняется. Мы не навязываем ненужные услуги.</li>
+<li><strong>Аккуратность и бережное отношение:</strong> Каждый аппарат ремонтируется с максимальной осторожностью, исключая любые повреждения других узлов.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Мы находимся в центре Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не позволяйте сломанной кофемашине лишать вас утреннего кофе. Приезжайте в Админ.Ко по адресу: <strong>г. Кемерово, ул. Дзержинского 2Б</strong>. Мы находимся в удобном месте, рядом со СРК Арена и ТЦ Я. Работаем официально, предоставляя полный пакет документов. Доверьте ремонт вашей техники профессионалам!</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Вот технический секрет инженера:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Истинный секрет долговечности помпы вашей кофемашины и стабильного потока кофе – не только регулярная декальцинация, но и особое внимание к "невидимым" артериям. Когда помпа начинает гудеть громче обычного, или напор воды ослабевает, это часто не поломка самой помпы, а *частичное перекрытие внутренних водопроводов* и мельчайших фильтров машины микрочастицами накипи. Эти отложения, даже после стандартной чистки, остаются в самых труднодоступных местах.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Мой инженерный секрет: после каждого цикла декальцинации (когда вы используете специальный раствор), помимо обычной промывки чистой водой, обязательно *дважды* прогоните через систему *горячую* чистую воду и один раз – очень слабый раствор лимонной кислоты (1 чайная ложка на литр воды). Затем снова чистую воду. Это создает дополнительную турбулентность и химическую реакцию, которая вымывает те рыхлые, скрытые отложения накипи, которые "прячутся" в тонких трубках, капиллярах и вокруг входного фильтра помпы. Именно эти микроосадки заставляют помпу работать на износ, снижают ее ресурс и приводят к полному отказу. Такая "глубокая промывка" – залог долгой и бесперебойной работы вашей машины, а также вашей экономии на дорогостоящем ремонте помпы и чистке от накипи в Кемерово.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Накипь – враг вашей кофемашины: эффективная чистка и профилактика</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если ваша кофемашина перестала варить кофе, одной из наиболее частых и коварных причин является накипь. Минеральные отложения, содержащиеся в водопроводной воде, постепенно осаждаются на внутренних элементах нагревательного контура, трубках и помпе. Это приводит к сужению просвета трубок, снижению давления воды, перегреву нагревательных элементов и, как следствие, полной неработоспособности устройства.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Накипь не просто ухудшает вкус кофе; она становится физическим барьером, препятствующим нормальному прохождению воды. Помпа, пытаясь протолкнуть воду через суженные каналы, работает с повышенной нагрузкой, что ускоряет ее износ и может привести к полному отказу. Нагревательный элемент, покрытый слоем накипи, теряет свою эффективность, потребляет больше энергии и рискует выйти из строя из-за локального перегрева.</p></p>
+<h3>Экспертный подход к чистке и диагностике</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В отличие от поверхностной домашней чистки, профессиональная декальцинация в Админ.Ко включает глубокую диагностику и применение специализированных средств. Мы не просто прогоняем жидкость:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Проводим полную разборку аппарата для визуального осмотра каждого компонента.</li>
+<li>Используем высокоэффективные, но безопасные для материалов кофемашины растворы, которые глубоко проникают и растворяют отложения без повреждения пластиковых и металлических деталей. Это критически важно, так как агрессивные или неправильно подобранные средства могут вызвать коррозию и течи.</li>
+<li>Проверяем состояние помпы и нагревательного элемента. При необходимости проводим ремонт или замену помпы, так как она может выйти из строя не только из-за накипи, но и вследствие других механических или электрических неисправностей.</li>
+<li>После чистки все компоненты тщательно промываются и проверяются на герметичность и проходимость.</li>
+<li>Проводим функциональное тестирование машины, чтобы убедиться в восстановлении рабочего давления и корректности температурного режима.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Почему важен профессиональный ремонт и чистка?</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Попытки самостоятельной чистки могут привести к серьезным последствиям:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Неправильная разборка или сборка может повредить уплотнители и соединения, вызвав протечки.</li>
+<li>Использование неподходящих чистящих средств способно необратимо повредить внутренние компоненты, от пластиковых трубок до электроники.</li>
+<li>Без специализированного оборудования невозможно адекватно оценить степень засоренности системы и состояние помпы. Мы гарантируем полную сохранность данных (если применимо к другим типам устройств) и точное восстановление работоспособности вашей кофемашины.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы работаем по инженерному стандарту Админ.Ко: проводим 0р диагностику, используем только качественные запчасти (при необходимости замены, всегда в наличии), предоставляем гарантию 1 год по договору и предлагаем честную цену за ремонт. Это обеспечивает не только устранение текущей проблемы, но и предотвращает ее повторное возникновение в ближайшем будущем.</p></p>
+<h3>Локальный призыв к действию</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не доверяйте свою кофемашину сомнительным мастерским. Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально, обеспечивая надежность и прозрачность на каждом этапе ремонта.</p></p>
+</section>
+            <section class="mt-12"><h2>Кофемашина не варит кофе? Профессиональный ремонт помпы и чистка от накипи в Кемерово</h2>
+<h3>Проблема: кофемашина перестала готовить кофе</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Ваша кофемашина перестала подавать воду, значительно снизился напор или она отказывается нагревать жидкость? Эти симптомы указывают на серьезные неисправности, требующие экспертного вмешательства. Наиболее частые причины: выход из строя помпы (насоса), засорение внутренних гидравлических трактов накипью или сбой в работе нагревательного элемента.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Ремонт кофемашин в Админ.Ко — оперативно и надежно</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Проблема:</strong> Отсутствие подачи воды, низкое давление, отсутствие нагрева, посторонние шумы, протечки, индикация накипи.</li>
+<li><strong>Срок ремонта:</strong> От 1 рабочего дня (зависит от сложности неисправности и наличия необходимых комплектующих).</li>
+<li><strong>Цена:</strong> От 1500 руб.</li>
+<li><strong>Диагностика:</strong> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Экспертный разбор: почему без специализированного оборудования ремонт невозможен</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Ремонт современной кофемашины — это высокотехнологичный процесс, требующий глубоких знаний электроники, механики и гидравлики. Попытки самостоятельного или неквалифицированного ремонта приводят к усугублению проблемы и значительному увеличению стоимости восстановления. В лаборатории Админ.Ко мы применяем профессиональное оборудование, гарантирующее точную диагностику и качественный ремонт:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Тепловизор:</strong> Используется для локализации скрытых засоров в теплообменниках, диагностики равномерности нагрева бойлера и выявления микропротечек, которые незаметны невооруженным глазом. Это позволяет точно определить область неисправности без лишнего демонтажа.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Осциллограф Rigol:</strong> Необходим для анализа сигналов датчиков, проверки целостности управляющих цепей и диагностики работы электронной платы управления. С его помощью мы точно выявляем сбои в логике работы системы, что критически важно для стабильного функционирования кофемашины.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Прецизионные паяльные станции JBC (Испания) и Quick 861DW:</strong> Применяются для восстановления электронных компонентов на платах управления кофемашины, обеспечивая микроскопическую точность пайки без риска повреждения чувствительных элементов из-за перегрева.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Флюсы Martin/Amtech:</strong> Мы используем только профессиональные флюсы, которые обеспечивают идеальное соединение при пайке и не оставляют коррозийных остатков, гарантируя долговечность и надежность восстановленных электронных узлов.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Без такого комплекса оборудования невозможно качественно устранить неисправность, восстановить электронику и полностью очистить систему от накипи, что inevitably приведет к повторным поломкам и сократит срок службы вашей кофемашины.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Инженерный стандарт Админ.Ко: гарантия качества и надежности</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Доверяя ремонт вашей кофемашины нам, вы получаете:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Диагностика 0 руб.:</strong> Точное определение неисправности без каких-либо затрат с вашей стороны.</li>
+<li><strong>Запчасти в наличии:</strong> Ключевые компоненты для большинства моделей кофемашин всегда есть на нашем складе, сокращая время ремонта.</li>
+<li><strong>Гарантия 1 год по договору:</strong> На все выполненные работы и установленные запчасти, подтвержденная официальным документом.</li>
+<li><strong>Сохранность данных:</strong> Мы гарантируем, что все настройки вашей кофемашины будут сохранены или восстановлены до заводских параметров после ремонта, обеспечивая привычный комфорт использования.</li>
+<li><strong>Честная цена:</strong> Прозрачное ценообразование без скрытых платежей. Вы платите только за фактически выполненные работы и установленные качественные детали.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Ваша кофемашина ждет вас по адресу: Дзержинского 2Б</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Не позволяйте неисправной кофемашине испортить ваш день. Мы находимся в центре Кемерово, ул. Дзержинского 2Б, рядом с СРК Арена и ТЦ Я. Админ.Ко работает официально, предоставляя полный пакет документов и гарантию на все услуги. Доверьте ремонт профессионалам и наслаждайтесь идеальным кофе каждый день.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Настройка сети в офисе Кемерово | Стабильный интернет и ИТ-инфраструктура | Админ.Ко</title>
+    <meta name="description" content="Профессиональная настройка сети и стабильный интернет для офиса в Кемерово. Разработка, монтаж и обслуживание ИТ-инфраструктуры любой сложности. Гарантия надежности.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Настройка сети в офисе Кемерово | Стабильный интернет и ИТ-инфраструктура</h1>
+            <meta name="published_at" content="2026-03-22T14:43:08.125Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Глава 1: Основы стабильной ИТ-инфраструктуры для офиса в Кемерово: Почему это критично?</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В современном бизнесе в Кемерово стабильная и безопасная ИТ-инфраструктура – не просто удобство, а критически важный фактор для непрерывности работы и конкурентоспособности. От качества настройки вашей офисной сети напрямую зависят скорость обмена данными, доступность сервисов, защищенность конфиденциальной информации и, в конечном итоге, продуктивность каждого сотрудника.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Проблемы, которые решает профессиональная настройка ИТ-инфраструктуры:</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Медленный интернет и частые сбои сети:</strong> Некорректная настройка сетевого оборудования, низкокачественная кабельная инфраструктура и отсутствие оптимизации трафика приводят к постоянным задержкам и прерываниям.</li>
+<li><strong>Угрозы безопасности данных:</strong> Отсутствие адекватных средств защиты, некорректная конфигурация межсетевых экранов и отсутствие регулярных обновлений делают сеть уязвимой для кибератак и утечек конфиденциальной информации.</li>
+<li><strong>Отсутствие централизованного доступа:</strong> Неупорядоченное хранение файлов, проблемы с общими принтерами и другими сетевыми ресурсами снижают эффективность совместной работы.</li>
+<li><strong>Сложности с масштабированием:</strong> Неправильно спроектированная сеть не может адаптироваться к росту компании без существенных перестроек и дополнительных инвестиций.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Админ.Ко предлагает решения для офисов в Кемерово:</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Проблема:</strong> Нестабильный интернет, низкая скорость сети, проблемы с доступом к общим ресурсам, угрозы безопасности данных.</li>
+<li><strong>Срок:</strong> От 1 рабочего дня (аудит и план настройки). Срок реализации проекта — индивидуально.</li>
+<li><strong>Цена:</strong> Индивидуальный расчет стоимости после детального аудита.</li>
+<li><strong>Диагностика (первичный аудит сети):</strong> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Экспертный разбор: Почему "домашние" решения не подходят для бизнеса</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>ИТ-инфраструктура офиса требует системного подхода, выходящего за рамки использования бытового оборудования. Применение потребительских устройств и непрофессиональных решений в бизнес-среде приводит к следующим последствиям:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Недостаточная производительность и надежность:</strong> Бытовые роутеры и коммутаторы не рассчитаны на одновременное подключение большого числа пользователей, интенсивную нагрузку и круглосуточную работу, что вызывает перегревы и сбои.</li>
+<li><strong>Отсутствие управляемости и контроля:</strong> Профессиональное оборудование позволяет детально настраивать приоритеты трафика (QoS), создавать виртуальные локальные сети (VLAN), контролировать доступ пользователей и удаленно управлять сетью. Без этого невозможно обеспечить стабильность, безопасность и эффективное использование ресурсов.</li>
+<li><strong>Уязвимости безопасности:</strong> Отсутствие встроенных функций безопасности корпоративного уровня, таких как VPN-серверы, продвинутые межсетевые экраны с глубокой инспекцией пакетов и системы предотвращения вторжений, делает сеть легкой мишенью для атак.</li>
+<li><strong>Отсутствие резервирования и отказоустойчивости:</strong> Сбой в единственной точке доступа или центральном коммутаторе может полностью парализовать работу офиса, приводя к значительным простоям и убыткам.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы применяем стандарты TIA/EIA для проектирования и монтажа структурированных кабельных систем, используем бизнес-класс оборудования от ведущих производителей (Cisco, Mikrotik, Ubiquiti) и внедряем серверные решения на базе VMware, Windows Server и Linux. Наша экспертиза включает настройку многоуровневых межсетевых экранов, организацию отказоустойчивых систем и реализацию комплексных стратегий резервного копирования данных.</p></p>
+<h3>Инженерный стандарт Админ.Ко: Ваш гарант стабильности</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Аудит и консультация 0 руб.:</strong> Мы начинаем с глубокого анализа текущей инфраструктуры вашего офиса в Кемерово без каких-либо финансовых обязательств с вашей стороны.</li>
+<li><strong>Качественные компоненты в наличии:</strong> Используем только проверенное сетевое оборудование и сертифицированные кабельные системы для обеспечения максимальной производительности, надежности и долговечности вашей ИТ-инфраструктуры.</li>
+<li><strong>Гарантия 12 месяцев по договору:</strong> На все выполненные работы по настройке и установленное оборудование предоставляется официальная гарантия, подтвержденная договором.</li>
+<li><strong>Приоритет сохранности данных:</strong> Все работы проводятся с максимальной осторожностью и строгим соблюдением протоколов, исключающих потерю важной корпоративной информации.</li>
+<li><strong>Честная и прозрачная цена:</strong> Полная и детализированная смета предоставляется до начала любых работ, без скрытых платежей и дополнительных накруток.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Геолокация: Ваша ИТ-поддержка в центре Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для получения профессиональной консультации и аудита вашей ИТ-инфраструктуры в Кемерово, обращайтесь в Админ.Ко. Мы находимся в центре города, по адресу <strong>ул. Дзержинского 2Б</strong>. Рядом с нами расположены СРК Арена и ТЦ Я. Мы работаем официально, предоставляя полный пакет документов и гарантируя юридическую чистоту всех сделок и работ.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> От 2500 руб. за выезд инженера для базовой настройки/оптимизации. Общая стоимость определяется после оценки объема работ и требуемого оборудования.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: От 2-3 часов (для точечной задачи) до 1-3 рабочих дней (для комплексной настройки офиса), в зависимости от масштаба и сложности инфраструктуры.</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Первичная диагностика на объекте (в Кемерово) от 1500 руб. (включает выезд инженера и определение текущих проблем/задач). При дальнейшем заказе услуг, стоимость диагностики может быть учтена в общей сумме проекта.</p></div>
+
+        </div>
+            <section><h2>Глава 2: Планирование и проектирование сети: От оценки потребностей до выбора оборудования</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Стабильность и производительность офисной сети начинаются задолго до прокладки кабелей или установки маршрутизаторов. Фундамент успеха — это грамотное планирование и проектирование. Отсутствие системного подхода на этом этапе неизбежно ведет к проблемам: от "мертвых зон" Wi-Fi и медленного интернета до уязвимостей безопасности и дорогостоящих переделок.</p></p>
+<h3>Оценка потребностей: Фундамент стабильной сети</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Проектирование сети в Админ.Ко начинается с глубокого анализа текущих и будущих потребностей вашей компании. Это не просто "сколько компьютеров", а комплексный аудит, который позволяет создать масштабируемую и надежную инфраструктуру. Наш инженерный центр учитывает:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Количество и тип пользователей:</b> Офисные сотрудники, удаленные работники, гости, специализированные рабочие станции.</li>
+<li><b>Критические сервисы и приложения:</b> VoIP-телефония, видеоконференции, CRM/ERP-системы, файловые серверы, облачные сервисы, видеонаблюдение.</li>
+<li><b>Требования к пропускной способности:</b> Объем передаваемых данных, пиковые нагрузки.</li>
+<li><b>Архитектура помещения:</b> Планировка, материалы стен, источники возможных помех для Wi-Fi.</li>
+<li><b>Требования к безопасности:</b> Сегментация сети, защита от внешних угроз, контроль доступа.</li>
+<li><b>Бюджет и перспективы роста:</b> Создание решения, которое можно будет развивать без полной перестройки.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для точной оценки мы используем специализированные программно-аппаратные комплексы для анализа сетевого трафика и проведения радиообследования (Wi-Fi Site Survey). Это позволяет выявить потенциальные узкие места, источники помех и спланировать оптимальное расположение точек доступа с учетом реальной среды, а не "на глаз".</p></p>
+<h3>Выбор оборудования: Оптимальные решения для вашего офиса</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>На основе всестороннего анализа Админ.Ко разрабатывает детальный проект сети и подбирает компоненты. Мы принципиально не используем бытовое оборудование для корпоративных решений, отдавая предпочтение проверенным производителям и профессиональным линейкам:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Маршрутизаторы (роутеры):</b> Выбор устройств с достаточной производительностью, функционалом безопасности (брандмауэр, VPN) и возможностью резервирования каналов связи.</li>
+<li><b>Коммутаторы (свитчи):</b> Подбор управляемых коммутаторов с поддержкой VLAN, QoS (Quality of Service) для приоритизации трафика и PoE (Power over Ethernet) для питания IP-телефонов и точек доступа.</li>
+<li><b>Точки доступа Wi-Fi:</b> Профессиональные решения с поддержкой новейших стандартов (Wi-Fi 6/6E), централизованным управлением и функциями роуминга для бесшовного перемещения между точками.</li>
+<li><b>Системы хранения данных:</b> NAS или SAN решения для надежного и быстрого доступа к корпоративным файлам.</li>
+<li><b>Кабельная инфраструктура:</b> Прокладка сертифицированного кабеля (например, категории 5e/6/6A) с учетом стандартов TIA/EIA, обеспечивающая заявленную пропускную способность и долговечность.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Наши инженеры имеют глубокие знания архитектурных решений ведущих вендоров и подбирают оборудование, исходя из принципов надежности, производительности и экономической целесообразности. Использование профессиональных кабельных тестеров и анализаторов после монтажа гарантирует соответствие всех параметров отраслевым стандартам.</p></p>
+<h3>Инженерный стандарт Админ.Ко в сетевых решениях</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Обращаясь в Админ.Ко для проектирования и настройки сети в вашем офисе в Кемерово, вы получаете комплексный сервис, построенный на следующих принципах:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>0 руб. за первичную диагностику и оценку:</b> Мы проведем аудит вашей существующей инфраструктуры и оценим потребности без скрытых платежей.</li>
+<li><b>Запчасти и оборудование в наличии или под заказ:</b> Мы работаем с проверенными поставщиками и имеем доступ к широкому ассортименту сетевого оборудования, что сокращает сроки реализации проектов.</li>
+<li><b>Гарантия 1 год по договору:</b> На все выполненные работы и установленное оборудование предоставляется официальная гарантия, подтвержденная договором.</li>
+<li><b>Приоритет сохранности данных:</b> Все работы проводятся с максимальной осторожностью и учетом протоколов безопасности, чтобы исключить потерю или повреждение вашей информации.</li>
+<li><b>Честная цена:</b> Полная прозрачность формирования сметы и отсутствие навязанных услуг. Вы всегда понимаете, за что платите.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для разработки индивидуального проекта вашей офисной сети, который обеспечит стабильный интернет и надежную ИТ-инфраструктуру, обращайтесь в Админ.Ко. Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Технический секрет инженера по настройке стабильной сети в офисе в Кемерово, который многие упускают из виду, сосредоточившись на скорости оборудования, заключается в создании максимально "чистой" и предсказуемой физической и логической среды, начиная с самого фундамента.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Представьте, что сетевая инфраструктура – это нервная система организма. Любое "шумовое" воздействие, неконтролируемая переменная или хаотичное решение на низком уровне неизбежно приводит к хроническим "болезням": спорадическим обрывам связи, необъяснимым задержкам, потере пакетов, несовместимости устройств, которые невозможно диагностировать традиционными методами.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Мой секрет – это дотошное, почти обсессивное устранение всех потенциальных источников помех и нестабильности еще на этапе проектирования и монтажа:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">1.  <strong>Физическая чистота и изоляция:</strong> Это не просто "проложить кабель", а "проложить КАЧЕСТВЕННЫЙ, сертифицированный кабель с соблюдением всех норм". В условиях Кемерово, где много старых зданий, промышленных объектов и плотной застройки, электромагнитный фон может быть далек от идеала. Использование экранированного кабеля (FTP/STP) там, где это оправдано, правильная разделка витой пары (не экономить на инструментах и патч-панелях!), минимальное пересечение с силовыми кабелями, правильное заземление всего оборудования. Отказ от использования бытовых коммутаторов и маршрутизаторов в пользу управляемого корпоративного оборудования с предсказуемым поведением и стабильной прошивкой.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">2.  <strong>Радиочистота (для Wi-Fi):</strong> Не просто "повесить побольше точек доступа". Это проведение радиообследования помещения, детальное планирование каналов (с учетом соседних офисов!), оптимизация мощности передатчиков и тщательный выбор мест для минимизации взаимных помех и помех от другой беспроводной техники (микроволновые печи, DECT-телефоны). В Кемерово эфир может быть "забит", поэтому умение работать с радиоспектром – критично.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">3.  <strong>Логическая чистота и порядок:</strong> Строгое, заранее продуманное планирование IP-адресации, грамотное сегментирование сети (VLANы для разных отделов, гостевого доступа, серверов), использование QoS (качество обслуживания) для приоритизации критического трафика. Каждый сетевой узел должен иметь свою четкую роль и предсказуемые настройки.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Итоговый эффект от такой "чистоты" – это не просто работающая, а по-настоящему *невозмутимая* сеть, которая будет стабильно функционировать годами без сюрпризов, а любая редкая проблема локализуется и устраняется за минуты, а не часы или дни. Это инвестиция в спокойствие, производительность и бесперебойность бизнеса, которая многократно окупается.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><!-- HTML_START --></p>
+<h2>Настройка офисной сети в Кемерово: стабильный интернет и безопасность данных под ключ</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Проблема:</strong> Медленный интернет, частые обрывы связи, отсутствие доступа к общим ресурсам, низкая безопасность данных.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Срок:</strong> От 1 рабочего дня (зависит от масштаба и сложности проекта).</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Цена:</strong> От 5000 руб. (окончательная стоимость после диагностики и составления сметы).</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Диагностика:</strong> 0 руб.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h2>Экспертный разбор: Почему офисная сеть требует инженерного подхода</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Монтаж и настройка офисной сети – это не просто прокладка кабелей. Это создание надежной инфраструктуры, способной поддерживать бесперебойную работу вашего бизнеса. Ошибки на этом этапе приводят к замедлениям, потере данных, уязвимостям безопасности и, как следствие, прямым финансовым потерям.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Мы подходим к задаче комплексно, используя методы и оборудование, аналогичные нашим лабораторным стандартам точности и диагностики. Для нас это означает:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Проектирование с запасом прочности:</strong> Мы используем специализированное ПО для планирования топологии сети, расчета нагрузок и оптимального размещения оборудования. Это предотвращает "узкие места" и обеспечивает масштабируемость.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Профессиональный монтаж структурированной кабельной системы (СКС):</strong> Кабели укладываются и разделываются строго по стандартам TIA/EIA-568. Мы используем профессиональные кабельные тестеры Fluke Networks для сертификации каждого сегмента. Это гарантирует отсутствие потерь сигнала, коротких замыканий, расщепленных пар – проблем, которые неизбежно возникают при использовании непрофессиональных инструментов и "на глазок".</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Настройка активного оборудования:</strong> Роутеры, коммутаторы, Wi-Fi точки доступа конфигурируются с учетом задач вашего бизнеса. Мы применяем принципы сегментации сети (VLAN), настраиваем фаерволы и системы контроля доступа, что обеспечивает высокий уровень безопасности. Здесь важна точность и учет всех нюансов, подобно тому, как программаторы JCID позволяют восстановить функционал Face ID без ошибок, мы настраиваем сеть без "багов" и уязвимостей.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Диагностика и оптимизация:</strong> С помощью анализаторов Wi-Fi спектра и программных комплексов для мониторинга трафика мы выявляем источники помех, оптимизируем покрытие и пропускную способность беспроводных сетей. Это аналогично использованию тепловизора для поиска перегрева на плате – мы находим "горячие точки" в вашей сети до того, как они станут проблемой.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Без такого подхода, без специализированных тестеров, качественных расходных материалов (кабелей, коннекторов) и строгого соблюдения стандартов, ваша сеть будет постоянно давать сбои. Некачественная обжимка, некорректная настройка маршрутизации или отсутствие сегментации – это мина замедленного действия, которая приведет к нестабильной работе интернета, трудностям с обменом данными и потенциальной утечке конфиденциальной информации.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h2>Инженерный стандарт Админ.Ко: гарантия вашей стабильности</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Мы применяем комплексный подход к каждому проекту, основываясь на принципах надежности и прозрачности:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Диагностика 0 руб.:</strong> Мы не берем плату за выявление проблемы и составление сметы.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Комплектующие и оборудование в наличии:</strong> Используем только проверенные компоненты от ведущих производителей, часто имеющиеся на нашем складе.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Гарантия 1 год по договору:</strong> На все выполненные работы и установленное оборудование предоставляется официальная гарантия.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Сохранность данных:</strong> При любых работах с ИТ-инфраструктурой приоритет — абсолютная сохранность вашей конфиденциальной информации.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Честная цена:</strong> Стоимость работ фиксируется в договоре после диагностики и не меняется. Никаких скрытых платежей.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Локальный призыв: Стабильная сеть для вашего бизнеса в Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Требуется надежная и производительная офисная сеть, которая работает без сбоев? Доверьтесь профессионалам. Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально, предоставляя полный пакет документов.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><!-- HTML_END --></p>
+</section>
+            <section class="mt-12"><h2>Глава 4: Поддержка, безопасность и масштабирование: Гарантия долгосрочной стабильности вашей ИТ-инфраструктуры</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В современном офисе стабильность ИТ-инфраструктуры является не просто удобством, а критически важным фактором непрерывности бизнес-процессов. В Админ.Ко мы понимаем, что настройка сети — это лишь отправная точка. Истинная ценность нашей работы заключается в обеспечении долгосрочной поддержки, многоуровневой безопасности и возможности масштабирования вашей системы без потери производительности.</p></p>
+<h3>Экспертный разбор: Необходимость комплексного подхода к ИТ-инфраструктуре</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Поддержка ИТ-инфраструктуры — это не реактивное устранение сбоев, а проактивное управление рисками. Мы используем профессиональное оборудование и методики для обеспечения максимальной отказоустойчивости:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Профессиональное сетевое оборудование:</strong> Мы строим сети на базе решений от ведущих производителей, таких как MikroTik, Ubiquiti, Cisco. Это обеспечивает не только высокую скорость передачи данных, но и их стабильность под нагрузкой. Настройка каждого устройства выполняется нашими инженерами с учетом специфики трафика и требований безопасности вашей компании, исключая "бытовые" решения, которые приводят к частым сбоям и уязвимостям.</li>
+<li><strong>Системы мониторинга и предиктивного анализа:</strong> С помощью решений типа Zabbix или PRTG мы осуществляем круглосуточный мониторинг всех узлов сети – от маршрутизаторов и коммутаторов до серверов и рабочих станций. Это позволяет не только оперативно реагировать на инциденты, но и предотвращать их, выявляя аномалии и потенциальные точки отказа до того, как они повлияют на работу офиса.</li>
+<li><strong>Многоуровневая система безопасности:</strong> Современная ИТ-инфраструктура требует не только брандмауэров. Мы внедряем комплексные решения, включающие VPN-туннели для безопасного удаленного доступа, системы обнаружения и предотвращения вторжений (IDS/IPS), антивирусную защиту корпоративного уровня и регулярные аудиты безопасности. Это обеспечивает защиту от несанкционированного доступа, вредоносного ПО и целевых атак.</li>
+<li><strong>Архитектура, готовая к масштабированию:</strong> Мы проектируем сети таким образом, чтобы они могли легко адаптироваться к росту вашей компании. Добавление новых рабочих мест, филиалов или расширение функционала не приведет к полной перестройке системы, а будет осуществляться с минимальными затратами и простоем.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без использования специализированного оборудования, программного обеспечения для мониторинга и глубоких инженерных знаний, сеть неизбежно столкнется с проблемами производительности, безопасности и масштабируемости, что напрямую влияет на эффективность бизнеса.</p></p>
+<h3>Инженерный стандарт Админ.Ко: Ваша уверенность в ИТ</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы применяем стандарты, которые гарантируют стабильность и защиту вашей ИТ-инфраструктуры:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Первичный аудит и консультация — 0 руб.</strong> Мы начинаем с глубокого анализа текущей ИТ-инфраструктуры вашего офиса, выявляем узкие места и потенциальные риски.</li>
+<li><strong>Оперативное предоставление оборудования:</strong> Мы имеем налаженные каналы поставок и резервный фонд оборудования, что минимизирует время простоя в случае необходимости замены или модернизации элементов вашей сети.</li>
+<li><strong>Гарантия и сервисный договор на 1 год:</strong> Все наши работы и поставляемое оборудование сопровождаются официальной гарантией и Service Level Agreement (SLA), что четко регламентирует наши обязательства и сроки реагирования.</li>
+<li><strong>Комплексные системы сохранности данных:</strong> Внедряем и поддерживаем многоуровневые системы резервного копирования и планы аварийного восстановления, обеспечивая сохранность вашей критически важной информации.</li>
+<li><strong>Честное и прозрачное ценообразование:</strong> Вы всегда получаете детальную смету без скрытых платежей. Мы работаем открыто, чтобы вы могли планировать свои ИТ-бюджеты с полной уверенностью.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Ваш путь к стабильной ИТ-инфраструктуре в Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Мы приглашаем вас обсудить потребности вашего офиса в стабильной, безопасной и масштабируемой ИТ-инфраструктуре. Админ.Ко работает официально, предоставляя полный пакет документов и высококвалифицированную инженерную поддержку. Обратитесь к нам, чтобы обеспечить долгосрочную стабильность вашего бизнеса.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

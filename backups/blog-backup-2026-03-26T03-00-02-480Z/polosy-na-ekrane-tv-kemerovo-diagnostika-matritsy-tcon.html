@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Полосы на экране телевизора в Кемерово: Диагностика матрицы или T-CON платы | Админ.Ко</title>
+    <meta name="description" content="На экране вашего телевизора в Кемерово появились вертикальные или горизонтальные полосы, искажения изображения? Проведем профессиональную диагностику, чтобы точно определить причину: неисправность матрицы, T-CON платы или других компонентов, и выполним качественный ремонт.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Полосы на экране телевизора в Кемерово: Диагностика матрицы или T-CON платы</h1>
+            <meta name="published_at" content="2026-03-25T03:09:49.729Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Полосы на экране в Кемерово: Введение в проблему и ее актуальность</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Появление полос на экране телевизора — одна из наиболее распространенных и вызывающих дискомфорт неисправностей, с которой сталкиваются жители Кемерово. Эти дефекты могут проявляться как в виде тонких вертикальных или горизонтальных линий, так и в форме широких полос с искаженной цветопередачей. Фактически, полосы на экране являются прямым индикатором нарушения формирования изображения.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ключевыми причинами данной неисправности чаще всего выступают две основные системы телевизора: матрица (сама дисплейная панель) и T-CON плата (Timing Controller). T-CON плата отвечает за преобразование видеосигнала, поступающего с основной платы, в управляющие импульсы для пикселей матрицы. Любое нарушение в работе ее компонентов — контроллеров, линий связи, шлейфов — приводит к рассинхронизации и, как следствие, к появлению визуальных артефактов в виде полос.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если же проблема заключается в самой матрице, то это, как правило, указывает на физическое повреждение дешифраторов, расположенных по периметру панели, отслоение или повреждение шлейфов, соединяющих дешифраторы с кристаллической структурой, или деградацию отдельных участков пиксельной сетки. Это может быть вызвано механическим воздействием, перегревом или естественным износом.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Точная локализация неисправности — между T-CON платой и матрицей — является критически важной задачей. Визуальная диагностика, без применения специализированного оборудования, крайне ненадежна и часто приводит к ошибочному заключению, что влечет за собой либо неэффективный ремонт, либо неоправданную замену дорогостоящих компонентов. Именно здесь проявляется ценность профессионального подхода:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Осциллограф Rigol:</strong> Позволяет анализировать форму, амплитуду и частоту видеосигналов, поступающих на T-CON плату и далее к матрице. Искажения или отсутствие сигналов на определенных линиях однозначно указывают на источник проблемы.</li>
+<li><strong>Тепловизор:</strong> Используется для выявления локальных перегревов на плате T-CON или в области подключения шлейфов матрицы. Аномальный нагрев часто является следствием короткого замыкания или повышенного потребления тока дефектным компонентом.</li>
+<li><strong>Лабораторные блоки питания и прецизионные мультиметры:</strong> Необходимы для точной проверки напряжений питания на T-CON, диагностики коротких замыканий и измерения сопротивлений компонентов, что невозможно выполнить с помощью обычного инструмента.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без этого арсенала технического оснащения, ремонт превращается в «угадывание», что неизбежно ведет к некачественным результатам, появлению скрытых дефектов или полному выходу устройства из строя после непрофессионального вмешательства. В «Админ.Ко» мы используем только доказанные инженерные методики и инструменты, чтобы гарантировать точную диагностику и долговечность ремонта.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Полная проверка телевизора для точного определения причины полос (неисправность матрицы, T-CON платы или других элементов).</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: От 1 часа (экспресс-диагностика) до 1-2 рабочих дней (в условиях сервисного центра).</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> От 500 до 1000 рублей. При последующем ремонте стоимость диагностики часто вычитается из общей суммы.</p></div>
+
+        </div>
+            <section><h2>Матрица и T-CON плата: Функции и роль в формировании изображения</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В основе любого современного телевизора лежит сложная система формирования изображения, ключевыми элементами которой являются матрица и T-CON плата. Понимание их функций критически важно для диагностики неисправностей, таких как появление полос на экране.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Матрица (панель дисплея)</strong> – это основной компонент, непосредственно отвечающий за отображение картинки. Она состоит из миллионов пикселей, каждый из которых содержит субпиксели красного, зеленого и синего цветов. Эти пиксели управляются транзисторами (в случае ЖК-панелей) или светодиодами (в OLED-панелях), которые регулируют интенсивность и цвет света для создания итогового изображения. Именно матрица является "холстом", на котором формируется картинка.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>T-CON плата (Timing Controller board)</strong> – это "мозг", который управляет матрицей. Ее основная функция заключается в получении видеосигнала от главной платы телевизора (Main Board), его обработке и преобразовании в сигналы, понятные матрице. T-CON плата синхронизирует работу тысяч транзисторов или светодиодов в матрице, обеспечивая своевременную подачу данных и управляющих сигналов к каждой строке и столбцу пикселей. Без точной синхронизации и правильного формирования сигналов T-CON платы матрица не сможет отобразить корректное изображение.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Взаимодействие этих двух компонентов происходит следующим образом:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Главная плата телевизора отправляет цифровой видеосигнал на T-CON плату.</li>
+<li>T-CON плата обрабатывает этот сигнал, генерирует точные временные (синхронизирующие) и управляющие напряжения.</li>
+<li>Специальные драйверы (Source Drivers и Gate Drivers), часто расположенные по краям матрицы, получают эти сигналы от T-CON платы и подают их на соответствующие строки и столбцы пикселей.</li>
+<li>Эти сигналы управляют состоянием каждого пикселя, заставляя его светиться с определенной интенсивностью и цветом, формируя цельное изображение.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Появление полос на экране телевизора часто является прямым следствием нарушения работы либо самой матрицы, либо T-CON платы. Неисправность T-CON платы может привести к некорректной синхронизации или подаче искаженных сигналов, что проявляется в виде цветных или черно-белых полос, а также других артефактов изображения. Повреждение или выход из строя отдельных элементов матрицы (например, межсоединений или группы пикселей) также ведет к появлению полос, поскольку затронутые области перестают реагировать на управляющие сигналы или отображают некорректный цвет.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Технический секрет инженера для диагностики полос на экране телевизора:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"Когда на экране появляются полосы (вертикальные или горизонтальные) и стоит вопрос, виновата ли матрица или T-CON плата, мой быстрый тест — метод "половинного отключения".</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">1.  <strong>Выключите телевизор из розетки!</strong> Это критически важно для безопасности и предотвращения дальнейших повреждений.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">2.  Снимите заднюю крышку и найдите T-CON плату. От нее к матрице обычно идут один или два широких шлейфа (LVDS/FFC).</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">3.  Если шлейфов два (что чаще всего), <strong>аккуратно отключите один из них</strong> от T-CON платы, идущий к одной из сторон матрицы.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">4.  Снова подключите телевизор к сети и включите его.</p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Анализ результатов:</strong></p>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  <strong>Сценарий 1: Отключенная половина экрана черная (или белая), а вторая половина показывает идеальное изображение.</strong></li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Это почти на 100% указывает на проблему с матрицей (или ее COF-драйверами) в той половине, которая была отключена. T-CON плата в этом случае, скорее всего, исправна, так как успешно формирует изображение для работающей половины. Ремонт матрицы, как правило, нецелесообразен.</p>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  <strong>Сценарий 2: Обе половины экрана продолжают показывать полосы, артефакты, либо одна половина черная/белая, а вторая так же с полосами (или вообще нет изображения).</strong></li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Это сильный индикатор того, что проблема в самой T-CON плате. Если бы матрица была исправна, T-CON не смогла бы послать ей корректный сигнал. Попробуйте проделать то же самое, отключив другой шлейф (естественно, снова выключив ТВ из розетки перед переподключением). Если результат тот же, меняйте T-CON плату.</p>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Важное дополнение:</strong> Если от T-CON платы к матрице идет всего один широкий шлейф (чаще встречается на небольших диагоналях), этот метод "половинного отключения" неприменим. В таком случае диагностика сводится к проверке напряжений на T-CON или ее замене."</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Методы диагностики: Как отличить неисправность матрицы от T-CON платы</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Появление полос, артефактов или частичное отсутствие изображения на экране телевизора — распространенная проблема, за которой могут скрываться два основных источника: неисправность самой матрицы (экрана) или сбой в работе T-CON платы (Timing Controller Board). Точное определение причины — это ключевой этап, позволяющий избежать необоснованных расходов и гарантировать эффективный ремонт.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Матрица телевизора — это сложный компонент, состоящий из миллионов пикселей, формирующих изображение. T-CON плата является "мозгом", который управляет этими пикселями, синхронизирует их работу и преобразует видеосигнал от основной платы в формат, понятный для матрицы. Дефекты на любом из этих уровней проявляются схожими симптомами, но требуют принципиально разных решений.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В лаборатории Админ.Ко для прецизионной диагностики и безошибочного определения источника неисправности применяются следующие экспертные методы и оборудование:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Визуальный осмотр и проверка шлейфов:</strong> Первичный этап включает тщательный осмотр LVDS-шлейфа, соединяющего главную плату с T-CON, и гибких шлейфов (COF), идущих от T-CON к самой матрице. Повреждения, перегибы или окисление контактов в этих местах могут вызывать характерные полосы и другие дефекты изображения.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Тестовая заглушка T-CON:</strong> Использование специализированного адаптера, который имитирует рабочую матрицу или, наоборот, подает тестовый сигнал непосредственно на T-CON плату. Если при подключении заглушки характер полос изменяется, они пропадают или на экране появляется тестовое изображение без дефектов, это однозначно указывает на неисправность матрицы. Если же полосы остаются неизменными или проблема усугубляется, с высокой степенью вероятности неисправна T-CON плата.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Измерение напряжений и сигналов (Осциллограф Rigol):</strong> С помощью профессионального осциллографа Rigol и прецизионного мультиметра производится детальный замер всех контрольных точек на T-CON плате. Это включает проверку питающих напряжений (Vcc, VGH, VGL, VCOM), а также анализ сложных цифровых и аналоговых сигналов синхронизации и управления. Любые отклонения от эталонных значений, шумы или аномалии в форме сигналов указывают на некорректную работу элементов T-CON — DC-DC преобразователей, буферов или контроллеров.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Тепловизионная диагностика:</strong> Применение тепловизора позволяет оперативно выявить локальные перегревы компонентов на T-CON плате. Перегрев часто является следствием внутреннего короткого замыкания, повышенного потребления тока или выхода из строя отдельных микросхем, что напрямую свидетельствует о дефекте платы.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Только комплексный подход с использованием данного арсенала оборудования позволяет с точностью до 100% определить истинную причину неисправности. В Админ.Ко мы исключаем метод "проб и ошибок" и замену компонентов наугад, обеспечивая нашим клиентам в Кемерово честную диагностику и экономически обоснованный ремонт на Дзержинского 2Б.</p></p>
+</section>
+            <section class="mt-12"><h2>Варианты ремонта и рекомендации: Что делать жителям Кемерово при появлении полос</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Появление горизонтальных или вертикальных полос на экране телевизора является одним из наиболее тревожных и критичных дефектов. Данная неисправность однозначно указывает на проблему в системе обработки или вывода изображения, которая чаще всего затрагивает T-CON плату (Timing Controller) или непосредственно жидкокристаллическую (ЖК) матрицу. В отдельных случаях причиной могут быть поврежденные шлейфы, соединяющие эти ключевые компоненты.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для жителей Кемерово, столкнувшихся с полосами на экране телевизора, принципиально важен первый шаг — проведение профессиональной диагностики. Попытки самостоятельного ремонта или обращение к неквалифицированным специалистам без должного оборудования зачастую приводят не только к потере времени и средств, но и к усугублению первоначальной неисправности, делая последующий ремонт значительно дороже или вовсе невозможным. Точное определение источника проблемы требует специализированного инструментария и глубоких экспертных знаний в области телевизионной электроники.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В лаборатории Админ.Ко диагностика начинается с комплексного анализа. Мы используем высокоточное оборудование, например, <strong>осциллограф Rigol</strong>, для детального исследования сигналов, передаваемых T-CON платой к матрице, а также для проверки целостности и корректности работы шлейфов. Это позволяет с максимальной точностью выявить сбои в логике контроллера или определить, является ли повреждение внутренним дефектом матрицы. В некоторых случаях тепловизор может быть применен для обнаружения перегретых компонентов на T-CON плате, указывающих на их скорый выход из строя.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>По результатам всесторонней диагностики мы предлагаем научно обоснованные варианты ремонта:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Ремонт или замена T-CON платы:</b> Если полосы вызваны неисправностью T-CON платы, наши инженеры могут произвести компонентный ремонт с использованием прецизионного паяльного оборудования <strong>JBC</strong>. Это позволяет заменить дефектные микроэлементы без перегрева платы, что критично для ее долговечности. В случае серьезных повреждений, плата заменяется на новую.</li>
+<li><b>Восстановление шлейфов:</b> При обнаружении повреждений или окисления на шлейфах, соединяющих T-CON плату и матрицу, производится их восстановление или замена для обеспечения стабильной передачи сигнала.</li>
+<li><b>Замена матрицы:</b> В ситуациях, когда сама ЖК-матрица получила необратимые повреждения (например, вследствие физического воздействия или внутреннего дефекта, не поддающегося восстановлению), единственным эффективным решением является ее полная замена. Это наиболее затратный вариант, поэтому наша точная диагностика направлена на исключение других, менее дорогостоящих поломок.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы категорически предостерегаем от попыток "прогрева" плат или проведения "пропайки" без специализированного оборудования и контроля температурного режима. Такие действия, как правило, приводят к необратимому повреждению многослойных печатных плат, обрывам внутренних соединений и окончательному выходу телевизора из строя. Высококачественный ремонт всегда базируется на точной и объективной диагностике. Админ.Ко предоставляет <strong>бесплатную диагностику</strong>, чтобы вы могли принять взвешенное решение о целесообразности и стоимости ремонта.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для квалифицированной диагностики причин появления полос на экране вашего телевизора и получения экспертной консультации, приглашаем вас в сервисный центр Админ.Ко. Мы находимся по адресу: <strong>г. Кемерово, ул. Дзержинского 2Б</strong>. Наш центр расположен в удобном месте, рядом с СРК Арена и ТЦ Я, работает официально и предоставляет официальную гарантию на все выполненные работы.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

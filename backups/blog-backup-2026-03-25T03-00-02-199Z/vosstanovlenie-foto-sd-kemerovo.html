@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Восстановление фото с SD-карты в Кемерово | Потеряли снимки? Админ.Ко | Админ.Ко</title>
+    <meta name="description" content="Потеряли ценные фотографии или видео с SD-карты в Кемерово? Сервисный центр Админ.Ко профессионально восстановит утерянные данные. Быстрое и надежное восстановление фото с любых карт памяти.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Восстановление фото с SD-карты в Кемерово | Потеряли снимки? Админ.Ко</h1>
+            <meta name="published_at" content="2026-03-22T14:13:18.965Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Восстановление данных с SD-карты в Кемерово: Полное восстановление утраченных фото и видео</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Проблема:</b> Пропали фотографии, видеозаписи, документы с SD-карты, карта не читается, возникают ошибки при записи или чтении.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Срок:</b> От 1 рабочего дня (зависит от характера и сложности повреждения).</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Цена:</b> От 1500 руб. (за логические повреждения).</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Диагностика:</b> 0 руб.</p></p>
+<h3>Паника! Фотографии пропали с SD-карты: Что делать?</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Потеря ценных фотографий и видео с SD-карты – это всегда неприятно, а иногда и критично. Причин может быть множество: случайное удаление, форматирование, программный сбой камеры или телефона, повреждение файловой системы, а также физические повреждения самой карты или ее контроллера. Важно понимать: чем раньше вы обратитесь к специалистам и чем меньше предпримете самостоятельных попыток, тем выше шансы на полное восстановление.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Наши инженеры в Админ.Ко сталкиваются с сотнями случаев потери данных ежегодно. Мы точно знаем, что каждая секунда после обнаружения проблемы имеет значение. Попытки восстановить данные с помощью бесплатных программ из интернета часто приводят к перезаписи оставшихся целых фрагментов данных, делая профессиональное восстановление невозможным.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В нашей лаборатории используется комплексный подход к восстановлению данных с SD-карт. Мы различаем логические и физические повреждения. При логических сбоях (удаление, форматирование, повреждение файловой системы) применяются специализированные программно-аппаратные комплексы, способные глубоко сканировать носитель, игнорируя повреждения файловой системы и собирая фрагменты данных по сигнатурам. Это позволяет восстановить даже те файлы, которые операционная система "не видит".</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>При физических повреждениях, когда контроллер SD-карты неисправен или сама плата имеет дефекты, требуется более сложный, "чиповый" подход. В таких случаях наши инженеры выполняют деликатное извлечение микросхемы флеш-памяти (NAND) с платы SD-карты. Для этого применяется высокоточное паяльное оборудование, исключающее перегрев и повреждение кристалла памяти. Вот где в работу вступает наша "тяжелая артиллерия":</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><p><b>Паяльные станции JBC (Испания):</b> Обеспечивают сверхточный контроль температуры при демонтаже и монтаже микросхем, минимизируя риск термического повреждения чувствительных NAND-чипов.</p></li>
+<li><p><b>Термовоздушная станция Quick 861DW:</b> Позволяет аккуратно работать с миниатюрными компонентами без риска их смещения или разрушения.</p></li>
+<li><p><b>Тепловизор:</b> Используется для прецизионной диагностики перегрева на микроскопическом уровне, выявляя скрытые дефекты платы SD-карты, которые могут влиять на работу контроллера.</p></li>
+<li><p><b>Осциллограф Rigol:</b> Помогает диагностировать электрические неисправности и сбои в сигналах данных, что крайне важно при поиске причины отказа SD-карты.</p></li>
+<li><p><b>Специализированные программаторы (включая программаторы JCID):</b> После извлечения NAND-чипа, данные с него считываются напрямую на специализированном программаторе. Эти устройства позволяют работать с "сырыми" дампами памяти, обходя неисправный контроллер SD-карты и реконструируя файлы с учетом внутренней архитектуры чипа.</p></li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Использование высококачественных флюсов, таких как <b>Martin/Amtech</b>, гарантирует отсутствие коррозии и других негативных последствий после проведения паяльных работ, обеспечивая долговечность отремонтированных узлов или сохранность чипа памяти для дальнейшего считывания. Без этого оборудования и глубоких инженерных знаний качественное и безопасное восстановление данных с физически поврежденной SD-карты невозможно.</p></p>
+<h3>Инженерный стандарт Админ.Ко: Ваши данные под защитой</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><p><b>Бесплатная диагностика:</b> Мы проведем полную диагностику вашей SD-карты и оценим шансы на восстановление без предоплаты и скрытых платежей.</p></li>
+<li><p><b>Современное оборудование и ПО:</b> Наша лаборатория оснащена всем необходимым для работы с любыми типами флеш-памяти, от логических ошибок до "чипового" восстановления.</p></li>
+<li><p><b>Гарантия сохранности данных:</b> Мы работаем строго по договору, обеспечивая полную конфиденциальность и целостность ваших файлов на всех этапах восстановления.</p></li>
+<li><p><b>Высокий процент восстановления:</b> Применение передовых методик и опыта инженеров позволяет добиться максимального результата даже в самых сложных случаях.</p></li>
+<li><p><b>Честная цена:</b> Стоимость работ прозрачно формируется после диагностики, и вы будете точно знать итоговую сумму до начала работ.</p></li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Админ.Ко в Кемерово: Вернем ваши воспоминания</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не рискуйте вашими воспоминаниями, пытаясь самостоятельно решить проблему. Если вы находитесь в Кемерово и столкнулись с потерей данных с SD-карты, принесите ее в нашу профессиональную лабораторию. Мы расположены в центре города по адресу: <b>ул. Дзержинского 2Б</b>. Нас легко найти — рядом находятся СРК Арена и ТЦ Я. Мы работаем официально, предоставляя полный пакет документов и гарантируя высокое качество услуг по восстановлению ваших данных.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Бесплатна. Займет 15-30 минут. Определим возможность восстановления фото и точную стоимость.</p></div>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> От 900 руб. Зависит от объема данных и состояния карты. Точная цена после диагностики.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: От 1 часа до 1-2 дней. Зависит от сложности повреждений.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Приезжайте в Админ.Ко в Кемерово – вернем ваши фото!</p>
+
+        </div>
+            <section><h2>Потеряли фото с SD-карты? Восстановление данных в Кемерово | Админ.Ко</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Проблема:</strong> Недоступны или удалены фото/видео с SD-карты.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Срок:</strong> От 1 рабочего дня (зависит от сложности повреждений).</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Цена:</strong> От 2000 руб.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Диагностика:</strong> 0 руб.</</p>
+<h3>Почему исчезают ценные кадры: Частые причины потери данных и мифы о восстановлении</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Потеря ценных фотографий или важных документов с SD-карты – это всегда неприятная ситуация. Причины могут варьироваться от человеческого фактора до серьезных технических сбоев. Важно понимать эти причины и, что еще важнее, развеять мифы, которые могут привести к необратимой потере данных.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Распространенные причины потери данных с SD-карт:</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Логические повреждения:</strong> Наиболее частый сценарий. Включает случайное удаление файлов, форматирование карты, повреждение файловой системы (например, из-за некорректного извлечения карты или сбоя питания), а также вирусные атаки. При таких проблемах карта может определяться компьютером, но данные остаются недоступными.</li>
+<li><strong>Физические неисправности контроллера или чипов памяти:</strong> Менее частый, но более сложный случай. Карта может перестать определяться совсем, выдавать ошибки чтения/записи, или быть повреждена механически (изгиб, перелом, попадание жидкости).</li>
+<li><strong>Износ Flash-памяти:</strong> Каждая ячейка памяти SD-карты имеет ограниченное количество циклов перезаписи. Со временем это приводит к деградации и появлению "битых" блоков, что может вызвать потерю данных.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Опасные мифы о восстановлении данных:</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>"Любая бесплатная программа справится":</strong> Большинство бесплатных утилит способны восстановить лишь простые логические ошибки и удаленные файлы при условии, что карта абсолютно исправна и данные не были перезаписаны. Использование таких программ на поврежденной карте может привести к ее полному отказу или дальнейшему повреждению логической структуры.</li>
+<li><strong>"Можно попробовать несколько раз":</strong> Каждая попытка доступа к неисправной SD-карте, особенно с помощью непрофессиональных средств, может усугубить ее состояние, спровоцировать "выгорание" контроллера или перезаписать данные, которые еще можно было спасти.</li>
+<li><strong>"Если карта не определяется, данные потеряны навсегда":</strong> Это не так. В нашей лаборатории мы способны восстанавливать данные даже с карт, которые не определяются операционной системой, используя специализированное оборудование для прямого чтения чипов памяти.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Инженерный стандарт Админ.Ко: Профессиональный подход к восстановлению</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В «Админ.Ко» мы используем инженерную логику и высокоточное оборудование для максимально полного восстановления ваших данных. Мы не "колдуем" и не "пытаемся", мы применяем четкие протоколы работы, основанные на глубоком понимании архитектуры флеш-памяти и контроллеров.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Диагностика 0 рублей:</strong> Мы проводим полную и бесплатную диагностику, чтобы точно установить причину потери данных и оценить возможность их восстановления, прежде чем вы примете решение.</li>
+<li><strong>Сохранность данных:</strong> Это наш приоритет. Все работы проводятся на специализированных стендах, которые гарантируют невозможность случайной перезаписи или дальнейшего повреждения вашей карты.</li>
+<li><strong>Специализированное оборудование:</strong> В нашем арсенале комплексы для работы с контроллерами флеш-памяти и прямого чтения данных с чипов NAND. Для случаев, когда требуется деликатная работа с микросхемами, например, при извлечении чипа памяти с поврежденной платы, мы используем прецизионные паяльные станции JBC (Испания), обеспечивающие максимальный контроль температуры и минимизирующие риск перегрева.</li>
+<li><strong>Честная цена:</strong> Стоимость работ формируется строго после диагностики и согласовывается с вами. Вы всегда знаете, за что платите.</li>
+<li><strong>Гарантия на результат:</strong> Мы даем гарантию на успешно восстановленные данные, подтверждая их целостность и доступность.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Мы находимся в центре Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не рискуйте вашими ценными воспоминаниями или важной информацией, пытаясь восстановить данные самостоятельно. Доверьтесь профессионалам. Мы находимся по адресу: <strong>ул. Дзержинского 2Б</strong>. Рядом с нами расположены СРК Арена и ТЦ Я. Мы работаем официально и ждем вас.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Вот вам главный технический секрет от инженера по восстановлению данных, который спас не одну тысячу фото:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Как только вы поняли, что фото пропали с SD-карты, <strong>НЕМЕДЛЕННО ПРЕКРАТИТЕ ЕЁ ИСПОЛЬЗОВАТЬ</strong>.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Ни в коем случае не делайте новые снимки, не форматируйте карту, не пытайтесь что-либо на неё записывать или даже запускать на ней "быстрые" программы восстановления. Почему это так критично? Когда вы "удаляете" файл, данные физически не стираются мгновенно. Операционная система просто помечает место, где они хранились, как "свободное". Но как только вы записываете что-то новое, эти "свободные" сектора перезаписываются новыми данными, и тогда ваши фото пропадают уже навсегда. Это золотое правило!</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Ваши шансы на полное восстановление максимальны только до тех пор, пока на карту не было записано ничего нового. Отключите карту от устройства, аккуратно положите её в безопасное место и немедленно свяжитесь с нами, в Админ.Ко. В Кемерово мы знаем, как работать с такими "призрачными" файлами, пока они ещё существуют. Не рискуйте – время здесь ваш главный враг.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Восстановление данных с SD-карты в Кемерово: спасаем ваши фото и видео</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Потеряли бесценные воспоминания с SD-карты? Мы восстановим их.</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Проблема:</strong> Случайное удаление, форматирование, повреждение SD-карты, "карта не читается".</li>
+<li><strong>Срок:</strong> Диагностика от 1 часа. Восстановление от 1 дня.</li>
+<li><strong>Цена:</strong> От 1500 руб.</li>
+<li><strong>Диагностика:</strong> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Потеря данных с SD-карты — распространенная и крайне неприятная ситуация. Часто пользователи пытаются восстановить файлы самостоятельно, используя общедоступные программы. Это редко дает полноценный результат и может усугубить проблему, перезаписав утерянные данные или повредив структуру карты.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В «Админ.Ко» мы подходим к восстановлению данных как к инженерной задаче. Процесс начинается с глубокой диагностики, чтобы определить тип неисправности: логическая (повреждение файловой системы, случайное удаление) или физическая (повреждение контроллера, NAND-чипа памяти).</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для логических сбоев мы используем специализированные программно-аппаратные комплексы, которые позволяют работать с низкоуровневой структурой памяти, игнорируя поврежденные разделы и ошибки файловой системы. Мы создаем посекторную копию карты, чтобы все дальнейшие операции проводились с образом, исключая риск дальнейшего повреждения оригинала.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В случаях физического повреждения SD-карты, когда стандартные методы бессильны, требуется вмешательство на аппаратном уровне. Наша лаборатория оснащена профессиональным паяльным оборудованием JBC (Испания), позволяющим выполнять микро-пайку компонентов карты без перегрева и деградации соседних элементов. Это критически важно для работы с миниатюрными BGA-компонентами контроллера или для выполнения "чип-офф" восстановления, когда необходимо снять чипы памяти NAND и считать информацию напрямую. Применение осциллографа Rigol и тепловизора позволяет нам точно диагностировать проблемы с питанием или сигналами на плате SD-карты, что невозможно в условиях обычного сервиса.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы используем только качественные флюсы Martin/Amtech, гарантирующие чистоту платы после пайки и предотвращающие коррозию контактов, что является залогом успешного и долговечного восстановления, если ремонт физического носителя требуется.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без такого оборудования и экспертизы попытки восстановления физически поврежденной SD-карты в непрофессиональных условиях чаще всего приводят к полной и необратимой потере данных.</p></p>
+<h2>Инженерный стандарт Админ.Ко: Ваша уверенность в результате</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Выбирая «Админ.Ко» для восстановления данных, вы получаете:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Диагностика 0 руб.:</strong> Мы бесплатно определим причину потери данных и оценим шансы на восстановление.</li>
+<li><strong>Запчасти в наличии (для комплексных случаев):</strong> Для физически поврежденных носителей мы используем собственную базу специализированных компонентов и оборудования, что ускоряет процесс восстановления.</li>
+<li><strong>Гарантия 1 год по договору:</strong> Все работы выполняются официально с заключением договора, обеспечивая юридическую защиту и гарантию на предоставленные услуги.</li>
+<li><strong>Полная сохранность данных:</strong> Мы работаем только с образами носителей, исключая любое повреждение оригинальной SD-карты и гарантируя абсолютную конфиденциальность ваших файлов.</li>
+<li><strong>Честная цена:</strong> Стоимость услуг оговаривается до начала работ и не меняется в процессе. Вы платите только за успешно восстановленные данные.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Обратитесь к экспертам в Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не рискуйте вашими бесценными воспоминаниями. Для профессионального восстановления данных с SD-карты в Кемерово обращайтесь в «Админ.Ко».</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы находимся в центре города по адресу: <strong>улица Дзержинского 2Б</strong>. Наш офис легко найти рядом с СРК Арена и ТЦ Я. Мы работаем официально, предоставляя полный пакет документов на все выполненные работы и услуги.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><strong>Доверьте восстановление данных профессионалам, чтобы вернуть то, что действительно важно.</strong></p></p>
+</section>
+            <section class="mt-12"><h2>Не рискуйте! Почему стоит обратиться к специалистам 'Админ.Ко' прямо сейчас</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Потеряли ценные фотографии, видео или документы с SD-карты? Это распространенная проблема, которая может быть вызвана случайным удалением, форматированием, логическими ошибками файловой системы или физическим повреждением носителя. В «Админ.Ко» мы понимаем ценность ваших данных и предлагаем профессиональное восстановление информации.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Blitz-Answer (Блок конверсии)</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>Проблема:</b> Потеря данных с SD-карты (удаление, форматирование, логические ошибки, повреждение контроллера).<br></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>Срок:</b> От 1 часа (для простых случаев) до 1-3 дней (для сложных повреждений).<br></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>Цена:</b> От 1500 руб (зависит от объема и сложности восстановления).<br></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>Диагностика:</b> 0 руб.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Экспертный разбор (The Proof)</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Восстановление данных с SD-карты – это не просто запуск одной программы. Попытки самостоятельного восстановления с помощью бесплатных утилит часто приводят к безвозвратной потере информации, так как любое действие с поврежденным носителем может перезаписать потерянные данные. Специалисты «Админ.Ко» используют комплексный подход и специализированное оборудование.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Безопасное сканирование:</b> Мы работаем с SD-картой в режиме «только чтение», чтобы исключить любую возможность перезаписи или дополнительного повреждения оставшихся данных.</li>
+<li><b>Специализированное ПО и оборудование:</b> Для восстановления используются профессиональные программно-аппаратные комплексы, способные работать с различными типами файловых систем и контроллеров памяти, обходя ошибки чтения. Для сложных случаев, включая повреждение контроллера или микросхем NAND, применяется технология Chip-Off, которая требует высокоточной работы и глубоких знаний структуры памяти. Без такого оборудования, как JBC для микро-пайки (в случае необходимости перепайки чипов памяти) и программаторов (для прямого чтения чипов NAND), восстановить данные с сильно поврежденных карт невозможно.</li>
+<li><b>Анализ структуры данных:</b> Наши инженеры способны не только «вытащить» файлы, но и восстановить файловую систему или ее фрагменты, что критически важно для корректного отображения имен файлов и папок, а также для восстановления информации после форматирования.</li>
+<li><b>Флюсы Martin/Amtech:</b> В случае физического вмешательства, например, при восстановлении методом Chip-Off, мы применяем только проверенные флюсы Martin/Amtech, которые гарантируют чистоту монтажа и долговечность соединений, предотвращая последующее окисление платы.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Без профессионального оборудования и глубоких технических знаний, любые попытки восстановления данных могут превратить частичную потерю в полную и окончательную.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Инженерный стандарт Админ.Ко</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Диагностика 0 руб:</b> Мы проведем полную проверку вашей SD-карты абсолютно бесплатно.</li>
+<li><b>Специализированное ПО и оборудование:</b> В наличии все необходимые профессиональные комплексы для успешного восстановления данных с любых типов SD-карт.</li>
+<li><b>Гарантия конфиденциальности и результата:</b> Работаем по официальному договору, гарантируя сохранность ваших данных и их полное восстановление там, где это технически возможно.</li>
+<li><b>Сохранность ваших данных:</b> Мы несем полную ответственность за конфиденциальность и целостность вашей информации на протяжении всего процесса восстановления.</li>
+<li><b>Честная цена:</b> Стоимость услуг формируется прозрачно и только после бесплатной диагностики, без скрытых платежей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Локальный призыв (GEO CTA)</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Не рискуйте ценными воспоминаниями и важными документами. Приносите вашу SD-карту в «Админ.Ко». Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом с нами — СРК Арена и ТЦ Я. Мы работаем официально и ждем вас.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

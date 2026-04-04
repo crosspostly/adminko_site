@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ремонт DualSense в Кемерово: Устранение дрифта стиков быстро | Админ.Ко</title>
+    <meta name="description" content="Профессиональный ремонт геймпадов DualSense в Кемерово. Быстро и качественно устраняем дрифт стиков, залипания, неисправности кнопок. Гарантия на работы.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Ремонт DualSense в Кемерово: Устранение дрифта стиков быстро</h1>
+            <meta name="published_at" content="2026-03-22T14:48:31.881Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Глава 1: Проблема дрифта стиков DualSense: Причины и влияние на игровой процесс</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Проблема дрифта стиков на геймпаде DualSense проявляется как непреднамеренное движение персонажа или камеры в игре без физического воздействия пользователя на аналоговый стик. Это явление существенно снижает точность управления и вызывает дискомфорт во время игры.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Основная техническая причина дрифта кроется в износе или загрязнении потенциометров – ключевых компонентов, отвечающих за преобразование механического отклонения стика в электрический сигнал. Эти миниатюрные датчики, состоящие из резистивных дорожек и скользящих контактов, со временем подвергаются абразивному износу. Факторы, способствующие этому:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Механический износ: Многократное использование стиков приводит к истиранию графитового слоя на резистивных дорожках потенциометра. Это создает "мертвые зоны" или нестабильность показаний.</li>
+<li>Загрязнение: Микрочастицы пыли, грязи или мелкий мусор, попадая внутрь механизма стика, могут нарушать контакт между ползунком и резистивной дорожкой, вызывая случайные скачки сигнала.</li>
+<li>Коррозия контактов: В условиях повышенной влажности или при использовании агрессивных чистящих средств возможно окисление внутренних контактов, что приводит к нестабильной передаче данных.</li>
+<li>Усталость пружин: Пружины, возвращающие стик в центральное положение, со временем могут ослабевать, что не позволяет стику точно центрироваться.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Влияние дрифта стиков на игровой процесс критично. Оно проявляется в виде произвольного движения прицела, персонажа, смещения камеры или прокрутки меню, что делает точное управление практически невозможным. В соревновательных играх это ставит пользователя в заведомо невыгодное положение, а в одиночных проектах значительно ухудшает погружение и общий игровой опыт.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> От 800 руб. (за 1 стик)</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: От 30 минут до 2 часов (чаще всего в день обращения)</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Бесплатно, 15-20 минут</p></div>
+
+        </div>
+            <section><h2>Глава 2: Диагностика неисправности и почему не стоит заниматься саморемонтом</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Дрифт стиков DualSense — распространенная проблема, проявляющаяся в непроизвольном движении персонажа или камеры в игре без физического воздействия на аналоговый стик. Это происходит из-за износа или загрязнения потенциометров внутри стика, которые отвечают за отслеживание его положения. Точная диагностика в условиях сервисного центра позволяет не просто констатировать проблему, но и выявить ее первопричину, исключая ошибочные или временные решения.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко диагностика начинается с комплексного тестирования геймпада на специализированном стенде, что позволяет получить точные данные о работе каждого стика, его мертвых зонах и отклонениях. После этого геймпад аккуратно разбирается. Наши инженеры используют прецизионные инструменты, минимизируя риск повреждения корпуса и внутренних шлейфов. Визуальный осмотр под микроскопом позволяет обнаружить мельчайшие частицы пыли, коррозию или механические повреждения потенциометров или других элементов платы.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Попытки самостоятельного ремонта DualSense, как правило, приводят к усугублению проблемы или появлению новых неисправностей. Причины этого:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Недостаток специализированного инструмента:</b> Для разборки DualSense требуются точные отвертки и пластиковые лопатки. Использование неподходящих инструментов часто приводит к повреждению пластиковых защелок, царапинам на корпусе или срыву шлицов винтов.</li>
+<li><b>Риск повреждения внутренних компонентов:</b> Внутри DualSense находится плотная компоновка из тонких шлейфов, деликатных разъемов, аккумуляторной батареи и основной платы. Неосторожное обращение может привести к отрыву шлейфов, повреждению разъемов или короткому замыканию, что значительно увеличивает стоимость последующего ремонта или делает его невозможным.</li>
+<li><b>Отсутствие навыков микро-пайки:</b> Если требуется замена всего модуля стика, это подразумевает демонтаж и пайку на многослойной плате. Без профессиональной паяльной станции, такой как JBC, и качественных флюсов (Martin/Amtech), риск перегрева платы и повреждения соседних элементов чрезвычайно высок. Кустарная пайка часто ведет к нарушению целостности дорожек или появлению холодных паек, что сокращает срок службы устройства.</li>
+<li><b>Некачественные запчасти:</b> На рынке много дешевых аналогов стиков, которые быстро выходят из строя или имеют изначально низкую точность, что сводит на нет все усилия по ремонту.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Профессиональный подход Админ.Ко обеспечивает не только устранение дрифта, но и сохранение функциональности и внешнего вида вашего DualSense.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Инженерный секрет быстрого устранения дрифта стиков DualSense:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Часто проблема не в катастрофическом износе, а в микроскопических частицах пыли или окислении, которые нарушают контакт внутри потенциометра. Мы не просто чистим снаружи.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Наш метод – точечное воздействие: с помощью тонкой насадки специализированного бескислотного контактного очистителя (не WD-40!) впрыскивается *очень небольшое* количество раствора непосредственно в открытую щель потенциометра, расположенную сбоку под шляпкой стика. Важно не заливать механизм, а именно "пшикнуть" точечно. Сразу после этого энергично прокрутите стик по всей его амплитуде во всех направлениях (по кругу, вверх-вниз, влево-вправо) 20-30 раз. Это помогает очистителю проникнуть, "смыть" мешающие частицы и восстановить стабильный контакт на дорожках. Во многих случаях это мгновенно возвращает стик к норме, экономя время и откладывая сложную замену.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Ремонт геймпада DualSense в Кемерово: устраняем дрифт стиков за 2 часа с гарантией</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваш геймпад DualSense начал "дрифтить"? Стики самопроизвольно двигают камеру или персонажа? Кнопки реагируют через раз? Необходим профессиональный ремонт.</p></p>
+<h3>Blitz-Answer: Решение проблем с DualSense в Админ.Ко</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Проблема:</b> Дрифт стиков, неисправность кнопок, проблемы с зарядкой, отсутствие вибрации.</li>
+<li><b>Срок:</b> От 2 часов.</li>
+<li><b>Цена:</b> От 900 руб.</li>
+<li><b>Диагностика:</b> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Экспертный разбор: Почему DualSense требует профессионального подхода</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Дрифт стиков в геймпадах DualSense – распространенная проблема, вызванная износом потенциометров, которые считывают положение стика. Со временем графитовое покрытие стирается, и контроллер начинает получать некорректные сигналы. Попытки самостоятельного ремонта или обращение к "мастерам на дому" часто приводят к повреждению хрупкой печатной платы, шлейфов или установке дешевых аналогов, что лишь отсрочит повторную поломку.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В лаборатории Админ.Ко мы применяем исключительно профессиональное оборудование и методики. Для демонтажа и установки новых компонентов, таких как потенциометры стиков или микросхемы питания, используется прецизионная паяльная станция <b>JBC (Испания)</b>. Это позволяет работать с мельчайшими элементами платы без риска перегрева и повреждения соседних компонентов или многослойной структуры PCB. Мы используем только качественные флюсы, такие как <b>Martin/Amtech</b>, которые не оставляют агрессивных остатков и предотвращают коррозию платы в будущем, в отличие от дешевых китайских аналогов.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не менее важным является применение оригинальных или высококачественных аналоговых компонентов. Замена изношенных потенциометров на дешевые аналоги приведет к быстрому повторному дрифту. Мы гарантируем установку компонентов, соответствующих заводским стандартам, что обеспечивает долговечность и точность работы геймпада.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без использования специализированного оборудования, такого как JBC, и качественных расходных материалов, ремонт DualSense превращается в лотерею. Высокий риск повреждения платы, некачественная пайка, использование низкопробных деталей – все это гарантирует, что проблема вернется, а геймпад может быть безвозвратно испорчен.</p></p>
+<h3>Инженерный стандарт Админ.Ко – ваш выбор для надежного ремонта</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>0р диагностика:</b> Мы не берем плату за поиск неисправности.</li>
+<li><b>Запчасти в наличии:</b> Большинство необходимых компонентов для DualSense есть на складе, что сокращает сроки ремонта.</li>
+<li><b>Гарантия 1 год по договору:</b> Мы уверены в качестве наших услуг и материалов.</li>
+<li><b>Сохранность данных:</b> Мы бережно относимся к вашему устройству и не допускаем потери настроек или повреждений.</li>
+<li><b>Честная цена:</b> Вы платите только за реальный ремонт и качественные детали, без скрытых платежей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Мы находимся в центре Кемерово: ул. Дзержинского 2Б</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Наш сервисный центр расположен удобно для жителей Кемерово. Рядом СРК Арена и ТЦ Я. Мы работаем официально, предоставляя чеки и гарантийные документы. Принесите свой DualSense и убедитесь в профессионализме Админ.Ко.</p></p>
+</section>
+            <section class="mt-12"><p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><H2>Глава 4: Процесс ремонта, часто задаваемые вопросы и как сдать геймпад</H2></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><P>Устранение дрифта стиков на DualSense — это отработанный процесс, требующий точности и использования специализированного оборудования. В Админ.Ко мы придерживаемся строгих инженерных стандартов, чтобы гарантировать качество и долговечность ремонта.</P></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><H3>Процесс ремонта DualSense в Админ.Ко:</H3></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><UL></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><STRONG>Бесплатная диагностика:</STRONG> Прежде чем приступить к работе, мы проводим тщательную диагностику вашего геймпада. Это включает проверку всех кнопок, стиков и внутренних компонентов на предмет механических повреждений или износа. Диагностика абсолютно бесплатна и позволяет точно определить причину дрифта.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><STRONG>Разборка и выявление неисправности:</STRONG> Геймпад аккуратно разбирается. Используя измерительные приборы, инженер определяет, какие именно компоненты (потенциометры стиков или другие элементы платы) вышли из строя. Мы не производим слепую замену, а устраняем корневую причину.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><STRONG>Замена/восстановление компонентов:</STRONG> Неисправные компоненты демонтируются с использованием профессионального паяльного оборудования (например, Quick 861DW для точечного демонтажа). Устанавливаются новые, качественные аналоги, прошедшие проверку. Мы используем только проверенные расходные материалы, такие как флюсы Martin/Amtech, которые предотвращают коррозию платы в будущем.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><STRONG>Тестирование и калибровка:</STRONG> После сборки геймпад проходит комплексное тестирование на специализированном стенде. Мы проверяем отклик стиков, отсутствие дрифта, работу всех кнопок, триггеров и сенсорной панели, а также функциональность адаптивных курков.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><STRONG>Выдача с гарантией:</STRONG> Полностью проверенный и откалиброванный геймпад возвращается клиенту вместе с официальным договором и гарантией 1 год на выполненные работы и установленные компоненты.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></UL></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><H3>Часто задаваемые вопросы о ремонте DualSense:</H3></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><UL></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><STRONG>Сколько времени занимает ремонт?</STRONG> Большинство ремонтов DualSense, связанных с устранением дрифта стиков, выполняется в течение 2-4 часов при наличии необходимых запчастей. Сложные случаи могут потребовать больше времени, но мы всегда стремимся к оперативной работе.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><STRONG>Какова стоимость ремонта?</STRONG> Точная стоимость определяется после бесплатной диагностики. Она зависит от сложности поломки и стоимости необходимых компонентов. Мы предлагаем честную цену без скрытых доплат.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><STRONG>Какую гарантию вы предоставляете?</STRONG> На все выполненные работы и установленные компоненты Админ.Ко предоставляет официальную гарантию 1 год по договору. Это подтверждает нашу уверенность в качестве услуг.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><STRONG>Используются ли оригинальные запчасти?</STRONG> Мы используем высококачественные компоненты, полностью совместимые с заводскими, которые прошли проверку нашими инженерами. Они обеспечивают стабильную работу геймпада и долговечность.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></UL></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><H3>Как сдать геймпад DualSense на ремонт:</H3></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><P>Для того чтобы ваш геймпад DualSense снова работал как новый, вам достаточно просто принести его в наш сервисный центр. Предварительная запись не требуется. Мы находимся в центре Кемерово, по адресу: <STRONG>улица Дзержинского 2Б</STRONG>. Найти нас легко – мы расположены рядом со СРК Арена и ТЦ Я. Работаем официально, обеспечивая полную прозрачность и юридическую чистоту всех операций. Ждем вас!</P></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

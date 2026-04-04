@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Замена экрана Samsung S24 в Кемерово | Срочно, с гарантией – Админ.Ко | Админ.Ко</title>
+    <meta name="description" content="Разбили экран Samsung S24 в Кемерово? Срочная замена дисплея в сервисном центре Админ.Ко. Быстро, качественно, с гарантией на работу и запчасти.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Замена экрана Samsung S24 в Кемерово | Срочно, с гарантией – Админ.Ко</h1>
+            <meta name="published_at" content="2026-03-22T15:52:07.286Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Разбили экран Samsung S24 в Кемерово? Срочная замена дисплея с гарантией | Админ.Ко</p></p>
+<h2>Разбили экран Samsung S24 в Кемерово? Не паникуйте!</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Если ваш Samsung Galaxy S24 пострадал от падения, и его экран треснул, не реагирует на касания или отображает дефекты, это не повод для паники. В сервисной лаборатории «Админ.Ко» мы специализируемся на высокоточной замене дисплейных модулей, возвращая вашему устройству полную функциональность и эстетику.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Блиц-ответ по ремонту Samsung S24</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Проблема:</b> Разбит экран, не работает сенсор, искажение изображения.</li>
+<li><b>Срок:</b> От 2 часов (при наличии оригинального дисплея на складе).</li>
+<li><b>Цена:</b> От 15000 руб (замена оригинального дисплейного модуля).</li>
+<li><b>Диагностика:</b> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Экспертный разбор: почему замена дисплея Samsung S24 требует профессионализма и оборудования</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Замена дисплейного модуля на флагманском Samsung Galaxy S24 — это сложный процесс, который требует не только аккуратности, но и специализированного оборудования. Неправильный ремонт может привести к потере пыле- и влагозащиты, некорректной работе сенсора или датчиков, а также к повреждению других компонентов.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">В лаборатории «Админ.Ко» мы используем арсенал профессионального оборудования, что позволяет нам гарантировать качество каждой замены:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Quick 861DW:</b> Для безопасного и контролируемого нагрева при демонтаже разбитого дисплея. Это исключает повреждение тонкой рамки корпуса, внутренних шлейфов и материнской платы от перегрева или избыточного давления.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>JBC (Испания):</b> Если удар был сильным и затронул не только дисплей, но и компоненты на системной плате, наши инженеры используют паяльные станции JBC. Их высочайшая точность и контроль температуры критически важны для микро-пайки без риска повреждения соседних элементов.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Тепловизор:</b> После сборки мы проводим тепловизионный контроль. Это позволяет убедиться в отсутствии скрытых коротких замыканий, неравномерного нагрева или других термических аномалий, которые могут возникнуть после падения или некачественного ремонта.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Осциллограф Rigol:</b> Для глубокой диагностики сигналов, если после замены дисплея наблюдаются нетипичные проблемы с изображением, сенсором или подсветкой, указывающие на сбой контроллера дисплея или материнской платы.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Специализированные программаторы:</b> Для Samsung S24 это важно для правильной калибровки и восстановления функциональности датчиков приближения, освещенности и других сенсоров, которые часто интегрированы с дисплейным модулем или требуют перенастройки после его замены.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Мы применяем только оригинальные или максимально близкие по качеству дисплейные модули, а также высококачественные адгезивы, аналогичные заводским, для восстановления заводской герметичности (IP68). Это обеспечивает не только безупречную работу, но и долговечность вашего Samsung S24 после ремонта.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<h3>Инженерный стандарт Админ.Ко: Ваши преимущества</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Диагностика 0 рублей:</b> Полная и точная оценка неисправности вашего Samsung S24 проводится бесплатно.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Запчасти в наличии:</b> Для большинства популярных моделей, включая Samsung S24, необходимые запчасти всегда на нашем складе, что значительно сокращает время ремонта.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Гарантия 1 год по договору:</b> Мы уверены в качестве выполняемых работ и используемых запчастей, поэтому предоставляем официальную гарантию на все услуги.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Сохранность ваших данных:</b> Все ремонтные работы проводятся с максимальной осторожностью, исключая потерю информации с вашего устройства.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Честная цена:</b> Прозрачное ценообразование без скрытых доплат и непредвиденных расходов. Вы всегда знаете точную стоимость ремонта до начала работ.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Локальный призыв: Мы находимся в Кемерово, чтобы помочь вам</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Сервисный центр «Админ.Ко» удобно расположен в самом центре Кемерово по адресу: <b>улица Дзержинского 2Б</b>. Нас легко найти – мы находимся рядом со СРК Арена и ТЦ Я. Мы работаем официально, предоставляя все необходимые документы и квитанции. Приезжайте, и наши инженеры оперативно и качественно вернут ваш Samsung S24 к жизни.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Админ.Ко предлагает:</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Уточняйте после диагностики. Гарантируем выгодные условия.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: От 60 минут. Срочная замена день в день.</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Бесплатно и быстро, до 15-20 минут.</p></div>
+
+        </div>
+            <section><h2>Админ.Ко: Ваш эксперт по срочной замене дисплея Samsung S24 с гарантией</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Разбили экран Samsung S24 в Кемерово? Не отчаивайтесь! В Админ.Ко мы предлагаем оперативное и качественное решение вашей проблемы.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Blitz-Answer (Блок конверсии)</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Проблема: Разбит дисплей, отсутствует изображение, не работает сенсор.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Срок: От 2 часов.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Цена: От 18000 руб.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Диагностика: 0 руб.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Экспертный разбор: Почему качество замены дисплея Samsung S24 критически важно</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Замена дисплея на Samsung S24 — это высокоточная процедура, требующая не только специальных навыков, но и профессионального оборудования. Современные AMOLED-дисплеи Samsung являются сложными интегрированными модулями, чувствительными к малейшим нарушениям при установке. Кустарный ремонт может привести к потере герметичности, появлению пыли под стеклом, некорректной работе сенсора или повреждению чувствительных шлейфов и других внутренних компонентов.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">В Админ.Ко мы используем технический стек, подтверждающий статус нашей лаборатории и гарантирующий безупречный результат:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Quick 861DW: Эта профессиональная термовоздушная станция обеспечивает точный контроль температуры. Это позволяет безопасно демонтировать поврежденный дисплей без риска перегрева или деформации рамки и корпуса Samsung S24.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Качественные комплектующие: Мы устанавливаем дисплеи, соответствующие высоким стандартам по цветопередаче, яркости и отзывчивости сенсора. Это обеспечивает полное восстановление функционала и эстетики вашего Samsung S24.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">JBC (Испания): Паяльные станции JBC, известные своей точностью, используются для микро-пайки без перегрева платы. Это важно, если при падении, помимо дисплея, были повреждены элементы материнской платы.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Тепловизор и осциллограф Rigol: Эти инструменты применяются для глубокой диагностики, позволяя выявить скрытые неисправности на материнской плате, которые могли стать причиной отказа дисплея или сопутствовать механическому повреждению. Это предотвращает повторные поломки.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Программаторы JCID: Наша лаборатория оснащена широким спектром диагностического оборудования. Оно позволяет проводить комплексное тестирование и калибровку всех функций устройства после замены компонента, исключая системные ошибки и сбои в работе датчиков.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Использование специализированного оборудования и соблюдение технологического процесса при замене дисплея Samsung S24 исключает риски ухудшения влагозащиты, возникновения зазоров и некорректной работы датчиков.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Инженерный стандарт Админ.Ко: Гарантия надежности</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Обращаясь в Админ.Ко для ремонта вашего Samsung S24, вы получаете обслуживание по самым высоким инженерным стандартам:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">0 руб. за диагностику: Мы проводим полную диагностику вашего устройства бесплатно, даже если вы откажетесь от ремонта.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Запчасти в наличии: Основные комплектующие для популярных моделей, включая дисплеи для Samsung S24, всегда доступны на складе, что значительно сокращает время ожидания ремонта.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Гарантия 1 год по договору: Мы предоставляем официальную гарантию на все выполненные работы и установленные детали, закрепленную в договоре.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Сохранность ваших данных: Мы гарантируем полную конфиденциальность и неприкосновенность вашей личной информации на устройстве.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Честная цена: Вы платите только за фактически выполненный ремонт и высококачественные комплектующие, без каких-либо скрытых наценок.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Локальный призыв: Мы рядом с вами в Кемерово</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Админ.Ко — это сертифицированный сервисный центр, удобно расположенный в самом центре Кемерово по адресу: ул. Дзержинского 2Б. Нас легко найти: мы находимся рядом с СРК Арена и ТЦ Я. Мы работаем официально, обеспечивая прозрачность и надежность. Принесите свой Samsung S24 к нам, и мы восстановим его работоспособность быстро и с гарантией качества.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Вот настоящий технический секрет инженера Админ.Ко, который отличает нашу замену дисплея Samsung S24 от остальных:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Дело не просто в установке новой блестящей матрицы. Главная тонкость, которую упускают дилетанты, – это правильная перекалибровка ультразвукового сканера отпечатков пальцев, встроенного прямо в новый дисплей. Без специального фирменного оборудования и программного обеспечения Samsung ваш сканер отпечатка после замены может работать некорректно или вообще отказать. Мы в Админ.Ко используем только оригинальные протоколы калибровки, чтобы ваш S24 сохранил 100% функциональности, включая мгновенное и безошибочное распознавание вашего отпечатка. И еще один бонус от профессионалов: мы обязательно восстанавливаем заводскую влагозащиту корпуса специальными герметиками, что продлевает жизнь вашему устройству. Это не просто замена экрана – это полное восстановление премиального устройства!</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Профессиональная замена дисплея: Этапы работы и преимущества Админ.Ко</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Несмотря на кажущуюся простоту, замена дисплея на Samsung S24 — это сложная техническая процедура, требующая высокой точности и специализированного оборудования. Кустарный ремонт или использование некачественных запчастей не только не решит проблему, но и может привести к необратимым повреждениям других компонентов, потере герметичности и некорректной работе.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы применяем строго регламентированный инженерный стандарт, чтобы ваш Samsung S24 после ремонта был как новый:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>0-рублевая диагностика: Мы начинаем с бесплатной и полной диагностики вашего устройства. Даже при очевидном повреждении экрана, падение могло вызвать скрытые дефекты материнской платы, аккумулятора или шлейфов. Наша диагностика выявляет все проблемы до начала ремонта.</li>
+<li>Деликатная разборка и очистка: Используя специализированные нагревательные платформы и инструменты, мы аккуратно разбираем устройство, не повреждая корпус, заднюю крышку и внутренние компоненты. После извлечения поврежденного дисплея проводится тщательная очистка рамки от остатков клея и мельчайших частиц, чтобы новый дисплей идеально прилегал.</li>
+<li>Установка качественного дисплея: Мы устанавливаем только оригинальные или высококачественные OEM-дисплеи, которые гарантируют идеальную цветопередачу, яркость и чувствительность сенсора. Применение промышленного адгезива, аналогичного заводскому, обеспечивает восстановление пыле- и влагозащиты, исключая попадание грязи и влаги внутрь устройства.</li>
+<li>Комплексное тестирование: Каждый отремонтированный Samsung S24 проходит многоуровневое тестирование функциональности. Проверяется не только работа сенсора и экрана, но и датчики, камеры, микрофоны, динамики, Wi-Fi, сотовая связь и зарядка. Мы убеждаемся, что ваше устройство полностью работоспособно.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Почему тысячи жителей Кемерово выбирают Админ.Ко для ремонта своих смартфонов:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Высокоточное оборудование: Наша лаборатория оснащена передовым оборудованием, которое позволяет выполнять ремонт любой сложности. Это станции микро-пайки JBC (Испания) для работы с самыми деликатными компонентами платы без перегрева, тепловизоры для поиска коротких замыканий и осциллографы Rigol для глубокой диагностики электронных схем. Такой арсенал гарантирует не просто замену детали, а комплексное восстановление устройства на инженерном уровне.</li>
+<li>Запчасти всегда в наличии: Мы поддерживаем собственный склад оригинальных и OEM-запчастей для популярных моделей, включая Samsung S24. Это обеспечивает оперативность ремонта – часто замена дисплея занимает от 2 часов.</li>
+<li>Гарантия 1 год по договору: Мы уверены в качестве своей работы и запчастей, поэтому предоставляем официальную гарантию на 12 месяцев, закрепленную в договоре.</li>
+<li>Сохранность данных: Ваша конфиденциальность и целостность данных — наш приоритет. Все работы проводятся таким образом, чтобы исключить потерю информации.</li>
+<li>Честная цена: Вы всегда знаете, за что платите. Мы предлагаем прозрачное ценообразование без скрытых накруток.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+</section>
+            <section class="mt-12"><h2>Восстановите ваш Samsung S24 уже сегодня: Срочность, качество и гарантия</h2>
+<h1>Разбили экран Samsung S24 в Кемерово? Срочная замена дисплея с гарантией | Админ.Ко</h1>
+<h3>Blitz-Answer: Решение вашей проблемы</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Проблема:</b> Разбит экран Samsung S24, не откликается сенсор или появились артефакты.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Срок ремонта:</b> От 2 часов (при наличии комплектующих).</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Ориентировочная цена:</b> От 8500 руб.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Диагностика:</b> 0 руб.</p></p>
+<h3>Экспертный разбор: Почему качество ремонта экрана S24 имеет значение</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Разбитый дисплей Samsung S24 – это не просто косметический дефект. Современные экраны, особенно на флагманских моделях Samsung, представляют собой сложный интегрированный модуль, включающий AMOLED-матрицу, сенсорный слой и защитное стекло. Повреждение любого из этих компонентов требует полной замены дисплейного модуля.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Некачественная замена может привести к ряду проблем:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Потеря водозащитных свойств корпуса.</li>
+<li>Некорректная работа сенсора или его полный отказ.</li>
+<li>Искажение цветопередачи или появление "битых" пикселей.</li>
+<li>Повреждение шлейфов при неаккуратном демонтаже.</li>
+<li>Повышенный расход заряда батареи из-за несовместимого или некачественного модуля.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В «Админ.Ко» мы используем оригинальные или высококачественные аналоговые дисплейные модули, которые полностью соответствуют техническим требованиям Samsung. Процесс замены требует не только опыта, но и специализированного оборудования для безопасного демонтажа и установки нового экрана.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Наши инженеры используют:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Профессиональные станции для пайки JBC (Испания):</b> для деликатной работы с микрокомпонентами, если требуется перенос отдельных элементов со старой платы на новую или восстановление поврежденных контактов без риска перегрева платы.</li>
+<li><b>Тепловизор:</b> для точной диагностики скрытых дефектов платы или определения мест возможного перегрева после падения, что позволяет предотвратить будущие проблемы.</li>
+<li><b>Программаторы JCID:</b> обеспечивают корректное функционирование всех систем, включая датчики, и предотвращают появление системных ошибок, характерных при использовании неоригинальных запчастей или неправильном переносе данных.</li>
+<li><b>Флюсы Martin/Amtech:</b> применяются для обеспечения надежной пайки и предотвращения коррозии контактов, что критически важно для долговечности ремонта.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без использования такого оборудования и оригинальных методик ремонта, высока вероятность повреждения материнской платы при демонтаже старого модуля, некачественной проклейки нового экрана или потери функциональности важных датчиков. Экономия на оборудовании и квалификации приводит к повторным обращениям и дополнительным расходам клиента.</p></p>
+<h3>Инженерный стандарт Админ.Ко: Ваши гарантии</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Бесплатная диагностика:</b> Мы не берем плату за поиск неисправности.</li>
+<li><b>Запчасти в наличии:</b> Большинство необходимых комплектующих для Samsung S24 уже на нашем складе, что значительно сокращает сроки ремонта.</li>
+<li><b>Гарантия 1 год по договору:</b> Все работы и установленные детали подтверждаются официальным договором и годовой гарантией.</li>
+<li><b>Сохранность данных:</b> Мы гарантируем неприкосновенность ваших личных данных на устройстве в процессе ремонта.</li>
+<li><b>Честная цена:</b> Вы платите только за реальную работу и качественные комплектующие, без скрытых платежей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Локальный призыв: Мы рядом в Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Сервисный центр «Админ.Ко» находится в самом центре Кемерово по адресу: <b>ул. Дзержинского 2Б</b>. Нас легко найти — мы расположены рядом с СРК «Арена» и ТЦ «Я». Мы работаем официально, предоставляя полный пакет документов и гарантий.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не рискуйте своим Samsung S24. Обращайтесь к профессионалам.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

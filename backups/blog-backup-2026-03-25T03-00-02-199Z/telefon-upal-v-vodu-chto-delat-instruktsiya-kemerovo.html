@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Телефон упал в воду? Что делать? Инструкция по спасению от Админ.Ко Кемерово | Админ.Ко</title>
+    <meta name="description" content="Уронили телефон в воду в Кемерово? Не паникуйте! Пошаговая инструкция от Админ.Ко поможет спасти ваш смартфон от воды. Быстрые действия для восстановления утонувшего гаджета.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Телефон упал в воду? Что делать? Инструкция по спасению от Админ.Ко Кемерово</h1>
+            <meta name="published_at" content="2026-03-22T15:35:52.190Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Глава 1: Первые секунды: Что делать НЕМЕДЛЕННО после падения в воду?</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Падение телефона в воду — критическая ситуация, где каждая секунда определяет вероятность успешного восстановления. Действия, предпринятые в первые мгновения, напрямую влияют на степень повреждения внутренних компонентов и стоимость последующего ремонта. Главное — действовать быстро и правильно.</p></p>
+<h3>Пошаговая инструкция по спасению:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Немедленно извлеките устройство из жидкости.</strong> Чем дольше телефон находится в воде, тем глубже проникает влага и тем сильнее электролитное воздействие на компоненты.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>НЕМЕДЛЕННО ВЫКЛЮЧИТЕ телефон.</strong> Если устройство еще работает, принудительно выключите его. Если оно выключилось самостоятельно, не пытайтесь включать его. Это ключевой шаг: наличие напряжения при контакте с водой приводит к мгновенным коротким замыканиям и электрохимической коррозии, которая разрушает токопроводящие дорожки и компоненты платы.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Извлеките все внешние элементы:</strong> SIM-карту, карту памяти, лоток для SIM, если возможно — аккумулятор (для моделей, где это предусмотрено). Снимите чехол. Это позволит влаге начать испаряться и уменьшит препятствия для последующей сушки.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Аккуратно протрите внешнюю поверхность сухой безворсовой тканью.</strong> Не трясите телефон, чтобы избежать перемещения воды внутрь и ее распространения на неповрежденные участки платы.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНО:</strong></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Включать телефон или проверять его работоспособность.</li>
+<li>Пытаться зарядить устройство.</li>
+<li>Использовать фен, батарею или другие нагревательные приборы. Высокая температура ускоряет процесс коррозии и может необратимо повредить дисплей, клеевые соединения и пластиковые элементы.</li>
+<li>Помещать телефон в рис или другие абсорбенты. Это бесполезно для внутренней влаги и лишь затягивает время, давая коррозии развиваться. Кроме того, мелкие частицы могут попасть в разъемы.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>После выполнения этих шагов критически важно доставить устройство в специализированный сервисный центр как можно скорее. Каждый час промедления увеличивает риск невосстановимых повреждений. В Админ.Ко мы проводим <span style="font-weight: bold;">бесплатную диагностику</span> устройства после попадания жидкости, используя профессиональное оборудование, чтобы точно оценить степень повреждения и разработать план восстановления.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально, гарантируя качество и сохранение данных.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Админ.Ко Кемерово: Спасаем ваш телефон после падения в воду!</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> БЕСПЛАТНО. Полная оценка состояния устройства, выявление коррозии и поврежденных компонентов.</p></div>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> От 1500 руб. (включает профессиональную чистку платы от коррозии и первичные работы). Итоговая стоимость формируется по результатам диагностики и необходимых замен деталей.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: От 1 до 3 рабочих дней. Зависит от степени повреждения и наличия запчастей на складе.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Главный совет: Не включайте и не заряжайте телефон! Срочно несите его к нам!</p>
+
+        </div>
+            <section><h2>Глава 2: Правильная сушка: Мифы (и почему не рис) и эффективные методы</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>После падения телефона в воду, первой реакцией многих становится попытка "высушить" его в рисе. Это распространенный, но крайне неэффективный и даже опасный миф. Рис не способен удалить влагу из внутренних компонентов устройства, где она причиняет наибольший вред. Он лишь незначительно абсорбирует поверхностную влагу, создавая ложное ощущение безопасности. В это время внутри устройства активно развиваются электрохимические процессы, приводящие к коррозии.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Влага, особенно содержащая соли и минералы (как водопроводная вода или напитки), мгновенно запускает процесс окисления контактов и микросхем. Микрочастицы риса или крахмал могут также забиться в разъемы и вентиляционные отверстия, затрудняя последующий профессиональный ремонт и даже усугубляя повреждения. Отсутствие видимых проблем сразу после "сушки" в рисе лишь отсрочивает неизбежное проявление неисправностей, когда коррозия необратимо повредит компоненты.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Единственно верным действием после попадания влаги в телефон является немедленное отключение устройства и полное отсутствие попыток его включения или зарядки. Далее требуется профессиональная диагностика и сушка. В Админ.Ко применяется полный цикл восстановления: устройство разбирается до мельчайших компонентов, производится ультразвуковая чистка плат в специальных растворах, удаляющих остатки влаги, солей и продуктов коррозии. Это критически важный этап, который невозможно выполнить в домашних условиях. Только так можно предотвратить необратимые повреждения и восстановить работоспособность телефона.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Технический секрет инженера Админ.Ко Кемерово для "Телефон упал в воду: что делать?":</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">НЕЗАМЕДЛИТЕЛЬНО ВЫКЛЮЧИТЕ УСТРОЙСТВО И ИЗВЛЕКИТЕ БАТАРЕЮ (если возможно)!</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Это не просто совет, это критическое действие, предотвращающее большую часть необратимых повреждений.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Вода сама по себе, особенно дистиллированная, не является убийцей электроники. Главный враг — это электрический ток, проходящий через воду, особенно если вода содержит соли, минералы, сахар или другие примеси (например, из-под крана, соленая вода, чай, кофе, сладкие напитки). Такой "грязный" электролит мгновенно вызывает:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">1.  <strong>Короткие замыкания:</strong> Ток идет по неправильным путям, выводя из строя компоненты.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">2.  <strong>Электрохимическую коррозию:</strong> Под действием тока и воды металлы (дорожки, контакты) начинают окисляться и разрушаться буквально за минуты. Это необратимый процесс, ведущий к гниению платы изнутри.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Секрет инженера: После немедленного отключения питания и извлечения батареи, если вы хотите максимально увеличить шансы на спасение (и не боитесь немного разобрать устройство), вам нужен <strong>ИЗОПРОПИЛОВЫЙ СПИРТ (ИПС) высокой степени очистки (99% и выше)</strong>.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Почему ИПС?</p>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  Он отлично вытесняет воду (гигроскопичен).</li>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  Растворяет и удаляет большинство солей, сахаров и других проводящих загрязнений, оставленных "грязной" водой.</li>
+<li class="relative pl-8 mb-4 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-black text-lg lg:text-xl text-gray-700 dark:text-gray-300">  Быстро испаряется, не оставляя никаких проводящих или коррозионных остатков.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Что делать:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">1.  <strong>Отключите, разберите.</strong> Как можно скорее после падения отключите питание и, если есть возможность, разберите телефон (хотя бы снимите заднюю крышку и извлеките все модули, которые легко снимаются: SIM-карты, SD-карты, аккумулятор).</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">2.  <strong>Промойте ИПС.</strong> Обильно промойте все внутренние компоненты платы изопропиловым спиртом (можно погрузить плату на несколько секунд в ванночку с ИПС или аккуратно промыть с помощью кисточки). Главная цель – вымыть всю воду и загрязнения, которые она принесла.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">3.  <strong>Высушите.</strong> После обработки ИПС дайте телефону полностью высохнуть в сухом, проветриваемом месте, желательно под слабым потоком холодного воздуха (НЕ горячего!). Спирт испарится очень быстро, унося с собой остатки воды.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">4.  <strong>НИКАКОГО РИСА!</strong> Рис не вымывает загрязнения, оставляет крахмальную пыль и неэффективен в сравнении с правильным обезвоживанием и очисткой.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Помните: это экстренная "первая помощь", значительно повышающая шансы на спасение. Для полной диагностики, глубокой ультразвуковой чистки и профессиональной оценки повреждений, всегда обращайтесь в сервисный центр Админ.Ко Кемерово.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2>Глава 3: Если не включается: Дальнейшие шаги, проверка и обращение к специалистам</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваш телефон упал в воду, и теперь он не подает никаких признаков жизни? Это одна из наиболее серьезных и распространенных проблем, с которой сталкиваются владельцы мобильных устройств. Важно понимать, что «просто высушить» телефон недостаточно. Внутренние компоненты, подвергшиеся воздействию влаги, начинают процесс электрохимической коррозии, который разрушает контакты, микросхемы и пайку. Чем дольше устройство находится в таком состоянии, тем необратимее последствия.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Распространенные заблуждения, такие как помещение телефона в рис или использование фена, не только неэффективны, но и потенциально вредны. Рис не способен эффективно удалить влагу из труднодоступных мест и не останавливает коррозию. Фен, в свою очередь, может привести к перегреву компонентов и окончательному выходу их из строя.</p></p>
+<h3>Что происходит внутри и почему нужен профессиональный подход</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Когда телефон попадает в воду, в первую очередь страдают цепи питания. Вода, являясь проводником, вызывает короткие замыкания, которые могут повредить контроллеры питания, компоненты зарядки и другие критически важные элементы на системной плате. Даже если вода высохнет, на контактах и под микросхемами остаются минеральные отложения, которые продолжают процесс коррозии и создают паразитные токи.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для определения точной причины неисправности и выполнения качественного ремонта необходима комплексная диагностика и специализированное оборудование. В Админ.Ко мы начинаем с полной разборки устройства и визуального осмотра платы под микроскопом. Далее в ход идут высокоточные инструменты:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Осциллограф Rigol</strong> позволяет нам анализировать сигналы на системной плате, выявлять нарушения в работе линий питания, шин данных и логических цепей, которые не видны невооруженным глазом.</li>
+<li><strong>Тепловизор</strong> помогает обнаружить скрытые короткие замыкания и перегретые компоненты, точно указывая на поврежденные участки платы, что критически важно для предотвращения дальнейших разрушений.</li>
+<li>После выявления повреждений, плата проходит ультразвуковую очистку в специальном растворе, который удаляет остатки влаги, коррозию и минеральные отложения с поверхности и из-под BGA-микросхем.</li>
+<li>Для выполнения микро-пайки мы используем паяльные станции <strong>JBC (Испания)</strong>. Их точный контроль температуры и стабильность позволяют проводить работы по восстановлению дорожек, замене микросхем питания и других мелких компонентов без перегрева окружающих элементов и платы.</li>
+<li>При необходимости замены более крупных чипов, таких как флэш-память или процессор, мы используем термовоздушные станции <strong>Quick 861DW</strong>, обеспечивающие равномерный нагрев.</li>
+<li>Мы применяем только профессиональные флюсы <strong>Martin/Amtech</strong>, которые гарантируют чистоту пайки и предотвращают образование коррозии после ремонта, значительно продлевая срок службы отремонтированной платы.</li>
+<li>В случае необходимости замены дисплея или других модулей, требующих привязки, мы используем программаторы <strong>JCID</strong> для сохранения функциональности Face ID и True Tone, исключая системные ошибки.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Инженерный стандарт Админ.Ко: Ваша уверенность в результате</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы понимаем, насколько важны ваши данные и надежность работы устройства. Обратившись в Админ.Ко, вы получаете:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>0р диагностика:</strong> Полная проверка устройства для выявления всех неисправностей после попадания влаги абсолютно бесплатна.</li>
+<li><strong>Запчасти в наличии:</strong> Большинство необходимых компонентов для ремонта материнских плат уже есть на нашем складе, что сокращает время ремонта.</li>
+<li><strong>Гарантия 1 год по договору:</strong> На все выполненные работы и установленные компоненты предоставляется официальная гарантия, подтвержденная договором.</li>
+<li><strong>Сохранность данных:</strong> Наша главная цель – не только восстановить работоспособность телефона, но и максимально сохранить ваши личные данные.</li>
+<li><strong>Честная цена:</strong> Стоимость ремонта формируется только после полной диагностики и согласовывается с вами до начала работ. Без скрытых платежей.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Мы находимся в центре Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если ваш телефон не включается после контакта с водой, не пытайтесь решить проблему самостоятельно. Каждая минута промедления увеличивает риск необратимых повреждений. Приезжайте на диагностику в Админ.Ко. Мы находимся в центре Кемерово, <strong>ул. Дзержинского 2Б</strong>. Рядом с нами СРК Арена и ТЦ Я. Мы работаем официально и ждем вас.</p></p>
+</section>
+            <section class="mt-12"><h2>Глава 4: Профилактика и важные советы от Админ.Ко Кемерово по защите вашего устройства</h2>
+<h2>Телефон упал в воду: что делать? Инструкция по спасению от Админ.Ко Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Падение телефона в воду — одна из самых распространенных и потенциально разрушительных неисправностей. Вопреки расхожему мнению, современные смартфоны, даже с заявленной влагозащитой, не застрахованы от необратимых повреждений при контакте с жидкостью. Химически активные компоненты воды (особенно водопроводной или морской) вызывают электролиз и коррозию на печатных платах, что приводит к коротким замыканиям и выходу из строя ключевых элементов.</p></p>
+<h3>Ваши немедленные действия:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Каждая секунда имеет значение. Правильные первые шаги могут существенно повысить шансы на успешное восстановление устройства:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Немедленно выключите устройство:</strong> Если телефон еще включен, нажмите и удерживайте кнопку питания до полного отключения. Это критически важно для предотвращения коротких замыканий, вызванных током в присутствии проводящей жидкости.</li>
+<li><strong>Отсоедините источник питания:</strong> Ни в коем случае не пытайтесь заряжать мокрое устройство. Это гарантированно приведет к дальнейшим повреждениям и может создать опасность для вас.</li>
+<li><strong>Извлеките SIM-карту и лоток:</strong> Это откроет небольшие вентиляционные отверстия и позволит влаге быстрее испаряться из этих областей.</li>
+<li><strong>Аккуратно протрите внешнюю поверхность:</strong> Используйте сухую безворсовую ткань, чтобы удалить видимую влагу с корпуса.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Что категорически запрещено делать:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Неправильные действия могут усугубить ситуацию и сделать ремонт значительно сложнее или невозможным:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Не включайте телефон и не ставьте его на зарядку:</strong> Это главная причина фатальных повреждений после контакта с водой. Электрический ток в сочетании с влагой вызывает электрохимическую коррозию, которая разрушает медные дорожки и контакты на плате.</li>
+<li><strong>Не используйте фен, микроволновку или батарею:</strong> Интенсивное нагревание может деформировать пластиковые и клеевые элементы корпуса, привести к отслоению компаунда от микросхем, а также ускорить процесс коррозии за счет испарения воды и оседания солей на компонентах.</li>
+<li><strong>Не кладите в рис:</strong> Рис неэффективен для удаления влаги из внутренних компонентов устройства. Более того, мелкие частицы риса могут попасть в разъемы и порты, создавая дополнительные проблемы, а крахмал может усугубить загрязнение платы.</li>
+<li><strong>Не трясите и не продувайте:</strong> Эти действия лишь распределят влагу глубже внутри корпуса и по плате, достигая ранее сухих компонентов.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Почему необходим профессиональный сервисный центр Админ.Ко</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Самостоятельная "сушка" или поверхностный ремонт практически никогда не решают проблему полностью. Вода, попавшая внутрь, оставляет после себя минеральные отложения, которые продолжают вызывать коррозию и короткие замыкания даже после испарения основной влаги. Последствия могут проявиться не сразу, а спустя недели или месяцы.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы применяем специализированное оборудование и методики для полноценного спасения устройств от воды:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Разборка и комплексная диагностика:</strong> Мы полностью разбираем устройство и проводим визуальный осмотр, а также используем осциллограф Rigol и тепловизор для выявления поврежденных цепей и греющихся компонентов.</li>
+<li><strong>Ультразвуковая чистка:</strong> Основной этап. Плата помещается в ультразвуковую ванну со специальным раствором, который эффективно удаляет все следы коррозии, минеральные отложения и остатки жидкости даже из самых труднодоступных мест.</li>
+<li><strong>Применение профессиональных флюсов:</strong> После чистки, при необходимости пайки поврежденных элементов, мы используем высококачественные флюсы Martin/Amtech. Это гарантирует надежное соединение и предотвращает дальнейшее окисление компонентов, в отличие от дешевых флюсов, которые могут вызвать новую коррозию.</li>
+<li><strong>Микропайка с JBC:</strong> Если после чистки выявляются поврежденные микросхемы или компоненты, наши инженеры используют паяльные станции JBC (Испания) для точной микро-пайки. JBC позволяет работать с минимальным нагревом платы, что исключает ее деформацию и повреждение соседних элементов.</li>
+<li><strong>Восстановление данных и функций:</strong> Мы приложим все усилия для сохранения ваших данных и восстановления полной функциональности, включая Face ID и True Tone, благодаря программаторам JCID, которые позволяют переносить ключевые данные между компонентами.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не рискуйте своим устройством и ценной информацией. При первых признаках попадания влаги немедленно обратитесь к профессионалам. Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально, предоставляя полную гарантию на выполненные работы.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

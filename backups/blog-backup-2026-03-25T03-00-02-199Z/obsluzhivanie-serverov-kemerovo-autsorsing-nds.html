@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обслуживание Серверов в Кемерово: ИТ-аутсорсинг с НДС и Гарантией | Админ.Ко</title>
+    <meta name="description" content="Профессиональное обслуживание серверов в Кемерово. Комплексный ИТ-аутсорсинг по договору с НДС, гарантирующий стабильность, безопасность и бесперебойную работу вашей ИТ-инфраструктуры.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Обслуживание Серверов в Кемерово: ИТ-аутсорсинг с НДС и Гарантией</h1>
+            <meta name="published_at" content="2026-03-22T15:34:36.063Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h2>Значение надежного обслуживания серверов и роль ИТ-аутсорсинга для бизнеса</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В современной цифровой экономике серверы являются критически важным активом любого предприятия, вне зависимости от его масштаба. От их стабильной и безопасной работы зависит бесперебойность бизнес-процессов, сохранность данных и, в конечном итоге, конкурентоспособность компании. Ненадежное обслуживание серверов напрямую приводит к финансовым потерям, репутационным рискам и утрате клиентского доверия.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Основные риски, связанные с недостаточным вниманием к серверной инфраструктуре:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Простои системы:</strong> Любой сбой в работе сервера означает остановку операций, недоступность сервисов и прямые финансовые потери. Каждая минута простоя обходится бизнесу дорого, влияя на продажи, производительность и удовлетворенность клиентов.</li>
+<li><strong>Потеря данных:</strong> Отсутствие актуальных резервных копий или сбои в дисковых подсистемах могут привести к безвозвратной утрате критически важных бизнес-данных. Это не просто техническая проблема, а катастрофа, угрожающая самому существованию компании.</li>
+<li><strong>Угрозы безопасности:</strong> Необновленное программное обеспечение, слабые настройки безопасности или отсутствие систем мониторинга делают серверы уязвимыми для кибератак, утечек конфиденциальной информации и вирусов-шифровальщиков. Защита данных — это не опция, а императив.</li>
+<li><strong>Снижение производительности:</strong> Неоптимизированные серверы работают медленно, замедляя работу сотрудников, снижая общую эффективность бизнеса и влияя на скорость предоставления услуг клиентам.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Самостоятельное поддержание высококачественной серверной инфраструктуры требует значительных инвестиций в квалифицированный персонал, специализированное программное обеспечение для мониторинга и диагностики, а также постоянное обучение. Для большинства компаний, особенно малого и среднего бизнеса, это становится непосильной задачей, отвлекающей ресурсы от основной деятельности.</p></p>
+<h3>Роль ИТ-аутсорсинга в обеспечении надежности</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>ИТ-аутсорсинг представляет собой стратегическое решение, позволяющее бизнесу делегировать задачи по обслуживанию и поддержке серверной инфраструктуры специализированной компании. Это не просто передача функций, а доступ к экспертизе и ресурсам, которые иначе были бы недоступны или слишком дороги.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Профессиональный ИТ-аутсорсинг обеспечивает:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Экспертизу и опыт:</strong> Доступ к команде сертифицированных специалистов с глубокими знаниями в области серверного оборудования, сетевых технологий, операционных систем и кибербезопасности. Это гарантирует применение лучших практик.</li>
+<li><strong>Проактивный мониторинг:</strong> Внедрение систем круглосуточного мониторинга, позволяющих выявлять и устранять потенциальные проблемы до того, как они приведут к сбоям. Такой подход минимизирует риски простоев и обеспечивает стабильность.</li>
+<li><strong>Оперативное реагирование:</strong> Быстрое устранение возникающих инцидентов благодаря четко регламентированным процедурам и специалистам, доступным 24/7. Время реакции на критические сбои измеряется минутами, а не часами.</li>
+<li><strong>Оптимизация затрат:</strong> Вместо содержания штатных ИТ-специалистов и покупки дорогостоящего оборудования, компания платит за услуги по фиксированному тарифу, часто с НДС, что упрощает бюджетирование и делает расходы предсказуемыми.</li>
+<li><strong>Безопасность данных:</strong> Разработка и внедрение комплексных стратегий резервного копирования, восстановления данных и защиты от внешних угроз, соответствующих современным стандартам.</li>
+<li><strong>Фокус на основном бизнесе:</strong> Освобождение внутренних ресурсов компании, позволяя руководству и сотрудникам сконцентрироваться на ключевых задачах, приносящих прибыль и способствующих стратегическому развитию.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Выбор партнера по ИТ-аутсорсингу должен основываться на его репутации, наличии прозрачного договора с четким SLA (Service Level Agreement), гарантиях результата и способности подтвердить свою экспертизу на практике. Только такой подход гарантирует, что серверная инфраструктура будет не просто работать, но и станет надежной опорой для развития вашего бизнеса.</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Индивидуальный расчет от ХХ 000 руб./месяц (с НДС). Зависит от количества серверов, их конфигурации, сложности инфраструктуры и необходимого уровня сервиса (SLA). Точный расчет формируется после диагностики.</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: Договор от 12 месяцев с возможностью пролонгации. Начало обслуживания: от 3 до 7 рабочих дней после подписания договора и первичной передачи доступов. Время реакции по SLA: от 15 минут (для критичных инцидентов).</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Бесплатный первичный аудит вашей серверной инфраструктуры. Проводится для оценки текущего состояния, выявления потенциальных проблем, определения объема работ и формирования оптимального коммерческого предложения. Обязательна перед заключением договора.</p></div>
+
+        </div>
+            <section><h2>Комплексный подход к обслуживанию: от профилактики до гарантии результата</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В Админ.Ко мы понимаем, что стабильность работы серверов и ИТ-инфраструктуры — это фундамент успешного бизнеса. Наш подход выходит за рамки устранения неисправностей по факту их возникновения. Мы предлагаем комплексное обслуживание, ориентированное на предупреждение проблем, обеспечение непрерывности бизнес-процессов и гарантированный результат.</p></p>
+<h3>Профилактика как основа надежности</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ключевым элементом нашего комплексного подхода является проактивная профилактика. Мы не ждем, пока сервер выйдет из строя или возникнет критическая ошибка. Наши инженеры регулярно проводят:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Мониторинг состояния оборудования и программного обеспечения: постоянный анализ загрузки, температурного режима, использования дискового пространства и сетевых ресурсов.</li>
+<li>Обновление систем безопасности и программного обеспечения: своевременная установка патчей и обновлений для защиты от уязвимостей.</li>
+<li>Резервное копирование данных: настройка и контроль автоматизированных систем бэкапирования для минимизации рисков потери информации.</li>
+<li>Проверки систем охлаждения и электропитания: предотвращение перегрева и сбоев по питанию.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Такой подход позволяет выявлять потенциальные проблемы на ранней стадии и устранять их до того, как они скажутся на работоспособности вашей компании. Это не "литературная история", а инженерная логика, подтвержденная многолетним опытом и строгим соблюдением регламентов.</p></p>
+<h3>Гарантия результата и договор с НДС</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Для корпоративных клиентов принципиальное значение имеет прозрачность и юридическая чистота сотрудничества. Админ.Ко предоставляет услуги по обслуживанию серверов и ИТ-аутсорсингу на основании официального договора с НДС. Это обеспечивает:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Юридическую защиту и четкое определение обязанностей сторон.</li>
+<li>Возможность зачета НДС, что является важным фактором для бухгалтерской отчетности вашей компании.</li>
+<li>Гарантию выполнения заявленных работ и соблюдения оговоренных сроков (SLA).</li>
+<li>Фиксированную ответственность исполнителя за качество предоставляемых услуг и сохранность данных.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы несем полную ответственность за стабильность вашей инфраструктуры. Наша гарантия результата — это не просто обещание, это закрепленное в договоре обязательство обеспечивать бесперебойную работу ваших систем, минимизируя простои и риски для вашего бизнеса.</p></p>
+<h3>Экспертиза Админ.Ко: инженерный стандарт в действии</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Комплексное обслуживание от Админ.Ко базируется на высочайших инженерных стандартах. Наши специалисты используют профессиональные методики и инструменты для управления серверными системами. Мы обеспечиваем:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Быстрое реагирование на инциденты и оперативное устранение неисправностей.</li>
+<li>Применение оптимальных решений для масштабирования и оптимизации вашей инфраструктуры.</li>
+<li>Консультации по развитию ИТ-систем и внедрению новых технологий.</li>
+<li>Строгое соблюдение регламентов и протоколов безопасности данных, а также поддержание полной конфиденциальности информации.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Выбирая Админ.Ко для обслуживания серверов, вы выбираете не просто исполнителя, а надежного технологического партнера, который обеспечивает стабильность и развитие вашей ИТ-инфраструктуры на самом высоком уровне, демонстрируя единственный разумный выбор.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Наш технический секрет, гарантирующий результат, не в умении быстро чинить, а в способности *предвидеть и предотвращать*.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Мы используем комбинацию из глубокого аналитического мониторинга, который отслеживает не только текущее состояние, но и микроизменения, предвещающие сбои, и регулярного, автоматизированного тестирования сценариев отказа и восстановления данных.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Это позволяет нам не просто реагировать, а *активно управлять* здоровьем вашей инфраструктуры, минимизируя простои до практически нулевого уровня и обеспечивая бесперебойную работу вашего бизнеса. Для нас каждая система – живой организм, и наша задача – поддерживать её жизненные показатели в идеальном состоянии 24/7. В этом и кроется настоящая гарантия.</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><H2>Юридические и финансовые аспекты: прозрачный договор с НДС</H2></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><P>Для корпоративных клиентов и индивидуальных предпринимателей обслуживание серверной инфраструктуры — это критически важный процесс, требующий не только технической компетентности, но и юридической прозрачности. В Админ.Ко мы строим отношения с бизнесом на принципах максимальной открытости и ответственности, закрепляя каждое сотрудничество официальным договором.</P></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><P>Предложение услуг по договору с НДС является фундаментальным стандартом нашей работы и обеспечивает вашему бизнесу ряд неоспоримых преимуществ:</P></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><UL></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><b>Финансовая выгода и налоговые вычеты:</b> Работа с НДС позволяет вашей компании легально использовать налоговые вычеты, оптимизируя общие финансовые затраты на ИТ-аутсорсинг и обслуживание серверов.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><b>Юридическая защищенность:</b> Каждый договор четко фиксирует объем услуг, сроки выполнения работ, гарантийные обязательства и ответственность сторон. Это обеспечивает полную правовую защиту вашего бизнеса и исключает любые недопонимания.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><b>Прозрачность ценообразования:</b> Вся стоимость услуг, включая НДС, подробно расписывается в договоре. Вы получаете полную ясность в расчетах, исключая скрытые платежи и неожиданные расходы.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><LI><b>Документальное подтверждение гарантии:</b> Официальный договор — это не просто формальность, а юридически обязывающий документ, подтверждающий наши гарантии на результат и качество обслуживания. Это является основой для долгосрочного и надежного партнерства.</LI></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></UL></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><P>Админ.Ко — это не просто сервисный центр, это надежный ИТ-партнер, который обеспечивает стабильность вашей инфраструктуры и полную юридическую и финансовую прозрачность. Мы работаем официально и ценим доверие каждого клиента.</P></p>
+</section>
+            <section class="mt-12"><h2>Выбор партнера: как ИТ-аутсорсинг обеспечивает стабильность и развитие</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В условиях современной цифровой экономики серверная инфраструктура является не просто частью бизнеса, а его фундаментом. От ее бесперебойной работы зависит доступность критически важных сервисов, безопасность данных и общая эффективность компании. Поддержание серверов в оптимальном состоянии требует значительных ресурсов, специализированных знаний и постоянного внимания. Для многих компаний в Кемерово содержание собственного ИТ-отдела полного цикла становится нецелесообразным, что делает ИТ-аутсорсинг стратегически выгодным решением.</p></p>
+<h2>Стабильность и надежность: основа для вашего бизнеса</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Передача обслуживания серверов внешнему партнеру, такому как Админ.Ко, обеспечивает уровень стабильности, который трудно достичь силами штатного специалиста. Наши эксперты специализируются на:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Проактивном мониторинге 24/7:</strong> Круглосуточный контроль состояния серверов позволяет выявлять и устранять потенциальные проблемы до того, как они приведут к сбоям. Это минимизирует риски простоев и обеспечивает непрерывность бизнес-процессов.</li>
+<li><strong>Оперативном реагировании:</strong> При возникновении инцидентов наша команда реагирует незамедлительно, используя передовые методики удаленного устранения неполадок и, при необходимости, выезд на объект в Кемерово.</li>
+<li><strong>Резервном копировании и восстановлении:</strong> Разработка и внедрение надежных стратегий бэкапа данных с возможностью быстрого восстановления информации в случае аварийной ситуации.</li>
+<li><strong>Регулярном обновлении и патчинге:</strong> Своевременное применение обновлений безопасности и функциональных патчей для защиты от уязвимостей и обеспечения максимальной производительности.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Развитие и масштабирование: ИТ-решения для роста</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>ИТ-аутсорсинг от Админ.Ко — это не только поддержание существующей инфраструктуры, но и катализатор для ее развития. Вы получаете доступ к широкому спектру компетенций без необходимости расширения штата:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Экспертиза по запросу:</strong> Наша команда обладает глубокими знаниями в области различных операционных систем (Windows Server, Linux), систем виртуализации (VMware, Hyper-V), баз данных и сетевых технологий. Это позволяет внедрять оптимальные решения и адаптироваться к изменяющимся потребностям бизнеса.</li>
+<li><strong>Масштабируемость:</strong> По мере роста вашей компании или изменения бизнес-требований, наша инфраструктура и команда готовы оперативно масштабировать ИТ-сервисы, будь то добавление новых серверов, миграция в облако или оптимизация текущих мощностей.</li>
+<li><strong>Фокус на основном бизнесе:</strong> Освободите свои ресурсы от рутинных ИТ-задач, чтобы сосредоточиться на стратегических целях и развитии ключевых направлений деятельности.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Админ.Ко: Ваш надежный ИТ-партнер в Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы предлагаем комплексное обслуживание серверов на условиях договора с НДС, что обеспечивает прозрачность финансовых взаимоотношений и удобство для юридических лиц. Наша ответственность подкрепляется гарантией результата: мы не просто оказываем услуги, а обеспечиваем работоспособность вашей ИТ-инфраструктуры. Админ.Ко — это:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Высококвалифицированные инженеры:</strong> Сертифицированные специалисты с многолетним опытом работы.</li>
+<li><strong>Честная цена:</strong> Четкое ценообразование без скрытых платежей.</li>
+<li><strong>Безопасность данных:</strong> Строгое соблюдение протоколов конфиденциальности и безопасности.</li>
+<li><strong>Официальные взаимоотношения:</strong> Работа по договору, предоставляем все закрывающие документы.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если ваша компания в Кемерово ищет надежного партнера для обслуживания серверов, который обеспечит стабильность и поможет в развитии, обращайтесь в Админ.Ко. Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Для консультации или начала сотрудничества свяжитесь с нами.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

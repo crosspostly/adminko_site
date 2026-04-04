@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PS4 шумит как самолет? Чистка и замена термопасты в Кемерово | Админ.Ко</title>
+    <meta name="description" content="PS4 шумит как самолет, перегревается и тормозит? Профессиональная чистка от пыли и замена термопасты в Кемерово от Админ.Ко. Вернем тишину и скорость. Запишитесь!">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.4">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный кейс</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">PS4 шумит как самолет? Чистка и замена термопасты в Кемерово</h1>
+            <meta name="published_at" content="2026-03-22T16:13:57.775Z">
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h1>PS4 шумит как самолет? Чистка и замена термопасты в Кемерово | Админ.Ко</h1>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваша PlayStation 4 издает шум, сравнимый со взлетающим самолетом, перегревается и тормозит? Это тревожный сигнал, указывающий на серьезные проблемы с системой охлаждения. В Админ.Ко мы проводим профессиональную чистку и замену термопасты, возвращая вашей консоли тишину и производительность.</p></p>
+<h2>Blitz-Answer: Решение проблемы шума PS4</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Проблема:</strong> Сильный шум, перегрев, снижение производительности, самопроизвольное выключение PlayStation 4.</li>
+<li><strong>Срок:</strong> От 2 часов.</li>
+<li><strong>Цена:</strong> От 2000 руб.</li>
+<li><strong>Диагностика:</strong> 0 руб.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Глава 1: Почему ваша PS4 шумит как самолет? Причины и последствия перегрева</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Чрезмерный шум PlayStation 4 — это прямое следствие неэффективной работы системы охлаждения. Основных причин две, и они тесно взаимосвязаны:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Пылевые отложения:</strong> Со временем вентилятор и радиатор консоли забиваются плотным слоем пыли и ворса. Это создает барьер для потока воздуха, препятствуя эффективному отводу тепла от центрального процессора (APU) и других греющихся элементов. Вентилятору приходится вращаться на максимальных оборотах, пытаясь компенсировать недостаток охлаждения, что и приводит к характерному "самолетному" шуму.</li>
+<li><strong>Высохшая термопаста:</strong> Заводская термопаста, нанесенная между кристаллом APU и радиатором, со временем теряет свои теплопроводящие свойства. Она высыхает, трескается и превращается в плохой изолятор, вместо того чтобы эффективно передавать тепло на радиатор. Это критично, так как APU является основным источником тепла в консоли.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Последствия перегрева</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Длительная работа PS4 в условиях повышенных температур не просто создает дискомфорт, но и угрожает работоспособности консоли:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Троттлинг (снижение производительности):</strong> Защитные механизмы консоли автоматически снижают тактовую частоту APU и графического ядра, чтобы предотвратить критический перегрев. Это проявляется в "лагах", падении FPS и замедленной работе системы.</li>
+<li><strong>Деградация компонентов:</strong> Постоянное воздействие высоких температур приводит к ускоренному старению и деградации полупроводниковых элементов. Страдают как сам APU, так и чипы памяти, контроллеры питания и другие компоненты материнской платы.</li>
+<li><strong>Отвал чипа (APU):</strong> Крайняя степень перегрева может вызвать разрушение шариковых контактов (BGA-пайки) под центральным процессором. Это приводит к полному отказу консоли, требуя сложного и дорогостоящего реболлинга чипа.</li>
+<li><strong>Выход из строя других компонентов:</strong> От перегрева могут страдать элементы системы питания, контроллеры USB, HDMI-порты и другие важные модули.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Экспертный подход Админ.Ко к чистке и замене термопасты</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы не просто "пылесосим" консоль. Процесс в Админ.Ко включает:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Полная разборка:</strong> Аккуратное вскрытие корпуса и демонтаж всех компонентов для доступа к системе охлаждения.</li>
+<li><strong>Глубокая очистка:</strong> Удаление пыли и ворса не только с вентилятора, но и из самых тонких ребер радиатора с использованием специального оборудования.</li>
+<li><strong>Удаление старой термопасты:</strong> Бережное удаление остатков высохшей термопасты с APU и радиатора без повреждения поверхности кристалла.</li>
+<li><strong>Нанесение новой термопасты:</strong> Использование высококачественной термопасты с превосходной теплопроводностью, такой как Arctic MX-4, обеспечивающей максимальную эффективность теплоотвода. Мы строго контролируем равномерность нанесения и объем.</li>
+<li><strong>Проверка теплового режима:</strong> После сборки консоль тестируется под нагрузкой. С помощью <strong>тепловизора</strong> мы верифицируем равномерность распределения тепла и отсутствие локальных перегревов, убеждаясь в корректной работе новой системы охлаждения. В случае комплексных проблем, наш <strong>осциллограф Rigol</strong> позволяет диагностировать нарушения в цепях питания, которые также могут влиять на тепловой режим.</li>
+<li><strong>Контроль качества пайки:</strong> Если перегрев уже привел к необходимости пайки других компонентов на плате, наши инженеры используют паяльные станции <strong>JBC (Испания)</strong> для микро-пайки с прецизионным контролем температуры, исключая перегрев платы. Для сложного BGA-ремонта применяется станция <strong>Quick 861DW</strong>. Используем только флюсы класса <strong>Martin/Amtech</strong>, которые гарантируют стабильность соединений и отсутствие коррозии.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Почему самостоятельная чистка или "гаражный" ремонт рискованны?</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без опыта, специализированных инструментов и понимания архитектуры PS4, попытки самостоятельного ремонта или обращение к неквалифицированным мастерам могут привести к необратимым повреждениям:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Повреждение шлейфов, разъемов, фиксаторов при разборке.</li>
+<li>Неполное удаление пыли или неправильное нанесение термопасты, что не решает проблему или усугубляет ее.</li>
+<li>Использование некачественной или поддельной термопасты, которая быстро высыхает.</li>
+<li>Статическое электричество, способное вывести из строя чувствительные компоненты.</li>
+<li>Отсутствие гарантий и невозможность проверить качество выполненных работ.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Инженерный стандарт Админ.Ко: Ваши преимущества</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Выбирая Админ.Ко, вы выбираете надежность и профессионализм:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>0 руб. диагностика:</strong> Мы бесплатно определяем точную причину неисправности вашей PS4.</li>
+<li><strong>Запчасти в наличии:</strong> Большинство необходимых комплектующих (вентиляторы, термопаста, термопрокладки) уже на нашем складе, что сокращает сроки ремонта.</li>
+<li><strong>Гарантия 1 год по договору:</strong> На все выполненные работы и установленные компоненты предоставляется официальная гарантия, закрепленная договором.</li>
+<li><strong>Сохранность данных:</strong> Мы гарантируем полную конфиденциальность и сохранность всех ваших игровых данных.</li>
+<li><strong>Честная цена:</strong> Вы всегда знаете, за что платите. Стоимость ремонта фиксируется после диагностики и не меняется.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Приезжайте в наш сервисный центр в Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы находимся в центре Кемерово, ул. Дзержинского 2Б. Рядом СРК Арена и ТЦ Я. Работаем официально, предоставляя полный пакет документов и гарантий.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не ждите, пока ваша PS4 окончательно выйдет из строя. Обратитесь к профессионалам Админ.Ко, и мы вернем вашей консоли тишину и максимальную производительность!</p></p>
+</section>
+            
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-8 border-yellow-500 p-8 my-12 rounded-r-[2rem] shadow-sm">
+            <div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Цена</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> От 1200 рублей (зависит от модели PS4).</p></div>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Срок: От 1 часа, обычно в день обращения.</p>
+<div class="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-3xl border-l-8 border-gray-400 my-10"><strong class="block uppercase tracking-widest text-sm text-gray-500 mb-2">Диагностика</strong><p class="text-2xl font-black text-gray-900 dark:text-white m-0"> Бесплатная при последующем ремонте.</p></div>
+
+        </div>
+            <section><h2>Глава 2: Профессиональная чистка и замена термопасты: Что мы делаем и как это помогает</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>PS4 шумит как самолет? Перегревается и выключается?</b> Это верный признак необходимости профессиональной чистки и замены термопасты.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Проблема:</b> Шум, перегрев, снижение производительности, аварийные отключения PS4.</li>
+<li><b>Срок:</b> От 2 часов. Полная процедура, включая тестирование.</li>
+<li><b>Цена:</b> От 1500 руб. (зависит от модели и состояния).</li>
+<li><b>Диагностика:</b> 0 руб. Всегда.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Игровая консоль PS4, как и любой высокопроизводительный компьютер, генерирует значительное количество тепла. Система охлаждения призвана отводить это тепло, но со временем она теряет эффективность. Основные причины:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Пыль:</b> Собирается в радиаторе, блокируя воздушный поток и создавая "войлочный" барьер для теплообмена.</li>
+<li><b>Высыхание термопасты:</b> Заводская термопаста теряет свои теплопроводные свойства, превращаясь в изолятор между процессором APU и радиатором. Это приводит к критическому росту температуры чипа.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Самостоятельная чистка часто оказывается поверхностной и не решает проблему полностью, а неквалифицированное вмешательство может привести к повреждению компонентов: шлейфов, защелок корпуса, разъемов питания. В «Админ.Ко» мы подходим к процессу с инженерной точностью:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Полная разборка:</b> Консоль полностью разбирается. Это не просто продувка компрессором, а доступ ко всем внутренним компонентам.</li>
+<li><b>Механическая чистка:</b> Радиатор тщательно очищается от пыли и загрязнений с использованием специальных инструментов, которые не повреждают тонкие ламели. Вентилятор демонтируется и очищается от грязи и смазки.</li>
+<li><b>Удаление старой термопасты:</b> Старая, высохшая термопаста аккуратно удаляется со всех тепловыделяющих элементов (APU, чипы памяти) с использованием специализированных растворителей, безопасных для текстолита.</li>
+<li><b>Нанесение новой термопасты:</b> Используется высокоэффективная термопаста премиум-класса (например, Arctic MX-4 или Noctua NT-H1), обеспечивающая максимальную теплопередачу. Нанесение производится строго по технологии, без излишков или недостатка, чтобы избежать "воздушных карманов".</li>
+<li><b>Тестирование под нагрузкой:</b> После сборки консоль проходит обязательное стресс-тестирование для проверки температурного режима под максимальной нагрузкой. Для объективного контроля используется тепловизор, который позволяет визуализировать распределение тепла и убедиться в эффективности системы охлаждения.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без полной разборки, профессиональных средств очистки и качественной термопасты невозможно добиться долгосрочного результата. Поверхностная чистка лишь временно снизит шум, но не устранит корневую проблему перегрева.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Выбирая «Админ.Ко» для обслуживания вашей PS4, вы получаете:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Диагностика 0 руб.:</b> Мы всегда точно определяем проблему до начала работ.</li>
+<li><b>Запчасти и расходники в наличии:</b> Качественная термопаста и, при необходимости, другие компоненты всегда доступны для оперативного ремонта.</li>
+<li><b>Гарантия 1 год по договору:</b> На все выполненные работы и установленные материалы. Мы работаем официально и несем ответственность.</li>
+<li><b>Сохранность данных:</b> Мы гарантируем неприкосновенность вашей игровой библиотеки и профилей.</li>
+<li><b>Честная цена:</b> Прозрачное ценообразование без скрытых платежей. Вы платите только за реально выполненную работу и материалы.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваша PS4 снова будет работать тихо и эффективно, как новая. Не доводите до критического перегрева, который может привести к дорогостоящему ремонту чипов или выходу консоли из строя.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы находимся в центре Кемерово, <b>ул. Дзержинского 2Б</b>. Рядом СРК Арена и ТЦ Я. Работаем официально, предоставляя полный пакет документов.</p></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Вот наш технический секрет, инженера Админ.Ко, для вашей PS4:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">"Просто поменять термопасту? Это лишь полдела. Наш главный секрет долгой и тихой работы вашей PS4 кроется в *идеальной* подготовке поверхностей. Дело не только в нанесении новой, высокоэффективной термопасты (конечно, мы используем только проверенные составы, превосходящие заводские), но и в тщательнейшей, до зеркального блеска, очистке кристаллов процессора и графического чипа, а также контактной площадки радиатора от следов старой, 'выгоревшей' пасты и микрочастиц пыли. Любые остатки создают микрозазоры, которые снижают теплопроводность.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">И еще один 'шепот' от инженера: мы всегда уделяем внимание состоянию *термопрокладок*. Они отвечают за отвод тепла от чипов памяти и других важных компонентов. Если они изношены, мы их заменим, ведь без их эффективной работы даже самая лучшая термопаста на процессоре не спасет вашу консоль от перегрева и шума. Только такой комплексный подход гарантирует тишину, которая продлится надолго."</p>
+
+        </div>
+            
+        <div class="mt-20 mb-16 p-8 md:p-16 bg-primary rounded-[4rem] shadow-2xl shadow-primary/30 text-center relative overflow-hidden group">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">Спросите инженера</h2>
+                <p class="mb-10 text-white/95 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">Диагностика в «Админ.Ко» всегда 0₽. Опишите проблему, и мы назовем цену ремонта за 5 минут.</p>
+                <div class="flex justify-center">
+                    <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-3xl font-black text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 flex items-center gap-4 uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-3xl">chat</span>
+                        Бесплатная консультация
+                    </button>
+                </div>
+            </div>
+            <span class="material-symbols-outlined absolute -right-12 -bottom-12 text-[20rem] text-white/10 rotate-12 pointer-events-none">build_circle</span>
+        </div>
+            <section><h2 class="chapter-title">Глава 3: «Админ.Ко» в Кемерово: Преимущества обращения к нам для вашей PS4</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Если ваша PlayStation 4 начала издавать чрезмерный шум, сравнимый со взлетающим самолетом, или заметно перегреваться, это прямой индикатор проблем с системой охлаждения. Как правило, причина кроется в скоплении пыли внутри корпуса и потере эффективности термопасты. Игнорирование этих симптомов приводит к снижению производительности, аварийным отключениям и, в конечном итоге, к дорогостоящему ремонту основных компонентов. В такой ситуации критически важно обратиться к квалифицированным специалистам.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Выбирая сервисный центр «Админ.Ко» в Кемерово для чистки и замены термопасты вашей PS4, вы получаете не просто услугу, а комплексный подход, гарантирующий стабильную и тихую работу вашей консоли. Наши преимущества — это ваш выбор надежности:</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>0 рублей за диагностику</strong>: Мы всегда начинаем с точной диагностики. Независимо от сложности проблемы, мы бесплатно проведем полную проверку вашей PS4, чтобы определить истинную причину шума и перегрева. Вы узнаете объем работ и финальную стоимость до начала ремонта, без каких-либо обязательств с вашей стороны.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Запчасти и материалы в наличии</strong>: Для эффективной чистки и замены термопасты на PS4 мы используем только высококачественные расходные материалы, включая специализированную термопасту с оптимальной теплопроводностью. Наличие всех необходимых компонентов и химических средств на складе позволяет нам оперативно выполнять работы, исключая длительное ожидание.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Гарантия 1 год по договору</strong>: Мы предоставляем официальную гарантию сроком на 12 месяцев на все выполненные работы, включая чистку и замену термопасты PS4. Каждый ремонт сопровождается заключением договора, что обеспечивает вашу полную юридическую защиту и уверенность в качестве наших услуг.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Сохранность ваших данных</strong>: При проведении технического обслуживания PS4 мы гарантируем полную сохранность всех ваших игровых данных, сохранений и личной информации. Наши инженеры работают с максимальной аккуратностью, исключая любое вмешательство в программное обеспечение консоли или риски потери данных.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<p class="mt-12 mb-6 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Честная цена без скрытых платежей</strong>: Стоимость чистки и замены термопасты PS4 формируется прозрачно и фиксируется после первичной бесплатной диагностики. Мы гарантируем отсутствие любых скрытых платежей или непредвиденных начислений в процессе ремонта. Вы платите ровно ту сумму, которая была согласована.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">Наш сервисный центр «Админ.Ко» расположен в самом сердце Кемерово по адресу: <strong>улица Дзержинского 2Б</strong>. Мы находимся в удобной транспортной доступности, рядом с СРК «Арена» и ТЦ «Я». Привозите вашу PS4 к нам — мы вернем ей былую тишину и производительность, чтобы ничто не отвлекало вас от игры. Работаем официально, с полным пакетом документов.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></p></p>
+</section>
+            <section class="mt-12"><h2>Глава 4: Избавьтесь от шума сегодня! Как записаться на чистку в "Админ.Ко"</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваша игровая консоль PlayStation 4 демонстрирует чрезмерный шум, сопоставимый со взлетающим самолетом, и нагрев? Это критический индикатор серьезного перегрева и необходимости профессионального обслуживания, включающего комплексную чистку системы охлаждения и замену термоинтерфейсов. Откладывание данной процедуры напрямую ведет к снижению производительности, нестабильной работе и потенциальному выходу из строя дорогостоящих компонентов.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В сервисном центре «Админ.Ко» мы предлагаем эффективное и оперативное решение этой проблемы. Чтобы ваша PS4 снова работала тихо и стабильно, процесс записи и выполнения работ максимально упрощен:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Просто посетите наш сервисный центр. Мы расположены в самом центре города Кемерово по адресу: <strong>ул. Дзержинского 2Б</strong>. Нас легко найти, поскольку мы находимся в непосредственной близости от СРК «Арена» и ТЦ «Я».</li>
+<li>Передайте вашу консоль нашим квалифицированным инженерам для проведения <strong>бесплатной диагностики</strong>. С использованием профессионального оборудования мы быстро и точно определим степень загрязнения и подтвердим необходимость проведения обслуживания.</li>
+<li>После согласования, мы немедленно приступаем к работе. Благодаря постоянному наличию оригинальных и проверенных аналоговых запчастей, а также использованию высококачественных расходных материалов (например, термопаст Arctic MX-4, термопрокладок Laird) и специализированного инструментария, таких как паяльные станции JBC для деликатных работ, чистка и замена термопасты занимают минимальное время.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Не допускайте дальнейшего износа вашей PlayStation 4 из-за перегрева. Обратитесь в «Админ.Ко» сегодня, чтобы вернуть вашей консоли первоначальную тишину и производительность. Мы гарантируем профессиональный подход, сохранность ваших данных и предоставляем официальную гарантию на все выполненные работы по договору.</p></p>
+</section>
+            <!-- CONTENT END -->
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Смартфон не включается после обновления в Кемерово: Реанимация и спасение личных файлов | Админ.Ко</title>
+    <meta name="description" content="Экспертная статья от ведущего инженера «Админ.КО» (Кемерово, Дзержинского 2Б) о причинах, методах диагностики и ремонта смартфонов, переставших включаться после обновления, с акцентом на сохранение пользовательских данных.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.7">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Смартфон не включается после обновления в Кемерово: Реанимация и спасение личных файлов","description":"Экспертная статья от ведущего инженера «Админ.КО» (Кемерово, Дзержинского 2Б) о причинах, методах диагностики и ремонта смартфонов, переставших включаться после обновления, с акцентом на сохранение пользовательских данных.","datePublished":"2026-03-27T10:01:35.489Z","author":{"@type":"Person","name":"Инженер Админ.Ко"}}</script>
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+
+
+
+
+
+<main class="flex-grow max-w-5xl mx-auto px-4 py-12 md:py-24 w-full">
+    <article class="bg-white dark:bg-gray-800 p-8 md:p-16 rounded-[3rem] shadow-xl border border-gray-100 dark:border-gray-700">
+        <header class="mb-16">
+            <div class="text-primary font-black uppercase tracking-widest text-xs mb-6 italic">Инженерный разбор v7.0 • Кемерово</div>
+            <h1 class="text-4xl md:text-7xl font-black mb-8 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Смартфон не включается после обновления в Кемерово: Реанимация и спасение личных файлов</h1>
+        </header>
+
+        <div class="prose prose-xl dark:prose-invert max-w-none">
+            <!-- TAKEAWAYS -->
+            <div class="bg-gray-50 dark:bg-gray-900/50 p-8 rounded-[2.5rem] border border-gray-100 dark:border-gray-700 mb-12">
+                <h4 class="text-xl font-black m-0 mb-6 uppercase italic tracking-tighter flex items-center gap-2 text-primary">
+                    <span class="material-symbols-outlined">analytics</span> Суть за 30 секунд
+                </h4>
+                <ul class="m-0 space-y-2 text-lg">
+                    <li><b>Сбой обновления часто выявляет скрытые аппаратные дефекты, а не является только программной проблемой.</b></li><li><b>Современное оборудование (Rigol, JBC, Quick 861DW, JCID) позволяет проводить компонентный ремонт и восстанавливать данные даже с 'мертвых' устройств.</b></li><li><b>Приоритет в «Админ.КО» на Дзержинского 2Б – это спасение ваших личных файлов с поврежденного смартфона.</b></li>
+                </ul>
+            </div>
+
+            <!-- CONTENT -->
+            <p>После неудачного системного обновления ваш смартфон превратился в «кирпич»? Не паникуйте. В лаборатории «Админ.КО» (Кемерово, Дзержинского 2Б) мы специализируемся на реанимации таких устройств и спасении ваших данных. <b>Чаще всего проблема кроется в повреждении системных файлов или аппаратном конфликте, вызванном сбоем прошивки.</b></p>
+
+<h2>Содержание статьи</h2>
+<ul>
+  <li><a href="#section-1">Симптомы и неочевидные причины сбоев после обновления</a></li>
+  <li><a href="#section-2">Процесс реанимации: от диагностики до восстановления</a></li>
+  <li><a href="#section-3">Инженерный секрет: Проблема питания UFS/eMMC</a></li>
+  <li><a href="#section-4">Почему выбирают «Админ.КО» в Кемерово</a></li>
+  <li><a href="#section-5">Стоимость услуг</a></li>
+  <li><a href="#section-6">Часто задаваемые вопросы</a></li>
+</ul>
+
+<h2 id="section-1">Симптомы и неочевидные причины сбоев после обновления</h2>
+<p>Когда смартфон не включается после обновления, это не всегда означает полный крах. Типичные симптомы включают: черный экран, зацикливание на логотипе производителя (boot loop) или устройство совсем не реагирует на кнопку включения. Причины могут быть как программными, так и аппаратными:</p>
+<ul>
+  <li><b>Повреждение загрузчика (bootloader) или системного раздела:</b> Наиболее распространенная программная проблема, возникающая из-за некорректной записи данных в процессе обновления.</li>
+  <li><b>Конфликт обновленной прошивки с аппаратной ревизией:</b> Некоторые компоненты могут быть не полностью совместимы с новыми драйверами или системными требованиями.</li>
+  <li><b>Сбой питания в критический момент:</b> Прерывание процесса обновления, например, из-за внезапной разрядки аккумулятора, может привести к повреждению файловой системы.</li>
+  <li><b>Проявление скрытых аппаратных дефектов:</b> Интенсивная нагрузка на память UFS/eMMC или контроллер питания (PMIC) во время обновления может выявить ранее незаметные дефекты этих компонентов.</li>
+</ul>
+
+<h2 id="section-2">Процесс реанимации: от диагностики до восстановления</h2>
+<p>В «Админ.КО» мы подходим к каждой неисправности системно, начиная с точной диагностики:</p>
+<ol>
+  <li><b>Первичная диагностика питания:</b> Используя лабораторный блок питания Rigol, мы анализируем потребление тока устройством. Аномалии в пусковых токах или их полное отсутствие позволяют быстро определить наличие короткого замыкания или неисправности цепей питания.</li>
+  <li><b>Попытка программного восстановления:</b> Если устройство определяется компьютером (даже в режимах EDL/DFU), мы пробуем восстановить загрузчик и прошивку. Это может потребовать специализированных программных комплексов для конкретных чипсетов (Qualcomm, MediaTek, Apple A-series).</li>
+  <li><b>Аппаратная диагностика под микроскопом:</b> Если программные методы не дали результата, переходим к микроскопическому исследованию. С помощью высокоточных измерительных приборов Rigol (осциллографа) проверяем напряжения на ключевых компонентах: контроллере питания (PMIC), модулях памяти (UFS/eMMC) и процессоре.</li>
+  <li><b>Реболлинг или замена компонентов:</b> При выявлении дефектов BGA-компонентов (например, UFS/eMMC, PMIC), используем паяльную станцию JBC для точечной работы и термовоздушную станцию Quick 861DW для безопасного демонтажа и монтажа BGA-чипов. Особое внимание уделяется сохранению соседних элементов.</li>
+  <li><b>Восстановление данных:</b> Наша приоритетная задача – спасение ваших личных файлов. Если микросхема памяти UFS/eMMC повреждена, но функциональна, мы можем считать данные напрямую с чипа (chip-off или ISP) с использованием программатора JCID. Это позволяет извлечь контакты, фото, видео и документы, даже если сам телефон не подлежит ремонту или ремонт экономически нецелесообразен.</li>
+</ol>
+
+<h2 id="section-3">Инженерный секрет: Проблема питания UFS/eMMC</h2>
+<div class="bg-blue-50 border-l-4 border-blue-400 p-4">
+  <p><b>Послеобновленческий «кирпич» часто является следствием некачественного питания микросхемы памяти UFS/eMMC, а не самой прошивки.</b> В процессе обновления этот чип испытывает максимальные нагрузки на запись, что требует стабильного и чистого питания. Если PMIC (контроллер питания) или цепи, подающие напряжение на память, имеют микротрещины, деградацию конденсаторов или другие скрытые дефекты, то под нагрузкой во время обновления происходят кратковременные просадки напряжения. Это приводит к битым секторам, повреждению системных областей и, как следствие, к неспособности системы загрузиться. Диагностика требует не только чтения ошибок, но и тщательной проверки линий питания под нагрузкой.</p>
+</div>
+
+<h2 id="section-4">Почему выбирают «Админ.КО» в Кемерово</h2>
+<p>Когда ваш смартфон не включается после обновления, выбор сервиса играет решающую роль. В «Админ.КО» на Дзержинского 2Б вы найдете:</p>
+<ul>
+  <li><b>Глубокую техническую экспертизу:</b> Наши инженеры обладают многолетним опытом работы с мобильными устройствами на компонентном уровне. Мы понимаем архитектуру каждого смартфона.</li>
+  <li><b>Профессиональное оборудование:</b> Мы используем только специализированное и откалиброванное оборудование – от осциллографов и блоков питания Rigol до паяльных станций JBC и Quick 861DW, а также программаторов JCID для работы с памятью. Это гарантирует точность диагностики и качество ремонта.</li>
+  <li><b>Приоритет сохранения данных:</b> Ваша информация – наша главная забота. Мы всегда стремимся восстановить данные, даже если полный ремонт устройства невозможен или нецелесообразен.</li>
+  <li><b>Локальное присутствие и доверие:</b> Мы находимся в Кемерово на Дзержинского 2Б и дорожим репутацией надежного сервисного центра.</li>
+  <li><b>Гарантия на работы:</b> Все выполненные работы сопровождаются гарантией, подтверждая нашу уверенность в качестве предоставляемых услуг.</li>
+</ul>
+
+<h2 id="section-5">Стоимость услуг</h2>
+<p>Примерные цены на основные услуги по реанимации смартфона после обновления:</p>
+<div class="overflow-x-auto my-12"><table class="w-full text-left border-collapse">
+  <thead>
+    <tr>
+      <th class="p-4 bg-gray-50 dark:bg-gray-900 font-bold uppercase text-xs">Услуга</th>
+      <th class="p-4 bg-gray-50 dark:bg-gray-900 font-bold uppercase text-xs">Стоимость (от)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="p-4 border-b border-gray-50 dark:border-gray-700">Комплексная диагностика</td>
+      <td class="p-4 border-b border-gray-50 dark:border-gray-700">500 руб.</td>
+    </tr>
+    <tr>
+      <td class="p-4 border-b border-gray-50 dark:border-gray-700">Восстановление программного обеспечения (без разбора)</td>
+      <td class="p-4 border-b border-gray-50 dark:border-gray-700">1500 руб.</td>
+    </tr>
+    <tr>
+      <td class="p-4 border-b border-gray-50 dark:border-gray-700">Ремонт загрузчика / Реболлинг PMIC</td>
+      <td class="p-4 border-b border-gray-50 dark:border-gray-700">3500 руб.</td>
+    </tr>
+    <tr>
+      <td class="p-4 border-b border-gray-50 dark:border-gray-700">Замена/реболлинг UFS/eMMC с прошивкой</td>
+      <td class="p-4 border-b border-gray-50 dark:border-gray-700">4500 руб.</td>
+    </tr>
+    <tr>
+      <td class="p-4 border-b border-gray-50 dark:border-gray-700">Восстановление данных с поврежденного чипа памяти (chip-off)</td>
+      <td class="p-4 border-b border-gray-50 dark:border-gray-700">от 6000 руб.</td>
+    </tr>
+  </tbody>
+</table></div>
+<p><em>Точная стоимость определяется после диагностики и зависит от модели устройства и характера неисправности.</em></p>
+
+<h2 id="section-6">Часто задаваемые вопросы</h2>
+<dl>
+  <dt><b>В: Можно ли восстановить данные, если телефон совсем не включается?</b></dt>
+  <dd>О: В большинстве случаев – да. Методы chip-off или In-System Programming (ISP) позволяют считать информацию напрямую с микросхемы памяти, даже если остальные компоненты платы повреждены. Главное, чтобы сама память не была физически разрушена.</dd>
+  
+  <dt><b>В: Сколько времени занимает ремонт смартфона после сбоя обновления?</b></dt>
+  <dd>О: Диагностика обычно занимает 1-2 рабочих дня. Программное восстановление может быть выполнено за 1-3 дня. Аппаратный ремонт с пайкой или заменой чипов – от 3 до 7 рабочих дней, в зависимости от наличия запчастей и сложности работ.</dd>
+  
+  <dt><b>В: Всегда ли проблема после обновления связана с программным сбоем?</b></dt>
+  <dd>О: Нет. Часто обновление выступает катализатором, проявляя скрытые аппаратные дефекты, которые могли существовать ранее. Высокая нагрузка на процессор и память во время прошивки может привести к отказу слабого компонента.</dd>
+  
+  <dt><b>В: Что делать, если я пытался прошить телефон сам и усугубил проблему?</b></dt>
+  <dd>О: Приносите устройство к нам. Даже после неудачных попыток самостоятельного восстановления, когда устройство переходит в «глубокий кирпич» (hard brick), мы часто можем его реанимировать. Однако это может увеличить сложность и стоимость ремонта.</dd>
+  
+  <dt><b>В: Повлияет ли ремонт на гарантию производителя?</b></dt>
+  <dd>О: Да, любое несанкционированное вскрытие или ремонт устройства сторонним сервисом аннулирует официальную гарантию производителя. Однако «Админ.КО» предоставляет собственную гарантию на выполненные работы и установленные компоненты.</dd>
+</dl>
+
+            <!-- CTA -->
+            <div class="mt-20 p-10 md:p-16 bg-primary rounded-[4rem] text-center text-white relative overflow-hidden">
+                <h2 class="text-3xl md:text-5xl font-black mb-6 uppercase italic">Нужен качественный ремонт?</h2>
+                <p class="text-xl mb-10 opacity-90">Кемерово, Дзержинского 2Б. Оборудование JBC и Rigol. Гарантия 1 год.</p>
+                <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-2xl font-black text-xl hover:scale-105 transition-all shadow-2xl uppercase">Бесплатная консультация</button>
+            </div>
+
+            <div class="mt-16 pt-8 border-t border-gray-100 dark:border-gray-800 text-center">
+                <a href="../phones.html" class="text-primary font-black uppercase text-xs tracking-widest hover:underline italic">→ Ремонт смартфонов в Кемерово</a>
+            </div>
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

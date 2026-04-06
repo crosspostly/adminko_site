@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayStation 5 не включается в Кемерово: Пошаговый гайд по реанимации и спасению сохранений | Админ.Ко</title>
+    <meta name="description" content="Ваша PlayStation 5 в Кемерово не включается? Наш пошаговый гайд поможет диагностировать проблему, реанимировать консоль и спасти ценные сохранения. Узнайте, что делать, чтобы вернуть PS5 к жизни!">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.5">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+
+
+
+
+
+
+
+<main class="flex-grow">
+    <article class="max-w-4xl mx-auto px-4 py-12 md:py-24">
+        <header class="mb-16 md:mb-24">
+            <div class="flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-widest mb-8 italic">
+                <span class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">Инженерный разбор v5.0</span>
+                <span class="text-gray-400">Лаборатория Админ.Ко (Кемерово)</span>
+            </div>
+            <h1 class="text-4xl md:text-8xl font-black mb-10 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">PlayStation 5 не включается в Кемерово: Пошаговый гайд по реанимации и спасению сохранений</h1>
+        </header>
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <!-- CONTENT START -->
+            <section><h1>PS5 не включается в Кемерово? Инженерная реанимация консоли с сохранением данных и гарантией 1 год на Дзержинского 2Б!</h1>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваша <b>PlayStation 5</b> внезапно перестала подавать признаки жизни? Консоль не реагирует на кнопку включения, индикатор питания молчит или лишь кратковременно мигает синим, а на экране — полная темнота? Вы не одиноки в этой ситуации. Для многих жителей <b>Кемерово</b>, столкнувшихся с тем, что <b>PS5 не включается</b>, это становится настоящей проблемой, ведь любимые игры и сохранения оказываются под угрозой. В 90% случаев это не фатальный приговор, а следствие технических проблем, требующих профессиональной диагностики и ремонта. Не спешите отчаиваться и тем более пытаться "чинить" самостоятельно. Ваша <b>PS5</b> нуждается в экспертной помощи, которую может предоставить только инженерная лаборатория, а не "мастерская в подвале".</p></p>
+<h2>Симптомы — Причины — Решение: Как мы диагностируем "мертвую" PS5</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Когда ваша <b>PS5</b> не включается, это может проявляться по-разному. Мы, в лаборатории «Админ.Ко» на <b>Дзержинского 2Б в Кемерово</b>, сталкиваемся с такими сценариями каждый день:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Симптом:</b> Консоль абсолютно "мертва", нет никакой реакции на кнопку питания, не горят индикаторы, вентилятор не вращается.</li>
+<li><b>Вероятные причины:</b>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Выход из строя внутреннего <b>блока питания PS5</b>. Это одна из наиболее частых причин, особенно после скачков напряжения.</li>
+<li>Короткое замыкание на материнской плате, вызванное влагой, механическим повреждением или деградацией компонентов.</li>
+<li>Неисправность контроллера питания на системной плате, который распределяет напряжения по компонентам.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li><b>Наше решение:</b> Глубокая <b>диагностика PS5</b> с помощью прецизионного оборудования для локализации неисправности. Если это блок питания, мы проводим компонентный ремонт или замену на оригинальный. При коротком замыкании или выходе из строя контроллеров — микропайка и восстановление цепей.</li>
+<li><b>Симптом:</b> PS5 кратковременно загорается синим, затем сразу гаснет, не выводя изображение.</li>
+<li><b>Вероятные причины:</b>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Проблемы с цепями питания <b>APU (процессор/видеочип)</b> или самого APU.</li>
+<li>Неисправность оперативной памяти (GDDR6).</li>
+<li>Проблемы с питанием NAND-памяти или микросхем, отвечающих за загрузку системы.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li><b>Наше решение:</b> Тщательная проверка всех напряжений и сигналов на материнской плате. Диагностика <b>BGA-компонентов</b> (APU, GDDR6). В случае необходимости — сложная BGA-пайка и реболлинг чипов на профессиональном оборудовании.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Экспертный разбор: Почему без специализированного оборудования ремонт PS5 — это лотерея</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ремонт современной игровой консоли, такой как <b>PlayStation 5</b>, это не замена батарейки. Это высокотехнологичный процесс, требующий глубоких знаний электроники и, главное, специализированного оборудования. В «Админ.Ко» мы используем арсенал, который не встретить в обычных мастерских:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Осциллограф Rigol:</b> Этот прибор позволяет нам "видеть" электрические сигналы, проверять их форму, амплитуду и частоту. Мы можем диагностировать нестабильность питания, пропадание сигналов синхронизации, "дребезг" контактов и многое другое, что невозможно определить мультиметром. Это ключ к пониманию работы сложных цифровых цепей <b>PS5</b>.</li>
+<li><b>Паяльная станция JBC (Испания):</b> Признанный мировой стандарт в профессиональной микропайке. Станции JBC обеспечивают сверхточный контроль температуры, мгновенный нагрев и стабильность жала, что критично для работы с миниатюрными компонентами и многослойными платами без их перегрева и повреждения.</li>
+<li><b>Термовоздушная паяльная станция Quick 861DW:</b> Идеальный инструмент для демонтажа и монтажа BGA-компонентов и SMD-элементов. Точный контроль потока воздуха и температуры предотвращает деформацию платы и соседних компонентов, что особенно важно при работе с платами <b>PS5</b>.</li>
+<li><b>Тепловизор:</b> Позволяет быстро обнаружить скрытые короткие замыкания и перегретые компоненты на плате, которые не видны невооруженным глазом. Это значительно ускоряет диагностику и повышает точность локализации неисправности.</li>
+<li><b>Микроскоп:</b> Для работы с элементами размером в доли миллиметра без мощного микроскопа не обойтись. Мы работаем под увеличением, что гарантирует ювелирную точность пайки и отсутствие ошибок.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без этого оборудования <b>ремонт PS5</b> превращается в слепую лотерею. "Мастера", работающие на китайских паяльных станциях без контроля температуры или вовсе "на глаз", с большой вероятностью нанесут вашей консоли еще больший вред, приведут к отслоению дорожек на плате или срыву контактных площадок. Наша цель — не просто "завести" консоль, а восстановить ее работоспособность в соответствии с заводскими стандартами, с сохранением всех функций и долгосрочной стабильностью.</p></p>
+<h2>Инженерный стандарт Админ.Ко: Прозрачность и надежность для каждого клиента в Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В «Админ.Ко» на <b>ул. Дзержинского 2Б, рядом с Ареной и ТЦ Я в Кемерово</b>, мы строим отношения с клиентами на основе доверия и профессионализма. Наш инженерный стандарт — это ваша уверенность:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Диагностика 0 рублей:</b> Полная и глубокая <b>диагностика PS5</b> проводится абсолютно бесплатно, даже если вы откажетесь от ремонта. Мы хотим, чтобы вы точно знали, в чем проблема, прежде чем принимать решение.</li>
+<li><b>Запчасти в наличии:</b> Мы имеем собственный склад оригинальных и высококачественных аналогов запчастей в <b>Кемерово</b>. Это означает быстрый ремонт без длительного ожидания поставок.</li>
+<li><b>Гарантия 1 год по договору:</b> На все выполненные работы и установленные компоненты мы предоставляем полноценную <b>гарантию сроком на 12 месяцев</b>. Мы юридически защищаем вас от повторных неисправностей.</li>
+<li><b>Сохранность данных:</b> Мы понимаем ценность ваших сохранений и профилей. В процессе ремонта мы делаем все возможное для <b>сохранения данных на PS5</b> и никогда не сносим программное обеспечение или игровые данные без крайней необходимости и вашего согласия.</li>
+<li><b>Честная цена:</b> Стоимость ремонта всегда оговаривается после диагностики и не меняется в процессе. Никаких "скрытых" накруток или неприятных сюрпризов при выдаче. Мы работаем открыто и честно.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h2>Инженерный секрет: Секреты стабилизации питания APU PS5</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Когда <b>PS5 не включается</b> или уходит в цикл перезагрузок, многие думают о банальном перегреве или сгоревшем блоке питания. Однако часто проблема кроется глубже — в микроскопических контроллерах и цепях стабилизации питания, которые обеспечивают стабильную работу <b>APU</b> консоли. Архитектура <b>PS5</b> подразумевает сложную систему управления напряжениями, где каждый вольт и ампер имеют значение. Малейшая нестабильность, например, на одном из плеч многофазного VRM (Voltage Regulator Module) для APU, может привести к полной неработоспособности консоли. "Слабое звено" часто оказывается не в самом большом чипе, а в крошечном стабилизаторе или пробитом конденсаторе, обнаружить который без точного <b>осциллографа Rigol</b> и <b>тепловизора</b> практически невозможно. Наши инженеры знают типичные точки отказа этих цепей и используют специальные методики для их восстановления, применяя только качественные флюсы <b>Martin/Amtech</b>, которые не вызывают коррозии платы со временем, в отличие от дешевых аналогов. Мы не просто меняем деталь, мы восстанавливаем изначальную схемотехнику.</p></p>
+<h2>Примерные цены на ремонт PS5 (Кемерово, Дзержинского 2Б)</h2>
+<table>
+<thead>
+<tr>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><th>Услуга</th></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><th>Стоимость (от)</th></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><th>Срок</th></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></tr></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></thead></p>
+<tbody>
+<tr>
+<td>Диагностика PS5 (при отказе от ремонта)</td>
+<td>0 руб.</td>
+<td>1-2 часа</td>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></tr></p>
+<tr>
+<td>Ремонт/Замена блока питания PS5</td>
+<td>от 3500 руб.</td>
+<td>1-2 дня</td>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></tr></p>
+<tr>
+<td>Компонентный ремонт цепей питания на материнской плате</td>
+<td>от 4500 руб.</td>
+<td>2-4 дня</td>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></tr></p>
+<tr>
+<td>Ремонт/Замена контроллера питания PS5</td>
+<td>от 5000 руб.</td>
+<td>2-5 дней</td>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></tr></p>
+<tr>
+<td>BGA-пайка (реболлинг APU/памяти)</td>
+<td>от 8000 руб.</td>
+<td>3-7 дней</td>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></tr></p>
+<tr>
+<td>Восстановление после попадания жидкости</td>
+<td>от 6000 руб.</td>
+<td>3-7 дней</td>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></tr></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></tbody></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></table></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><i>Обращаем ваше внимание, что окончательная стоимость ремонта определяется после бесплатной диагностики и зависит от сложности неисправности и стоимости необходимых комплектующих.</i></p></p>
+<h2>Часто задаваемые вопросы о ремонте PS5 в Кемерово</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><dl></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><dt>Сколько времени займет ремонт моей PS5?</dt></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><dd></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Сроки ремонта зависят от сложности поломки и наличия необходимых компонентов. Простая замена блока питания может занять 1-2 дня. Сложный компонентный ремонт материнской платы или BGA-пайка APU — от 3 до 7 рабочих дней. Точные сроки мы сообщим после проведения бесплатной диагностики.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></dd></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><dt>Мои сохранения и данные на PS5 будут утеряны?</dt></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><dd></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы прилагаем все усилия для <b>сохранения данных</b>. В большинстве случаев при ремонте "не включающейся" <b>PS5</b> жесткий диск/SSD не затрагивается, и ваши сохранения остаются нетронутыми. Мы никогда не форматируем накопитель без крайней необходимости и вашего предварительного согласия.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></dd></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><dt>Какая гарантия предоставляется на ремонт?</dt></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><dd></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>На все выполненные работы и установленные компоненты мы предоставляем официальную <b>гарантию 1 год по договору</b>. Это подтверждает нашу уверенность в качестве предоставляемых услуг и обеспечивает вашу юридическую защиту.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></dd></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><dt>Моя PS5 просто щелкает при попытке включения и сразу выключается. Что это значит?</dt></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><dd></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Такой симптом часто указывает на серьезную проблему с цепями питания или на короткое замыкание на материнской плате, из-за чего блок питания уходит в защиту. Это требует немедленной профессиональной диагностики в нашей лаборатории, чтобы предотвратить дальнейшие повреждения.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></dd></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><dt>Вы чините любые модели PS5 (Digital Edition, с дисководом)?</dt></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><dd></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Да, наши инженеры имеют опыт работы со всеми модификациями <b>PlayStation 5</b>, как с дисководом, так и Digital Edition. Архитектура их материнских плат идентична в части основных компонентов питания и APU, что позволяет применять унифицированные методы ремонта.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></dd></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></dl></p>
+</section>
+            <section><h1 id="playstation-5-ne-vklyuchaetsya-v-kemerovo-poshagovyy-gayd-po-reanimacii-i-spaseniyu-sohraneniy">PlayStation 5 не включается в Кемерово: Пошаговый гайд по реанимации и спасению сохранений</h1>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваша <b>PlayStation 5</b> превратилась в «кирпич»? Вы столкнулись с проблемой, когда консоль не подает признаков жизни, не включается, или выдает <b>синий индикатор смерти (BLOD)</b>, после чего гаснет? Это одна из наиболее критичных неисправностей для любого геймера в <b>Кемерово</b>, ведь под угрозой не только игровая сессия, но и все <b>сохранения PS5</b>. В лаборатории «Админ.Ко» на <b>Дзержинского 2Б</b> мы регулярно сталкиваемся с подобными кейсами и готовы провести глубокую диагностику и профессиональный ремонт.</p></p>
+<h2 id="glava-2-pervaya-pomoshch-prostye-proverki-i-ustranenie-bazovykh-problem-s-pitaniem-i-podklyucheniem">Глава 2: Первая помощь: Простые проверки и устранение базовых проблем с питанием и подключением</h2>
+<h3>Симптомы — Причины — Решение: Первичная диагностика PS5</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Прежде чем подозревать самое страшное, крайне важно исключить базовые проблемы. Многие неисправности <b>питания PS5</b> могут быть устранены без вскрытия консоли. Эти проверки должен выполнить каждый владелец в <b>Кемерово</b> перед обращением в сервисный центр.</p></p>
+<h4>Симптомы:</h4>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Консоль <b>полностью мертва</b>, нет никакой индикации (нет синего или белого света).</li>
+<li><b>PS5 щелкает и не включается</b>, возможно, издает короткий писк.</li>
+<li>Консоль кратковременно загорается синим светом, затем сразу же выключается (<b>BLOD — Blue Light of Death</b>).</li>
+<li><b>PS5 не подает изображение</b>, но индикатор питания горит.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h4>Возможные базовые причины и их устранение:</h4>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Проблема с сетевым шнуром:</b>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Причина:</b> Повреждение кабеля питания, неплотное подключение к консоли или розетке.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>Решение:</b> Убедитесь, что кабель <b>плотно вставлен</b> как в консоль, так и в электрическую розетку. Попробуйте другой, заведомо рабочий кабель питания <b>(стандартный C7 или C13, в зависимости от модели вашей PS5)</b>. Используйте другую розетку, чтобы исключить проблему с электросетью.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li><b>Проблема с электрической сетью или удлинителем:</b>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Причина:</b> Выход из строя розетки, перегрузка удлинителя, использование некачественного сетевого фильтра.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>Решение:</b> Подключите <b>PS5 напрямую к настенной розетке</b>, минуя удлинители и сетевые фильтры. Проверьте работоспособность розетки, подключив к ней другое устройство.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li><b>Зависание консоли в спящем режиме:</b>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Причина:</b> Программный сбой, из-за которого консоль не выходит из режима ожидания.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>Решение:</b> Выполните <b>полный сброс питания</b>. Отключите PS5 от розетки на 3-5 минут, затем снова подключите и попробуйте включить. Это может сбросить остаточное напряжение и перезагрузить внутренние контроллеры.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li><b>Проблема с HDMI-кабелем или портом:</b>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><b>Причина:</b> Если консоль включается (есть индикация), но нет изображения на экране. Поврежденный кабель HDMI, неисправный порт на телевизоре или на самой PS5.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><b>Решение:</b> Попробуйте другой <b>HDMI-кабель</b> (желательно версии 2.1). Подключите консоль к другому HDMI-порту телевизора или к другому телевизору/монитору. В «Админ.Ко» мы часто сталкиваемся с <b>выходом из строя HDMI-контроллера на PS5</b> из-за статического электричества или неправильного подключения, что требует <b>микро-пайки</b>.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Экспертный разбор: Почему глубокая диагностика критически важна для PlayStation 5</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если после выполнения всех базовых проверок ваша <b>PS5</b> по-прежнему не включается, это почти всегда указывает на аппаратную неисправность, требующую квалифицированного вмешательства. В «Админ.Ко» мы подходим к каждой консоли как к сложному инженерному объекту. Диагностика "на глазок" или "методом тыка" — это путь к усугублению проблемы и потенциальной потере консоли.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Наши инженеры в <b>Кемерово</b> используют комплексное оборудование для точной локализации неисправности:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Осциллограф Rigol:</b> Позволяет нам детально анализировать сигналы на шинах данных и цепях питания, выявлять пульсации, помехи и нестабильность напряжения, которые не видны обычным мультиметром. Это критично для диагностики контроллеров питания и работы BGA-компонентов.</li>
+<li><b>Паяльные станции JBC (Испания):</b> Это профессиональное оборудование высшего класса, обеспечивающее точный температурный контроль при <b>микро-пайке</b>. Оно позволяет работать с мельчайшими компонентами без перегрева соседних элементов и повреждения многослойной <b>платы PS5</b>.</li>
+<li><b>Термовоздушная паяльная станция Quick 861DW:</b> Идеальна для демонтажа и монтажа BGA-компонентов и микросхем с плоским корпусом. Её точный контроль потока воздуха и температуры предотвращает деформацию платы и повреждение чипов.</li>
+<li><b>Тепловизор:</b> Позволяет визуализировать распределение тепла на плате, моментально выявляя зоны перегрева или, наоборот, отсутствие нагрева там, где он должен быть. Это незаменимый инструмент для поиска коротких замыканий и неисправных компонентов, таких как <b>контроллеры питания PS5</b>.</li>
+<li><b>Микроскоп:</b> Для работы с компонентами размером менее 1 мм (SMD-элементы, дорожки на платах) без микроскопа невозможно. Мы используем высокоточные стереомикроскопы, чтобы убедиться в качестве каждого паяного соединения и отсутствии микротрещин.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Без этого арсенала, <b>ремонт PS5</b> превращается в лотерею. Самостоятельные попытки или обращение к "мастерам в подвале", которые не имеют такого оборудования и знаний, часто приводят к необратимым повреждениям платы, когда ремонт становится нерентабельным или вовсе невозможным. Мы сохраняем <b>герметичность корпуса PS5</b> после ремонта, используя оригинальные прокладки и уплотнители, что важно для её системы охлаждения и защиты от пыли.</p></p>
+<h3>Инженерный стандарт Админ.Ко: Ваш гарант спокойствия в Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><b>Диагностика 0 руб.:</b> Мы ценим ваше время и доверие. Полная и глубокая диагностика вашей <b>не включающейся PS5</b> абсолютно бесплатна, даже если вы откажетесь от ремонта.</li>
+<li><b>Запчасти в наличии:</b> Наш собственный склад в <b>Кемерово</b> содержит широкий ассортимент комплектующих для <b>PlayStation 5</b>, включая блоки питания, контроллеры, микросхемы и другие компоненты. Это значительно ускоряет процесс ремонта.</li>
+<li><b>Гарантия 1 год по договору:</b> Мы уверены в качестве нашей работы. На все виды ремонта предоставляется официальная гарантия 12 месяцев, закрепленная юридически. Вы защищены.</li>
+<li><b>Сохранность данных:</b> Мы понимаем ценность ваших игровых сохранений и профилей. В «Админ.Ко» мы придерживаемся строгих протоколов сохранения данных. Мы не форматируем накопители и не переустанавливаем ПО без крайней необходимости и вашего согласия.</li>
+<li><b>Честная цена:</b> Никаких скрытых платежей или накруток. Стоимость ремонта фиксируется после диагностики и согласования с вами. Вы всегда знаете, за что платите.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<h3>Инженерный секрет: Опасность "щелчка" и роль APU</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Когда <b>PS5</b> издает короткий щелчок и не включается, многие ошибочно полагают, что проблема всегда в блоке питания (PSU). Однако наш опыт показывает, что часто причиной такого поведения является сбой в работе главного процессора (<b>APU – Accelerated Processing Unit</b>) или его питающих цепей на основной плате. <b>APU PS5</b> — это сложный <b>BGA-чип</b>, который первым проверяет все подсистемы при включении. Если он обнаруживает критическую ошибку (например, короткое замыкание в одной из второстепенных линий питания, проблему с RAM или NAND), он мгновенно отключает консоль, чтобы предотвратить дальнейшие повреждения. Выход из строя одной из <b>керамических конденсаторных сборок</b> в цепях питания APU или <b>микротрещины под BGA-чипом</b> из-за перегрева могут приводить к таким "щелчкам". Для точной диагностики требуется снять плату, подать на нее дежурное питание и с помощью <b>осциллографа Rigol</b> проверить все питающие шины на соответствие референсным значениям, что невозможно без глубоких знаний архитектуры PS5 и профессионального оборудования.</p></p>
+<h3>Таблица цен на диагностику и ремонт PlayStation 5 (Кемерово, Админ.Ко)</h3>
+<table border="1">
+<thead>
+<tr>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><th>Услуга</th></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><th>Описание</th></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><th>Примерная стоимость (руб.)</th></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></tr></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></thead></p>
+<tbody>
+<tr>
+<td><b>Диагностика PS5 (не включается)</b></td>
+<td>Комплексная проверка всех систем, выявление причины неисправности с использованием специализированного оборудования.</td>
+<td><b>0 руб.</b></td>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></tr></p>
+<tr>
+<td><b>Ремонт/Замена блока питания (PSU)</b></td>
+<td>Восстановление или замена неисправного внутреннего блока питания консоли.</td>
+<td>От 4500 до 8500</td>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></tr></p>
+<tr>
+<td><b>Ремонт цепей питания на материнской плате</b></td>
+<td>Восстановление поврежденных дорожек, замена контроллеров питания, мосфетов, конденсаторов. <b>Микро-пайка</b>.</td>
+<td>От 6000 до 12000</td>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></tr></p>
+<tr>
+<td><b>Восстановление HDMI-порта/контроллера</b></td>
+<td>Замена физически поврежденного HDMI-порта или неисправного HDMI-контроллера на материнской плате.</td>
+<td>От 5000 до 9000</td>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></tr></p>
+<tr>
+<td><b>Реболлинг/Замена APU (CPU/GPU)</b></td>
+<td>Сложная BGA-пайка: перепайка или замена основного процессора (APU) в случае проблем с его контактами.</td>
+<td>Индивидуально, от 12000</td>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></tr></p>
+<tr>
+<td><b>Чистка системы охлаждения с заменой термоинтерфейса</b></td>
+<td>Профилактическая мера, позволяющая избежать перегрева и связанных с ним проблем включения в будущем.</td>
+<td>От 2500 до 3500</td>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></tr></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></tbody></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></table></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><i>Обращаем внимание, что указанные цены являются ориентировочными. Точная стоимость ремонта вашей PS5 будет определена после бесплатной диагностики в нашем центре на <b>ул. Дзержинского 2Б в Кемерово</b> (рядом с ТЦ Я).</i></p></p>
+<h3>FAQ: Часто задаваемые вопросы о ремонте PS5 в Кемерово</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul itemscope itemtype="https://schema.org/FAQPage"></p>
+<li itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+<h3 itemprop="name">Почему моя PS5 перестала включаться после скачка напряжения?</h3>
+<div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p itemprop="text">Скачки напряжения — частая причина выхода из строя <b>блока питания PS5</b> или его защитных цепей на материнской плате. Даже если внешне консоль не имеет повреждений, внутренние компоненты могли получить микро-повреждения. В «Админ.Ко» на <b>Дзержинского 2Б</b> мы используем <b>осциллограф Rigol</b> для проверки всех линий питания и точной локализации поврежденных элементов, требующих <b>микро-пайки</b>.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></div></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+<h3 itemprop="name">Сколько времени занимает диагностика не включающейся PS5 в Админ.Ко?</h3>
+<div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p itemprop="text">Стандартная диагностика занимает от 1 до 3 рабочих дней. В некоторых сложных случаях, требующих длительного тестирования или поиска редких неисправностей, процесс может занять до 5 рабочих дней. Мы всегда стараемся выполнить диагностику максимально оперативно, так как понимаем, насколько важно для вас получить вашу консоль обратно.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></div></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+<h3 itemprop="name">Можно ли спасти данные с PS5, которая не включается?</h3>
+<div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p itemprop="text">В большинстве случаев, да. Если проблема не связана напрямую с повреждением накопителя (SSD), мы можем восстановить работоспособность консоли, сохранив все ваши данные. Если SSD поврежден, в некоторых случаях возможно частичное или полное восстановление данных. Мы прикладываем максимум усилий для <b>спасения сохранений PS5</b> и личной информации клиента.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></div></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+<h3 itemprop="name">Какие гарантии на ремонт PS5 предоставляет Админ.Ко в Кемерово?</h3>
+<div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p itemprop="text">Мы предоставляем официальную гарантию сроком на <b>1 год</b> на все выполненные работы и замененные компоненты. Каждый ремонт оформляется договором, что обеспечивает юридическую защиту ваших интересов. Вы можете быть уверены в качестве наших услуг.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></div></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+<h3 itemprop="name">Могу ли я привезти PS5 на ремонт без записи в вашем сервисе?</h3>
+<div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p itemprop="text">Да, вы можете привезти вашу <b>PS5</b> на диагностику в любое удобное для вас время в часы работы лаборатории «Админ.Ко» по адресу <b>ул. Дзержинского 2Б в Кемерово</b>. Предварительная запись не требуется, но всегда можно позвонить для консультации. Мы находимся в удобном месте, недалеко от <b>Арены и ТЦ Я</b>.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></div></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+</section>
+            
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-10 rounded-[3rem] border-l-8 border-blue-500 my-16 shadow-inner">
+            <div class="flex items-center gap-3 mb-4 text-blue-600 dark:text-blue-400">
+                <span class="material-symbols-outlined">biotech</span>
+                <span class="font-black uppercase tracking-widest text-xs text-primary">Инженерный разбор Admin.Ko</span>
+            </div>
+            <p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><!DOCTYPE html></p>
+<html lang="ru">
+<head>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><meta charset="UTF-8"></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><meta name="viewport" content="width=device-width, initial-scale=1.0"></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><title>Технический Секрет Мастера: PlayStation 5 не включается в Кемерово - Гайд по Реанимации и Спасению Сохранений</title></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><style></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">body {</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">line-height: 1.6;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">margin: 0;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">padding: 0;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">background-color: #f0f2f5;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">color: #333;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">}</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">.container {</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">max-width: 900px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">margin: 30px auto;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">padding: 20px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">background-color: #ffffff;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">border-radius: 12px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">}</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">header {</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">background-color: #007bff;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">color: white;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">padding: 30px 20px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">text-align: center;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">border-radius: 12px 12px 0 0;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">margin: -20px -20px 30px -20px; /* Adjust to fit container */</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">}</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">header h1 {</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">font-size: 2.8em;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">margin-bottom: 10px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">text-shadow: 2px 2px 4px rgba(0,0,0,0.3);</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">}</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">header p {</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">font-size: 1.2em;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">opacity: 0.9;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">}</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">h2 {</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">color: #0056b3;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">font-size: 2em;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">border-bottom: 3px solid #e9ecef;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">padding-bottom: 10px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">margin-top: 40px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">margin-bottom: 25px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">}</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">h3 {</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">color: #007bff;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">font-size: 1.6em;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">margin-top: 30px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">margin-bottom: 15px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">}</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">h4 {</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">color: #28a745;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">font-size: 1.3em;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">margin-top: 20px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">margin-bottom: 10px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">}</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">p {</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">margin-bottom: 15px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">font-size: 1.05em;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">}</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">ul, ol {</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">margin-left: 25px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">margin-bottom: 15px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">list-style-type: disc;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">}</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">ol li {</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">margin-bottom: 12px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">list-style-type: decimal;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">}</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">ul li {</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">margin-bottom: 8px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">}</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">.tip {</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">background-color: #e6f7ff;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">border-left: 6px solid #007bff;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">padding: 18px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">margin: 25px 0;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">border-radius: 8px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">font-style: italic;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">color: #0056b3;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">box-shadow: 0 2px 8px rgba(0,0,0,0.05);</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">}</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">.warning {</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">background-color: #fff3cd;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">border-left: 6px solid #ffc107;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">padding: 18px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">margin: 25px 0;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">border-radius: 8px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">color: #856404;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">font-weight: bold;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">box-shadow: 0 2px 8px rgba(0,0,0,0.05);</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">}</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">.critical-warning {</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">background-color: #f8d7da;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">border-left: 6px solid #dc3545;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">padding: 18px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">margin: 25px 0;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">border-radius: 8px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">color: #721c24;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">font-weight: bold;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">box-shadow: 0 2px 8px rgba(0,0,0,0.05);</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">}</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">code {</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">background-color: #e9ecef;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">padding: 2px 5px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">border-radius: 4px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">font-family: 'Consolas', 'Monaco', monospace;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">font-size: 0.9em;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">}</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">footer {</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">text-align: center;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">margin-top: 50px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">padding: 25px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">background-color: #e9ecef;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">border-radius: 0 0 12px 12px;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">margin: 50px -20px -20px -20px; /* Adjust to fit container */</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">color: #555;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">font-size: 0.9em;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">}</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">a {</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">color: #007bff;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">text-decoration: none;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">}</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">a:hover {</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">text-decoration: underline;</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl">}</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></style></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></head></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><body></p>
+<div class="container">
+<header>
+<h1>🕹️ PlayStation 5 не включается в Кемерово: Пошаговый Гайд по Реанимации и Спасению Сохранений 💾</h1>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p><i>Технический секрет мастера: Почему другие ломают, а мы чиним?</i></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></header></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><section></p>
+<h2>Добро пожаловать, коллега-геймер!</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Вы столкнулись с одним из самых неприятных моментов для владельца PS5: консоль отказывается включаться. Паника? Чувство потери? Это нормально. Но не спешите расстраиваться и уж тем более нести её в первую попавшуюся мастерскую в Кемерово. В этом гайде я, как опытный техник, поделюсь своими секретами диагностики и реанимации, которые позволят вам, возможно, избежать дорогостоящего ремонта и, самое главное, спасти ваши бесценные игровые сохранения.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Мы пройдём путь от простых проверок до продвинутых техник, которые часто игнорируются "быстрыми" ремонтниками.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></section></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><section></p>
+<h2>🔑 Почему другие ломают, а мы чиним? Философия Мастера</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Многие сервисы торопятся с заменой дорогих компонентов или, что ещё хуже, не до конца разбираются в сути проблемы, усугубляя её. Наш подход основан на:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Системной Диагностике:</strong> Мы исключаем простые причины, прежде чем перейти к сложным.</li>
+<li><strong>Понимании Архитектуры:</strong> Глубокие знания того, как работает PS5, помогают выявить истинные слабые места, а не просто "тыкать пальцем в небо".</li>
+<li><strong>Терпении и Аккуратности:</strong> Спешка – враг любого ремонта. Детали PS5 деликатны.</li>
+<li><strong>Сохранении Данных:</strong> Приоритет номер один – ваши сохранения! Часто их можно спасти, даже если консоль кажется мёртвой.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Этот гайд научит вас думать как мастер.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></section></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><section></p>
+<h2>🛠️ Подготовка к Реанимации: Что нам понадобится?</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Крестовая отвёртка (PH1/PH0)</li>
+<li>Чистая, хорошо освещённая рабочая поверхность</li>
+<li>Пинцет (желательно)</li>
+<li>Баллончик со сжатым воздухом или мягкая кисть для очистки от пыли</li>
+<li>Оригинальный USB-кабель для контроллера DualSense</li>
+<li>USB-флешка (отформатированная в FAT32 или exFAT, не менее 1 ГБ)</li>
+<li>Другая исправная розетка/удлинитель для проверки</li>
+<li><strong>Самое главное:</strong> Терпение и аккуратность!</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<div class="critical-warning">
+<h3>⚠️ ВАЖНОЕ ПРЕДУПРЕЖДЕНИЕ О БЕЗОПАСНОСТИ:</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Все действия вы выполняете на свой страх и риск. Открытие консоли <strong>может лишить вас гарантии</strong>. Всегда отключайте PS5 от электросети перед любыми манипуляциями с корпусом или кабелями. Если вы не уверены в своих силах, лучше обратиться к специалистам.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></div></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></section></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><section></p>
+<h2>💡 Пошаговая Диагностика и Реанимация PlayStation 5</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ol></p>
+<li>
+<h3>Шаг 1: Проверка Питания – Начинаем с Азов</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Это самый частый и самый простой случай.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Проверка Розетки:</strong> Убедитесь, что розетка работает. Подключите к ней лампу или зарядку телефона.</li>
+<li><strong>Кабель Питания:</strong> Полностью отсоедините кабель питания от PS5 и от розетки. Подождите 30 секунд. Подключите снова, убедившись, что он плотно сидит в обоих концах. Попробуйте другой кабель питания, если есть (подходит стандартный IEC C7).</li>
+<li><strong>Удлинитель/Сетевой Фильтр:</strong> Попробуйте подключить PS5 напрямую к розетке, минуя удлинители и сетевые фильтры. Они могут быть неисправны или не давать достаточного тока/напряжения.</li>
+<li><strong>"Электрический Сброс":</strong> Отключите PS5 от сети. Нажмите и удерживайте кнопку питания на консоли в течение 15-20 секунд (даже если она не реагирует). Это поможет сбросить остаточное статическое электричество. Затем подключите и попробуйте включить.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<h3>Шаг 2: Диагностика Индикатора Питания PS5 (Светодиодная Полоса)</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Цвет индикатора может многое рассказать о состоянии консоли:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Нет Света:</strong> Проблема с питанием (см. Шаг 1) или серьёзная внутренняя неисправность (блок питания, материнская плата).</li>
+<li><strong>Синий (пульсирующий), затем Выключение:</strong> Это печально известный "Blue Light of Death" (BLOD). Часто указывает на проблему с APU (процессор/видеочип), памятью или питанием этих компонентов. Иногда может быть вызвано программным сбоем.</li>
+<li><strong>Белый:</strong> Консоль включена и работает нормально. Если нет изображения, проблема, скорее всего, в кабеле HDMI, телевизоре/мониторе или его настройках.</li>
+<li><strong>Оранжевый (или другие цвета):</strong> Консоль в режиме покоя или другая специфическая ошибка (редко при "не включается").</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<div class="tip">
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Мастерский Совет:</strong> Внимательно прислушайтесь. Есть ли щелчки, писки, звуки работы вентилятора? Любой звук – это уже какая-то жизнь и шанс на восстановление.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></div></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<h3>Шаг 3: Попытка Загрузки в Режим Безопасности (Safe Mode)</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Это ваш лучший шанс спасти консоль и сохранения, если она подаёт хоть какие-то признаки жизни.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ol></p>
+<li>Полностью выключите PS5 (если она хоть как-то подаёт признаки жизни, удерживая кнопку питания до полного выключения).</li>
+<li>Подсоедините контроллер DualSense к консоли <strong>только с помощью оригинального USB-кабеля</strong> (не Bluetooth).</li>
+<li>Нажмите и удерживайте кнопку питания на консоли. Отпустите её после <strong>второго звукового сигнала</strong> (первый прозвучит сразу, второй – примерно через 7 секунд).</li>
+<li>Если режим безопасности загрузился, вы увидите меню с несколькими опциями.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ol></p>
+<h4>Что делать в Safe Mode:</h4>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>1. "Перезапустить PS5":</strong> Самое простое, иногда помогает, если это был временный сбой.</li>
+<li><strong>2. "Изменить разрешение":</strong> Если проблема с изображением.</li>
+<li><strong>5. "Очистить кэш и Перестроить базу данных":</strong> <strong>Это очень частый "секрет мастера"!</strong> Часто помогает при ошибках загрузки, зависаниях и медленной работе. <strong>Ваши сохранения при этом не удаляются!</strong> Это просто переиндексирует данные на диске. Начните с этого, если консоль попадает в Safe Mode.</li>
+<li><strong>3. "Обновить системное ПО":</strong> Если предыдущие шаги не помогли. Используйте USB-флешку с последней версией прошивки. Скачайте её с <a href="https://www.playstation.com/ru-ru/support/hardware/ps5/system-software/" target="_blank">официального сайта PlayStation</a> (ищите раздел "Выполнение новой установки системного программного обеспечения" – это полный файл, он больше обычного файла обновления). Флешка должна быть отформатирована в FAT32/exFAT, папка <code>PS5</code>, внутри папка <code>UPDATE</code>, а в ней файл <code>PS5UPDATE.PUP</code>.</li>
+<li><strong>7. "Сбросить настройки PS5 (переустановить системное ПО)":</strong> <strong>ЭТО КРАЙНЯЯ МЕРА! Ваши данные, включая сохранения, будут удалены!</strong> Используйте только если всё остальное не помогло и вы уже отчаялись. Для этого тоже нужна USB-флешка с полным файлом переустановки (как в пункте 3).</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<h3>Шаг 4: Очистка от Пыли и Проверка на Перегрев</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Перегрев – частая причина внезапного выключения и отказа включаться. PS5 может не включаться, пока не остынет или пока система охлаждения не будет очищена.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Отсоедините консоль от сети и от всех кабелей.</li>
+<li>Снимите белые боковые панели (они просто снимаются: потяните за верхний угол и сдвиньте вниз/вперёд, как показано в официальных инструкциях).</li>
+<li>Аккуратно очистите вентилятор и радиатор от пыли с помощью баллончика со сжатым воздухом или мягкой кисти. Особое внимание уделите отверстиям для сбора пыли, которые расположены по периметру радиатора.</li>
+<li>Убедитесь, что консоль находится в хорошо проветриваемом месте, не заперта в тумбе и все вентиляционные отверстия свободны.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<div class="critical-warning">
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>НИКОГДА не используйте обычный бытовой пылесос для ВЫДУВАНИЯ пыли из электроники!</strong> Статическое электричество, которое он генерирует, может необратимо повредить внутренние компоненты. Используйте только режим выдувания (если есть) или сжатый воздух.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></div></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<h3>Шаг 5: Проверка Дополнительного M.2 SSD (если установлен)</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если вы устанавливали дополнительный M.2 SSD для расширения памяти, возможно, он несовместим или неисправен, что блокирует загрузку консоли.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Отсоедините консоль от сети.</li>
+<li>Снимите боковую панель, под которой находится слот для M.2 SSD.</li>
+<li>Аккуратно извлеките M.2 SSD.</li>
+<li>Соберите панель и попробуйте включить PS5 без дополнительного SSD. Если она включится, проблема в накопителе.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<h3>Шаг 6: Проверка HDMI-соединения</h3>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если PS5 включается (белый индикатор), но нет изображения:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li>Попробуйте другой кабель HDMI.</li>
+<li>Попробуйте подключить PS5 к другому HDMI-порту телевизора или к другому телевизору/монитору.</li>
+<li>В Safe Mode (Шаг 3) выберите "Изменить разрешение" (Option 2), чтобы сбросить настройки видео.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ol></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></section></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><section></p>
+<h2>🛡️ Спасение Сохранений: Ваша Главная Цель!</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Ваши игровые достижения – это самое ценное, что хранится на консоли. Вот как их можно спасти или убедиться в их безопасности:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ol></p>
+<li>
+<h4>Облачные Сохранения (Подписка PlayStation Plus)</h4>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если у вас есть активная подписка PlayStation Plus и функция автоматической загрузки сохранений была включена, то <strong>ваши сохранения, скорее всего, уже в безопасности в облаке!</strong></p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Как проверить:</strong> Войдите в свой аккаунт PSN на другой PS5, PS4, или через веб-сайт PlayStation. Ваши сохранения будут доступны для загрузки на новую/отремонтированную консоль.</li>
+<li><strong>Действие:</strong> Ничего делать не нужно, если функция была активна. Просто знайте, что они защищены.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<h4>Вручную через Режим Безопасности (если удалось загрузиться)</h4>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если вы смогли попасть в <strong>Режим Безопасности</strong> (Шаг 3), но обычная загрузка системы не работает, можно попробовать создать резервную копию.</p></p>
+<div class="warning">
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Важно:</strong> В Safe Mode нет прямой опции "копировать сохранения на USB". Опция 6 ("Сбросить настройки PS5") предлагает сделать резервную копию *всех данных* перед сбросом, но это требует рабочего состояния консоли до сброса. Если консоль вообще не загружается до Safe Mode, этот метод не сработает.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></div></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если консоль <strong>хоть как-то включается в обычный режим (даже с проблемами)</strong>, подключите USB-флешку/внешний HDD. Перейдите в "Настройки" > "Сохранённые данные и настройки игр" > "Сохранённые данные (PS5)" или "Сохранённые данные (PS4)" > "Загрузить на USB-накопитель".</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<h4>Резервное Копирование Полной Системы (для профилактики на будущее)</h4>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Этот метод не поможет, если консоль уже не включается, но является отличной профилактикой на будущее:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Зайдите в "Настройки" > "Система" > "Системное программное обеспечение" > "Резервное копирование и восстановление" > "Создать резервную копию PS5". Для этого потребуется внешний USB-накопитель большого объёма.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<li>
+<h4>Профессиональное Восстановление Данных</h4>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Если консоль полностью мертва (никакой реакции, Safe Mode недоступен), единственным способом спасти данные может быть обращение в специализированную мастерскую, которая предлагает услуги по восстановлению данных напрямую с внутреннего NVMe SSD. Это сложный и дорогостоящий процесс, который требует демонтажа SSD и специального оборудования. К сожалению, таких сервисов в Кемерово может быть немного, или они могут быть очень дорогими.</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></li></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ol></p>
+<div class="tip">
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Мастерский Совет по Сохранениям:</strong> Всегда держите включённой автоматическую загрузку сохранений в облако, если у вас есть PS Plus. Это ваша самая надёжная страховка от большинства проблем.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></div></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></section></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><section></p>
+<h2>🛑 Когда пора обращаться к Профессионалам в Кемерово?</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Вы прошли все шаги, но PS5 по-прежнему мертва или выдаёт те же симптомы? Вот признаки того, что пришло время для мастера по ремонту консолей:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Полное Отсутствие Реакции:</strong> Нет никаких индикаторов, звуков, вообще ничего, даже после всех проверок питания.</li>
+<li><strong>BLOD (Blue Light of Death) не проходит:</strong> Если синяя полоса мигает, а потом консоль выключается, и Safe Mode недоступен.</li>
+<li><strong>Запах Гари/Дыма:</strong> Немедленно отключите от сети и <strong>не пытайтесь включать!</strong> Это признак серьёзной неисправности блока питания или материнской платы.</li>
+<li><strong>Физические Повреждения:</strong> Консоль падала, заливалась жидкостью и т.п.</li>
+<li><strong>Нет доступа в Safe Mode:</strong> Если консоль не реагирует на удержание кнопки питания или загружается, но сразу выключается.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>В этих случаях, вероятнее всего, проблема в материнской плате, блоке питания или других внутренних компонентах, требующих профессиональной диагностики, пайки и специализированного оборудования.</p></p>
+<div class="tip">
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><strong>Поиск Мастера в Кемерово:</strong> Ищите сервисы, специализирующиеся именно на ремонте игровых консолей, а не просто "мастерские по электронике". Задавайте вопросы о их опыте с PS5, наличии оборудования для пайки BGA-чипов, и возможности восстановления данных. Хороший мастер всегда объяснит проблему и варианты решения.</p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></div></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></section></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><section></p>
+<h2>♻️ Профилактика: Как Избежать Проблем в Будущем</h2>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><p>Лучший ремонт – это тот, которого удалось избежать. Следуйте этим простым советам:</p></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><ul></p>
+<li><strong>Чистота – Залог Здоровья:</strong> Регулярно (раз в 6-12 месяцев) чистите консоль от пыли, особенно вентилятор и пылеуловители под боковыми панелями.</li>
+<li><strong>Правильная Вентиляция:</strong> Убедитесь, что PS5 стоит в хорошо проветриваемом месте, не заперта в тумбе, и все вентиляционные отверстия свободны. Оставляйте достаточно пространства вокруг консоли.</li>
+<li><strong>Стабильное Питание:</strong> Используйте качественный сетевой фильтр или, в идеале, ИБП (источник бесперебойного питания) для защиты от скачков напряжения.</li>
+<li><strong>Облачные Сохранения:</strong> Всегда держите включённой функцию автоматической загрузки сохранений в облако PS Plus. Это ваша цифровая страховка.</li>
+<li><strong>Аккуратность:</strong> Избегайте резких выключений из розетки, падений и попадания жидкостей на консоль.</li>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></ul></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"></section></p>
+<p class="mb-10 leading-relaxed text-gray-700 dark:text-gray-300 font-medium text-lg lg:text-xl"><footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профессиональное решение: Замена клавиатуры – Экспертный взгляд из «АДМИН.КО» | Админ.Ко</title>
+    <meta name="description" content="Неисправная клавиатура парализует работу устройства. В этой статье ведущий инженер лаборатории «АДМИН.КО» (Кемерово, Дзержинского 2Б) раскрывает нюансы профессиональной замены, от диагностики с осциллографом Rigol до пайки на JBC и использования программатора JCID, гарантируя восстановление функциональности и комфорта.">
+    <link rel="icon" href="../favicon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../styles.css?v=3.7">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Профессиональное решение: Замена клавиатуры – Экспертный взгляд из «АДМИН.КО»","description":"Неисправная клавиатура парализует работу устройства. В этой статье ведущий инженер лаборатории «АДМИН.КО» (Кемерово, Дзержинского 2Б) раскрывает нюансы профессиональной замены, от диагностики с осциллографом Rigol до пайки на JBC и использования программатора JCID, гарантируя восстановление функциональности и комфорта.","datePublished":"2026-04-05T03:00:50.184Z","author":{"@type":"Person","name":"Инженер Админ.Ко"}}</script>
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#E50914' } } } }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen">
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 sticky top-1.5 z-50 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">build_circle</span>
+                    <span class="font-bold text-2xl tracking-tighter dark:text-white uppercase italic">
+                        Админ<span class="text-primary">.Ко</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex flex-1 max-w-md mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                </div>
+                <input 
+                    class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out dark:text-white" 
+                    placeholder="Что у вас сломалось?" 
+                    type="text"
+                    id="header-search"
+                />
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../services-consumer.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для себя</a>
+                <a href="../business.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Для бизнеса</a>
+                <a href="../price.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition">Цены</a>
+                <a href="../blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium transition italic">Блог</a>
+                
+                <!-- Кнопка переключения темы (Desktop) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors" title="Переключить тему">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+
+                <button onclick="openMessengerModal()" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-black rounded-full text-white bg-primary hover:bg-primary-hover transition shadow-lg shadow-primary/20 active:scale-95 uppercase tracking-widest">
+                    Написать
+                </button>
+            </div>
+
+            <div class="flex items-center md:hidden gap-2">
+                <!-- Кнопка темы (Mobile) -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+                    <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="../services-consumer.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для себя</a>
+            <a href="../business.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Для бизнеса</a>
+            <a href="../price.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Цены</a>
+            <a href="../blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800">Блог</a>
+            <button onclick="openMessengerModal()" class="w-full mt-2 flex items-center justify-center px-5 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-primary uppercase tracking-widest">
+                Написать инженеру
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+<main class="flex-grow max-w-5xl mx-auto px-4 py-12 md:py-24 w-full">
+    <article class="bg-white dark:bg-gray-800 p-8 md:p-16 rounded-[3rem] shadow-xl border border-gray-100 dark:border-gray-700">
+        <header class="mb-16">
+            <div class="text-primary font-black uppercase tracking-widest text-xs mb-6 italic">Инженерный разбор v7.0 • Кемерово</div>
+            <h1 class="text-4xl md:text-7xl font-black mb-8 leading-tight tracking-tighter text-gray-900 dark:text-white uppercase italic">Профессиональное решение: Замена клавиатуры – Экспертный взгляд из «АДМИН.КО»</h1>
+        </header>
+
+        <div class="prose prose-xl dark:prose-invert max-w-none">
+            <!-- TAKEAWAYS -->
+            <div class="bg-gray-50 dark:bg-gray-900/50 p-8 rounded-[2.5rem] border border-gray-100 dark:border-gray-700 mb-12">
+                <h4 class="text-xl font-black m-0 mb-6 uppercase italic tracking-tighter flex items-center gap-2 text-primary">
+                    <span class="material-symbols-outlined">analytics</span> Суть за 30 секунд
+                </h4>
+                <ul class="m-0 space-y-2 text-lg">
+                    <li><b>Профессиональная замена клавиатуры требует специализированного оборудования (осциллограф Rigol, паяльная станция JBC, термофен Quick 861DW, программатор JCID) и глубоких инженерных знаний для точной диагностики и качественного ремонта.</b></li><li><b>Ключевым аспектом долговечности и надежности новой клавиатуры является не только сама деталь, но и целостность её шлейфа, а также строгое соблюдение технологического процесса монтажа.</b></li><li><b>В лаборатории «АДМИН.КО» в Кемерово (Дзержинского 2Б) применяется комплексный подход к замене клавиатуры: от детальной диагностики и использования качественных компонентов до пост-ремонтного тестирования и предоставления гарантии, обеспечивая полное восстановление функциональности устройства.</b></li>
+                </ul>
+            </div>
+
+            <!-- CONTENT -->
+            <h2>Введение</h2><p>Неисправная клавиатура парализует работу, превращая устройство из инструмента в источник фрустрации. В «АДМИН.КО» мы предлагаем <b>профессиональную замену клавиатуры</b>, восстанавливая полную функциональность и комфорт с использованием передового оборудования.</p><h2>Оглавление</h2><ul><li><p><a href="#section-1">Симптомы и Причины Неисправности</a></p></li><li><p><a href="#section-2">Технологический Процесс Замены Клавиатуры</a></p></li><li><p><a href="#section-3">Инженерный Секрет «АДМИН.КО»</a></p></li><li><p><a href="#section-4">Почему Выбирают «АДМИН.КО» в Кемерово</a></p></li><li><p><a href="#section-5">Стоимость Услуг Замены Клавиатуры</a></p></li><li><p><a href="#section-6">Часто Задаваемые Вопросы</a></p></li></ul><h2 id="section-1">Симптомы и Причины Неисправности</h2><p>Понимание причин выхода клавиатуры из строя критично для качественного ремонта. Мы сталкиваемся со следующими проявлениями и их источниками:</p><ul><li><p><b>Отсутствие отклика или «залипание» клавиш:</b> Часто следствие попадания жидкости, крошек или пыли под клавиши, нарушающих контакт мембраны. Также может быть вызвано механическим износом или коррозией токопроводящих дорожек.</p></li><li><p><b>Некорректный ввод символов или «фантомные» нажатия:</b> Обычно указывает на повреждение контроллера клавиатуры или обрыв внутренних связей на ее плате. Залитие жидкостью – частая причина таких неисправностей.</p></li><li><p><b>Физические повреждения:</b> Отсутствие клавиш, сломанные крепления, трещины на корпусе. Результат падений, ударов или чрезмерного усилия при использовании.</p></li><li><p><b>Повреждение шлейфа:</b> Тонкий шлейф, соединяющий клавиатуру с материнской платой, уязвим к перегибам и механическим нагрузкам при неаккуратной сборке/разборке или естественном старении материала.</p></li></ul><h2 id="section-2">Технологический Процесс Замены Клавиатуры</h2><p>Замена клавиатуры – это не просто установка новой детали, а последовательность высокоточных операций, требующая специализированного инструментария:</p><ul><li><p><b>Предварительная диагностика:</b> Начальный этап включает визуальный осмотр, тестирование отклика всех клавиш и проверку цепей питания на материнской плате. С помощью цифрового осциллографа <b>Rigol</b> мы выявляем скрытые проблемы с контроллером или питанием, которые могут имитировать неисправность клавиатуры.</p></li><li><p><b>Аккуратная разборка устройства:</b> Демонтаж нижней крышки, аккумулятора, системы охлаждения и материнской платы. Особое внимание уделяется отсоединению многочисленных шлейфов, чтобы избежать их повреждения.</p></li><li><p><b>Демонтаж старой клавиатуры:</b> В зависимости от модели, клавиатура может быть зафиксирована заклепками, винтами или клеем. Для моделей с клеевым креплением используется термофен <b>Quick 861DW</b>, обеспечивающий равномерный и контролируемый нагрев для безопасного отделения компонента.</p></li><li><p><b>Подготовка посадочного места:</b> Тщательная очистка от остатков клея, пыли и возможных следов коррозии. Все поверхности обрабатываются изопропиловым спиртом для обеспечения идеального контакта.</p></li><li><p><b>Установка новой клавиатуры:</b> Монтаж оригинальной или высококачественной аналоговой клавиатуры. Проверка геометрии и надежности фиксации.</p></li><li><p><b>Пайка и компонентный ремонт (при необходимости):</b> Для некоторых ультратонких или интегрированных в топкейс клавиатур может потребоваться микропайка контактов или шлейфов. Используем прецизионную паяльную станцию <b>JBC</b> с тончайшими насадками, что обеспечивает ювелирную точность работы.</p></li><li><p><b>Финализация и тестирование:</b> После сборки проводим комплексное тестирование всех клавиш, подсветки (если предусмотрена). Для устройств Apple или специфических моделей с функцией Touch ID/Face ID, интегрированной в клавиатуру, может потребоваться использование программатора <b>JCID</b> для калибровки или привязки нового компонента к системе.</p></li><li><p><b>Финальная сборка и контроль качества:</b> Установка всех компонентов в обратном порядке, финальная проверка работоспособности и внешнего вида устройства.</p></li></ul><h2 id="section-3">Инженерный Секрет «АДМИН.КО»</h2><div class="bg-blue-50 border-l-4 border-blue-400 text-blue-800 p-4 rounded-md shadow-sm"><p><b>Мы глубоко убеждены, что часто недооценивается значение качества и совместимости шлейфа клавиатуры.</b> Даже новая, казалось бы, оригинальная клавиатура с незаметно поврежденным или некачественным шлейфом, приведет к повторным неисправностям или некорректной работе. В «АДМИН.КО» мы проводим не только внешний осмотр, но и электротехническую проверку шлейфа на целостность и проводимость. При необходимости мы осуществляем замену шлейфа на компонент, соответствующий заводским стандартам, гарантируя стабильность сигнала и долгий срок службы всей системы ввода.</p></div><h2 id="section-4">Почему Выбирают «АДМИН.КО» в Кемерово</h2><p>Наш адрес – <b>Дзержинского 2Б, Кемерово</b> – это гарантия профессионализма и качества:</p><ul><li><p><b>Высокая квалификация инженеров:</b> Мы обладаем многолетним опытом в сфере сложного компонентного ремонта.</p></li><li><p><b>Передовое оборудование:</b> Наличие осциллографа Rigol, паяльных станций JBC, термофенов Quick 861DW и программаторов JCID позволяет нам выполнять работы любой сложности с максимальной точностью.</p></li><li><p><b>Использование качественных запчастей:</b> Мы работаем только с проверенными поставщиками, предлагая оригинальные или высококачественные OEM-комплектующие.</p></li><li><p><b>Гарантия на работы и компоненты:</b> Мы уверены в качестве наших услуг и предоставляем полную гарантию.</p></li><li><p><b>Оптимизированные техпроцессы:</b> Эффективность нашей работы позволяет сократить время ремонта без ущерба для качества.</p></li></ul><h2 id="section-5">Стоимость Услуг Замены Клавиатуры</h2><div class="overflow-x-auto my-12"><table class="w-full text-left border-collapse"><thead><tr><th class="p-4 bg-gray-50 dark:bg-gray-900 font-bold uppercase text-xs">Услуга</th><th class="p-4 bg-gray-50 dark:bg-gray-900 font-bold uppercase text-xs">Стоимость</th></tr></thead><tbody><tr><td class="p-4 border-b border-gray-50 dark:border-gray-700">Замена клавиатуры (стандартная, без топкейса)</td><td class="p-4 border-b border-gray-50 dark:border-gray-700">от 1500 руб.</td></tr><tr><td class="p-4 border-b border-gray-50 dark:border-gray-700">Замена клавиатуры (интегрированная в топкейс)</td><td class="p-4 border-b border-gray-50 dark:border-gray-700">от 3000 руб.</td></tr><tr><td class="p-4 border-b border-gray-50 dark:border-gray-700">Диагностика (при последующем ремонте)</td><td class="p-4 border-b border-gray-50 dark:border-gray-700">Бесплатно</td></tr><tr><td class="p-4 border-b border-gray-50 dark:border-gray-700">Комплексная чистка после залития</td><td class="p-4 border-b border-gray-50 dark:border-gray-700">от 2000 руб.</td></tr></tbody></table></div><h2 id="section-6">Часто Задаваемые Вопросы</h2><ul><li><p><b>Сколько времени занимает замена клавиатуры?</b><br>Обычно процесс занимает от 1 до 3 рабочих часов. Сложные случаи с интегрированной клавиатурой или чисткой после залития могут увеличить срок до одного дня.</p></li><li><p><b>Вы устанавливаете только оригинальные клавиатуры?</b><br>Мы предлагаем как оригинальные, так и высококачественные аналоговые клавиатуры, согласовывая выбор с клиентом. Всегда гарантируем полную совместимость и функциональность.</p></li><li><p><b>Насколько долгой будет гарантия на замененную клавиатуру?</b><br>На все выполненные работы и установленные компоненты предоставляется гарантия, срок которой составляет не менее 3 месяцев и зависит от типа клавиатуры и модели устройства.</p></li><li><p><b>Может ли неисправность клавиатуры быть вызвана программным сбоем?</b><br>Крайне редко. В подавляющем большинстве случаев проблемы с клавиатурой носят аппаратный характер. Однако в ходе диагностики мы всегда исключаем программные факторы, чтобы дать наиболее точное заключение.</p></li></ul>
+
+            <!-- CTA -->
+            <div class="mt-20 p-10 md:p-16 bg-primary rounded-[4rem] text-center text-white relative overflow-hidden">
+                <h2 class="text-3xl md:text-5xl font-black mb-6 uppercase italic">Нужен качественный ремонт?</h2>
+                <p class="text-xl mb-10 opacity-90">Кемерово, Дзержинского 2Б. Оборудование JBC и Rigol. Гарантия 1 год.</p>
+                <button onclick="openMessengerModal()" class="bg-white text-primary px-12 py-6 rounded-2xl font-black text-xl hover:scale-105 transition-all shadow-2xl uppercase">Бесплатная консультация</button>
+            </div>
+
+            <div class="mt-16 pt-8 border-t border-gray-100 dark:border-gray-800 text-center">
+                <a href="../services-consumer.html" class="text-primary font-black uppercase text-xs tracking-widest hover:underline italic">→ Все услуги сервиса в Кемерово</a>
+            </div>
+        </div>
+    </article>
+</main>
+<footer class="bg-text-light dark:bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="brand-stripes w-6">
+                        <div class="brand-stripe bg-primary"></div>
+                        <div class="brand-stripe-thin bg-primary"></div>
+                    </div>
+                    <span class="text-xl font-bold text-primary italic uppercase tracking-tighter">Админ.Ко</span>
+                </div>
+                <p class="text-gray-400 text-sm">Сервисный центр в Кемерово. <br>Честный ремонт с 2014 года.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Услуги</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../phones.html" class="hover:text-white transition-colors">Ремонт смартфонов</a></li>
+                    <li><a href="../computers.html" class="hover:text-white transition-colors">Ремонт ноутбуков</a></li>
+                    <li><a href="../other-devices.html" class="hover:text-white transition-colors">Другая техника</a></li>
+                    <li><a href="../business.html" class="hover:text-white transition-colors">Для бизнеса</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Компания</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="../blog.html" class="text-primary font-bold hover:underline italic">Инженерный блог</a></li>
+                    <li><a href="../price.html" class="hover:text-white transition-colors">Прайс-лист</a></li>
+                    <li><a href="../about.html" class="hover:text-white transition-colors">О компании</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-widest text-xs text-gray-500">Контакты</h4>
+                <ul class="space-y-2 text-gray-400 text-sm font-bold">
+                    <li><a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="hover:text-white transition-colors text-lg">+7 (950) 276-71-71</a></li>
+                    <li class="text-gray-300 font-medium mt-2">Кемерово, ул. Дзержинского, 2Б</li>
+                    <li class="text-[10px] text-gray-500 uppercase tracking-widest">пн-пт: 9-21, сб: 12-18</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-4">
+                <p>&copy; 2014-2026 АДМИН.КО <span class="ml-2 px-1.5 py-0.5 border border-gray-700 rounded opacity-50 text-[9px]">18+</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="../consent.html" class="hover:text-primary transition-colors">Согласие</a>
+                <a href="../terms.html" class="hover:text-primary transition-colors">Условия</a>
+                <a href="../policy.html" class="hover:text-primary transition-colors">Политика</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Модалка ( AJAX ) -->
+<div id="messenger-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeMessengerModal()"></div>
+    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all scale-100 mx-4">
+        <button type="button" onclick="closeMessengerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/30 text-primary mb-4">
+                <span class="material-symbols-outlined text-3xl">phone_callback</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" id="modal-title">Нужен ремонт?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-tight">Оставьте номер — перезвоним за 5 минут или напишите в мессенджеры</p>
+        </div>
+
+        <div id="form-success" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/30 text-green-500 mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Заявка принята!</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Специалист свяжется с вами в течение 5 минут.</p>
+        </div>
+
+        <form id="evaluation-form" class="mb-6 space-y-4">
+            <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-700 bg-transparent focus:border-primary outline-none transition-all dark:text-white">
+            <button type="button" data-callback="true" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                <span class="material-symbols-outlined">call</span>
+                Жду звонка
+            </button>
+        </form>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button data-messenger="telegram" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0088cc] hover:bg-[#0088cc]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Telegram</span>
+            </button>
+            <button data-messenger="max" class="flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-[#0066FF] hover:bg-[#0066FF]/5 transition-all">
+                <span class="text-xs font-bold dark:text-white uppercase">Max Chat</span>
+            </button>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
+            <p class="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Прямой номер инженера:</p>
+            <a href="tel:+79502767171" onclick="window.location.href='tel:+79502767171'; return false;" class="text-xl font-black text-primary hover:text-primary-hover transition-colors tracking-tighter">+7 (950) 276-71-71</a>
+        </div>
+    </div>
+</div>
+
+<script src="../components.js?v=3.3"></script>
+</body>
+</html>
